@@ -1,0 +1,77 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
+    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>">
+    <title>IQMS Portal</title>
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        rel="stylesheet"
+    />
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        rel="stylesheet"
+    />
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css"
+        rel="stylesheet"
+    />
+    <?php wp_head(); ?>
+  </head>
+
+<body>
+
+    <header>
+        <div class="fixed-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="fixed-header-inner">
+                            <div class="header-logo">
+                                <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar("Fixed Header Logo") ) : ?>
+                                <?php endif ?>
+
+                                <div id="logo"> 
+                                    <a rel="home" href="https://zcmc-iqms.infoadvance.com.ph/">
+                                        <h1 rel="home" class="site-title" title="IQMS Portal">IQMS Portal</h1>
+                                        <h2 class="site-description" title="Online Quality Management System"> Online Quality Management System</h2>
+                                    </a>
+
+                                    <div class="toggle-menu">
+                                        <a class="toggle-nav" href="#">    
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <nav class="nav">
+                                <?php
+                                
+                                    wp_nav_menu( array(
+                                    'container_class'      => 'main-nav',
+                                    ) );
+                                
+                                ?>
+                                
+                            </nav>
+                            <div class="nav-toggle-wrapper">
+                                <?php
+                                    
+                                    wp_nav_menu( array(
+                                    'container_class'      => 'nav-toggle-menu',
+                                    ) );
+                                
+                                ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>

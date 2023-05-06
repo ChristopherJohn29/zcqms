@@ -1,0 +1,351 @@
+<?php
+
+add_action( 'edit_form_top', 'filter_post_fields' );
+
+function filter_post_fields() {
+
+
+
+	if ( get_post_type() == 'dcm' ) {
+
+
+
+		$this_user = wp_get_current_user();
+
+		$this_post_id = get_the_id();
+
+
+
+		$roles = [
+
+			'mcc',
+
+			'iso-chairperson',
+
+			'division-chief',
+
+			'dep-sec-head',
+
+			'process-owners',
+
+		];
+
+		$hide = false;
+
+		$this_user_roles = $this_user->roles;
+
+		$user_id = $this_user->ID;
+
+		// var_dump( get_post( get_the_id() )->post_author );
+
+		// var_dump( $user_id );exit;
+
+		if ( $user_id != get_post( get_the_id() )->post_author ) {
+
+			/*user cant edit the file*/
+
+			echo '<script>
+
+
+
+			(function($){
+
+				$(window).on(\'load\', function(){
+
+					$(\'[data-name="document_type"] select\').prop(\'disabled\', true);
+
+					$(\'[data-name="file_url"] input, [data-name="upload_document"] input\').prop(\'disabled\', true);
+
+					// console.log(\'test\');
+
+				});
+
+			})(jQuery);
+
+
+
+			</script>';
+
+
+
+			echo '
+
+			<style type="text/css">
+
+				[data-name="upload_document"] .acf-file-uploader.has-value {
+
+				    pointer-events: none;
+
+				}
+
+			</style>';
+
+		}
+
+
+
+		foreach( $this_user_roles as $r ) {
+
+			if ( in_array($r, $roles) ) {
+
+				$hide = true;
+
+			}
+
+		}
+
+
+
+		/*approve fields*/
+
+		if ( $hide ) {
+
+			echo '<style>.acf-field[data-name="approved_by"],.acf-field[data-name="review_by"] {display: none;}</style>';
+
+		}
+
+
+
+		/*chechk if post already reviewed and approved by DCO*/
+
+		$dco_review_status = get_field( 'dco_review_status' );
+
+
+
+		$this_user_can_approve = false;
+
+		$this_user_can_review = false;
+
+		$this_user_assigned_dco = false;
+
+
+
+		$post_approve = get_field( 'approved_by' );
+
+		$post_approve = ( is_array( $post_approve ) ? $post_approve : [] );
+
+		foreach( $post_approve as $p ) {
+
+			if ( $user_id == $p['ID'] ) {
+
+				$this_user_can_approve = true;
+
+			}
+
+		}
+
+
+
+		$post_review = get_field( 'review_by' );
+
+		$post_review = ( is_array( $post_review ) ? $post_review : [] );
+
+		foreach( $post_review as $p ) {
+
+			if ( $user_id == $p['ID'] ) {
+
+				$this_user_can_review = true;
+
+			}
+
+		}
+
+
+
+		$assigned_dco = get_field( 'assigned_dco' );
+
+		$assigned_dco = ( is_array( $assigned_dco ) ? $assigned_dco : [] );
+
+		foreach( $assigned_dco as $p ) {
+
+			if ( $user_id == $p['ID'] ) {
+
+				$this_user_assigned_dco = true;
+
+			}
+
+		}
+
+		/*hide the publish button*/
+
+		$hide_publish_button = true;
+
+		$hide_sidebar = false;
+
+		if ( $user_id == get_post( get_the_id() )->post_author ) {
+
+			$hide_publish_button = false;
+
+		} else {
+
+			if ( $this_user_assigned_dco || $this_user_can_review || $this_user_can_approve ) {
+
+				$hide_publish_button = false;
+
+			}
+
+			if ( $this_user_can_review || $this_user_can_approve ) {
+
+				$hide_sidebar = true;
+
+			}
+
+		}
+
+		// if ( isset( $_GET['testdev'] ) ) {
+
+		// 	var_dump( $dco_review_status );exit;
+
+		// }
+
+		if ( $user_id == get_post( get_the_id() )->post_author && ( $dco_review_status === '' || $dco_review_status === 'yes' ) ) {
+
+			$hide_publish_button = true;
+
+		}
+
+
+		// to be removed
+		if($user_id == get_post( get_the_id() )->post_author) {
+			$hide_publish_button = false;
+		}
+
+		if ( $hide_publish_button ) {
+
+			echo '<style>#submitdiv {display: none;}</style>';
+
+		}
+
+		if ( $hide_sidebar ) {
+
+			echo '<style>#servicesdiv, #document_typediv, #documents_labeldiv {display: none;}</style>';
+
+		}
+
+		/*end*/
+
+
+
+		if ( $this_user_can_approve === false || $dco_review_status !== 'yes' ) {
+
+			echo '<style>.acf-field[data-name="approval_status"], .acf-field[data-name="approval_denied_reason"] {display: none;}</style>';
+
+			
+
+		}
+
+		if ( $this_user_can_review === false || $dco_review_status !== 'yes' ) {
+
+			echo '<style>.acf-field[data-name="review_status"], .acf-field[data-name="review_denied_reason"] {display: none;}</style>';
+
+		}
+
+
+
+		if ( $this_user_assigned_dco === false ) {
+
+			echo '<style>.acf-field[data-name="dco_review_status"], .acf-field[data-name="dco_review_denied_reason"] {display: none;}</style>';
+
+		}
+
+
+
+		if ( $dco_review_status !== 'yes' && ($dco_review_status !== null && $dco_review_status !== '' ) ) {
+
+			echo '<style>[data-name="dco_review_denied_reason"] {display: block !important;}</style>';
+
+		}
+
+
+
+		$approved_by = get_post_meta( $this_post_id, '_user_approved', true );
+
+		if ( $approved_by ) {
+
+
+
+			$approval_status = get_field( 'approval_status' );
+
+			$user = get_user_by('ID', $approved_by);
+
+			$name = $user->data->display_name;
+
+			$role = ( ($user->roles[0] ? $user->roles[0] : '') );
+
+
+
+			$text = ( $approval_status == 'yes' ? ' — Accepted by: ' : ' — Denied by: ' ) .$name . ' (' . $role . ')' ;
+
+			echo '<script>
+
+
+
+			(function($){
+
+				$(window).on(\'load\', function(){
+
+					$(\'div[data-name="approval_status"] .acf-label label\').append( \''.$text.'\' );
+
+					
+
+				});
+
+			})(jQuery);
+
+
+
+			</script>';
+
+			/*$(\'div[data-name="approval_status"] input[type="radio"]\').click( function(){ return false; } ).addClass(\'disabled-radio\');*/
+
+		}
+
+
+
+		$reviewed_by = get_post_meta( $this_post_id, '_user_reviewed', true );
+
+		if ( $reviewed_by ) {
+
+
+
+			$review_status = get_field( 'review_status' );
+
+			$user = get_user_by('ID', $reviewed_by);
+
+			$name = $user->data->display_name;
+
+			$role = ( ($user->roles[0] ? $user->roles[0] : '') );
+
+
+
+			$text = ( $review_status == 'yes' ? ' — Accepted by: ' : ' — Denied by: ' ) .$name . ' (' . $role . ')' ;
+
+			echo '<script>
+
+
+
+			(function($){
+
+				$(window).on(\'load\', function(){
+
+					$(\'div[data-name="review_status"] .acf-label label\').append( \''.$text.'\' );
+
+					
+
+				});
+
+			})(jQuery);
+
+
+
+			</script>';
+
+			/*$(\'div[data-name="review_status"] input[type="radio"]\').click( function(){ return false; } ).addClass(\'disabled-radio\');*/
+
+		}
+
+
+
+	}
+
+}

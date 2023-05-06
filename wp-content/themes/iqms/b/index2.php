@@ -1,0 +1,134 @@
+<?php
+if ( !is_user_logged_in() ) {
+    wp_redirect(get_site_url().'/wp-admin'); 
+}
+get_header(); ?>
+
+<?php 
+    $get_current_object = get_queried_object();
+?>
+  <!-- Jumbotron -->
+  <div class="p-5 text-center bg-light">
+    <h1 class="mb-3"><?=$get_current_object->name?></h1>
+  </div>
+  <!-- Jumbotron -->
+
+  <!-- Content Tabs -->
+    <div class="container">
+
+        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+
+            <?php
+        
+                $terms = get_terms( array(
+                    'taxonomy' => 'document_type',
+                    'hide_empty' => false,
+                ) );
+
+                foreach ($terms as $term) {
+                    echo '<li class="nav-item" role="presentation"><a class="nav-link '.( ( $term->slug == 'qms' ) ? 'active show' : '' ).'" data-mdb-toggle="tab" href="#'.$term->slug.'" role="tab" >'.$term->name.'</a> </li>';
+                }
+                
+                ?>        
+        </ul> 
+        <div class="tab-content" id="ex1-content">
+        <?php 
+            
+            foreach ($terms as $term) {
+            
+                echo ' <div class="tab-pane fade '.( ( $term->slug == 'qms' ) ? 'active show' : '' ).' " id="'.$term->slug.'" role="tabpanel">';
+           
+                $args = array(
+                    'post_type' => 'qms-documents',
+                    'posts_per_page' => -1,
+                    'orderby' => 'date',
+                    'order' => 'desc',
+                    'tax_query' => array(
+                        'relation' => 'AND',
+                        array(
+                            'taxonomy' => 'services',
+                            'field'    => 'slug',
+                            'terms'    => $get_current_object->slug,
+                        ),
+                        array(
+                            'taxonomy' => 'document_type',
+                            'field'    => 'slug',
+                            'terms'    => $term->slug,
+                        ),
+                    ),
+                );
+    
+                $query = new WP_Query($args);
+                $data_arr = array();
+                if( $query->have_posts() ):
+                    while( $query->have_posts() ): $query->the_post();
+                    
+                    $upload_document = get_field('upload_document');
+                    $document_entry = get_field('document_entry');
+
+                    $label = wp_get_post_terms( get_the_ID(), 'documents_label', array( 'fields' => 'names' ) );
+                    
+                    if( $label[0] ){
+                        $data_arr['withlabel'][$label[0]][] = [
+                            'title' => get_the_title(),
+                            'url' => get_the_permalink()
+                        ];
+                    }else{
+                        $data_arr['withoutlabel'][] = [
+                            'title' => get_the_title(),
+                            'url' => get_the_permalink()
+                        ];
+                    }
+                    ?>
+                    
+                    <?php 
+                    
+                    endwhile;
+
+                    if( $data_arr['withlabel'] ){
+
+                        foreach( $data_arr['withlabel'] as $key=>$outer ){
+
+                            echo '<p>'.$key.'</p>';
+                            echo '<ul>';
+                            foreach($outer as $inner){
+                                echo '<li><a href="'.$inner['url'].'" target="_blank">'.$inner['title'].'</a></li>';
+                            }
+                            echo '</ul>';
+                            
+                        }
+
+                    }
+                    	
+                    
+                    if( $data_arr['withoutlabel'] ){
+                        echo '<ul>';
+                        foreach( $data_arr['withoutlabel'] as $item ){
+                            echo '<li><a href="'.$item['url'].'" target="_blank">'.$item['title'].'</a></li>';
+                        }
+                        echo '</ul>';
+                    }
+                    
+                    
+                endif;
+    
+                wp_reset_postdata();
+                echo '</div>';
+            }
+        
+        ?>
+        </div>
+        <?php 
+            
+         
+        ?>
+        
+    </div>
+    
+    
+  <!-- End Content Tabs -->
+
+
+
+  </body>
+</html>

@@ -1,0 +1,162 @@
+#footer-left, #menu-posts, #menu-pages, #menu-comments, #menu-tools {
+
+	display: none !important;
+
+}
+
+#your-profile .user-rich-editing-wrap,#your-profile .user-admin-color-wrap,#your-profile .user-comment-shortcuts-wrap,#your-profile .show-admin-bar{
+	display: none !important;
+}
+li#toplevel_page_backend-portal {
+    margin-top: 10px;
+    border-radius: 10px;
+    background-color: #3498db;
+    
+}
+li#toplevel_page_backend-portal .wp-menu-name:hover,
+li#toplevel_page_backend-portal a:hover .wp-menu-name{
+    color: #000 !important;
+}
+li#toplevel_page_backend-portal * {
+    color: #fff !important;
+}
+li#collapse-menu {
+    display: block;
+}
+
+.post-type-dcm .disabled-radio {
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+}
+
+.table-label-success {
+    background-color: #5cb85c;
+    height: 63px;
+    padding: 7px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.table-label-danger {
+    background-color: #d9534f;
+    height: 63px;
+    padding: 7px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.post-type-qms-documents [data-name="review_status"],
+.post-type-qms-documents [data-name="approval_status"],
+.post-type-qms-documents [data-name="approved_by"], 
+.post-type-qms-documents [data-name="review_by"],
+.post-type-qms-documents [data-name="dco_review_status"]{
+
+    display: none;
+    
+}
+
+[data-name="approval_status"] {
+    background-color: #92d7eb;
+}
+[data-name="review_status"] {
+    background-color: #b5e0b5;
+}
+
+div#acf-group_632c62d0dc846 {
+    border: 2px solid #d9534f;
+    border-radius: 3px;
+}
+
+[data-name="dco_review_status"],
+[data-name="dco_review_denied_reason"]{
+    background-color: #ccc;
+}
+
+.post-type-qms-documents .wp-list-table td#cb {
+    width: 2%;
+}
+
+.post-type-qms-documents .wp-list-table th#title {
+    width: 15% !important;
+}
+
+.post-type-qms-documents .wp-list-table th#date {
+    width: 13% !important;
+}
+
+.post-type-qms-documents .wp-list-table th#services {
+    width: 15% !important;
+}
+
+.post-type-qms-documents .wp-list-table th#document-label {
+    width: 15% !important;
+}
+
+.post-type-qms-documents .wp-list-table th#reviewed_by {
+    width: 20% !important;
+}
+
+.post-type-qms-documents .wp-list-table th#approved_by {
+    width: 20% !important;
+}
+
+.post-type-qms-documents [data-name="auto_approve"],
+.urm-user-cant-edit.urm-user-cant-create.post-type-dcm [data-name="auto_approve"] {
+    /*display: none;*/
+}
+/*urm*/
+.urm-user-cant-create #menu-posts-dcm ul li:nth-child(3) {
+    display: none;
+}
+
+.urm-user-cant-create.post-type-dcm .page-title-action {
+    display: none;
+}
+
+.urm-user-cant-edit.post-type-dcm .row-actions span:nth-child(2),
+.urm-user-cant-edit.post-type-dcm .row-actions span:nth-child(3),
+.urm-user-cant-edit.post-type-dcm .row-actions span:nth-child(1){
+    display: none;
+}
+
+.urm-user-cant-edit.post-type-dcm #submitdiv {
+    display: none;
+}
+
+.urm-user-cant-create #menu-posts-qms-documents ul li:nth-child(3) {
+    display: none;
+}
+
+.urm-user-cant-create.post-type-qms-documents .page-title-action {
+    display: none;
+}
+
+.urm-user-cant-edit.post-type-qms-documents .row-actions span:nth-child(2),
+.urm-user-cant-edit.post-type-qms-documents .row-actions span:nth-child(3),
+.urm-user-cant-edit.post-type-qms-documents .row-actions span:nth-child(1){
+    display: none;
+}
+
+.urm-user-cant-edit.post-type-qms-documents #submitdiv {
+    display: none;
+}
+/*dashboard*/
+#dashboard-widgets .postbox-container {
+    width: 100%;
+}
+.right_col .row {
+    width: 100%;
+}
+.hide-add-events.post-type-news-events a.page-title-action,
+.hide-add-events #menu-posts-news-events,
+.hide-add-events #wp-admin-bar-new-news-events {
+    display: none;
+}
+.index-php #dashboard-widgets-wrap #postbox-container-1 {
+    width: 100% !important;
+}
+#menu-posts-qms-documents li:nth-child(3),
+#wp-admin-bar-new-qms-documents,
+.post-type-qms-documents .page-title-action{
+    display: none;
+}

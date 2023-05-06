@@ -1,0 +1,36 @@
+.modal-open #wpadminbar,
+.modal-open #adminmenuwrap,
+.swal2-shown #wpadminbar,
+.swal2-shown #adminmenuwrap  {
+    z-index: 1;
+}
+
+.tab-content .tab-pane {
+    padding: 15px 0;
+}
+.action-group {
+    opacity: .5;
+}
+
+.action-group:hover {
+    opacity: 1;
+}
+
+#swal2-content a {
+    display: inline-block;
+    width: 100%;
+}
+
+#edit-modal .tab-content .readonly:after {
+    text-align: center;
+    font-size: 150px;
+    content: 'viewing only';
+    color: #000;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 60px;
+    bottom: 0;
+    z-index: 1;
+    opacity: 10%;
+}

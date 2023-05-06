@@ -1,0 +1,404 @@
+{
+    "packages": [
+        {
+            "name": "enshrined/svg-sanitize",
+            "version": "0.15.0",
+            "version_normalized": "0.15.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/darylldoyle/svg-sanitizer.git",
+                "reference": "17e12ba9c2881caa6b167d0fbea555c11207fbb0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/darylldoyle/svg-sanitizer/zipball/17e12ba9c2881caa6b167d0fbea555c11207fbb0",
+                "reference": "17e12ba9c2881caa6b167d0fbea555c11207fbb0",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "php": "^7.0 || ^8.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "^0.1.2",
+                "phpunit/phpunit": "^6.5 || ^8.5"
+            },
+            "time": "2022-02-13T00:42:56+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "enshrined\\svgSanitize\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Daryll Doyle",
+                    "email": "daryll@enshrined.co.uk"
+                }
+            ],
+            "description": "An SVG sanitizer for PHP",
+            "support": {
+                "issues": "https://github.com/darylldoyle/svg-sanitizer/issues",
+                "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.15.0"
+            },
+            "install-path": "../enshrined/svg-sanitize"
+        },
+        {
+            "name": "micropackage/ajax",
+            "version": "1.0.1",
+            "version_normalized": "1.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/micropackage/ajax.git",
+                "reference": "8bf2c0528776696208f53ce8c393da3aba7b24ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/micropackage/ajax/zipball/8bf2c0528776696208f53ce8c393da3aba7b24ac",
+                "reference": "8bf2c0528776696208f53ce8c393da3aba7b24ac",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+                "php-mock/php-mock-phpunit": "^2.6",
+                "phpcompatibility/php-compatibility": "^9.1",
+                "phpunit/phpunit": "^6.5.5",
+                "wp-coding-standards/wpcs": "^2.0"
+            },
+            "time": "2020-02-11T09:58:59+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Micropackage\\Ajax\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Mikita",
+                    "email": "jakub@bracketspace.com"
+                }
+            ],
+            "description": "Wrapper for WordPress' AJAX",
+            "support": {
+                "issues": "https://github.com/micropackage/ajax/issues",
+                "source": "https://github.com/micropackage/ajax/tree/1.0.1"
+            },
+            "install-path": "../micropackage/ajax"
+        },
+        {
+            "name": "micropackage/cache",
+            "version": "1.0.3",
+            "version_normalized": "1.0.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/micropackage/cache.git",
+                "reference": "4132b1de3036d72befc526ba4e78f50b5f23764c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/micropackage/cache/zipball/4132b1de3036d72befc526ba4e78f50b5f23764c",
+                "reference": "4132b1de3036d72befc526ba4e78f50b5f23764c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+                "phpcompatibility/php-compatibility": "^9.1",
+                "phpunit/phpunit": "^6.5.5",
+                "wp-coding-standards/wpcs": "^2.0"
+            },
+            "time": "2021-10-30T17:44:14+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Micropackage\\Cache\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Mikita",
+                    "email": "jakub@bracketspace.com"
+                }
+            ],
+            "description": "WordPress Cache wrapper with Object and Transient drivers",
+            "support": {
+                "issues": "https://github.com/micropackage/cache/issues",
+                "source": "https://github.com/micropackage/cache/tree/1.0.3"
+            },
+            "install-path": "../micropackage/cache"
+        },
+        {
+            "name": "micropackage/dochooks",
+            "version": "1.0.2",
+            "version_normalized": "1.0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/micropackage/dochooks.git",
+                "reference": "9eddd9b480fce394d0123ebe806d542e6409105e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/micropackage/dochooks/zipball/9eddd9b480fce394d0123ebe806d542e6409105e",
+                "reference": "9eddd9b480fce394d0123ebe806d542e6409105e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+                "phpcompatibility/php-compatibility": "^9.1",
+                "wp-coding-standards/wpcs": "^2.0"
+            },
+            "time": "2020-03-10T10:11:47+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Micropackage\\DocHooks\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Mikita",
+                    "email": "jakub@bracketspace.com"
+                }
+            ],
+            "description": "DocHooks - annotated WordPress hooks",
+            "support": {
+                "issues": "https://github.com/micropackage/dochooks/issues",
+                "source": "https://github.com/micropackage/dochooks/tree/1.0.2"
+            },
+            "install-path": "../micropackage/dochooks"
+        },
+        {
+            "name": "micropackage/filesystem",
+            "version": "1.1.4",
+            "version_normalized": "1.1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/micropackage/filesystem.git",
+                "reference": "fb643749ff282bf9d057caf9903ab17c5deceb33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/micropackage/filesystem/zipball/fb643749ff282bf9d057caf9903ab17c5deceb33",
+                "reference": "fb643749ff282bf9d057caf9903ab17c5deceb33",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+                "phpcompatibility/php-compatibility": "^9.1",
+                "phpunit/phpunit": "^6.5.5",
+                "wp-coding-standards/wpcs": "^2.0"
+            },
+            "time": "2021-10-29T14:01:09+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Micropackage\\Filesystem\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Mikita",
+                    "email": "jakub@bracketspace.com"
+                }
+            ],
+            "description": "Wrapper for WordPress' Filesystem for easier file manipulations.",
+            "support": {
+                "issues": "https://github.com/micropackage/filesystem/issues",
+                "source": "https://github.com/micropackage/filesystem/tree/1.1.4"
+            },
+            "install-path": "../micropackage/filesystem"
+        },
+        {
+            "name": "micropackage/internationalization",
+            "version": "1.0.1",
+            "version_normalized": "1.0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/micropackage/internationalization.git",
+                "reference": "8de158b8fc71557a8310f0d98d2b8ad9f4f44dd5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/micropackage/internationalization/zipball/8de158b8fc71557a8310f0d98d2b8ad9f4f44dd5",
+                "reference": "8de158b8fc71557a8310f0d98d2b8ad9f4f44dd5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+                "phpcompatibility/php-compatibility": "^9.1",
+                "wp-coding-standards/wpcs": "^2.0"
+            },
+            "time": "2020-02-04T19:48:51+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Micropackage\\Internationalization\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Mikita",
+                    "email": "jakub@bracketspace.com"
+                }
+            ],
+            "description": "Internationalization (i18n) wrapper for WordPress plugins, themes or libraries",
+            "support": {
+                "issues": "https://github.com/micropackage/internationalization/issues",
+                "source": "https://github.com/micropackage/internationalization/tree/1.0.1"
+            },
+            "install-path": "../micropackage/internationalization"
+        },
+        {
+            "name": "micropackage/requirements",
+            "version": "1.1.2",
+            "version_normalized": "1.1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/micropackage/requirements.git",
+                "reference": "d21f2b54100d15246d493382dfd06a23ed49630a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/micropackage/requirements/zipball/d21f2b54100d15246d493382dfd06a23ed49630a",
+                "reference": "d21f2b54100d15246d493382dfd06a23ed49630a",
+                "shasum": ""
+            },
+            "require": {
+                "micropackage/internationalization": "^1.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+                "php-mock/php-mock-phpunit": "^2.5",
+                "phpcompatibility/php-compatibility": "^9.1",
+                "phpunit/phpunit": "^6.5.5",
+                "wp-coding-standards/wpcs": "^2.0"
+            },
+            "time": "2021-11-14T08:45:42+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Micropackage\\Requirements\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Mikita",
+                    "email": "jakub@bracketspace.com"
+                }
+            ],
+            "description": "Requirements checker for WordPress plugins",
+            "support": {
+                "issues": "https://github.com/micropackage/requirements/issues",
+                "source": "https://github.com/micropackage/requirements/tree/1.1.2"
+            },
+            "install-path": "../micropackage/requirements"
+        },
+        {
+            "name": "micropackage/templates",
+            "version": "1.1.6",
+            "version_normalized": "1.1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/micropackage/templates.git",
+                "reference": "c29a59437d5a027ac4dd80ef87c1350f5186986a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/micropackage/templates/zipball/c29a59437d5a027ac4dd80ef87c1350f5186986a",
+                "reference": "c29a59437d5a027ac4dd80ef87c1350f5186986a",
+                "shasum": ""
+            },
+            "require": {
+                "micropackage/filesystem": "^1.0",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
+                "phpcompatibility/php-compatibility": "^9.1",
+                "phpunit/phpunit": "^6.5.5",
+                "wp-coding-standards/wpcs": "^2.0",
+                "yoast/phpunit-polyfills": "^1.0"
+            },
+            "time": "2021-11-15T21:12:41+00:00",
+            "type": "library",
+            "installation-source": "dist",
+            "autoload": {
+                "psr-4": {
+                    "Micropackage\\Templates\\": "src"
+                },
+                "files": [
+                    "src/functions/template.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Jakub Mikita",
+                    "email": "jakub@bracketspace.com"
+                }
+            ],
+            "description": "Simple PHP template engine which is easy to use",
+            "support": {
+                "issues": "https://github.com/micropackage/templates/issues",
+                "source": "https://github.com/micropackage/templates/tree/1.1.6"
+            },
+            "install-path": "../micropackage/templates"
+        }
+    ],
+    "dev": false,
+    "dev-package-names": []
+}

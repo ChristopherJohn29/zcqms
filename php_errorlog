@@ -1,0 +1,268 @@
+[26-Sep-2022 12:37:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_wplogin() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/redirect/module.php:8
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(307): redirect_to_backend('')
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-settings.php(598): do_action('init')
+#4 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-config.php(103): require_once('/home/customer/...')
+#5 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-load.php(50): require_once('/home/customer/...')
+#6 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(13): require_once('/home/customer/...')
+#7 /h in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/redirect/module.php on line 8
+[26-Sep-2022 12:37:03 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_wplogin() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/redirect/module.php:8
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(307): redirect_to_backend('')
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-settings.php(598): do_action('init')
+#4 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-config.php(103): require_once('/home/customer/...')
+#5 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-load.php(50): require_once('/home/customer/...')
+#6 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(13): require_once('/home/customer/...')
+#7 /h in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/redirect/module.php on line 8
+[26-Sep-2022 12:37:04 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_wplogin() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/redirect/module.php:8
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(307): redirect_to_backend('')
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-settings.php(598): do_action('init')
+#4 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-config.php(103): require_once('/home/customer/...')
+#5 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-load.php(50): require_once('/home/customer/...')
+#6 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(13): require_once('/home/customer/...')
+#7 /h in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/redirect/module.php on line 8
+[26-Sep-2022 12:42:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_wplogin() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/redirect/module.php:8
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(307): redirect_to_backend('')
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#3 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-settings.php(598): do_action('init')
+#4 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-config.php(103): require_once('/home/customer/...')
+#5 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-load.php(50): require_once('/home/customer/...')
+#6 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(13): require_once('/home/customer/...')
+#7 /h in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/redirect/module.php on line 8
+[29-Sep-2022 14:23:04 UTC] PHP Fatal error:  Uncaught Error: Class 'BackendPortal' not found in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/backend-portal/module.php:3
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/functions.php(78): require_once()
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(307): modules_require('')
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/class-wp-hook.php(331): WP_Hook->apply_filters(NULL, Array)
+#3 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/plugin.php(476): WP_Hook->do_action(Array)
+#4 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-settings.php(576): do_action('after_setup_the...')
+#5 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-config.php(103): require_once('/home/customer/...')
+#6 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-load.php(50): require_once('/home/customer/...') in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/backend-portal/module.php on line 3
+[01-Oct-2022 15:55:22 UTC] PHP Parse error:  syntax error, unexpected '}' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/posts-filter/module.php on line 35
+[02-Oct-2022 11:33:22 UTC] PHP Warning:  require(/home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/inc/block-patterns.php): failed to open stream: No such file or directory in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/functions.php on line 67
+[02-Oct-2022 11:33:22 UTC] PHP Fatal error:  require(): Failed opening required '/home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/inc/block-patterns.php' (include_path='.:/usr/local/php74/pear') in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/functions.php on line 67
+[02-Oct-2022 11:33:22 UTC] PHP Warning:  require(/home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/inc/block-patterns.php): failed to open stream: No such file or directory in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/functions.php on line 67
+[02-Oct-2022 11:33:22 UTC] PHP Fatal error:  require(): Failed opening required '/home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/inc/block-patterns.php' (include_path='.:/usr/local/php74/pear') in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/functions.php on line 67
+[05-Oct-2022 06:09:19 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 115
+[05-Oct-2022 06:09:46 UTC] PHP Parse error:  syntax error, unexpected '<' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 115
+[05-Oct-2022 06:35:34 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:35:34 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:35:34 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:35:34 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:35:34 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:35:34 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:35:34 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:35:34 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:35:34 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:37:00 UTC] PHP Parse error:  syntax error, unexpected '.' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:37:01 UTC] PHP Parse error:  syntax error, unexpected '.' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:37:18 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:38:24 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:38:58 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:39:00 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:40:21 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:40:47 UTC] PHP Warning:  var_dump() expects at least 1 parameter, 0 given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:40:47 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:40:47 UTC] PHP Warning:  var_dump() expects at least 1 parameter, 0 given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:40:47 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:40:47 UTC] PHP Warning:  var_dump() expects at least 1 parameter, 0 given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:40:47 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:40:47 UTC] PHP Warning:  var_dump() expects at least 1 parameter, 0 given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:40:59 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 161
+[05-Oct-2022 06:41:41 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:41:43 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:46:13 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:46:13 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:46:13 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:46:14 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:46:14 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:46:14 UTC] PHP Warning:  Illegal string offset 'title' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 160
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 166
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:49:15 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 166
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:24 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:53 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:50:53 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 167
+[05-Oct-2022 06:51:33 UTC] PHP Warning:  Illegal string offset 'document' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 168
+[05-Oct-2022 06:51:33 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 168
+[05-Oct-2022 06:56:22 UTC] PHP Parse error:  syntax error, unexpected 'var_dump' (T_STRING), expecting ';' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 155
+[05-Oct-2022 06:56:23 UTC] PHP Parse error:  syntax error, unexpected 'var_dump' (T_STRING), expecting ';' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 155
+[08-Oct-2022 10:56:55 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/functions.php:17) in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/pluggable.php on line 1421
+[08-Oct-2022 11:02:25 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/functions.php:8) in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/pluggable.php on line 1421
+[08-Oct-2022 11:11:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function wp_header() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php:25
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 25
+[08-Oct-2022 11:11:59 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function wp_header() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php:25
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 25
+[08-Oct-2022 16:15:41 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 139
+[08-Oct-2022 16:15:41 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 144
+[08-Oct-2022 16:16:48 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 139
+[08-Oct-2022 16:16:48 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 144
+[08-Oct-2022 16:17:29 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 140
+[08-Oct-2022 16:17:29 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 145
+[08-Oct-2022 16:18:37 UTC] PHP Warning:  Illegal string offset 'url' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 139
+[08-Oct-2022 16:18:37 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 149
+[08-Oct-2022 16:19:29 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 138
+[08-Oct-2022 16:19:52 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 138
+[08-Oct-2022 16:20:17 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 138
+[08-Oct-2022 16:23:31 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 148
+[08-Oct-2022 16:23:56 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 148
+[08-Oct-2022 16:24:14 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 148
+[08-Oct-2022 16:24:53 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 149
+[10-Oct-2022 14:14:21 UTC] PHP Warning:  strpos() expects parameter 1 to be string, array given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/taxonomy.php on line 2251
+[10-Oct-2022 14:14:22 UTC] PHP Warning:  strpos() expects parameter 1 to be string, array given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/taxonomy.php on line 2251
+[10-Oct-2022 14:14:22 UTC] PHP Warning:  strpos() expects parameter 1 to be string, array given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/taxonomy.php on line 2251
+[10-Oct-2022 14:14:22 UTC] PHP Warning:  strpos() expects parameter 1 to be string, array given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/taxonomy.php on line 2251
+[10-Oct-2022 14:14:22 UTC] PHP Warning:  strpos() expects parameter 1 to be string, array given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/taxonomy.php on line 2251
+[10-Oct-2022 14:14:22 UTC] PHP Warning:  strpos() expects parameter 1 to be string, array given in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/taxonomy.php on line 2251
+[10-Oct-2022 14:24:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_post_ID() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php:67
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 67
+[12-Oct-2022 15:20:01 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[12-Oct-2022 15:20:05 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[13-Oct-2022 12:30:01 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[13-Oct-2022 13:36:46 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[13-Oct-2022 13:36:54 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[13-Oct-2022 13:37:14 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[13-Oct-2022 13:37:16 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[13-Oct-2022 13:54:02 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:02:17 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:03:00 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:03:07 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:04:54 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:05:26 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:05:37 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:05:41 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:05:41 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:07:15 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[14-Oct-2022 02:09:25 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/single-qms-documents.php on line 44
+[23-Oct-2022 03:07:50 UTC] PHP Fatal error:  Non-abstract method User_Restrictions_Module::URM_frontend_hooks() must contain body in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/user-restrictions/module.php on line 32
+[13-Nov-2022 13:12:10 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_site_stylesheet_directory_uri() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php:9
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 9
+[13-Nov-2022 13:12:38 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_site_stylesheet_directory_uri() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php:9
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 9
+[13-Nov-2022 14:01:44 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_site_stylesheet_directory_uri() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php:9
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 9
+[13-Nov-2022 15:49:57 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_site_stylesheet_directory_uri() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php:9
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 9
+[13-Nov-2022 15:49:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function get_site_stylesheet_directory_uri() in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php:9
+Stack trace:
+#0 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-includes/template-loader.php(106): include()
+#1 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-blog-header.php(19): require_once('/home/customer/...')
+#2 /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/index.php(17): require('/home/customer/...')
+#3 {main}
+  thrown in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/index.php on line 9
+[29-Jan-2023 14:35:35 UTC] PHP Parse error:  syntax error, unexpected '$dco_review_status' (T_VARIABLE) in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/posts-filter/module.php on line 66
+[06-Feb-2023 03:49:32 UTC] Cron reschedule event error for hook: action_scheduler_run_queue, Error code: invalid_schedule, Error message: Event schedule does not exist., Data: {"schedule":"every_minute","args":["WP Cron"],"interval":60}
+[06-Mar-2023 14:41:35 UTC] Cron reschedule event error for hook: action_scheduler_run_queue, Error code: could_not_set, Error message: The cron event list could not be saved., Data: {"schedule":"every_minute","args":["WP Cron"],"interval":60}
+[07-Mar-2023 20:06:43 UTC] Cron reschedule event error for hook: notification_check_wordpress_updates, Error code: invalid_schedule, Error message: Event schedule does not exist., Data: {"schedule":"ntfn_week","args":[],"interval":604800}
+[31-Mar-2023 23:55:45 UTC] WordPress database error Error writing file './dbbssrqggvajuz/#sql-4cbf_2bf5ea.frm' (Errcode: 28 - No space left on device) for query ALTER TABLE dlt_tec_events CHANGE COLUMN `event_id` `event_id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, TEC\Events\Custom_Tables\V1\Activation::init, TEC\Events\Custom_Tables\V1\Schema_Builder\Schema_Builder->up, TEC\Events\Custom_Tables\V1\Schema_Builder\Abstract_Custom_Table->update, dbDelta
+[31-Mar-2023 23:55:45 UTC] WordPress database error Error writing file './dbbssrqggvajuz/#sql-4cbf_2bf5ea.frm' (Errcode: 28 - No space left on device) for query ALTER TABLE dlt_tec_events CHANGE COLUMN `post_id` `post_id` BIGINT(20) UNSIGNED NOT NULL made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, TEC\Events\Custom_Tables\V1\Activation::init, TEC\Events\Custom_Tables\V1\Schema_Builder\Schema_Builder->up, TEC\Events\Custom_Tables\V1\Schema_Builder\Abstract_Custom_Table->update, dbDelta
+[31-Mar-2023 23:55:45 UTC] WordPress database error Error writing file './dbbssrqggvajuz/#sql-4cbf_2bf5ea.frm' (Errcode: 28 - No space left on device) for query ALTER TABLE dlt_tec_events CHANGE COLUMN `start_date` `start_date` VARCHAR(19) NOT NULL made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, TEC\Events\Custom_Tables\V1\Activation::init, TEC\Events\Custom_Tables\V1\Schema_Builder\Schema_Builder->up, TEC\Events\Custom_Tables\V1\Schema_Builder\Abstract_Custom_Table->update, dbDelta
+[31-Mar-2023 23:55:45 UTC] WordPress database error Error writing file './dbbssrqggvajuz/#sql-4cbf_2bf5ea.frm' (Errcode: 28 - No space left on device) for query ALTER TABLE dlt_tec_events CHANGE COLUMN `end_date` `end_date` VARCHAR(19) DEFAULT NULL made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, TEC\Events\Custom_Tables\V1\Activation::init, TEC\Events\Custom_Tables\V1\Schema_Builder\Schema_Builder->up, TEC\Events\Custom_Tables\V1\Schema_Builder\Abstract_Custom_Table->update, dbDelta
+[31-Mar-2023 23:55:45 UTC] WordPress database error Error writing file './dbbssrqggvajuz/#sql-4cbf_2bf5ea.frm' (Errcode: 28 - No space left on device) for query ALTER TABLE dlt_tec_events CHANGE COLUMN `timezone` `timezone` VARCHAR(30) NOT NULL DEFAULT 'UTC' made by require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, TEC\Events\Custom_Tables\V1\Activation::init, TEC\Events\Custom_Tables\V1\Schema_Builder\Schema_Builder->up, TEC\Events\Custom_Tables\V1\Schema_Builder\Abstract_Custom_Table->update, dbDelta
+[31-Mar-2023 23:55:45 UTC] WordPress database error Error writing file './dbbssrqggvajuz/#sql-4cbf_2bf5ea.frm' (Errcode: 28 - No space left on device) for query ALTER TABLE dlt_tec_events CHANGE COLUMN `start_date_utc` `start_date_utc` VARCHAR(19) NOT NULL made by require_once('wp-load.php'),[03-May-2023 23:53:25 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/customer/www/zcmc-iqms.infoadvance.com.ph/public_html/wp-content/themes/iqms/modules/posts-filter/module.php on line 205
