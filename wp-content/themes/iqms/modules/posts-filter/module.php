@@ -322,9 +322,7 @@ function filter_post_fields() {
 			</script>';
 		} 
 
-		// var_dump($user_id);
-		// var_dump(get_post( get_the_id() )->post_author);
-		// exit;
+
 
 		if($user_id.""  == get_post( get_the_id() )->post_author || in_array($user_id."", $assigned_dco) || in_array($user_id."", $prepared_by) ) {
 			echo '<script>
@@ -332,7 +330,7 @@ function filter_post_fields() {
 
 				$(window).on(\'load\', function(){
 
-					$(\'div[data-name="review_status"] input[value="review"]\').attr( \'disabled\', \'false\' );
+					$(\'div[data-name="review_status"] input[value="review"]\').removeAttr( \'disabled\');
 
 				});
 
