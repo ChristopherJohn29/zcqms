@@ -316,7 +316,22 @@ function filter_post_fields() {
 
 			$role = ( ($user->roles[0] ? $user->roles[0] : '') );
 
+			if($user_id  != $user) {
+				echo '<script>
+				(function($){
 
+					$(window).on(\'load\', function(){
+
+						$(\'div[data-name="review_status"].css( \'display, block\' );
+						$(\'div[data-name="review_denied_reason"].css( \'display, block\' );
+						$(\'div[data-name="review_status"] input\').attr( \'disabled, true\' );
+						$(\'div[data-name="review_denied_reason"] textarea\').attr( \'disabled, true\' );
+
+					});
+
+				})(jQuery);
+				</script>';
+			}
 
 			$text = ( $review_status == 'yes' ? ' — Accepted by: ' : ' — Denied by: ' ) .$name . ' (' . $role . ')' ;
 
