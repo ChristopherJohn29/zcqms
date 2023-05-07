@@ -303,6 +303,21 @@ function filter_post_fields() {
 
 
 		$reviewed_by = get_post_meta( $this_post_id, '_user_reviewed', true );
+		
+
+		if($user_id  != get_post( get_the_id() )->post_author) {
+			echo '<script>
+			(function($){
+
+				$(window).on(\'load\', function(){
+
+					$(\'div[data-name="review_status"] input[value="review"]\').attr( \'disabled\', \'true\' );
+
+				});
+
+			})(jQuery);
+			</script>';
+		}
 
 		if ( $reviewed_by ) {
 
