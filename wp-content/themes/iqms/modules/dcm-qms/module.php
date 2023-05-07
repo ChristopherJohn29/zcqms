@@ -150,9 +150,11 @@ class TransferDCM{
 
             $_user_approved = get_post_meta( $dcm_id, '_user_approved', true );
             $_user_reviewed = get_post_meta( $dcm_id, '_user_reviewed', true );
+            $_user_dco_reviewed = get_post_meta( $dcm_id, '_user_dco_reviewed', true );
 
             add_post_meta( $post_id, '_user_approved', $_user_approved );
             add_post_meta( $post_id, '_user_reviewed', $_user_reviewed );
+            add_post_meta( $post_id, '_user_dco_reviewed', $_user_dco_reviewed );
             wp_delete_post($dcm_id, true);
 
 
@@ -213,9 +215,9 @@ class TransferDCM{
                 add_post_meta( $post_ID, '_user_reviewed', $user_id );
             }
 
-            $dco_reviewed_by = get_post_meta( $post_id, '_dco_user_reviewed', true );
+            $dco_reviewed_by = get_post_meta( $post_id, '_user_dco_reviewed', true );
             if ( (!$dco_reviewed_by) && $is_dco_reviewed ) {
-                add_post_meta( $post_ID, '_dco_user_reviewed', $user_id );
+                add_post_meta( $post_ID, '_user_dco_reviewed', $user_id );
             }
 
 
@@ -230,6 +232,7 @@ class TransferDCM{
 
                     add_post_meta( $post_ID, '_user_approved', $_approved_by[0]['ID'] );
                     add_post_meta( $post_ID, '_user_reviewed', $_review_by[0]['ID'] );
+                    add_post_meta( $post_ID, '_user_dco_reviewed', $_review_by[0]['ID'] );
                     $is_auto_approved = true;
                 }
 
