@@ -90,7 +90,7 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 			$approval_status = get_field( 'approval_status', $post_id );
 
 			if($dco_reviewed_status == 'review'){
-				$display = '<label class="table-label-primary"> For Review (DCO) </label> ';
+				$display = '<label class="table-label-primary"> For Review (DCO Complied) </label> ';
 			} else if($dco_reviewed_status == 'yes') {
 
 				if($reviewed_status == 'yes'){
@@ -98,7 +98,6 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 					if($approval_status == 'no') {
 						$display = '<label class="table-label-primary"> For Compliance </label> ';	
 					} else if($approval_status == 'review') {
-						
 						$display =  '<label class="table-label-primary"> For Review (Complied) </label> ';
 					} else {
 						$display = '<label class="table-label-primary"> For Approval </label> ';	
@@ -106,10 +105,14 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 					
 				} else if($reviewed_status == 'no'){
 					$display = '<label class="table-label-primary"> For Compliance </label> ';
-				} else {
+				} else if($reviewed_status == 'review'){
 					$display =  '<label class="table-label-primary"> For Review (Complied) </label> ';
+				} else {
+					$display =  '<label class="table-label-primary"> For Review </label> ';
 				}
 
+			} else {
+				$display =  '<label class="table-label-primary"> For DCO Review </label> ';
 			}
 
 
