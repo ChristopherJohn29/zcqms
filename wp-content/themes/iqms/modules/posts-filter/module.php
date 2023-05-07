@@ -276,6 +276,23 @@ function filter_post_fields() {
 
 			$text = ( $approval_status == 'yes' ? ' — Accepted by: ' : ' — Denied by: ' ) .$name . ' (' . $role . ')' ;
 
+			if($user_id  != $approved_by) {
+				echo '<script>
+				(function($){
+
+					$(window).on(\'load\', function(){
+
+						$(\'div[data-name="approval_status"]\').css( \'display\', \'block\' );
+						$(\'div[data-name="approval_denied_reason"]\').css( \'display\', \'block\' );
+						$(\'div[data-name="approval_status"] input\').attr( \'disabled\', \'true\' );
+						$(\'div[data-name="approval_denied_reason"] textarea\').attr( \'disabled\', \'true\' );
+
+					});
+
+				})(jQuery);
+				</script>';
+			}
+
 			echo '<script>
 
 
