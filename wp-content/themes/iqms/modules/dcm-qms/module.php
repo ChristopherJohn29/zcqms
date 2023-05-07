@@ -170,6 +170,7 @@ class TransferDCM{
 
             $is_approved = get_field( 'approval_status', $post_ID );
             $is_reviewed = get_field( 'review_status', $post_ID );
+            $is_dco_reviewed = get_field( 'dco_review_status', $post_ID );
             $document = get_field('upload_document' , $post_ID );
             $document_entry = get_field('document_entry');
             $users = get_field('users' , $post_ID );
@@ -211,6 +212,12 @@ class TransferDCM{
             if ( (!$reviewed_by) && $is_reviewed ) {
                 add_post_meta( $post_ID, '_user_reviewed', $user_id );
             }
+
+            $dco_reviewed_by = get_post_meta( $post_id, '_dco_user_reviewed', true );
+            if ( (!$dco_reviewed_by) && $is_dco_reviewed ) {
+                add_post_meta( $post_ID, '_dco_user_reviewed', $user_id );
+            }
+
 
             /*auto aprove*/
             $auto_approve = get_field('auto_approve' , $post_ID );

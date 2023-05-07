@@ -45,6 +45,14 @@ li#collapse-menu {
     color: #fff;
 }
 
+.table-label-primary {
+    background-color: #d9534f;
+    height: 63px;
+    padding: 7px;
+    border-radius: 5px;
+    color: #fff;
+}
+
 .post-type-qms-documents [data-name="review_status"],
 .post-type-qms-documents [data-name="approval_status"],
 .post-type-qms-documents [data-name="approved_by"], 

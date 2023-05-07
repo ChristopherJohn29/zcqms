@@ -2,8 +2,9 @@
 add_filter( 'manage_dcm_posts_columns', 'set_custom_edit_dcm_columns', 99 );
 add_action( 'manage_dcm_posts_custom_column' , 'set_custom_edit_dcm_column_column', 10, 2 );
 function set_custom_edit_dcm_columns( $columns ) {
-
+	
 	$columns['application-status'] = 'Application Status';
+	$columns['dco-review-status'] = 'Review Status';
 	$columns['review-status'] = 'Review Status';
 	$columns['approve-status'] = 'Approve Status';
 
@@ -13,6 +14,21 @@ function set_custom_edit_dcm_columns( $columns ) {
 function set_custom_edit_dcm_column_column( $column, $post_id ) {
 
 	switch ( $column ) {
+		case 'dco-review-status' :
+			$display = '—';
+			$reviewed_by = get_post_meta( $post_id, '_user_reviewed', true );
+			if ( $reviewed_by ) {
+
+				$user = get_user_by('ID', $reviewed_by);
+				$name = $user->data->display_name;
+				$role = ( ($user->roles[0] ? $user->roles[0] : '') );
+
+				$reviewed_status = get_field( 'dco_review_status', $post_id );
+				$display = ( $reviewed_status == 'yes' ? '<label class="table-label-success">Accepted by: ' : '<label class="table-label-danger">Denied by: ' ) . $name . ' ('.$role.')</label>';
+
+			}
+			echo $display;
+			break;
 		case 'review-status' :
 			$display = '—';
 			$reviewed_by = get_post_meta( $post_id, '_user_reviewed', true );
