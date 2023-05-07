@@ -50,12 +50,12 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 
 			$display = '—';
 			$dco = get_field( 'dco_review_status' );
-			
-			if ( $dco == 'yes' ) {
 
-			} else {
+			// if ( $dco == 'yes' ) {
+
+			// } else {
 				// $display = '<label class="table-label-success">For DCO Approval </label>';
-			}
+			// }
 			// $approved_by = get_post_meta( $post_id, '_user_approved', true );
 			// if ( $approved_by ) {
 
@@ -67,6 +67,12 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 			// 	$display = ( $approval_status == 'yes' ? '<label class="table-label-success">Accepted by: ' : '<label class="table-label-danger">Denied by: ' ) . $name . ' ('.$role.')</label>';
 
 			// }
+
+			$reviewed_status = get_field( 'review_status', $post_id );
+			$display = ( $reviewed_status == 'review' ? '<label class="table-label-primary"> For Review (Complied) </label> ' : '');
+			
+
+
 			echo $display;
 
 			break;
