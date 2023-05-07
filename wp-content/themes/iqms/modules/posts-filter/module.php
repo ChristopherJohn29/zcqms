@@ -316,7 +316,7 @@ function filter_post_fields() {
 
 			$role = ( ($user->roles[0] ? $user->roles[0] : '') );
 
-			if($user_id  != $user) {
+			if($user_id  != $reviewed_by) {
 				echo '<script>
 				(function($){
 
