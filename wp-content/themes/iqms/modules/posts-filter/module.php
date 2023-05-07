@@ -306,6 +306,7 @@ function filter_post_fields() {
 		$prepared_by = get_post_meta( $this_post_id, 'users', true );
 
 		$reviewed_by = get_post_meta( $this_post_id, '_user_reviewed', true );
+		$approved_by = get_post_meta( $this_post_id, '_user_approved', true );
 		
 
 		if($user_id  != get_post( get_the_id() )->post_author) {
@@ -315,6 +316,7 @@ function filter_post_fields() {
 				$(window).on(\'load\', function(){
 
 					$(\'div[data-name="review_status"] input[value="review"]\').attr( \'disabled\', \'true\' );
+					$(\'div[data-name="approval_status"] input[value="review"]\').attr( \'disabled\', \'true\' );
 
 				});
 
@@ -331,6 +333,7 @@ function filter_post_fields() {
 				$(window).on(\'load\', function(){
 					setTimeout(function(){
 						$(\'div[data-name="review_status"] input[value="review"]\').removeAttr( \'disabled\');
+						$(\'div[data-name="approval_status"] input[value="review"]\').removeAttr( \'disabled\');
 					}, 1000);
 					
 				});
@@ -338,6 +341,7 @@ function filter_post_fields() {
 			})(jQuery);
 			</script>';
 		}
+
 
 		if ( $reviewed_by ) {
 

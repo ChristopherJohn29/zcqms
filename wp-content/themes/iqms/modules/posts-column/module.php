@@ -87,13 +87,23 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 			$dco_reviewed_status = get_field( 'dco_review_status', $post_id );
 			
 			$reviewed_status = get_field( 'review_status', $post_id );
+			$approval_status = get_field( 'approval_status', $post_id );
 
 			if($dco_reviewed_status == 'review'){
 				$display = '<label class="table-label-primary"> For Review (DCO) </label> ';
 			} else if($dco_reviewed_status == 'yes') {
 
 				if($reviewed_status == 'yes'){
-					$display = '<label class="table-label-primary"> For Approval </label> ';
+
+					if($approval_status == 'no') {
+						$display = '<label class="table-label-primary"> For Compliance </label> ';	
+					} else if($approval_status == 'review') {
+						
+						$display =  '<label class="table-label-primary"> For Review (Complied) </label> ';
+					} else {
+						$display = '<label class="table-label-primary"> For Approval </label> ';	
+					}
+					
 				} else if($reviewed_status == 'no'){
 					$display = '<label class="table-label-primary"> For Compliance </label> ';
 				} else {
