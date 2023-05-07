@@ -329,9 +329,10 @@ function filter_post_fields() {
 			(function($){
 
 				$(window).on(\'load\', function(){
-
-					$(\'div[data-name="review_status"] input[value="review"]\').removeAttr( \'disabled\');
-
+					setTimeout(function(){
+						$(\'div[data-name="review_status"] input[value="review"]\').removeAttr( \'disabled\');
+					}, 1000);
+					
 				});
 
 			})(jQuery);
