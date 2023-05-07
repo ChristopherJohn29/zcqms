@@ -305,10 +305,6 @@ function filter_post_fields() {
 		$assigned_dco = get_post_meta( $this_post_id, 'assigned_dco', true );
 		$prepared_by = get_post_meta( $this_post_id, 'users', true );
 
-		var_dump($assigned_dco);
-		var_dump($prepared_by);
-		exit;
-
 		$reviewed_by = get_post_meta( $this_post_id, '_user_reviewed', true );
 		
 
@@ -326,7 +322,7 @@ function filter_post_fields() {
 			</script>';
 		} 
 
-		if($user_id  == get_post( get_the_id() )->post_author ) {
+		if($user_id  == get_post( get_the_id() )->post_author || in_array($user_id, $assigned_dco) || in_array($user_id, $prepared_by) ) {
 			echo '<script>
 			(function($){
 
