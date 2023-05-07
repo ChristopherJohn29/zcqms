@@ -322,8 +322,8 @@ function filter_post_fields() {
 
 					$(window).on(\'load\', function(){
 
-						$(\'div[data-name="review_status"\'].css( \'display\', \'block\' );
-						$(\'div[data-name="review_denied_reason"\'].css( \'display\', \'block\' );
+						$(\'div[data-name="review_status"]\').css( \'display\', \'block\' );
+						$(\'div[data-name="review_denied_reason"]\').css( \'display\', \'block\' );
 						$(\'div[data-name="review_status"] input\').attr( \'disabled\', \'true\' );
 						$(\'div[data-name="review_denied_reason"] textarea\').attr( \'disabled\', \'true\' );
 
