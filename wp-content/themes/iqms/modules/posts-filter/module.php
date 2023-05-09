@@ -429,7 +429,7 @@ function filter_post_fields() {
 
 			$dco_review_status = get_field( 'dco_review_status' );
 
-			$user = get_user_by('ID', $reviewed_by);
+			$user = get_user_by('ID', $dco_reviewed_by);
 
 			$name = $user->data->display_name;
 
