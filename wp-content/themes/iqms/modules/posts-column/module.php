@@ -114,7 +114,7 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 			} else if($dco_reviewed_status == 'no') {
 				$display =  '<label class="table-label-primary"> For Compliance</label> ';
 			} else {
-				$display =  '';
+				$display =  '<label class="table-label-primary"> DCO Review</label>';
 			}
 
 
