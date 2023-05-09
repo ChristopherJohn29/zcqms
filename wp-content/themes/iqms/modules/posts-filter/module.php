@@ -324,6 +324,7 @@ function filter_post_fields() {
 
 		$reviewed_by = get_post_meta( $this_post_id, '_user_reviewed', true );
 		$approved_by = get_post_meta( $this_post_id, '_user_approved', true );
+		$dco_reviewed_by = get_post_meta( $this_post_id, '_user_dco_reviewed', true );
 		
 
 		if($user_id  != get_post( get_the_id() )->post_author) {
@@ -333,7 +334,9 @@ function filter_post_fields() {
 				$(window).on(\'load\', function(){
 
 					$(\'div[data-name="review_status"] input[value="review"]\').attr( \'disabled\', \'true\' );
+					$(\'div[data-name="dco_review_status"] input[value="review"]\').attr( \'disabled\', \'true\' );
 					$(\'div[data-name="approval_status"] input[value="review"]\').attr( \'disabled\', \'true\' );
+					
 
 				});
 
@@ -350,6 +353,7 @@ function filter_post_fields() {
 				$(window).on(\'load\', function(){
 					setTimeout(function(){
 						$(\'div[data-name="review_status"] input[value="review"]\').removeAttr( \'disabled\');
+						$(\'div[data-name="dco_review_status"] input[value="review"]\').removeAttr( \'disabled\');
 						$(\'div[data-name="approval_status"] input[value="review"]\').removeAttr( \'disabled\');
 					}, 1000);
 					
@@ -400,6 +404,65 @@ function filter_post_fields() {
 				$(window).on(\'load\', function(){
 
 					$(\'div[data-name="review_status"] .acf-label label\').append( \''.$text.'\' );
+
+					
+
+				});
+
+			})(jQuery);
+
+
+
+			</script>';
+
+			/*$(\'div[data-name="review_status"] input[type="radio"]\').click( function(){ return false; } ).addClass(\'disabled-radio\');*/
+
+		}
+
+
+		//////////////////////////////////////////////////
+
+
+		if ( $dco_reviewed_by ) {
+
+
+
+			$dco_review_status = get_field( 'dco_review_status' );
+
+			$user = get_user_by('ID', $reviewed_by);
+
+			$name = $user->data->display_name;
+
+			$role = ( ($user->roles[0] ? $user->roles[0] : '') );
+
+			if($user_id  != $dco_reviewed_by) {
+				echo '<script>
+				(function($){
+
+					$(window).on(\'load\', function(){
+
+						$(\'div[data-name="dco_review_status"]\').css( \'display\', \'block\' );
+						$(\'div[data-name="dco_review_denied_reason"]\').css( \'display\', \'block\' );
+						$(\'div[data-name="dco_review_status"] input\').attr( \'disabled\', \'true\' );
+						$(\'div[data-name="dco_review_denied_reason"] textarea\').attr( \'disabled\', \'true\' );
+
+					});
+
+				})(jQuery);
+				</script>';
+			}
+
+			$text = ( $dco_review_status == 'yes' ? ' — Accepted by: ' : ' — Denied by: ' ) .$name . ' (' . $role . ')' ;
+
+			echo '<script>
+
+
+
+			(function($){
+
+				$(window).on(\'load\', function(){
+
+					$(\'div[data-name="dco_review_status"] .acf-label label\').append( \''.$text.'\' );
 
 					
 
