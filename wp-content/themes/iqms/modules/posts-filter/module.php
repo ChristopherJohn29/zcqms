@@ -204,7 +204,7 @@ function filter_post_fields() {
 
 		}
 
-
+		
 		// to be removed
 		if($user_id == get_post( get_the_id() )->post_author) {
 			$hide_publish_button = false;
@@ -476,6 +476,12 @@ function filter_post_fields() {
 
 			/*$(\'div[data-name="review_status"] input[type="radio"]\').click( function(){ return false; } ).addClass(\'disabled-radio\');*/
 
+		}
+
+		if($review_status == 'review' || $dco_review_status == 'review' || $approval_status == 'review'){
+			if(in_array($user_id."", $prepared_by)){
+				echo '<style>#submitdiv {display: block !important;}</style>';
+			}
 		}
 
 
