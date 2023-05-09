@@ -112,7 +112,7 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 				}
 
 			} else {
-				$display =  '<label class="table-label-primary"> For DCO Review </label> ';
+				$display =  '<label class="table-label-primary"> For Compliance</label> ';
 			}
 
 
