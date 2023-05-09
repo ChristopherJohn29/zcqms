@@ -478,7 +478,7 @@ function filter_post_fields() {
 
 		}
 
-		if($review_status == 'review' || $dco_review_status == 'review' || $approval_status == 'review'){
+		if($review_status == 'no' || $dco_review_status == 'no' || $approval_status == 'no'){
 			if(in_array($user_id."", $prepared_by)){
 				echo '<style>#submitdiv {display: block !important;}</style>';
 			}
