@@ -52,7 +52,7 @@ $prepared_by_position = get_field('user_position', 'user_'.$prepared_by_user->ID
 
 $author_id = get_post_field ('post_author', $post_id);
 
-// var_dump($prepared_by_user);
+var_dump($prepared_by);
 // $prepared_by_position = get_field('user_position', 'user_'.$author_id);
 
 $users = get_field( 'users' );
