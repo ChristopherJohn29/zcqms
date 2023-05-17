@@ -44,7 +44,7 @@ $approved_by_role = ( ($approved_by_user->roles[0] ? $approved_by_user->roles[0]
 $approved_by_position = get_field('user_position', 'user_'.$approved_by_user->ID);
 
 
-$prepared_by = get_post_meta( get_the_ID(), 'users', true );
+$prepared_by = get_field( 'users' );
 $prepared_by_user = get_user_by('ID', $prepared_by);
 $prepared_by_name = $prepared_by_user->data->display_name;
 $prepared_by_role = ( ($prepared_by_user->roles[0] ? $prepared_by_user->roles[0] : '') );
@@ -52,7 +52,7 @@ $prepared_by_position = get_field('user_position', 'user_'.$prepared_by_user->ID
 
 $author_id = get_post_field ('post_author', $post_id);
 
-var_dump($prepared_by_user);
+var_dump($prepared_by);
 // $prepared_by_position = get_field('user_position', 'user_'.$author_id);
 
 $users = get_field( 'users' );
