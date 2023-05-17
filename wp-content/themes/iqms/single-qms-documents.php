@@ -46,6 +46,8 @@ $approved_by_position = get_field('user_position', 'user_'.$approved_by_user->ID
 $author_id = get_post_field ('post_author', $post_id);
 $display_name = get_the_author_meta( 'display_name' , $author_id ); 
 $prepared_by_user = get_user_by('ID', $author_id);
+
+var_dump($prepared_by_user);
 $prepared_by_position = get_field('user_position', 'user_'.$author_id);
 
 $users = get_field( 'users' );
