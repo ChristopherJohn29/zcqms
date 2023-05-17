@@ -96,7 +96,7 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 				if($reviewed_status == 'yes'){
 
 					if($approval_status == 'no') {
-						$display = '<label class="table-label-primary"> For Compliance </label> ';	
+						$display = '<label class="table-label-primary"> For Correction </label> ';	
 					} else if($approval_status == 'review') {
 						$display =  '<label class="table-label-primary"> For Review (Complied) </label> ';
 					} else {
@@ -104,17 +104,17 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 					}
 					
 				} else if($reviewed_status == 'no'){
-					$display = '<label class="table-label-primary"> For Compliance </label> ';
+					$display = '<label class="table-label-primary"> For Correction </label> ';
 				} else if($reviewed_status == 'review'){
 					$display =  '<label class="table-label-primary"> For Review (Complied) </label> ';
 				} else {
-					$display =  '<label class="table-label-primary"> For Review </label> ';
+					$display =  '<label class="table-label-primary"> For Recommendation </label> ';
 				}
 
 			} else if($dco_reviewed_status == 'no') {
-				$display =  '<label class="table-label-primary"> For Compliance</label> ';
+				$display =  '<label class="table-label-primary"> For Correction</label> ';
 			} else {
-				$display =  '<label class="table-label-primary"> DCO Review</label>';
+				$display =  '<label class="table-label-primary"> Initial Review</label>';
 			}
 
 
