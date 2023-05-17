@@ -43,15 +43,20 @@ $approved_by_name = $approved_by_user->data->display_name;
 $approved_by_role = ( ($approved_by_user->roles[0] ? $approved_by_user->roles[0] : '') );
 $approved_by_position = get_field('user_position', 'user_'.$approved_by_user->ID);
 
-$author_id = get_post_field ('post_author', $post_id);
-$display_name = get_the_author_meta( 'display_name' , $author_id ); 
-$prepared_by_user = get_user_by('ID', $author_id);
 
-var_dump($prepared_by_user);
-$prepared_by_position = get_field('user_position', 'user_'.$author_id);
+$prepared_by = get_post_meta( get_the_ID(), 'users', true );
+$prepared_by_user = get_user_by('ID', $prepared_by);
+$prepared_by_name = $prepared_by_user->data->display_name;
+$prepared_by_role = ( ($prepared_by_user->roles[0] ? $prepared_by_user->roles[0] : '') );
+$prepared_by_position = get_field('user_position', 'user_'.$prepared_by_user->ID);
+
+$author_id = get_post_field ('post_author', $post_id);
+
+// var_dump($prepared_by_user);
+// $prepared_by_position = get_field('user_position', 'user_'.$author_id);
 
 $users = get_field( 'users' );
-$display_name = ( $users[0]['user_firstname'] ? $users[0]['user_firstname'] . ' ' . $users[0]['user_lastname'] : $display_name );
+// $display_name = ( $users[0]['user_firstname'] ? $users[0]['user_firstname'] . ' ' . $users[0]['user_lastname'] : $display_name );
 
 ?>
 <div class="ip-banner">
@@ -80,7 +85,7 @@ $display_name = ( $users[0]['user_firstname'] ? $users[0]['user_firstname'] . ' 
     <div class="document-info-wrapper row">
         <div class="col">
             <div>Prepared by:</div>
-            <div class="document-info-name"><?=$display_name?></div>
+            <div class="document-info-name"><?=$prepared_by_name?></div>
             <div><?=$prepared_by_position?></div>
         </div>
         <div class="col">
