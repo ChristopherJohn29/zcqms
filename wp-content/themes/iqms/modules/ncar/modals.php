@@ -3,10 +3,20 @@
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="add-modal">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-	<?php 
-	
-	exit();
-	?>
+	<?php
+
+		$terms = get_terms( array(
+			'taxonomy'   => 'services',
+			'hide_empty' => false,
+		) );
+
+		echo "<pre>";
+		var_dump($terms);
+		echo "</pre>";
+		// foreach( $terms  as $term ) {
+		// 	echo '<option value="'.$term->data->ID.'">'.$user->data->display_name.'</option>';
+		// }
+		?>
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="gridSystemModalLabel"><i class="glyphicon glyphicon-plus"></i> Nonconformity and Corrective Action Report (NCAR)</h4>
@@ -224,19 +234,7 @@
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
 													<option value="">-</option>
-													<?php
-
-														$terms = get_terms( array(
-															'taxonomy'   => 'services',
-															'hide_empty' => false,
-														) );
-
-														var_dump($terms);
-
-														// foreach( $terms  as $term ) {
-														// 	echo '<option value="'.$term->data->ID.'">'.$user->data->display_name.'</option>';
-														// }
-													?>
+													<option value="test 2">Test 2</option>
 												</select>
 											</div>
 
