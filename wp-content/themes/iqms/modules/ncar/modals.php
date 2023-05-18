@@ -207,7 +207,7 @@
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="part1">
 
-    						<form id="ncar_edit_form1">
+    						<form id="ncar_edit_form">
 									<div class="row">
 										<div class="col-sm-4">
 											
@@ -355,47 +355,19 @@
 								</form>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="part2">
-								<!-- <form id="ncar_edit_form">
 								<tbody>
 									<tr>
 										<td>
 											<div class="col-sm-6">
 												<div class="form-group file-upload" data-multiple-upload="true">
 													<label for="evidences">Non Conformity Evidences</label>
-													<div class="hidden file-group evidences"></div>
-													<input type="text" readonly class="selected_files form-control" value="">
+													<div class="hidden file-group evidences part1"></div>
+													<input type="text" readonly class="selected_files form-control part1" value="">
 												</div>
 											</div>
 										</td>
 									</tr>
 								</tbody>
-								</form> -->
-
-								<form id="ncar_edit_form">
-
-								<div class="row">
-										<div class="col-sm-6">
-
-											<div class="form-group">
-												<label for="clause_no">Clause No.</label>
-												<input type="text" name="clause_no" class="form-control" value="">
-											</div>
-
-										</div>
-
-										<div class="col-sm-6">
-
-											<div class="form-group file-upload" data-multiple-upload="true">
-												<label for="evidences">Evidences (If available) <button type="" class="btn btn-info btn-sm upload-btn">Select files</button></label>
-												<div class="hidden file-group evidences"></div>
-												<input type="text" readonly class="selected_files form-control" value="">
-											</div>
-
-										</div>
-									</div>
-
-									
-								</form>
 								<form id="ncar_edit_form2">
 									<table class="table">
 										
