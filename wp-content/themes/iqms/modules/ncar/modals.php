@@ -361,9 +361,9 @@
 											<td>
 												<div class="col-sm-6">
 													<div class="form-group file-upload" data-multiple-upload="true">
-														<label for="evidences">Non Conformity Evidences</label>
-														<div class="hidden file-group" id="noncoformity-evidence"></div>
-														<input type="text" readonly class="form-control noncoformity" id="noncoformity-evidence-file" value="">
+														<label for="noncoformity-evidence">Non Conformity Evidences</label>
+														<div class="" id="noncoformity-evidence"></div>
+														<input type="text" readonly class="form-control" id="noncoformity-evidence-file" value="">
 													</div>
 												</div>
 											</td>

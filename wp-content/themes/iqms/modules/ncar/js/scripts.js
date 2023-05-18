@@ -512,7 +512,7 @@
 			});
 
 			$('#noncoformity-evidence-file').click(function(){
-				if ( $('.evidences input').length ) {
+				if ( $('#noncoformity-evidence input').length ) {
 					$this = $(this).parents('.file-upload');
 					html = '';
 					$this.find('#noncoformity-evidence input').each(function(){
