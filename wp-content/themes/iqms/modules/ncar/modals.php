@@ -359,13 +359,11 @@
 									<tbody>
 										<tr>
 											<td>
-												<div class="col-sm-6">
 													<div class="form-group file-upload" data-multiple-upload="true">
-														<label for="noncoformity-evidence">Non Conformity Evidences</label>
-														<div class="" id="noncoformity-evidence"></div>
-														<input type="text" readonly class="form-control" id="noncoformity-evidence-file" value="">
+														<label for="noncoformity-evidence" id="noncoformity-evidence-file-view">View Non Conformity Evidences</label>
+														<div class="hidden" id="noncoformity-evidence"></div>
+														<input type="text" readonly class="form-control hidden" id="noncoformity-evidence-file" value="">
 													</div>
-												</div>
 											</td>
 										</tr>
 									</tbody>

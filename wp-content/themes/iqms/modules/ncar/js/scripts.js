@@ -511,7 +511,7 @@
 				}
 			});
 
-			$('#noncoformity-evidence-file').click(function(){
+			$('#noncoformity-evidence-file-view').click(function(){
 				if ( $('#noncoformity-evidence input').length ) {
 					$this = $(this).parents('.file-upload');
 					html = '';
