@@ -10,12 +10,6 @@
 			'hide_empty' => false,
 		) );
 
-		echo "<pre>";
-		var_dump($terms);
-		echo "</pre>";
-		// foreach( $terms  as $term ) {
-		// 	echo '<option value="'.$term->data->ID.'">'.$user->data->display_name.'</option>';
-		// }
 		?>
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -61,8 +55,15 @@
 											<div class="form-group">
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
-													<option value="">-</option>
-													<option value="test 2">Test 2</option>
+													<?php 
+														foreach( $terms  as $term ) {
+															if($term->parent != 0){
+																echo '<option value="'.$term->name.'">'.$term->name.'</option>';
+															}
+															
+														}
+													
+													?>
 												</select>
 											</div>
 
@@ -233,8 +234,15 @@
 											<div class="form-group">
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
-													<option value="">-</option>
-													<option value="test 2">Test 2</option>
+													<?php 
+														foreach( $terms  as $term ) {
+															if($term->parent != 0){
+																echo '<option value="'.$term->name.'">'.$term->name.'</option>';
+															}
+															
+														}
+														
+														?>
 												</select>
 											</div>
 
