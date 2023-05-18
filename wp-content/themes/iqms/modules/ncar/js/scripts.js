@@ -613,7 +613,7 @@
 							$el = $('#edit-modal [name="'+i+'"]');
 							if ( i == 'evidences' ) {
 
-								console.log('test');
+								
 
 								e_html = ( v.length ? v.length + ' file(s) selected' : '' ) ;
 								e_input = '';
@@ -624,8 +624,10 @@
 								$('#edit-modal #part1 .file-group.evidences').html( e_input );
 								$('#edit-modal #part1 .selected_files').val( e_html );
 
-								$('#edit-modal #part2 .file-group.evidences.noncoformity').html( e_input );
-								$('#edit-modal #part2 .selected_files.noncoformity').val( e_html );
+								$('#noncoformity-evidence').html( e_input );
+								$('#noncoformity-evidence-file').val( e_html );
+
+								console.log('test');
 
 							} else if ( i == 'source_of_nc' ) {
 								$('#edit-modal #part1 [name="'+i+'"][value="'+v+'"]').prop('checked', true);

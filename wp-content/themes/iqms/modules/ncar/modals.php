@@ -355,19 +355,21 @@
 								</form>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="part2">
-								<tbody>
-									<tr>
-										<td>
-											<div class="col-sm-6">
-												<div class="form-group file-upload" data-multiple-upload="true">
-													<label for="evidences">Non Conformity Evidences</label>
-													<div class="hidden file-group evidences noncoformity"></div>
-													<input type="text" readonly class="selected_files form-control noncoformity" value="">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td>
+												<div class="col-sm-6">
+													<div class="form-group file-upload" data-multiple-upload="true">
+														<label for="evidences">Non Conformity Evidences</label>
+														<div class="hidden file-group evidences" id="noncoformity-evidence"></div>
+														<input type="text" readonly class="selected_files form-control noncoformity" id="noncoformity-evidence-file" value="">
+													</div>
 												</div>
-											</div>
-										</td>
-									</tr>
-								</tbody>
+											</td>
+										</tr>
+									</tbody>
+								</table>
 								<form id="ncar_edit_form2">
 									<table class="table">
 										
