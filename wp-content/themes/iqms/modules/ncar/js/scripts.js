@@ -624,8 +624,8 @@
 								$('#edit-modal #part1 .file-group.evidences').html( e_input );
 								$('#edit-modal #part1 .selected_files').val( e_html );
 
-								$('#edit-modal #part2 .file-group.evidences.part1').html( e_input );
-								$('#edit-modal #part2 .selected_files.part1').val( e_html );
+								$('#edit-modal #part2 .file-group.evidences.noncoformity').html( e_input );
+								$('#edit-modal #part2 .selected_files.noncoformity').val( e_html );
 
 							} else if ( i == 'source_of_nc' ) {
 								$('#edit-modal #part1 [name="'+i+'"][value="'+v+'"]').prop('checked', true);
