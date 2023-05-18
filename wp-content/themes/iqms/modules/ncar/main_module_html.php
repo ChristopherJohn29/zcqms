@@ -65,7 +65,9 @@
 						$clause_no = get_post_meta( $id, 'clause_no', true );
 						$verification = get_post_meta( $id, 'verification', true );
 
+						echo "<pre>";
 						var_dump($verification);
+						echo "</pre>";
 
 						?>
 						<tr data-id="<?= $ncar->ID ?>">
