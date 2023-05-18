@@ -510,6 +510,26 @@
 					});
 				}
 			});
+
+			$('#noncoformity-evidence-file').click(function(){
+				if ( $('.evidences input').length ) {
+					$this = $(this).parents('.file-upload');
+					html = '';
+					$this.find('#noncoformity-evidence input').each(function(){
+
+						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
+						Swal.fire({
+							icon: 'info',
+							title: 'Selected File(s)',
+							allowOutsideClick: false,
+							showConfirmButton: true,
+							allowEscapeKey: false,
+							html: html,
+						});
+
+					});
+				}
+			});
 			/*end init*/
 		},
 		loadBtnAction: function() {
@@ -627,7 +647,6 @@
 								$('#noncoformity-evidence').html( e_input );
 								$('#noncoformity-evidence-file').val( e_html );
 
-								console.log('test');
 
 							} else if ( i == 'source_of_nc' ) {
 								$('#edit-modal #part1 [name="'+i+'"][value="'+v+'"]').prop('checked', true);
