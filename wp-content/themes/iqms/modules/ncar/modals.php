@@ -371,8 +371,7 @@
 									<table class="table">
 										<tbody>
 											<tr>
-												<td colspan="4"><a for="noncoformity-evidence" id="noncoformity-evidence-file-view">View Non Conformity Evidences</a></td>
-							
+												<td colspan="4"><button for="noncoformity-evidence" id="noncoformity-evidence-file-view" class="btn btn-primary">View Non Conformity Evidences</button></td>
 											</tr>
 										</tbody>
 										<tbody>
