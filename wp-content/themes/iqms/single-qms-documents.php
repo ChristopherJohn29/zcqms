@@ -52,6 +52,12 @@ $prepared_by_position = get_field('user_position', 'user_'.$prepared_by_user->ID
 
 $author_id = get_post_field ('post_author', $post_id);
 
+$term = get_the_terms($post_idm, 'services');
+
+echo "<pre>";
+var_dump($term);
+echo "</pre>";
+
 // var_dump($prepared_by);
 // $prepared_by_position = get_field('user_position', 'user_'.$author_id);
 
@@ -70,7 +76,7 @@ $author_id = get_post_field ('post_author', $post_id);
             <span><?=$document_id?></span>
         </div>
         <div class="doc-title-wrapper col">
-            <span><?=$upload_document['filename']?></span>
+            <span><?=get_the_title()?></span>
         </div>
         <div class="doc-date-wrapper col">
             <div>Effectivity Date</div>
