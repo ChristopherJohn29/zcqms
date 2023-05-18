@@ -440,13 +440,12 @@
 									<table class="table">
 										<tbody>
 											<tr>
-												<td colspan="4"><button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button></td>
-											</tr>
-											<tr>
-												<td colspan="4"><button for="noncoformity-evidence" class="btn btn-primary root-cause-analysis-file-view">View uploaded root cause analysis</button></td>
+												<td colspan="4">
+													<button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button>
+													<button for="noncoformity-evidence" class="btn btn-primary root-cause-analysis-file-view">View uploaded root cause analysis</button>
+												</td>
 											</tr>
 										</tbody>
-										
 										<tbody>
 											<tr>
 												<td colspan="2">3. verifications: Implemented as Planned?</td>
