@@ -54,13 +54,9 @@ $author_id = get_post_field ('post_author', $post_id);
 
 $term = get_the_terms($post_idm, 'services');
 
-echo "<pre>";
-var_dump($term);
-echo "</pre>";
-
 $service = "";
 
-foreach ($variable as $key => $value) {
+foreach ($term as $key => $value) {
     $service .= $value['name'].', ';
 }
 
