@@ -106,10 +106,8 @@
 
 											<div class="form-group">
 												<label for="clause_no">Clause No.</label>
-												<select id="clause_no" name="clause_no" class="form-control">
-													<option value="">-</option>
-													<option value="test 2">Test 2</option>
-												</select>
+												<input type="text" readonly="clause_no" class="form-control" value="">
+										
 											</div>
 
 										</div>
@@ -129,7 +127,7 @@
 										<div class="col-sm-6">
 
 											<div class="form-group">
-												<label for="reviewed_by">Reviewed By</label>
+												<label for="reviewed_by">Person Responsible</label>
 												<select id="reviewed_by" name="reviewed_by" class="form-control">
 													<option value="">-</option>
 													<?php
@@ -146,7 +144,7 @@
 										<div class="col-sm-6">
 
 											<div class="form-group">
-												<label for="approved_by">Approved By</label>
+												<label for="approved_by">Verified By</label>
 												<select id="approved_by" name="approved_by" class="form-control">
 													<option value="">-</option>
 													<?php
