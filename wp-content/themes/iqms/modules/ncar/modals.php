@@ -290,10 +290,10 @@
 
 										<div class="col-sm-6">
 
-											<div class="form-group file-upload" data-multiple-upload="true">
+											<div class="form-group file-upload noncoformity-evidence-file-upload" data-multiple-upload="true">
 												<label for="evidences">Evidences (If available) <button type="" class="btn btn-info btn-sm upload-btn">Select files</button></label>
-												<div class="hidden file-group evidences"></div>
-												<input type="text" readonly class="selected_files form-control" value="">
+												<div class="hidden file-group evidences" id="noncoformity-evidence"></div>
+												<input type="text" readonly class="selected_files form-control" id="noncoformity-evidence-file" value="">
 											</div>
 
 										</div>
@@ -355,23 +355,11 @@
 								</form>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="part2">
-								<table class="table hidden">
-									<tbody>	
-										<tr>
-											<td>
-												<div class="form-group noncoformity-evidence-file-upload" data-multiple-upload="true">
-													<div class="hidden" id="noncoformity-evidence"></div>
-													<input type="text" readonly class="form-control hidden" id="noncoformity-evidence-file" value="">
-												</div>
-											</td>
-										</tr>
-									</tbody>
-								</table>
 								<form id="ncar_edit_form2">
 									<table class="table">
 										<tbody>
 											<tr>
-												<td colspan="4"><button for="noncoformity-evidence" id="noncoformity-evidence-file-view" class="btn btn-primary">View Non Conformity Evidences</button></td>
+												<td colspan="4"><button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button></td>
 											</tr>
 										</tbody>
 										<tbody>
@@ -448,7 +436,17 @@
 							<div role="tabpanel" class="tab-pane" id="part3">
 								
 								<form id="ncar_edit_form3">
+									
 									<table class="table">
+										<tbody>
+											<tr>
+												<td colspan="4"><button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button></td>
+											</tr>
+											<tr>
+												<td colspan="4"><button for="noncoformity-evidence" class="btn btn-primary root-cause-analysis-file-view">View uploaded root cause analysis</button></td>
+											</tr>
+										</tbody>
+										
 										<tbody>
 											<tr>
 												<td colspan="2">3. verifications: Implemented as Planned?</td>
