@@ -87,7 +87,7 @@
 							<td><?= $date ?></td>
 							<td><?= $nc_desc ?></td>
 							<td><?= $clause_no ?></td>
-							<td><?=$verified ? "Verified" : "On Progress" ?></td>
+							<td><?=$verified ? "Close" : "On Progress" ?></td>
 							<td class="action-group">
 								<button class="btn btn-sm btn-success btn-edit"><i class="glyphicon glyphicon glyphicon-eye-open"></i> <i class="glyphicon glyphicon glyphicon-pencil"></i></button> 
 								<button class="btn btn-sm btn-primary btn-remarks"><i class="glyphicon glyphicon glyphicon-file"></i></button>
