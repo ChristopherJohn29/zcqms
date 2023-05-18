@@ -203,7 +203,7 @@
 										<div class="col-sm-4">
 											
 											<div class="form-group">
-												<label for="department">Department</label>
+												<label for="department">Departments</label>
 												<select id="department" name="department" class="form-control">
 										
 												</select>
