@@ -221,7 +221,19 @@
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
 													<option value="">-</option>
-													<option value="test 2">Test 2</option>
+													<?php
+
+														$terms = get_terms( array(
+															'taxonomy'   => 'services',
+															'hide_empty' => false,
+														) );
+
+														var_dump($terms);
+
+														// foreach( $terms  as $term ) {
+														// 	echo '<option value="'.$term->data->ID.'">'.$user->data->display_name.'</option>';
+														// }
+													?>
 												</select>
 											</div>
 
@@ -266,20 +278,7 @@
 												<label for="clause_no">Clause No.</label>
 												<select id="clause_no" name="clause_no" class="form-control">
 													<option value="">-</option>
-
-													<?php
-
-														$terms = get_terms( array(
-															'taxonomy'   => 'services',
-															'hide_empty' => false,
-														) );
-
-														var_dump($terms);
-
-														// foreach( $terms  as $term ) {
-														// 	echo '<option value="'.$term->data->ID.'">'.$user->data->display_name.'</option>';
-														// }
-													?>
+													<option value="test 2">Test 2</option>
 												</select>
 											</div>
 
