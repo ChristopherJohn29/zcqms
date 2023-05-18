@@ -359,7 +359,7 @@
 									<tbody>	
 										
 										<tr>
-											<td colspan="2"><a for="noncoformity-evidence" id="noncoformity-evidence-file-view">View Non Conformity Evidences</label></a>
+											<td colspan="2"><a for="noncoformity-evidence" id="noncoformity-evidence-file-view">View Non Conformity Evidences</a></td>
 						
 										</tr>
 										<tr>
