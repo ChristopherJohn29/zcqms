@@ -530,6 +530,27 @@
 					});
 				}
 			});
+
+			$('.root-cause-analysis-file-view').click(function(){
+				if ( $('#noncoformity-evidence input').length ) {
+					$this = $('.root-cause-analysis-file-upload');
+					html = '';
+					$this.find('#root-cause-analysis-file-upload input').each(function(){
+
+						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
+						Swal.fire({
+							icon: 'info',
+							title: 'Selected File(s)',
+							allowOutsideClick: false,
+							showConfirmButton: true,
+							allowEscapeKey: false,
+							html: html,
+						});
+
+					});
+				}
+			});
+
 			/*end init*/
 		},
 		loadBtnAction: function() {

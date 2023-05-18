@@ -394,9 +394,9 @@
 											
 											<tr class="file-upload" data-multiple-upload="true">
 												<td colspan="6">
-													<div class="hidden file-group evidences"></div>
+													<div class="hidden file-group evidences root-cause-analysis-file-upload"></div>
 													<button class="btn btn-sm btn-primary upload-btn">Upload </button>
-													<input class="selected_files" type="text" readonly placeholder="selected file" readyonly>
+													<input class="selected_files root-cause-analysis-file" type="text" readonly placeholder="selected file" readyonly>
 												</td>
 											</tr>
 
