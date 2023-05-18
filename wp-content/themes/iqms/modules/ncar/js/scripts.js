@@ -532,10 +532,10 @@
 			});
 
 			$('.root-cause-analysis-file-view').click(function(){
-				if ( $('#noncoformity-evidence input').length ) {
+				if ( $('.root-cause-analysis-file-upload input').length ) {
 					$this = $('.root-cause-analysis-file-upload');
 					html = '';
-					$this.find('#root-cause-analysis-file-upload input').each(function(){
+					$this.find('.root-cause-analysis-file-upload input').each(function(){
 
 						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
 						Swal.fire({
