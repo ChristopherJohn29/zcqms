@@ -360,8 +360,8 @@
 										<tr class="hidden">
 											<td>
 												<div class="form-group file-upload" data-multiple-upload="true">
-													<div class="hidden" id="noncoformity-evidence"></div>
-													<input type="text" readonly class="form-control hidden" id="noncoformity-evidence-file" value="">
+													<div class="hidden" id="noncorformity-evidence"></div>
+													<input type="text" readonly class="form-control hidden" id="noncorformity-evidence-file" value="">
 												</div>
 											</td>
 										</tr>
@@ -371,7 +371,7 @@
 									<table class="table">
 										<tbody>
 											<tr>
-												<td colspan="2"><a for="noncoformity-evidence" id="noncoformity-evidence-file-view">View Non Conformity Evidences</label></a>
+												<td colspan="4"><a id="noncorformity-evidence-file-view">View Non Conformity Evidences</label></a>
 							
 											</tr>
 										</tbody>
