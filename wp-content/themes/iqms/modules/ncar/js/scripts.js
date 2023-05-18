@@ -613,6 +613,8 @@
 							$el = $('#edit-modal [name="'+i+'"]');
 							if ( i == 'evidences' ) {
 
+								console.log('test');
+
 								e_html = ( v.length ? v.length + ' file(s) selected' : '' ) ;
 								e_input = '';
 								$.each(v, function(a, b) {
