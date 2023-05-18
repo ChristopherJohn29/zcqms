@@ -355,7 +355,13 @@
 								</form>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="part2">
-								<table class="table hidden">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td colspan="4"><a role="button" href="#" id="noncorformity-evidence-file-view">View Non Conformity Evidences</label></a>
+						
+										</tr>
+									</tbody>
 									<tbody>	
 										<tr class="hidden">
 											<td>
@@ -369,12 +375,6 @@
 								</table>
 								<form id="ncar_edit_form2">
 									<table class="table">
-										<tbody>
-											<tr>
-												<td colspan="4"><a id="noncorformity-evidence-file-view">View Non Conformity Evidences</label></a>
-							
-											</tr>
-										</tbody>
 										<tbody>
 											<tr>
 												<td colspan="2">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
