@@ -358,11 +358,10 @@
 								<form id="ncar_edit_form">
 								<tbody>
 									<tr>
-										<td colspan="2">Non Conformity Evidences</td>
 										<td>
 											<div class="col-sm-6">
 												<div class="form-group file-upload" data-multiple-upload="true">
-													<label for="evidences">Evidences (If available)</label>
+													<label for="evidences">Non Conformity Evidences</label>
 													<div class="hidden file-group evidences"></div>
 													<input type="text" readonly class="selected_files form-control" value="">
 												</div>
