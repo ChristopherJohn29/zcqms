@@ -535,7 +535,7 @@
 				if ( $('.root-cause-analysis-file-upload input').length ) {
 					$this = $('.root-cause-analysis-file-upload');
 					html = '';
-					$this.find('.root-cause-analysis-file-upload input').each(function(){
+					$('.root-cause-analysis-file-upload input').each(function(){
 
 						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
 						Swal.fire({
