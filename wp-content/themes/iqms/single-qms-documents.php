@@ -58,6 +58,15 @@ echo "<pre>";
 var_dump($term);
 echo "</pre>";
 
+$service = "";
+
+foreach ($variable as $key => $value) {
+    $service .= $value['name'].', ';
+}
+
+$service .= 'asd12312asd';
+$service = str_replace(', asd12312asd','', $service);
+
 // var_dump($prepared_by);
 // $prepared_by_position = get_field('user_position', 'user_'.$author_id);
 
@@ -67,7 +76,7 @@ echo "</pre>";
 ?>
 <div class="ip-banner">
     <canvas width="1600" height="350" style="display: block; position: relative; z-index: 0; width: 100%; min-height: 350px; background-color: #999; background-position: center center; background-repeat: no-repeat; background-size: cover; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<?=get_stylesheet_directory_uri()?>/images/single-banner.jpg);"></canvas>
-    <h1><?=get_the_title()?></h1> 
+    <h1><?=$service?></h1> 
 </div>
 <div class="container">
     <div class="document-info-container row">
