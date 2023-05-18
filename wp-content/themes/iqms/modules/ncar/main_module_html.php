@@ -65,9 +65,19 @@
 						$clause_no = get_post_meta( $id, 'clause_no', true );
 						$verification = get_post_meta( $id, 'verification', true );
 
-						echo "<pre>";
-						var_dump($verification);
-						echo "</pre>";
+						$verified = 1;
+
+						if(is_array($verification)){
+							foreach ($verification as $key => $value) {
+								if(isset($value['verification_implemented'])){
+									if($value['verification_implemented'] == 'No'){
+										$verified = 0;
+									}
+								}
+							}
+						} else {
+							$verified = 0;
+						}
 
 						?>
 						<tr data-id="<?= $ncar->ID ?>">
@@ -77,7 +87,7 @@
 							<td><?= $date ?></td>
 							<td><?= $nc_desc ?></td>
 							<td><?= $clause_no ?></td>
-							<td></td>
+							<td><?=$verified ? "Verified" : "On Progress" ?></td>
 							<td class="action-group">
 								<button class="btn btn-sm btn-success btn-edit"><i class="glyphicon glyphicon glyphicon-eye-open"></i> <i class="glyphicon glyphicon glyphicon-pencil"></i></button> 
 								<button class="btn btn-sm btn-primary btn-remarks"><i class="glyphicon glyphicon glyphicon-file"></i></button>
