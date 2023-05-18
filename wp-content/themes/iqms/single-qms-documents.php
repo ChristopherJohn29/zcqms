@@ -57,7 +57,7 @@ $term = get_the_terms($post_idm, 'services');
 $service = "";
 
 foreach ($term as $key => $value) {
-    $service .= $value['name'].', ';
+    $service .= $value->name.', ';
 }
 
 $service .= 'asd12312asd';
