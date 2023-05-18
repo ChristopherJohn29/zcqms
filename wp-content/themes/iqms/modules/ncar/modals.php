@@ -355,8 +355,28 @@
 								</form>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="part2">
+								<form id="ncar_edit_form">
+								<tbody>
+									<tr>
+										<td colspan="2">Non Conformity Evidences</td>
+										<td>
+											<div class="col-sm-6">
+												<div class="form-group file-upload" data-multiple-upload="true">
+													<label for="evidences">Evidences (If available)</label>
+													<div class="hidden file-group evidences"></div>
+													<input type="text" readonly class="selected_files form-control" value="">
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+								</form>
 								<form id="ncar_edit_form2">
 									<table class="table">
+										
+
+
+
 										<tbody>
 											<tr>
 												<td colspan="2">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
