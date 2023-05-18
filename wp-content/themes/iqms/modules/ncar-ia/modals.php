@@ -205,9 +205,22 @@
 											<div class="form-group">
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
-													<option value="">-</option>
-													<option value="test 2">Test 2</option>
+										
 												</select>
+												<?php
+
+													$terms = get_terms( array(
+														'taxonomy'   => 'services',
+														'hide_empty' => false,
+													) );
+													
+													echo "<pre>";
+													var_dump($terms);
+													echo "</pre>";
+													// foreach( $terms  as $term ) {
+													// 	echo '<option value="'.$term->data->ID.'">'.$user->data->display_name.'</option>';
+													// }
+													?>
 											</div>
 
 										</div>
