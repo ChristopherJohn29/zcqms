@@ -355,12 +355,8 @@
 								</form>
 							</div>
 							<div role="tabpanel" class="tab-pane" id="part2">
-								<table class="table">
+								<table class="table hidden">
 									<tbody>	
-										<tr>
-											<td colspan="2"><a for="noncoformity-evidence" id="noncoformity-evidence-file-view">View Non Conformity Evidences</label></a>
-						
-										</tr>
 										<tr class="hidden">
 											<td>
 												<div class="form-group file-upload" data-multiple-upload="true">
@@ -373,6 +369,12 @@
 								</table>
 								<form id="ncar_edit_form2">
 									<table class="table">
+										<tbody>
+											<tr>
+												<td colspan="2"><a for="noncoformity-evidence" id="noncoformity-evidence-file-view">View Non Conformity Evidences</label></a>
+							
+											</tr>
+										</tbody>
 										<tbody>
 											<tr>
 												<td colspan="2">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
