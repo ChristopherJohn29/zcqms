@@ -373,7 +373,7 @@
 
 								<form id="ncar_edit_form">
 
-									<div class="row">
+								<div class="row">
 										<div class="col-sm-6">
 
 											<div class="form-group">
@@ -387,8 +387,8 @@
 
 											<div class="form-group file-upload" data-multiple-upload="true">
 												<label for="evidences">Evidences (If available) <button type="" class="btn btn-info btn-sm upload-btn">Select files</button></label>
-												<div class="hidden file-group evidences"><input type="hidden" data-url="http://zcmc-iqms.infoadvance.com.ph/wp-content/uploads/2023/05/1429575.jpg" value="996" data-title="1429575" class="evidences"></div>
-												<input type="text" readonly="" class="selected_files form-control" value="">
+												<div class="hidden file-group evidences"></div>
+												<input type="text" readonly class="selected_files form-control" value="">
 											</div>
 
 										</div>
