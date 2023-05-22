@@ -37,16 +37,7 @@ class TransferDCM{
                 $new_assigned_dco[] = $value->data->ID;
             }
 
-            
-
-            // update_post_meta( $postID, 'assigned_dco', $new_assigned_dco );
-
-            echo "<pre>";
-            var_dump($data);
-            var_dump($assigned_dco);
-            var_dump($users_dco );
-            echo "</pre>";
-            exit;
+            update_post_meta( $postID, 'assigned_dco', $new_assigned_dco );
 
             $is_reviewed_new = $postarr['acf']['field_63d6812dd0c68'];
             $is_approved_new = $postarr['acf']['field_632c62e991029'];
