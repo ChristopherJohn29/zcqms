@@ -31,7 +31,18 @@ class TransferDCM{
 
             $assigned_dco = get_post_meta(  $postID, 'assigned_dco', true);
 
+            $new_assigned_dco = [];
+
+            foreach ($users_dco as $key => $value) {
+                $new_assigned_dco[] = $value->data->ID;
+            }
+
+            
+
+            // update_post_meta( $postID, 'assigned_dco', $new_assigned_dco );
+
             echo "<pre>";
+            var_dump($data);
             var_dump($assigned_dco);
             var_dump($users_dco );
             echo "</pre>";
