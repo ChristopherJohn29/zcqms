@@ -18,26 +18,12 @@ class TransferDCM{
         }
 
         if($postID){
-            $args = array(
-                'role'    => 'dco',
-            );
-
-            $users_dco = get_users( $args );
+          
 
             $dco_emailed = get_post_meta(  $postID, 'dco_emailed', true);
 
             $is_approved = get_field( 'approval_status', $postID );
             $is_reviewed = get_field( 'review_status', $postID );
-
-            $assigned_dco = get_post_meta(  $postID, 'assigned_dco', true);
-
-            $new_assigned_dco = [];
-
-            foreach ($users_dco as $key => $value) {
-                $new_assigned_dco[] = $value->data->ID;
-            }
-
-            update_post_meta( $postID, 'assigned_dco', $new_assigned_dco );
 
             $is_reviewed_new = $postarr['acf']['field_63d6812dd0c68'];
             $is_approved_new = $postarr['acf']['field_632c62e991029'];
@@ -254,9 +240,24 @@ class TransferDCM{
 
             }
 
+            $args = array(
+                'role'    => 'dco',
+            );
+
+            $users_dco = get_users( $args );
+
+            $new_assigned_dco = [];
+
+            foreach ($users_dco as $key => $value) {
+                $new_assigned_dco[] = $value->data->ID;
+            }
+
+            update_field('assigned_dco', $new_assigned_dco, $post_ID);
+
             if( ($is_approved  == 'yes' && $is_reviewed == 'yes') || $is_auto_approved ){
 
                 // add email 
+             
                 $this->transfer_post($data, $post_ID);
             } else {
             	wp_redirect( get_site_url() . '/wp-admin/edit.php?post_type=dcm' );
