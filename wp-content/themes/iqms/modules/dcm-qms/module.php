@@ -18,10 +18,24 @@ class TransferDCM{
         }
 
         if($postID){
+            $args = array(
+                'role'    => 'dco',
+            );
+
+            $users_dco = get_users( $args );
+
+            $dco_emailed = get_post_meta(  $postID, 'dco_emailed', true);
+
             $is_approved = get_field( 'approval_status', $postID );
             $is_reviewed = get_field( 'review_status', $postID );
 
-            $dco_emailed = get_post_meta(  $postID, 'dco_emailed', true);
+            $assigned_dco = get_post_meta(  $postID, 'assigned_dco', true);
+
+            echo "<pre>";
+            var_dump($assigned_dco);
+            var_dump($users_dco );
+            echo "</pre>";
+            exit;
 
             $is_reviewed_new = $postarr['acf']['field_63d6812dd0c68'];
             $is_approved_new = $postarr['acf']['field_632c62e991029'];
