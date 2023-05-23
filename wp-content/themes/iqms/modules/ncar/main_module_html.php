@@ -15,9 +15,13 @@
 			<thead>
 				<tr>
 					<th>NCAR No.</th>
-					<th>Issued By</th>
+					<th>Detected By</th>
+					<th>Responsible person</th>
+					<th>Follow-up by</th>
+					<th>Verified by</th>
 					<th>Source</th>
 					<th>Date Issued</th>
+					<th>Date Closed</th>
 					<th>NC Description</th>
 					<th>Clause No.</th>
 					<th>Status</th>
@@ -83,8 +87,12 @@
 						<tr data-id="<?= $ncar->ID ?>">
 							<td><?= $ncar->ID ?></td>
 							<td><?= $author ?></td>
+							<td></td>
+							<td></td>
+							<td></td>
 							<td><?= $source ?></td>
 							<td><?= $date ?></td>
+							<td></td>
 							<td><?= $nc_desc ?></td>
 							<td><?= $clause_no ?></td>
 							<td><?=$verified ? "Closed" : "On Progress" ?></td>
