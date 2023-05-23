@@ -40,47 +40,47 @@ function filter_post_fields() {
 
 		// var_dump( $user_id );exit;
 
-		if ( $user_id != get_post( get_the_id() )->post_author ) {
+		// if ( $user_id != get_post( get_the_id() )->post_author ) {
 
-			/*user cant edit the file*/
+		// 	/*user cant edit the file*/
 
-			echo '<script>
-
-
-
-			(function($){
-
-				$(window).on(\'load\', function(){
-
-					$(\'[data-name="document_type"] select\').prop(\'disabled\', true);
-
-					$(\'[data-name="file_url"] input, [data-name="upload_document"] input\').prop(\'disabled\', true);
-
-					// console.log(\'test\');
-
-				});
-
-			})(jQuery);
+		// 	echo '<script>
 
 
 
-			</script>';
+		// 	(function($){
+
+		// 		$(window).on(\'load\', function(){
+
+		// 			$(\'[data-name="document_type"] select\').prop(\'disabled\', true);
+
+		// 			$(\'[data-name="file_url"] input, [data-name="upload_document"] input\').prop(\'disabled\', true);
+
+		// 			// console.log(\'test\');
+
+		// 		});
+
+		// 	})(jQuery);
 
 
 
-			echo '
+		// 	</script>';
 
-			<style type="text/css">
 
-				[data-name="upload_document"] .acf-file-uploader.has-value {
 
-				    pointer-events: none;
+		// 	echo '
 
-				}
+		// 	<style type="text/css">
 
-			</style>';
+		// 		[data-name="upload_document"] .acf-file-uploader.has-value {
 
-		}
+		// 		    pointer-events: none;
+
+		// 		}
+
+		// 	</style>';
+
+		// }
 
 
 
