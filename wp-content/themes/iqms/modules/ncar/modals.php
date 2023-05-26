@@ -200,6 +200,7 @@
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#part1" aria-controls="part1" role="tab" data-toggle="tab"> Nonconformity Definition </a></li>
 							<li role="presentation"><a href="#part2" aria-controls="part2" role="tab" data-toggle="tab"> Correction, Root Cause Analysis and Corrective Action </a></li>
+							<li role="presentation"><a href="#part2b" aria-controls="part2b" role="tab" data-toggle="tab"> Follow-up </a></li>
 							<li role="presentation"><a href="#part3" aria-controls="part3" role="tab" data-toggle="tab"> Verifications </a></li>
 						</ul>
 
@@ -207,7 +208,7 @@
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="part1">
 
-    						<form id="ncar_edit_form">
+    							<form id="ncar_edit_form">
 									<div class="row">
 										<div class="col-sm-4">
 											
@@ -366,7 +367,6 @@
 											<tr>
 												<td colspan="2">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
 												<td>Completion Date</td>
-												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
 											</tr>
 										</tbody>
@@ -410,7 +410,6 @@
 												<td>Root Cause/s</td>
 												<td>Corrective Action</td>
 												<td>Completion Date</td>
-												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
 											</tr>
 
@@ -425,6 +424,72 @@
 												<td></td>
 											</tr>
 										</tbody>
+
+									</table>
+
+									<div class="submit-group" style="display: flex; flex-direction: row-reverse;">
+										<button type="submit" class="btn btn-success" id="edit_form2_save">Save changes</button>
+									</div>
+								</form>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="part2b">
+								<form id="ncar_edit_form2">
+									<table class="table">
+										<tbody>
+											<tr>
+												<td colspan="4"><button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button></td>
+											</tr>
+										</tbody>
+										<tbody>
+											<tr>
+												<td colspan="2">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
+												<td>Completion Date</td>
+												<td colspan="2">Implemented As Planned?</td>
+												<td></td>
+											</tr>
+										</tbody>
+
+										<tbody id="form_2_1_b">
+											
+										</tbody>
+
+				
+
+										<tbody>
+											
+											<tr>
+												<td colspan="6">2.2 Root Cause Analysis</td>
+											</tr>
+
+										</tbody>
+										<tbody id="form_2_2_b">
+											
+											<tr class="file-upload" data-multiple-upload="true">
+												<td colspan="6">
+													<div class="hidden file-group evidences root-cause-analysis-file-upload"></div>
+													<input class="selected_files root-cause-analysis-file" type="text" readonly placeholder="selected file" readyonly>
+												</td>
+											</tr>
+
+										</tbody>
+										<tbody>
+											
+											<tr>
+												<td colspan="6">2.3 Corrective Action: (Action to eliminate the cause of the detected nonconformity)</td>
+											</tr>
+											<tr>
+												<td>Root Cause/s</td>
+												<td>Corrective Action</td>
+												<td>Completion Date</td>
+												<td colspan="2">Implemented As Planned?</td>
+												<td></td>
+											</tr>
+
+										</tbody>
+										<tbody id="form_2_3_b">
+
+										</tbody>
+				
 
 									</table>
 
