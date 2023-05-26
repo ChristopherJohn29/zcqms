@@ -790,9 +790,9 @@
 						});
 
 						/*form 2*/
-						$html = '';
+						$html2 = '';
 						$.each(r.form2.correction, function(i, v) {
-							$html += ''+
+							$html2 += ''+
 							'<tr>'+
 								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
 								'<td><input type="date" class="form-control correction_date" value="'+v.correction_date+'"></td>'+
@@ -805,7 +805,21 @@
 							'</tr>';
 
 							_correction_ind++;
-							$('#form_2_1_b').html( $html );
+							$('#form_2_1_b').html( $html2 );
+							app.bindDeleteBtns();
+						});
+
+						$html = '';
+						$.each(r.form2.correction, function(i, v) {
+							$html += ''+
+							'<tr>'+
+								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
+								'<td><input type="date" class="form-control correction_date" value="'+v.correction_date+'"></td>'+
+								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
+							'</tr>';
+
+							_correction_ind++;
+							$('#form_2_1').html( $html );
 							app.bindDeleteBtns();
 						});
 
@@ -821,7 +835,7 @@
 						$html = '';
 						$html2 = '';
 						$.each(r.form2.corrective_action_data, function(i, v) {
-							$html += ''+
+							$html2 += ''+
 							'<tr>'+
 								'<td><input type="text" class="form-control root_causes" value="'+v.root_causes+'"></td>'+
 								'<td><input type="text" class="form-control corrective_action" value="'+v.corrective_action+'"></td>'+
@@ -834,7 +848,7 @@
 								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
 							'</tr>';
 
-							$html2 += ''+
+							$html += ''+
 							'<tr>'+
 								'<td><input type="text" class="form-control root_causes" value="'+v.root_causes+'"></td>'+
 								'<td><input type="text" class="form-control corrective_action" value="'+v.corrective_action+'"></td>'+
@@ -864,7 +878,7 @@
 								'<td><input type="date" class="form-control input-sm verification_date" value="'+v.verification_date+'"></td>'+
 								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
 							'</tr>';
-
+							
 							_correction_ind++;
 							$('#form_3_1').html( $html );
 							app.bindDeleteBtns();
