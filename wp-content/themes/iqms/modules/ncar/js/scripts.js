@@ -186,7 +186,7 @@
 
 				$html = ''+
 				'<tr>'+
-					'<td><input type="text" class="form-control root_causes"></td>'+
+					'<td colspan="4"><input type="text" class="form-control root_causes"></td>'+
 					'<td><input type="text" class="form-control corrective_action"></td>'+
 					'<td><input type="date" class="form-control corrective_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
 					'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
@@ -850,7 +850,7 @@
 
 							$html += ''+
 							'<tr>'+
-								'<td><input type="text" class="form-control root_causes" value="'+v.root_causes+'"></td>'+
+								'<td colspan="4"><input type="text" class="form-control root_causes" value="'+v.root_causes+'"></td>'+
 								'<td><input type="text" class="form-control corrective_action" value="'+v.corrective_action+'"></td>'+
 								'<td><input type="date" class="form-control corrective_date" value="'+v.corrective_date+'"></td>'+
 								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
