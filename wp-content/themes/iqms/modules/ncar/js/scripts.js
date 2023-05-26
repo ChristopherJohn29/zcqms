@@ -858,8 +858,8 @@
 
 							_correction_ind++;
 
-							$('#form_2_3_b').html( $html );
-							$('#form_2_3').html( $html2 );
+							$('#form_2_3_b').html( $html2 );
+							$('#form_2_3').html( $html);
 
 							app.bindDeleteBtns();
 						});
@@ -878,7 +878,7 @@
 								'<td><input type="date" class="form-control input-sm verification_date" value="'+v.verification_date+'"></td>'+
 								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
 							'</tr>';
-							
+
 							_correction_ind++;
 							$('#form_3_1').html( $html );
 							app.bindDeleteBtns();
