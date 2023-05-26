@@ -157,7 +157,7 @@
 
 				$html = ''+
 				'<tr>'+
-					'<td colspan="2"><input type="text" class="form-control correction_text"></td>'+
+					'<td colspan="4"><input type="text" class="form-control correction_text"></td>'+
 					'<td><input type="date" class="form-control correction_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
 					'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
 				'</tr>';
@@ -813,7 +813,7 @@
 						$.each(r.form2.correction, function(i, v) {
 							$html += ''+
 							'<tr>'+
-								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
+								'<td colspan="4"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
 								'<td><input type="date" class="form-control correction_date" value="'+v.correction_date+'"></td>'+
 								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
 							'</tr>';

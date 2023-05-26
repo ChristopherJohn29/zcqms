@@ -365,7 +365,7 @@
 										</tbody>
 										<tbody>
 											<tr>
-												<td colspan="2">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
+												<td colspan="4">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
 												<td>Completion Date</td>
 												<td></td>
 											</tr>
