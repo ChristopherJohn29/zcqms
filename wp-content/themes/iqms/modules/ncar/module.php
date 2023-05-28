@@ -119,6 +119,12 @@ if ( !class_exists('NCAR_Module') ) {
 				var_dump($current_correction);
 				echo "</pre>";
 
+				$test = array_merge_recursive($correction, $current_correction);
+
+				echo "<pre>";
+				var_dump($test);
+				echo "</pre>";
+
 				exit;
 
 				update_post_meta( $post_id, 'correction', $correction );
