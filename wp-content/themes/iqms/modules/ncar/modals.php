@@ -22,6 +22,7 @@
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#" role="tab"> Nonconformity Definition </a></li>
 							<li role="presentation"><a href="#" role="tab" > Correction, Root Cause Analysis and Corrective Action </a></li>
+							<li role="presentation"><a href="#" role="tab" > Follow-up </a></li>
 							<li role="presentation"><a href="#" role="tab" > Verifications </a></li>
 						</ul>
 
