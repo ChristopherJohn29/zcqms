@@ -225,8 +225,6 @@
 					correction.push({
 						correction_text: correction_text,
 						correction_date: correction_date,
-						correction_implemented: correction_implemented,
-						correction_remarks: correction_remarks,
 					});
 
 				});
@@ -243,8 +241,6 @@
 						root_causes: root_causes,
 						corrective_action: corrective_action,
 						corrective_date: corrective_date,
-						corrective_implemented: corrective_implemented,
-						corrective_remarks: corrective_remarks,
 					});
 
 				});
@@ -319,8 +315,6 @@
 					correction_remarks = $(this).find('.correction_remarks').val();
 
 					correction.push({
-						correction_text: correction_text,
-						correction_date: correction_date,
 						correction_implemented: correction_implemented,
 						correction_remarks: correction_remarks,
 					});
@@ -336,9 +330,6 @@
 					corrective_remarks = $(this).find('.corrective_remarks').val();
 
 					corrective_action_data.push({
-						root_causes: root_causes,
-						corrective_action: corrective_action,
-						corrective_date: corrective_date,
 						corrective_implemented: corrective_implemented,
 						corrective_remarks: corrective_remarks,
 					});

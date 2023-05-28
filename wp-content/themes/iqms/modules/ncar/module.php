@@ -107,9 +107,18 @@ if ( !class_exists('NCAR_Module') ) {
 			$post_id = $data['ncar_no'];
 			$to_return = [];
 			if ( $post_id ) {
+				
+				echo "<pre>";
+				var_dump($correction);
+				var_dump($corrective_action_data );
+				echo "</pre>";
+
+				exit;
+
 				update_post_meta( $post_id, 'correction', $correction );
 				update_post_meta( $post_id, 'files', $files );
 				update_post_meta( $post_id, 'corrective_action_data', $corrective_action_data );
+
 				$to_return = ['post_id' => $post_id];
 			} else {
 				$to_return = ['error' => true];
