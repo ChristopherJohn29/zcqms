@@ -465,7 +465,7 @@
 									</table>
 
 									<div class="submit-group" style="display: flex; flex-direction: row-reverse;">
-										<button type="submit" class="btn btn-success" id="edit_form2_save_b">Save changes</button>
+										<button type="submit" class="btn btn-success" id="edit_form2_save">Save changes</button>
 									</div>
 								</form>
 							</div>
@@ -531,7 +531,7 @@
 									</table>
 
 									<div class="submit-group" style="display: flex; flex-direction: row-reverse;">
-										<button type="submit" class="btn btn-success" id="edit_form2_save">Save changes</button>
+										<button type="submit" class="btn btn-success" id="edit_form2_save_b">Save changes</button>
 									</div>
 								</form>
 							</div>
