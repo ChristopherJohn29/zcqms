@@ -898,6 +898,12 @@
 							$('#edit-modal #part2').removeClass( 'readonly' );
 						}
 
+						if ( r.cant_followup ) {
+							$('#edit-modal #part2b').addClass( 'readonly' );
+						} else {
+							$('#edit-modal #part2b').removeClass( 'readonly' );
+						}
+
 						if ( r.cant_approve ) {
 							$('#edit-modal #part3').addClass( 'readonly' );
 						} else {
