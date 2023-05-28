@@ -124,7 +124,7 @@
 									</div>
 
 									<div class="row">
-										<div class="col-sm-6">
+										<div class="col-sm-3">
 
 											<div class="form-group">
 												<label for="reviewed_by">Person Responsible</label>
@@ -141,7 +141,24 @@
 
 										</div>
 
-										<div class="col-sm-6">
+										<div class="col-sm-3">
+
+											<div class="form-group">
+												<label for="followup_by">Follow-up By</label>
+												<select id="followup_by" name="followup_by" class="form-control">
+													<option value="">-</option>
+													<?php
+														$users = get_users();
+														foreach( $users as $user ) {
+															echo '<option value="'.$user->data->ID.'" '.( $user->data->ID == $this_user ? 'selected="selected"' : '' ).'>'.$user->data->display_name.'</option>';
+														}
+													?>
+												</select>
+											</div>
+
+										</div>
+
+										<div class="col-sm-3">
 
 											<div class="form-group">
 												<label for="approved_by">Verified By</label>

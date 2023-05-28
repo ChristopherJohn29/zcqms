@@ -153,6 +153,7 @@ if ( !class_exists('NCAR_Module') ) {
 				$id = $ncar->ID;
 				$to_return['cant_edit'] = ( $this->this_user == $ncar->post_author ? false : true );
 				$to_return['cant_review'] = ( $this->this_user == get_post_meta( $ncar->ID, 'reviewed_by', true ) ? false : true );
+				$to_return['cant_followup'] = ( $this->this_user == get_post_meta( $ncar->ID, 'followup_by', true ) ? false : true );
 				$to_return['cant_approve'] = ( $this->this_user == get_post_meta( $ncar->ID, 'approved_by', true ) ? false : true );
 
 				$evidences_id = get_post_meta( $id, 'evidences', true );
@@ -185,6 +186,7 @@ if ( !class_exists('NCAR_Module') ) {
 					'clause_no' => get_post_meta( $id, 'clause_no', true ),
 					'evidences' => $evidences,
 					'reviewed_by' => get_post_meta( $id, 'reviewed_by', true ),
+					'followup_by' => get_post_meta( $id, 'followup_by', true ),
 					'approved_by' => get_post_meta( $id, 'approved_by', true ),
 					'description_of_the_noncomformity' => get_post_meta( $id, 'description_of_the_noncomformity', true ),
 				];
