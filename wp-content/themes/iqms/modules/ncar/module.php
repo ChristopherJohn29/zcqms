@@ -113,6 +113,12 @@ if ( !class_exists('NCAR_Module') ) {
 				var_dump($corrective_action_data );
 				echo "</pre>";
 
+				$current_correction = get_post_meta( $post_id, 'correction', $correction );
+
+				echo "<pre>";
+				var_dump($current_correction);
+				echo "</pre>";
+
 				exit;
 
 				update_post_meta( $post_id, 'correction', $correction );
