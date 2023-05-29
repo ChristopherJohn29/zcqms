@@ -69,13 +69,16 @@
 						$verification = get_post_meta( $id, 'verification', true );
 
 						$reviewed_by = get_post_meta( $id, 'reviewed_by', true );
-						$reviewed_by_person = get_user_by( 'ID', $reviewed_by );
+						$reviewed_by_raw = get_user_by( 'ID', $reviewed_by );
+						$reviewed_by_person = $reviewed_by_raw->data->display_name;
 
 						$followup_by = get_post_meta( $id, 'followup_by', true );
-						$followup_by_person = get_user_by( 'ID', $followup_by );
+						$followup_by_raw = get_user_by( 'ID', $followup_by );
+						$followup_by_person = $followup_by_raw->data->display_name;
 
 						$approved_by = get_post_meta( $id, 'approved_by', true );
-						$approved_by_person = get_user_by( 'ID', $approved_by );
+						$approved_by_raw = get_user_by( 'ID', $approved_by );
+						$approved_by_person = $approved_by_raw->data->display_name;
 
 						$verified = 1;
 
