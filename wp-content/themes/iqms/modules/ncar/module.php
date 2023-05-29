@@ -108,9 +108,8 @@ if ( !class_exists('NCAR_Module') ) {
 			$to_return = [];
 			if ( $post_id ) {
 
-				$current_correction = get_post_meta( $post_id, 'correction' );
-				var_dump($current_correction);
-				exit;
+				$current_correction = get_post_meta( $post_id, 'correction', true);
+
 
 				foreach ($correction as $key => $value) {
 					$correction[$key]['correction_text'] = $correction[$key]['correction_text'] ? $correction[$key]['correction_text'] : $current_correction[$key]['correction_text'];
@@ -119,7 +118,7 @@ if ( !class_exists('NCAR_Module') ) {
 					$correction[$key]['correction_remarks'] = $correction[$key]['correction_remarks'] ? $correction[$key]['correction_remarks'] : $current_correction[$key]['correction_remarks'];
 				}
 
-				$current_corrective_action_data = get_post_meta( $post_id, 'corrective_action_data' );
+				$current_corrective_action_data = get_post_meta( $post_id, 'corrective_action_data', true );
 
 				foreach ($corrective_action_data as $key => $value) {
 					$corrective_action_data[$key]['root_causes'] = $corrective_action_data[$key]['root_causes'] ? $corrective_action_data[$key]['root_causes'] : $corrective_action_data[$key]['root_causes'];
