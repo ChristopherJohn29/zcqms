@@ -164,8 +164,8 @@
 
 				$html2 = ''+
 				'<tr>'+
-					'<td colspan="2"><input type="text" class="form-control correction_text"></td>'+
-					'<td><input type="date" class="form-control correction_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
+					'<td colspan="2"><input type="text" disabled class="form-control correction_text"></td>'+
+					'<td><input type="date" disabled class="form-control correction_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
 					'<td>'+
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes"> Yes'+
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No"> No'+
@@ -785,8 +785,8 @@
 						$.each(r.form2.correction, function(i, v) {
 							$html2 += ''+
 							'<tr>'+
-								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
-								'<td><input type="date" class="form-control correction_date" value="'+v.correction_date+'"></td>'+
+								'<td colspan="2"><input type="text" disabled class="form-control correction_text" value="'+v.correction_text+'"></td>'+
+								'<td><input type="date" disabled class="form-control correction_date" value="'+v.correction_date+'"></td>'+
 								'<td>'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes" '+( v.correction_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No" '+( v.correction_implemented == 'No' ? 'checked' : '' )+'> No'+
