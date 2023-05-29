@@ -503,8 +503,7 @@
 											
 											<tr class="file-upload" data-multiple-upload="true">
 												<td colspan="6">
-													<div class="hidden file-group evidences root-cause-analysis-file-upload"></div>
-													<input class="selected_files root-cause-analysis-file" type="text" readonly placeholder="selected file" readyonly>
+													<button for="noncoformity-evidence" class="btn btn-primary root-cause-analysis-file-view">View uploaded root cause analysis</button>
 												</td>
 											</tr>
 
