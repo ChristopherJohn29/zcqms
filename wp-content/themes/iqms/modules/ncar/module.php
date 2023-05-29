@@ -121,11 +121,11 @@ if ( !class_exists('NCAR_Module') ) {
 				$current_corrective_action_data = get_post_meta( $post_id, 'corrective_action_data', true );
 
 				foreach ($corrective_action_data as $key => $value) {
-					$corrective_action_data[$key]['root_causes'] = $corrective_action_data[$key]['root_causes'] ? $corrective_action_data[$key]['root_causes'] : $corrective_action_data[$key]['root_causes'];
-					$corrective_action_data[$key]['corrective_action'] = $corrective_action_data[$key]['corrective_action'] ? $corrective_action_data[$key]['corrective_action'] : $corrective_action_data[$key]['corrective_action'];
-					$corrective_action_data[$key]['corrective_date'] = $corrective_action_data[$key]['corrective_date'] ? $corrective_action_data[$key]['corrective_date'] : $corrective_action_data[$key]['corrective_date'];
-					$corrective_action_data[$key]['corrective_implemented'] = $corrective_action_data[$key]['corrective_implemented'] ? $corrective_action_data[$key]['corrective_implemented'] : $corrective_action_data[$key]['corrective_implemented'];
-					$corrective_action_data[$key]['corrective_remarks'] = $corrective_action_data[$key]['corrective_remarks'] ? $corrective_action_data[$key]['corrective_remarks'] : $corrective_action_data[$key]['corrective_remarks'];
+					$corrective_action_data[$key]['root_causes'] = $corrective_action_data[$key]['root_causes'] ? $corrective_action_data[$key]['root_causes'] : $current_corrective_action_data[$key]['root_causes'];
+					$corrective_action_data[$key]['corrective_action'] = $corrective_action_data[$key]['corrective_action'] ? $corrective_action_data[$key]['corrective_action'] : $current_corrective_action_data[$key]['corrective_action'];
+					$corrective_action_data[$key]['corrective_date'] = $corrective_action_data[$key]['corrective_date'] ? $corrective_action_data[$key]['corrective_date'] : $current_corrective_action_data[$key]['corrective_date'];
+					$corrective_action_data[$key]['corrective_implemented'] = $corrective_action_data[$key]['corrective_implemented'] ? $corrective_action_data[$key]['corrective_implemented'] : $current_corrective_action_data[$key]['corrective_implemented'];
+					$corrective_action_data[$key]['corrective_remarks'] = $corrective_action_data[$key]['corrective_remarks'] ? $corrective_action_data[$key]['corrective_remarks'] : $current_corrective_action_data[$key]['corrective_remarks'];
 				}
 
 				update_post_meta( $post_id, 'correction', $correction );
