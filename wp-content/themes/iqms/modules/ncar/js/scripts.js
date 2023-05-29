@@ -194,9 +194,9 @@
 
 				$html2 = ''+
 				'<tr>'+
-					'<td><input type="text" class="form-control root_causes"></td>'+
-					'<td><input type="text" class="form-control corrective_action"></td>'+
-					'<td><input type="date" class="form-control corrective_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
+					'<td><input type="text" disabled class="form-control root_causes"></td>'+
+					'<td><input type="text" disabled class="form-control corrective_action"></td>'+
+					'<td><input type="date" disabled class="form-control corrective_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
 					'<td>'+
 						'<input type="radio" name="corrective_'+_correction_ind+'" class="corrective_implemented" value="Yes"> Yes'+
 						'<input type="radio" name="corrective_'+_correction_ind+'" class="corrective_implemented" value="No"> No'+
@@ -828,9 +828,9 @@
 						$.each(r.form2.corrective_action_data, function(i, v) {
 							$html2 += ''+
 							'<tr>'+
-								'<td><input type="text" class="form-control root_causes" value="'+v.root_causes+'"></td>'+
-								'<td><input type="text" class="form-control corrective_action" value="'+v.corrective_action+'"></td>'+
-								'<td><input type="date" class="form-control corrective_date" value="'+v.corrective_date+'"></td>'+
+								'<td><input type="text" disabled class="form-control root_causes" value="'+v.root_causes+'"></td>'+
+								'<td><input type="text" disabled class="form-control corrective_action" value="'+v.corrective_action+'"></td>'+
+								'<td><input type="date" disabled class="form-control corrective_date" value="'+v.corrective_date+'"></td>'+
 								'<td>'+
 									'<input type="radio" name="corrective_'+_correction_ind+'" class="corrective_implemented" value="Yes" '+( v.corrective_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
 									'<input type="radio" name="corrective_'+_correction_ind+'" class="corrective_implemented" value="No" '+( v.corrective_implemented == 'No' ? 'checked' : '' )+'> No'+
