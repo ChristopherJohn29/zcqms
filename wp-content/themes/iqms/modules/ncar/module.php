@@ -109,6 +109,8 @@ if ( !class_exists('NCAR_Module') ) {
 			if ( $post_id ) {
 
 				$current_correction = get_post_meta( $post_id, 'correction' );
+				var_dump($current_correction);
+				exit;
 
 				foreach ($correction as $key => $value) {
 					$correction[$key]['correction_text'] = $correction[$key]['correction_text'] ? $correction[$key]['correction_text'] : $current_correction[$key]['correction_text'];
