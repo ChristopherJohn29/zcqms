@@ -15,7 +15,6 @@
 			<thead>
 				<tr>
 					<th>NCAR No.</th>
-					<th>Detected By</th>
 					<th>Responsible person</th>
 					<th>Follow-up by</th>
 					<th>Verified by</th>
@@ -69,6 +68,10 @@
 						$clause_no = get_post_meta( $id, 'clause_no', true );
 						$verification = get_post_meta( $id, 'verification', true );
 
+						$reviewed_by = get_post_meta( $id, 'reviewed_by', true );
+						$followup_by = get_post_meta( $id, 'followup_by', true );
+						$approved_by = get_post_meta( $id, 'approved_by', true );
+
 						$verified = 1;
 
 						if(is_array($verification)){
@@ -86,10 +89,9 @@
 						?>
 						<tr data-id="<?= $ncar->ID ?>">
 							<td><?= $ncar->ID ?></td>
-							<td><?= $author ?></td>
-							<td></td>
-							<td></td>
-							<td></td>
+							<td><?= $reviewed_by ?></td>
+							<td><?= $followup_by ?></td>
+							<td><?= $approved_by ?></td>
 							<td><?= $source ?></td>
 							<td><?= $date ?></td>
 							<td></td>

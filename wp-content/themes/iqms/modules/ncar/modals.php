@@ -128,7 +128,7 @@
 										<div class="col-sm-3">
 
 											<div class="form-group">
-												<label for="reviewed_by">Person Responsible</label>
+												<label for="reviewed_by">Responsible Person</label>
 												<select id="reviewed_by" name="reviewed_by" class="form-control">
 													<option value="">-</option>
 													<?php
@@ -322,7 +322,7 @@
 										<div class="col-sm-3">
 
 											<div class="form-group">
-												<label for="reviewed_by">Reviewed By</label>
+												<label for="reviewed_by">Responsible Person</label>
 												<select id="reviewed_by" name="reviewed_by" class="form-control">
 													<option value="">-</option>
 													<?php
@@ -358,7 +358,7 @@
 										<div class="col-sm-3">
 
 											<div class="form-group">
-												<label for="approved_by">Approved By</label>
+												<label for="approved_by">Verified By</label>
 												<select id="approved_by" name="approved_by" class="form-control">
 													<option value="">-</option>
 													<?php
