@@ -107,19 +107,15 @@ if ( !class_exists('NCAR_Module') ) {
 			$post_id = $data['ncar_no'];
 			$to_return = [];
 			if ( $post_id ) {
-				
-				echo "<pre>";
-				var_dump($correction);
-				echo "</pre>";
 
 				$current_correction = get_post_meta( $post_id, 'correction', $correction );
 
-				echo "<pre>";
-				var_dump($current_correction);
-				echo "</pre>";
-
-	
-				exit;
+				foreach ($correction as $key => $value) {
+					$correction[$key]['correction_text'] = $correction[$key]['correction_text'] ? $correction[$key]['correction_text'] : $current_correction[$key]['correction_text'];
+					$correction[$key]['correction_date'] = $correction[$key]['correction_date'] ? $correction[$key]['correction_date'] : $current_correction[$key]['correction_date'];
+					$correction[$key]['correction_implemented'] = $correction[$key]['correction_implemented'] ? $correction[$key]['correction_implemented'] : $current_correction[$key]['correction_implemented'];
+					$correction[$key]['correction_remarks'] = $correction[$key]['correction_remarks'] ? $correction[$key]['correction_remarks'] : $current_correction[$key]['correction_remarks'];
+				}
 
 				update_post_meta( $post_id, 'correction', $correction );
 				update_post_meta( $post_id, 'files', $files );
