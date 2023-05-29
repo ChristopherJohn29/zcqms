@@ -15,6 +15,7 @@
 			<thead>
 				<tr>
 					<th>NCAR No.</th>
+					<th>Detected By</th>
 					<th>Responsible person</th>
 					<th>Follow-up by</th>
 					<th>Verified by</th>
@@ -97,6 +98,7 @@
 						?>
 						<tr data-id="<?= $ncar->ID ?>">
 							<td><?= $ncar->ID ?></td>
+							<td><?= $author ?></td>
 							<td><?= $reviewed_by_person ?></td>
 							<td><?= $followup_by_person ?></td>
 							<td><?= $approved_by_person ?></td>
