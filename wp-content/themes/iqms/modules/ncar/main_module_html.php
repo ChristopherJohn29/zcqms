@@ -69,8 +69,13 @@
 						$verification = get_post_meta( $id, 'verification', true );
 
 						$reviewed_by = get_post_meta( $id, 'reviewed_by', true );
+						$reviewed_by_person = get_user_by( 'ID', $reviewed_by );
+
 						$followup_by = get_post_meta( $id, 'followup_by', true );
+						$followup_by_person = get_user_by( 'ID', $followup_by );
+
 						$approved_by = get_post_meta( $id, 'approved_by', true );
+						$approved_by_person = get_user_by( 'ID', $approved_by );
 
 						$verified = 1;
 
@@ -89,9 +94,9 @@
 						?>
 						<tr data-id="<?= $ncar->ID ?>">
 							<td><?= $ncar->ID ?></td>
-							<td><?= $reviewed_by ?></td>
-							<td><?= $followup_by ?></td>
-							<td><?= $approved_by ?></td>
+							<td><?= $reviewed_by_person ?></td>
+							<td><?= $followup_by_person ?></td>
+							<td><?= $approved_by_person ?></td>
 							<td><?= $source ?></td>
 							<td><?= $date ?></td>
 							<td></td>
