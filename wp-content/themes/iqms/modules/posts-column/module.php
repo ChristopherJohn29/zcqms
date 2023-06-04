@@ -30,7 +30,7 @@ function filter_posts_list($query)
 				$approved_by = get_field('approved_by', get_the_ID()) ? get_field('approved_by', get_the_ID()) : [];
 				$review_by = get_field('review_by', get_the_ID()) ? get_field('review_by', get_the_ID()) : [];
 				$users = get_field('users', get_the_ID()) ? get_field('users', get_the_ID()) : [];
-				$author_id = get_post_field( 'post_author', get_the_ID() );
+				// $author_id = get_post_field( 'post_author', get_the_ID() );
 				
 				if
 				(
@@ -38,7 +38,7 @@ function filter_posts_list($query)
 					in_array($cur_id, $approved_by) || 
 					in_array($cur_id, $review_by) || 
 					in_array($cur_id, $users) || 
-					$cur_id == $author_id
+					// $cur_id == $author_id
 				)
 				{
 					$post_ids[] = get_the_ID();
