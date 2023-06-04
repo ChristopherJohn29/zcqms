@@ -1,4 +1,48 @@
 <?php
+
+add_action('pre_get_posts', 'filter_posts_list');
+
+function filter_posts_list($query)
+{
+    //$pagenow holds the name of the current page being viewed
+     global $pagenow, $typenow;  
+
+     	$user = wp_get_current_user();
+
+        $allowed_roles = array('author');
+        //Shouldn't happen for the admin, but for any role with the edit_posts capability and only on the posts list page, that is edit.php
+        if('edit.php' == $pagenow &&  $typenow == 'dcm')
+        { 
+        //global $query's set() method for setting the author as the current user's id
+			$query->set(
+				'meta_query', array(
+					'relation'      => 'OR',
+					array(
+						'key'       => 'assigned_dco',
+						'value'     => array($user->ID),
+						'compare'   => 'IN',
+					),
+					array(
+						'key'       => 'approved_by',
+						'value'     => array($user->ID),
+						'compare'   => 'IN',
+					),
+					array(
+						'key'       => 'review_by',
+						'value'     => array($user->ID),
+						'compare'   => 'IN',
+					),
+					array(
+						'key'       => 'users',
+						'value'     => array($user->ID),
+						'compare'   => 'IN',
+					),
+				)
+			); // here you can set your custom meta field using meta_query.
+        }
+}
+
+
 add_filter( 'manage_dcm_posts_columns', 'set_custom_edit_dcm_columns', 99 );
 add_action( 'manage_dcm_posts_custom_column' , 'set_custom_edit_dcm_column_column', 10, 2 );
 function set_custom_edit_dcm_columns( $columns ) {
