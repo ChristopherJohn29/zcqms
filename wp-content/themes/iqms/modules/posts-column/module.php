@@ -14,6 +14,9 @@ function filter_posts_list($query)
         if('edit.php' == $pagenow &&  $typenow == 'dcm')
         { 
         //global $query's set() method for setting the author as the current user's id
+
+		var_dump($query);
+		exit;
 			$query->set(
 				'meta_query', array(
 					'relation'      => 'OR',
