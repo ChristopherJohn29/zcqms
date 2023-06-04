@@ -48,13 +48,8 @@ function filter_posts_list($query)
 			wp_reset_postdata();
 			endif;
 			
-			// $query->set( 'post__in', $post_ids );
+			$query->set( 'post__in', $post_ids );
 
-					
-			echo "<pre>";
-			var_dump($post_ids);
-			echo "</pre>";
-			exit;
         }
 }
 
