@@ -19,7 +19,7 @@ function filter_posts_list($query)
 
 			$args = array(
 				'post_type' => 'dcm',
-				'limit' => 10
+				'posts_per_page' => 10
 			);
 
 			$the_query = new WP_Query( $args );
