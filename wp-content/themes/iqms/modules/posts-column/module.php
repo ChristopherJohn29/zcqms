@@ -22,36 +22,22 @@ function filter_posts_list($query)
 				'posts_per_page' => 1
 			);
 
+			echo "<pre>";
+			var_dump($args);
+			echo "</pre>";
+
 			$the_query = new WP_Query( $args );
 
-			if ( $the_query->have_posts() ) :
-				while ( $the_query->have_posts() ) : $the_query->the_post();
+			// if ( $the_query->have_posts() ) :
+			// 	while ( $the_query->have_posts() ) : $the_query->the_post();
 
-				// $assigned_dco = get_field('assigned_dco');
-				// $approved_by = get_field('approved_by');
-				// $review_by = get_field('review_by');
-				// $users = get_field('users');
-				// $author_id = get_post_field( 'post_author', get_the_ID() );
+			// 	endwhile; 
+			// 	wp_reset_postdata();
 
-				// if
-				// (
-				// 	in_array($cur_id, $assigned_dco) || 
-				// 	in_array($cur_id, $approved_by) || 
-				// 	in_array($cur_id, $review_by) || 
-				// 	in_array($cur_id, $users) || 
-				// 	$cur_id == $author_id
-				// )
-				// {
-				// 	$post_ids[] = get_the_ID();
-				// }
+			// else : 
 
-				endwhile; 
-				wp_reset_postdata();
-
-			else : 
-
-				echo "test";
-			endif;
+			// 	echo "test";
+			// endif;
 			
 			// $query->set( 'post__in', $post_ids );
 
