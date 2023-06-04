@@ -25,22 +25,40 @@ function filter_posts_list($query)
 
 			if ( $the_query->have_posts() ) :
 				while ( $the_query->have_posts() ) : $the_query->the_post();
-				
-				$assigned_dco = get_field('assigned_dco', get_the_ID()) ? get_field('assigned_dco', get_the_ID()) : [];
 
-				var_dump($assigned_dco);
-				$approved_by = get_field('approved_by', get_the_ID()) ? get_field('approved_by', get_the_ID()) : [];
-				$review_by = get_field('review_by', get_the_ID()) ? get_field('review_by', get_the_ID()) : [];
-				$users = get_field('users', get_the_ID()) ? get_field('users', get_the_ID()) : [];
-				// $author_id = get_post_field( 'post_author', get_the_ID() );
+				$assigned_dco = [];
+				$assigned_dco_raw =  get_field('assigned_dco', get_the_ID());
+				foreach ($assigned_dco_raw as $key => $value) {
+					$assigned_dco[] = $value['ID'];
+				}
+
+				$approved_by = [];
+				$approved_by_raw =  get_field('approved_by', get_the_ID());
+				foreach ($approved_by_raw as $key => $value) {
+					$approved_by[] = $value['ID'];
+				}
+
+				$review_by = [];
+				$review_by_raw =  get_field('review_by', get_the_ID());
+				foreach ($review_by_raw as $key => $value) {
+					$review_by[] = $value['ID'];
+				}
+
+				$users = [];
+				$users_raw =  get_field('users', get_the_ID());
+				foreach ($users_raw as $key => $value) {
+					$users[] = $value['ID'];
+				}
+				
+				$author_id = get_post_field( 'post_author', get_the_ID() );
 				
 				if
 				(
 					in_array($cur_id, $assigned_dco) || 
 					in_array($cur_id, $approved_by) || 
 					in_array($cur_id, $review_by) || 
-					in_array($cur_id, $users) 
-					// $cur_id == $author_id
+					in_array($cur_id, $users) ||
+					$cur_id == $author_id
 				)
 				{
 					$post_ids[] = get_the_ID();
