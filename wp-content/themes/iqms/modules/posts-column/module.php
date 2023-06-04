@@ -45,8 +45,12 @@ function filter_posts_list($query)
 				// 	$post_ids[] = get_the_ID();
 				// }
 
-			endwhile; 
-			wp_reset_postdata();
+				endwhile; 
+				wp_reset_postdata();
+
+			else : 
+
+				echo "test";
 			endif;
 			
 			// $query->set( 'post__in', $post_ids );
