@@ -18,26 +18,35 @@ function filter_posts_list($query)
 			$post_ids = array();
 
 			$args = array(
-				'post_type' => 'dcmsss',
-				'posts_per_page' => 1
+				'post_type' => 'dcm',
 			);
-
-			echo "<pre>";
-			var_dump($query->query['fields']);
-			echo "</pre>";
 
 			$the_query = new WP_Query( $args );
 
-			// if ( $the_query->have_posts() ) :
-			// 	while ( $the_query->have_posts() ) : $the_query->the_post();
+			if ( $the_query->have_posts() ) :
+				while ( $the_query->have_posts() ) : $the_query->the_post();
 
-			// 	endwhile; 
-			// 	wp_reset_postdata();
+				$assigned_dco = get_field('assigned_dco');
+				$approved_by = get_field('approved_by');
+				$review_by = get_field('review_by');
+				$users = get_field('users');
+				$author_id = get_post_field( 'post_author', get_the_ID() );
 
-			// else : 
+				if
+				(
+					in_array($cur_id, $assigned_dco) || 
+					in_array($cur_id, $approved_by) || 
+					in_array($cur_id, $review_by) || 
+					in_array($cur_id, $users) || 
+					$cur_id == $author_id
+				)
+				{
+					$post_ids[] = get_the_ID();
+				}
 
-			// 	echo "test";
-			// endif;
+			endwhile; 
+			wp_reset_postdata();
+			endif;
 			
 			// $query->set( 'post__in', $post_ids );
 
