@@ -26,7 +26,7 @@ function filter_posts_list($query)
 			var_dump($args);
 			echo "</pre>";
 
-			$the_query = new WP_Query( $args );
+			// $the_query = new WP_Query( $args );
 
 			// if ( $the_query->have_posts() ) :
 			// 	while ( $the_query->have_posts() ) : $the_query->the_post();
