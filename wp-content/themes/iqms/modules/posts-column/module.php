@@ -11,7 +11,7 @@ function filter_posts_list($query)
 		$cur_id = $user->ID;
         $allowed_roles = array('author');
         //Shouldn't happen for the admin, but for any role with the edit_posts capability and only on the posts list page, that is edit.php
-        if('edit.php' == $pagenow &&  $typenow == 'dcm')
+        if('edit.php' == $pagenow &&  $typenow == 'dcm' && $query->query['fields'] == 'id=>parent')
         { 
         //global $query's set() method for setting the author as the current user's id
 			
@@ -26,7 +26,7 @@ function filter_posts_list($query)
 			var_dump($query->query['fields']);
 			echo "</pre>";
 
-			// $the_query = new WP_Query( $args );
+			$the_query = new WP_Query( $args );
 
 			// if ( $the_query->have_posts() ) :
 			// 	while ( $the_query->have_posts() ) : $the_query->the_post();
