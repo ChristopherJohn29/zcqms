@@ -77,7 +77,7 @@ function filter_posts_list($query)
 			endif;
 
 
-			$query->set( 'post__in', $post_ids );
+			$query->set( 'post__in', empty( $post_ids ) ? [ 0 ] : $post_ids );
 
         }
 }
