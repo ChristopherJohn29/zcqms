@@ -8,44 +8,48 @@ function filter_posts_list($query)
      global $pagenow, $typenow;  
 
      	$user = wp_get_current_user();
-
+		$cur_id = $user->ID;
         $allowed_roles = array('author');
         //Shouldn't happen for the admin, but for any role with the edit_posts capability and only on the posts list page, that is edit.php
         if('edit.php' == $pagenow &&  $typenow == 'dcm')
         { 
         //global $query's set() method for setting the author as the current user's id
+			
+			$post_ids = array();
 
-			$query->set(
-				'meta_query', array(
-					'relation'      => 'OR',
-					array(
-						'key'       => 'assigned_dco',
-						'value'     => array($user->ID),
-						'compare'   => 'IN',
-					),
-					array(
-						'key'       => 'approved_by',
-						'value'     => array($user->ID),
-						'compare'   => 'IN',
-					),
-					array(
-						'key'       => 'review_by',
-						'value'     => array($user->ID),
-						'compare'   => 'IN',
-					),
-					array(
-						'key'       => 'users',
-						'value'     => array($user->ID),
-						'compare'   => 'IN',
-					),
+			$args = array(
+				'post_type' => 'dcm',
+			);
+
+			$the_query = new WP_Query( $args );
+
+			if ( $the_query->have_posts() ) :
+				while ( $the_query->have_posts() ) : $the_query->the_post();
+
+				$assigned_dco = get_field('assigned_dco');
+				$approved_by = get_field('approved_by');
+				$review_by = get_field('review_by');
+				$users = get_field('users');
+				$author_id = get_post_field( 'post_author', get_the_ID() );
+
+				if
+				(
+					in_array($cur_id, $assigned_dco) || 
+					in_array($cur_id, $approved_by) || 
+					in_array($cur_id, $review_by) || 
+					in_array($cur_id, $users) || 
+					$cur_id == $author_id
 				)
-			); // here you can set your custom meta field using meta_query.
+				{
+					$post_ids[] = get_the_ID();
+				}
 
-						
-			echo "<pre>";
-			var_dump($query);
-			echo "</pre>";
-			exit;
+			endwhile; 
+			wp_reset_postdata();
+			endif;
+			
+			$query->set( 'post__in', $post_ids );
+
         }
 }
 
