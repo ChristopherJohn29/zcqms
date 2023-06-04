@@ -18,10 +18,9 @@ function filter_posts_list($query)
         { 
         //global $query's set() method for setting the author as the current user's id
 			
-			echo "<pre>";
-			var_dump($roles);
-			echo "</pre>";
-			exit;
+			if($roles[0] == 'dco' || $roles[0] == 'administrator'){
+				return;
+			}
 			
 			$post_ids = array();
 
