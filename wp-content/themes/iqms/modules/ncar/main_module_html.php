@@ -32,6 +32,10 @@
 
 			<tbody>
 				<?php
+
+					$cur_user = wp_get_current_user();
+					$roles = $cur_user->roles;
+
 					$this_user = get_current_user_id();
 					$args = [
 						'post_type' => 'ncar',
@@ -99,7 +103,8 @@
 							$reviewed_by == $this_user || 
 							$followup_by == $this_user || 
 							$approved_by == $this_user || 
-							$author == $this_user
+							$author == $this_user || 
+							$roles[0] == 'administrator'
 							){
 
 						?>
