@@ -96,9 +96,9 @@
 						}
 
 						if(
-							$reviewed_by_person == $this_user || 
-							$followup_by_person == $this_user || 
-							$approved_by_person == $this_user || 
+							$reviewed_by == $this_user || 
+							$followup_by == $this_user || 
+							$approved_by == $this_user || 
 							$author == $this_user
 							){
 
