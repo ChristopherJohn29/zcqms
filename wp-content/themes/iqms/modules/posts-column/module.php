@@ -47,6 +47,11 @@ function filter_posts_list($query)
 			endwhile; 
 			wp_reset_postdata();
 			endif;
+
+			echo "<pre>";
+			var_dump($post_ids);
+			echo "</pre>";
+			exit();
 			
 			$query->set( 'post__in', $post_ids );
 
