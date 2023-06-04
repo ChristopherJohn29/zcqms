@@ -37,7 +37,7 @@ function filter_posts_list($query)
 					in_array($cur_id, $assigned_dco) || 
 					in_array($cur_id, $approved_by) || 
 					in_array($cur_id, $review_by) || 
-					in_array($cur_id, $users) || 
+					in_array($cur_id, $users) 
 					// $cur_id == $author_id
 				)
 				{
