@@ -27,6 +27,8 @@ function filter_posts_list($query)
 				while ( $the_query->have_posts() ) : $the_query->the_post();
 				
 				$assigned_dco = get_field('assigned_dco', get_the_ID()) ? get_field('assigned_dco', get_the_ID()) : [];
+
+				var_dump($assigned_dco);
 				$approved_by = get_field('approved_by', get_the_ID()) ? get_field('approved_by', get_the_ID()) : [];
 				$review_by = get_field('review_by', get_the_ID()) ? get_field('review_by', get_the_ID()) : [];
 				$users = get_field('users', get_the_ID()) ? get_field('users', get_the_ID()) : [];
