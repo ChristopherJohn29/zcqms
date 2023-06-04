@@ -95,6 +95,13 @@
 							$verified = 0;
 						}
 
+						if(
+							$reviewed_by_person == $this_user || 
+							$followup_by_person == $this_user || 
+							$approved_by_person == $this_user || 
+							$author == $this_user
+							){
+
 						?>
 						<tr data-id="<?= $ncar->ID ?>">
 							<td><?= $ncar->ID ?></td>
@@ -117,6 +124,7 @@
 						</tr>
 
 						<?php
+						}
 					}
 
 				?>
