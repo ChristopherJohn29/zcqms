@@ -23,7 +23,7 @@ function filter_posts_list($query)
 			);
 
 			echo "<pre>";
-			var_dump($args);
+			var_dump($query);
 			echo "</pre>";
 
 			// $the_query = new WP_Query( $args );
