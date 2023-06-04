@@ -26,10 +26,10 @@ function filter_posts_list($query)
 			if ( $the_query->have_posts() ) :
 				while ( $the_query->have_posts() ) : $the_query->the_post();
 				
-				$assigned_dco = get_field('assigned_dco') ? get_field('assigned_dco') : [];
-				$approved_by = get_field('approved_by') ? get_field('approved_by') : [];
-				$review_by = get_field('review_by') ? get_field('review_by') : [];
-				$users = get_field('users') ? get_field('users') : [];
+				$assigned_dco = get_field('assigned_dco', get_the_ID()) ? get_field('assigned_dco', get_the_ID()) : [];
+				$approved_by = get_field('approved_by', get_the_ID()) ? get_field('approved_by', get_the_ID()) : [];
+				$review_by = get_field('review_by', get_the_ID()) ? get_field('review_by', get_the_ID()) : [];
+				$users = get_field('users', get_the_ID()) ? get_field('users', get_the_ID()) : [];
 				$author_id = get_post_field( 'post_author', get_the_ID() );
 				
 				if
