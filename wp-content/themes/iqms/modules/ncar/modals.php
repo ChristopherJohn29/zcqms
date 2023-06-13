@@ -132,7 +132,7 @@
 												<select id="reviewed_by" name="reviewed_by" class="form-control">
 													<option value="">-</option>
 													<?php
-														$users = get_users();
+														$users = get_users('orderby=meta_value&meta_key=first_name');
 														foreach( $users as $user ) {
 															echo '<option value="'.$user->data->ID.'">'.$user->data->display_name.'</option>';
 														}
@@ -149,7 +149,7 @@
 												<select id="followup_by" name="followup_by" class="form-control">
 													<option value="">-</option>
 													<?php
-														$users = get_users();
+														$users = get_users('orderby=meta_value&meta_key=first_name');
 														foreach( $users as $user ) {
 															echo '<option value="'.$user->data->ID.'" '.( $user->data->ID == $this_user ? 'selected="selected"' : '' ).'>'.$user->data->display_name.'</option>';
 														}
@@ -166,7 +166,7 @@
 												<select id="approved_by" name="approved_by" class="form-control">
 													<option value="">-</option>
 													<?php
-														$users = get_users();
+														$users = get_users('orderby=meta_value&meta_key=first_name');
 														foreach( $users as $user ) {
 															echo '<option value="'.$user->data->ID.'" '.( $user->data->ID == $this_user ? 'selected="selected"' : '' ).'>'.$user->data->display_name.'</option>';
 														}
