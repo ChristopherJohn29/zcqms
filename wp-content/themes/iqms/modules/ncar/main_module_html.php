@@ -103,8 +103,9 @@
 							$reviewed_by == $this_user || 
 							$followup_by == $this_user || 
 							$approved_by == $this_user || 
-							$author == $this_user || 
-							$roles[0] == 'administrator'
+							$ncar->ID == $this_user || 
+							$roles[0] == 'administrator' || 
+							$roles[0] == 'dco'
 							){
 
 						?>
