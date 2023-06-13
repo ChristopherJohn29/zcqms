@@ -65,7 +65,6 @@
 
 						$id = $ncar->ID;
 
-						$authorid = get_user_by( 'ID', $ncar->post_author );
 						$author = get_user_by( 'ID', $ncar->post_author );
 						$author = $author->data->display_name;
 						$source = get_post_meta( $id, 'source_of_nc', true );
@@ -104,7 +103,7 @@
 							$reviewed_by == $this_user || 
 							$followup_by == $this_user || 
 							$approved_by == $this_user || 
-							$authorid == $this_user || 
+							$ncar->post_author == $this_user || 
 							$roles[0] == 'administrator' || 
 							$roles[0] == 'dco'
 							){
