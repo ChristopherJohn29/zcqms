@@ -8,6 +8,13 @@ class TransferDCM{
         
         add_action( 'acf/save_post', array($this, 'check_post'), 10, 3 );
         add_filter( 'wp_insert_post_data' , array($this, 'filter_post_data') , '99', 2 );
+        add_action( 'init', array($this, 'check_post'));
+    }
+
+    function test_email(){
+        if(isset($_GET['testemail'])){
+            $this->sendEmail('christopherjohngamo@gmail.com', 'QMS Document review status', 'test - QMS Document accepted ');
+        }
     }
 
     function filter_post_data($data , $postarr){
@@ -92,7 +99,7 @@ class TransferDCM{
 
 
 
-        $sent = wp_mail($to, $subject, strip_tags($message), $headers);
+        $sent = wp_mail($toemail, $subject, strip_tags($message), $headers);
             
         return $sent;
     }
