@@ -14,6 +14,8 @@ class TransferDCM{
     function test_email(){
         if(isset($_GET['testemail'])){
             $this->sendEmail('christopherjohngamo@gmail.com', 'QMS Document review status', 'test - QMS Document accepted ');
+
+            exit;
         }
     }
 
