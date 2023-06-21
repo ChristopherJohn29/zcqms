@@ -40,20 +40,56 @@ class TransferDCM{
             
             if($is_reviewed_new != $is_reviewed){
                 if($is_reviewed_new == 'yes'){
+                    if(get_option('notification_success_'.$data['post_author'])){
+                        $options = get_option('notification_success_'.$data['post_author']);
+                        $options[] = 'QMS Document review status'. $data['post_author'].' - QMS Document accepted';
+                        update_option( 'notification_success_'.$data['post_author'],  $options);
+                    } else {
+                        add_option( 'notification_success_'.$data['post_author'],  ['QMS Document review status'. $data['post_author'].' - QMS Document accepted']);
+                    }
+                    
                     $this->sendEmail($owner->user_email, 'QMS Document review status', $data['post_author'].' - QMS Document accepted ');
                 }
 
                 if($is_reviewed_new == 'no'){
+
+                    if(get_option('notification_danger_'.$data['post_author'])){
+                        $options = get_option('notification_danger_'.$data['post_author']);
+                        $options[] = 'QMS Document review status'. $data['post_author'].' - QMS Document to disapproved';
+                        update_option( 'notification_danger_'.$data['post_author'],  $options);
+                    } else {
+                        add_option( 'notification_danger_'.$data['post_author'],  ['QMS Document review status'. $data['post_author'].' - QMS Document to disapproved']);
+                    }
+
+
                     $this->sendEmail($owner->user_email, 'QMS Document review status', $data['post_author'].' - QMS Document to disapproved');
                 }
             }
 
             if($is_approved_new != $is_approved){
                 if($is_approved_new == 'yes'){
+                    if(get_option('notification_success_'.$data['post_author'])){
+                        $options = get_option('notification_success_'.$data['post_author']);
+                        $options[] = 'QMS Document status'. $data['post_author'].' -  QMS Document approved';
+                        update_option( 'notification_success_'.$data['post_author'],  $options);
+                    } else {
+                        add_option( 'notification_success_'.$data['post_author'],  ['QMS Document status'. $data['post_author'].' -  QMS Document approved']);
+                    }
+
                     $this->sendEmail($owner->user_email, 'QMS Document status', $data['post_author'].' -  QMS Document approved');
                 }
 
                 if($is_approved_new == 'no'){
+
+                    if(get_option('notification_danger_'.$data['post_author'])){
+                        $options = get_option('notification_danger_'.$data['post_author']);
+                        $options[] = 'QMS Document  status'. $data['post_author'].' -  QMS Document denied';
+                        update_option( 'notification_danger_'.$data['post_author'],  $options);
+                    } else {
+                        add_option( 'notification_danger_'.$data['post_author'],  ['QMS Document  status'. $data['post_author'].' -  QMS Document denied']);
+                    }
+
+
                     $this->sendEmail($owner->user_email, 'QMS Document  status', $data['post_author'].' -  QMS Document denied');
                 }
             }
@@ -68,6 +104,14 @@ class TransferDCM{
                     foreach ($dcoreviewedby as $key => $value) {
     
                         $dco = get_userdata($value)->data;
+
+                        if(get_option('notification_success_'.$value)){
+                            $options = get_option('notification_success_'.$value);
+                            $options[] = 'There is new QMS Document to review';
+                            update_option( 'notification_success_'.$value,  $options);
+                        } else {
+                            add_option( 'notification_success_'.$value,  ['There is new QMS Document to review']);
+                        }
                      
                         $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
                         $dco_emailed[] = $value;
@@ -79,6 +123,15 @@ class TransferDCM{
     
                             if(!in_array($value, $dco_emailed)){    
                                 $dco = get_userdata($value)->data;
+
+                                if(get_option('notification_success_'.$value)){
+                                    $options = get_option('notification_success_'.$value);
+                                    $options[] = 'There is new QMS Document to review';
+                                    update_option( 'notification_success_'.$value,  $options);
+                                } else {
+                                    add_option( 'notification_success_'.$value,  ['There is new QMS Document to review']);
+                                }
+                             
     
                                 $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
                                 $dco_emailed[] = $value;
