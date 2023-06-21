@@ -62,33 +62,35 @@ class TransferDCM{
 
             $dcoreviewedby = $postarr['acf']['field_63d67a4f766a4'];
 
-
-            if(empty($dco_emailed)){
-                $dco_emailed = array();
-                foreach ($dcoreviewedby as $key => $value) {
-
-                    $dco = get_userdata($value)->data;
-                 
-                    $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
-                    $dco_emailed[] = $value;
-                
-                }
-            } else {
-                if ( is_array( $dcoreviewedby ) ) {
+            if(is_array($dcoreviewedby)){
+                if(empty($dco_emailed)){
+                    $dco_emailed = array();
                     foreach ($dcoreviewedby as $key => $value) {
-
-                        if(!in_array($value, $dco_emailed)){    
-                            $dco = get_userdata($value)->data;
-
-                            $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
-                            $dco_emailed[] = $value;
-                        }
+    
+                        $dco = get_userdata($value)->data;
+                     
+                        $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
+                        $dco_emailed[] = $value;
                     
                     }
+                } else {
+                    if ( is_array( $dcoreviewedby ) ) {
+                        foreach ($dcoreviewedby as $key => $value) {
+    
+                            if(!in_array($value, $dco_emailed)){    
+                                $dco = get_userdata($value)->data;
+    
+                                $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
+                                $dco_emailed[] = $value;
+                            }
+                        
+                        }
+                    }
                 }
-            }
 
-            update_post_meta( $postID, 'dco_emailed', $dco_emailed );
+                update_post_meta( $postID, 'dco_emailed', $dco_emailed );
+            }
+           
 
     
         }
