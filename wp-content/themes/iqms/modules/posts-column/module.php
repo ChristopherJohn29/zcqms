@@ -26,6 +26,7 @@ function filter_posts_list($query)
 
 			$args = array(
 				'post_type' => 'dcm',
+				'posts_per_page' => -1
 			);
 
 			$the_query = new WP_Query( $args );
@@ -66,12 +67,6 @@ function filter_posts_list($query)
 					}
 				}
 
-				
-					var_dump(get_the_ID());
-					// exit;
-				
-				
-				
 				$author_id = get_post_field( 'post_author', get_the_ID() );
 				
 				if
