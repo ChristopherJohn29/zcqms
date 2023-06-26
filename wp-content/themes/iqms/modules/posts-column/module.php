@@ -66,10 +66,8 @@ function filter_posts_list($query)
 					}
 				}
 
-				if(get_the_ID() == 1032){
-					var_dump($users_raw);
-					exit;
-				} 
+				var_dump($users_raw);
+				exit;
 				
 				
 				$author_id = get_post_field( 'post_author', get_the_ID() );
