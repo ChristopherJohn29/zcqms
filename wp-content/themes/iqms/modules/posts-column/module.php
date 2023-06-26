@@ -66,8 +66,10 @@ function filter_posts_list($query)
 					}
 				}
 
-				var_dump($users_raw);
-				exit;
+				
+					var_dump(get_the_ID());
+					exit;
+				
 				
 				
 				$author_id = get_post_field( 'post_author', get_the_ID() );
