@@ -68,7 +68,7 @@ function filter_posts_list($query)
 
 				
 					var_dump(get_the_ID());
-					exit;
+					// exit;
 				
 				
 				
