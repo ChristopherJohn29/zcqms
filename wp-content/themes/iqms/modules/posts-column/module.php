@@ -210,6 +210,8 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 				if($for_revision[0]  == 'yes'){
 
 					$for_revision_initial = get_post_meta( $post_id, 'for_revision_initial', true );
+					var_dump($for_revision_initial);
+					exit;
 					if($for_revision_initial == 1){
 						$display =  '<label class="table-label-primary"> Initial Review</label>';
 					} else {
