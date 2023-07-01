@@ -182,6 +182,7 @@ class TransferDCM{
 
         update_field('document_id', $data['document_id'], $post_id);
         update_field('revision', $data['revision'], $post_id);
+        update_field('for_revision', 'yes', $post_id);
 
         add_post_meta($post_id, 'qms-revision-id', $qms_id);
 
