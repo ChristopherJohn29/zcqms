@@ -181,6 +181,7 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 			$reviewed_status = get_field( 'review_status', $post_id );
 			$approval_status = get_field( 'approval_status', $post_id );
 			$for_revision = get_field( 'for_revision', $post_id );
+			$assigned_dco_raw =  get_field('assigned_dco', $post_id);
 
 			if($dco_reviewed_status == 'review'){
 				$display = '<label class="table-label-primary"> For Review (DCO Complied) </label> ';
@@ -208,11 +209,7 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 				$display =  '<label class="table-label-primary"> For Correction</label> ';
 			} else {
 				if($for_revision[0]  == 'yes'){
-
-					$for_revision_initial = get_post_meta( $post_id, 'for_revision_initial', true );
-					var_dump($for_revision_initial);
-					exit;
-					if($for_revision_initial == 1){
+					if(!empty($assigned_dco_raw)){
 						$display =  '<label class="table-label-primary"> Initial Review</label>';
 					} else {
 						$display =  '<label class="table-label-primary"> For Revision</label>';

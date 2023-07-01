@@ -270,8 +270,6 @@ class TransferDCM{
             $this_user = wp_get_current_user();
             $user_id = $this_user->ID;
 
-            add_post_meta( $post_id, 'for_revision_initial', 1);
-
             $is_approved = get_field( 'approval_status', $post_ID );
             $is_reviewed = get_field( 'review_status', $post_ID );
             $is_dco_reviewed = get_field( 'dco_review_status', $post_ID );
