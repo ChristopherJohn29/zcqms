@@ -365,6 +365,8 @@ class TransferDCM{
 
             if($for_revision == 'yes'){
 
+                exit;
+
                 $this_user = wp_get_current_user();
                 $user_id = $this_user->ID;
     
