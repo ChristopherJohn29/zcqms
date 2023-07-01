@@ -363,6 +363,9 @@ class TransferDCM{
         } else if(get_post_type( $post_ID ) == 'qms-documents') {
             $for_revision = get_field( 'for_revision', $post_ID );
 
+            var_dump($for_revision);
+            exit;
+
             if($for_revision == 'yes'){
 
                 exit;
