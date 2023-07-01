@@ -363,12 +363,9 @@ class TransferDCM{
         } else if(get_post_type( $post_ID ) == 'qms-documents') {
             $for_revision = get_field( 'for_revision', $post_ID, true );
 
-            var_dump($for_revision);
-            exit;
 
-            if($for_revision == 'yes'){
+            if($for_revision[0] == 'yes'){
 
-                exit;
 
                 $this_user = wp_get_current_user();
                 $user_id = $this_user->ID;
