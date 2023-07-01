@@ -212,7 +212,7 @@ class TransferDCM{
             $dcm_id_entry = get_post_meta($post_ID, 'dcm_id', true);
 
             if($dcm_id_entry) {
-            $ids[] = $dcm_id_entry;
+                $ids[] = $dcm_id_entry;
             }
             
         endwhile;
@@ -424,8 +424,19 @@ class TransferDCM{
             if( ($is_approved  == 'yes' && $is_reviewed == 'yes') || $is_auto_approved ){
 
                 // add email 
-             
-                $this->transfer_post($data, $post_ID);
+                $revision = get_field('for_revision' , $post_ID );
+
+                if(isset($revision[0])){
+                    if($revision[0] == 'yes'){
+                        $this->revision_update($data, $post_ID);
+                    } else {
+                        $this->transfer_post($data, $post_ID);
+                    }
+                } else {
+                    $this->transfer_post($data, $post_ID);
+                }
+
+                
             } else {
             	wp_redirect( get_site_url() . '/wp-admin/edit.php?post_type=dcm' );
             	exit;
