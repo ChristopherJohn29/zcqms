@@ -208,7 +208,14 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 				$display =  '<label class="table-label-primary"> For Correction</label> ';
 			} else {
 				if($for_revision[0]  == 'yes'){
-					$display =  '<label class="table-label-primary"> For Revision</label>';
+
+					$for_revision_initial = get_post_meta( $post_id, 'for_revision_initial', true );
+					if($for_revision_initial == 1){
+						$display =  '<label class="table-label-primary"> Initial Review</label>';
+					} else {
+						$display =  '<label class="table-label-primary"> For Revision</label>';
+					}
+					
 				} else {
 					$display =  '<label class="table-label-primary"> Initial Review</label>';
 				}
