@@ -1,5 +1,33 @@
 <?php
 
+
+function sample_admin_notice__success() {
+
+	$options_success = get_option('notification_success_'.$data['post_author']);
+	$options_danger = get_option('notification_danger_'.$data['post_author']);
+
+	foreach ($options_success as $key => $value) {
+		?>
+		<div class="notice notice-success is-dismissible">
+			<p><?php _e( $value, 'sample-text-domain' ); ?></p>
+		</div>
+		<?php
+	}
+
+	foreach ($options_danger as $key => $value) {
+		?>
+		<div class="notice notice-danger is-dismissible">
+			<p><?php _e( $value, 'sample-text-domain' ); ?></p>
+		</div>
+		<?php
+	}
+
+}
+
+add_action( 'admin_notices', 'sample_admin_notice__success' );
+
+
+
 add_action( 'edit_form_top', 'filter_post_fields' );
 
 function filter_post_fields() {

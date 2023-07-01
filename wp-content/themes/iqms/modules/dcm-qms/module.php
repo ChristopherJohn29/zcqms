@@ -47,7 +47,7 @@ class TransferDCM{
                     } else {
                         add_option( 'notification_success_'.$data['post_author'],  ['QMS Document review status'. $data['post_author'].' - QMS Document accepted']);
                     }
-                    
+
                     $this->sendEmail($owner->user_email, 'QMS Document review status', $data['post_author'].' - QMS Document accepted ');
                 }
 
@@ -159,6 +159,39 @@ class TransferDCM{
         $sent = wp_mail($toemail, $subject, strip_tags($message), $headers);
             
         return $sent;
+    }
+
+    function revision_transfer_post( $data, $qms_id){
+
+        $ids = array();
+
+        $post_data = array(
+            'post_title' => $data['title'],
+            'post_type' => 'dcm',
+            'post_status' => 'publish'
+        );
+
+        $post_id = wp_insert_post( $post_data );
+        update_field('upload_document', $data['document']['ID'], $post_id);
+        update_field('document_entry', $data['document_entry'], $post_id);
+        update_field('users', $data['users'], $post_id);
+
+        update_field('document_type', $data['_document_type'], $post_id);
+        update_field('date_of_effectivity', $data['date_of_effectivity'], $post_id);
+        update_field('file_url', $data['file_url'], $post_id);
+
+        update_field('document_id', $data['document_id'], $post_id);
+        update_field('revision', $data['revision'], $post_id);
+
+        add_post_meta($post_id, 'qms-revision-id', $qms_id);
+
+        wp_set_post_terms( $post_id, $data['services'], 'services' );
+        wp_set_post_terms( $post_id, $data['document_type'], 'document_type' );
+        wp_set_post_terms( $post_id, $data['documents_label'], 'documents_label' );
+
+        
+        wp_redirect( get_site_url() . '/wp-admin/edit.php?post_type=dcm&orderby=date&order=desc&new_id='.$post_id );
+        exit;
     }
 
     function transfer_post( $data, $dcm_id){
@@ -326,6 +359,49 @@ class TransferDCM{
             } else {
             	wp_redirect( get_site_url() . '/wp-admin/edit.php?post_type=dcm' );
             	exit;
+            }
+        } else if(get_post_type( $post_ID ) == 'qms-documents') {
+            $for_revision = get_field( 'for_revision', $post_ID );
+
+            if($for_revision == 'yes'){
+
+                $this_user = wp_get_current_user();
+                $user_id = $this_user->ID;
+    
+                $is_approved = get_field( 'approval_status', $post_ID );
+                $is_reviewed = get_field( 'review_status', $post_ID );
+                $is_dco_reviewed = get_field( 'dco_review_status', $post_ID );
+                $document = get_field('upload_document' , $post_ID );
+                $document_entry = get_field('document_entry');
+                $users = get_field('users' , $post_ID );
+                $date_of_effectivity = get_field('date_of_effectivity' , $post_ID );
+    
+                $_document_type = get_field('document_type' , $post_ID );
+                $file_url = get_field('file_url' , $post_ID );
+    
+                $services = wp_get_post_terms($post_ID, 'services', array( 'fields' => 'ids' ));
+                $document_type = wp_get_post_terms($post_ID, 'document_type', array( 'fields' => 'ids' ));
+                $documents_label = wp_get_post_terms($post_ID, 'documents_label', array( 'fields' => 'ids' ));
+    
+                /*revision*/
+                $document_id = get_field('document_id' , $post_ID );
+                $revision = get_field('revision' , $post_ID );
+    
+                $data['title'] = get_the_title( $post_ID );
+                $data['document'] = $document;
+                $data['document_entry'] = $document_entry;
+                $data['services'] = $services;
+                $data['document_type'] = $document_type;
+                $data['_document_type'] = $_document_type;
+                $data['file_url'] = $file_url;
+                $data['documents_label'] = $documents_label;
+                $data['users'] = $users;
+                $data['date_of_effectivity'] = $date_of_effectivity;
+    
+                $data['document_id'] = $document_id;
+                $data['revision'] = $revision;
+
+                $this->revision_transfer_post($data, $post_ID);
             }
         }
 
