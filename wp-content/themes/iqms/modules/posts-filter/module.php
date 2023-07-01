@@ -1,7 +1,7 @@
 <?php
 
 
-function sample_admin_notice__success() {
+function notice__success() {
 
 	$options_success = get_option('notification_success_'.$data['post_author']);
 	$options_danger = get_option('notification_danger_'.$data['post_author']);
@@ -24,7 +24,7 @@ function sample_admin_notice__success() {
 
 }
 
-add_action( 'admin_notices', 'sample_admin_notice__success' );
+add_action( 'admin_notices', 'notice__success' );
 
 
 
