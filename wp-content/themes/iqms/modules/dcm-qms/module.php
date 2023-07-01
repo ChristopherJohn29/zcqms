@@ -185,6 +185,7 @@ class TransferDCM{
         update_field('for_revision', 'yes', $post_id);
 
         add_post_meta($post_id, 'qms-revision-id', $qms_id);
+        add_post_meta($post_id, 'dcm', $qms_id);
 
         wp_set_post_terms( $post_id, $data['services'], 'services' );
         wp_set_post_terms( $post_id, $data['document_type'], 'document_type' );
@@ -192,6 +193,74 @@ class TransferDCM{
 
         
         wp_redirect( get_site_url() . '/wp-admin/edit.php?post_type=dcm&orderby=date&order=desc&new_id='.$post_id );
+        exit;
+    }
+
+    function revision_update( $data, $dcm_id){
+
+        $ids = array();
+
+        $args = array(
+            'post_type' => 'qms-documents'
+        ); 
+
+        $query = new WP_Query($args);
+
+        if($query->have_posts()): while($query->have_posts()) :
+            $query->the_post();
+
+            $dcm_id_entry = get_post_meta($post_ID, 'dcm_id', true);
+
+            if($dcm_id_entry) {
+            $ids[] = $dcm_id_entry;
+            }
+            
+        endwhile;
+            wp_reset_postdata();
+        endif;
+
+        $post_data = array(
+            'post_title' => $data['title'],
+            'post_type' => 'qms-documents',
+            'post_status' => 'publish'
+        );
+
+        if(in_array($dcm_id, $ids)){
+            // no insert
+            wp_delete_post($dcm_id, true);
+
+        } else {
+
+            $post_id = get_post_meta($dcm_id, 'qms-revision-id', true);
+            update_field('upload_document', $data['document']['ID'], $post_id);
+            update_field('document_entry', $data['document_entry'], $post_id);
+            update_field('users', $data['users'], $post_id);
+            update_field('for_revision', array(), $post_id);
+
+            update_field('document_type', $data['_document_type'], $post_id);
+            update_field('date_of_effectivity', $data['date_of_effectivity'], $post_id);
+            update_field('file_url', $data['file_url'], $post_id);
+
+            update_field('document_id', $data['document_id'], $post_id);
+            update_field('revision', $data['revision'], $post_id);
+
+            add_post_meta($post_id, 'dcm_id', $dcm_id);
+    
+            wp_set_post_terms( $post_id, $data['services'], 'services' );
+            wp_set_post_terms( $post_id, $data['document_type'], 'document_type' );
+            wp_set_post_terms( $post_id, $data['documents_label'], 'documents_label' );
+
+            $_user_approved = get_post_meta( $dcm_id, '_user_approved', true );
+            $_user_reviewed = get_post_meta( $dcm_id, '_user_reviewed', true );
+            $_user_dco_reviewed = get_post_meta( $dcm_id, '_user_dco_reviewed', true );
+
+            add_post_meta( $post_id, '_user_approved', $_user_approved );
+            add_post_meta( $post_id, '_user_reviewed', $_user_reviewed );
+            add_post_meta( $post_id, '_user_dco_reviewed', $_user_dco_reviewed );
+            wp_delete_post($dcm_id, true);
+
+        }
+        wp_redirect( get_site_url() . '/wp-admin/edit.php?post_type=qms-documents&orderby=date&order=desc&new_id='.$post_id );
         exit;
     }
 
