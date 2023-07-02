@@ -581,8 +581,8 @@
 									</table>
 
 									<div class="submit-group" style="display: flex; flex-direction: row-reverse;">
-										<button name="final_decision" type="submit" value="satisfactory">Satisfactory</button>
-										<button name="final_decision" type="submit" value="not_satisfactory">Not Satisfactory</button>
+										<button type="submit" class="btn btn-success" id="edit_form3_save_satisfactory">Satisfactory</button>
+										<button type="submit" class="btn btn-success" id="edit_form3_save_not_satisfactory">Not Satisfactory</button>
 									</div>
 								</form>
 

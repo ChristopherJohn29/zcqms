@@ -84,11 +84,13 @@ if ( !class_exists('NCAR_Module') ) {
 			$data = $_POST['data'];
 
 			$verification = $data['verification'];
+			$final_decision = $data['final_decision'];
 
 			$post_id = $data['ncar_no'];
 			$to_return = [];
 			if ( $post_id ) {
 				update_post_meta( $post_id, 'verification', $verification );
+				update_post_meta( $post_id, 'final_decision', $final_decision );
 				$to_return = ['post_id' => $post_id];
 			} else {
 				$to_return = ['error' => true];
