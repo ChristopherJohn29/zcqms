@@ -99,6 +99,17 @@
 												</label>
 
 											</div>
+											<div class="form-group">
+
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Internal Control"> Internal Control
+												</label>
+
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="External Audit"> External Audit
+												</label>
+
+											</div>
 										</div>
 									</div>
 
