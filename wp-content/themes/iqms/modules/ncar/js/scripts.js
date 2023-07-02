@@ -401,8 +401,8 @@
 				$html = ''+
 				'<tr>'+
 					'<td colspan="2">'+
-						'<input type="radio" name="verification_'+_correction_ind+'" class="verification_implemented" value="Yes"> Yes'+
-						'<input type="radio" name="verification_'+_correction_ind+'" class="verification_implemented" value="No"> No'+
+						'<input type="radio" name="verification_'+_correction_ind+'" class="verification_implemented" value="Yes"> Satisfactory'+
+						'<input type="radio" name="verification_'+_correction_ind+'" class="verification_implemented" value="No"> Not Satisfactory'+
 					'</td>'+
 					'<td><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks"></td>'+
 					'<td><input type="date" class="form-control input-sm verification_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
