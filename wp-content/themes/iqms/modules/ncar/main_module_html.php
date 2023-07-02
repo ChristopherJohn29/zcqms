@@ -87,17 +87,31 @@
 
 						$verified = 1;
 
-						if(is_array($verification)){
-							foreach ($verification as $key => $value) {
-								if(isset($value['verification_implemented'])){
-									if($value['verification_implemented'] == 'No'){
-										$verified = 0;
-									}
-								}
-							}
+						$final_decision = get_post_meta( $id, 'final_decision', true );
+
+						// if(is_array($verification)){
+						// 	foreach ($verification as $key => $value) {
+						// 		if(isset($value['verification_implemented'])){
+						// 			if($value['verification_implemented'] == 'No'){
+						// 				$verified = 0;
+						// 			}
+						// 		}
+						// 	}
+						// } else {
+						// 	$verified = 0;
+						// }
+
+						if($final_decision == 'satisfactory'){
+							$status = 'Satisfactory';
+						} else if($final_decision == 'satisfactory'){
+							$status = 'Not satisfactory';
 						} else {
-							$verified = 0;
+							$status = 'On Progress';
 						}
+
+						
+
+
 
 						if(
 							$reviewed_by == $this_user || 
@@ -120,7 +134,7 @@
 							<td></td>
 							<td><?= $nc_desc ?></td>
 							<td><?= $clause_no ?></td>
-							<td><?=$verified ? "Closed" : "On Progress" ?></td>
+							<td><?=$status ?></td>
 							<td class="action-group">
 								<button class="btn btn-sm btn-success btn-edit"><i class="glyphicon glyphicon glyphicon-eye-open"></i> <i class="glyphicon glyphicon glyphicon-pencil"></i></button> 
 								<button class="btn btn-sm btn-primary btn-remarks"><i class="glyphicon glyphicon glyphicon-file"></i></button>
