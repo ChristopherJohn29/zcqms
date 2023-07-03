@@ -728,6 +728,9 @@
 			});
 
 			/*end init*/
+
+			this.loadBtnAction();
+
 		},
 		loadBtnAction: function() {
 			$('.btn-delete:not(.loaded)').on('click', function(){
@@ -1018,7 +1021,7 @@
 
 	$(document).ready(function(){
 		app.init();
-		app.loadBtnAction();
+		
 	});
 
 })(jQuery)
