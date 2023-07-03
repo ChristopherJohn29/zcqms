@@ -728,7 +728,7 @@
 			});
 
 			/*end init*/
-			$('#ncar-main_wrapper').on('click', '.paginate_button', function () { 
+			$('.paginate_button').on('click', function () { 
 				
 				this.loadBtnAction();
 			});
