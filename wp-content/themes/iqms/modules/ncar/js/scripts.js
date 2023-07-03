@@ -728,8 +728,12 @@
 			});
 
 			/*end init*/
+			$('#ncar-main_wrapper').on('click', '.paginate_button', function () { 
+				
+				this.loadBtnAction();
+			});
 
-			this.loadBtnAction();
+			
 
 		},
 		loadBtnAction: function() {
@@ -1021,7 +1025,7 @@
 
 	$(document).ready(function(){
 		app.init();
-		
+		app.loadBtnAction();
 	});
 
 })(jQuery)
