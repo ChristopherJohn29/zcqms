@@ -92,7 +92,7 @@ class TransferDCM{
                             }
                         
                             // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
-                            $reviewer_emailed[] = $value;
+                            $reviewer_emailed = [];
                         
                         }
                     }
@@ -165,7 +165,7 @@ class TransferDCM{
                             }
                         
                             // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
-                            $approver_emailed[] = $value;
+                            $approver_emailed = [];
                         
                         }
                     }
@@ -217,7 +217,7 @@ class TransferDCM{
                                 }
                              
                                 // $this->sendEmail($process_owner->user_email, 'New QMS Document uploaded', 'Your document has been uploaded: "'.$post_title.'"');
-                                $process_owner_emailed[] = $value;
+                                $process_owner_emailed = [];
                             }
                         }
                     }
