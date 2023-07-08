@@ -100,60 +100,61 @@ class TransferDCM{
 
             echo "<pre>";
             var_dump($dcoreviewedby);
+            var_dump($dco_emailed);
             echo "</pre>";
             exit;
 
-            // if(is_array($dcoreviewedby)){
-            //     if(empty($dco_emailed)){
-            //         $dco_emailed = array();
-            //         foreach ($dcoreviewedby as $key => $value) {
+            if(is_array($dcoreviewedby)){
+                if(empty($dco_emailed)){
+                    $dco_emailed = array();
+                    foreach ($dcoreviewedby as $key => $value) {
     
-            //             $dco = get_userdata($value)->data;
+                        $dco = get_userdata($value)->data;
 
-            //             if(get_option('notification_success_'.$value)){
-            //                 $options = get_option('notification_success_'.$value);
-            //                 $options[] = 'There is new QMS Document to review';
-            //                 update_option( 'notification_success_'.$value,  $options);
-            //             } else {
-            //                 add_option( 'notification_success_'.$value,  ['There is new QMS Document to review']);
-            //             }
+                        if(get_option('notification_success_'.$value)){
+                            $options = get_option('notification_success_'.$value);
+                            $options[] = 'There is new QMS Document to review';
+                            update_option( 'notification_success_'.$value,  $options);
+                        } else {
+                            add_option( 'notification_success_'.$value,  ['There is new QMS Document to review']);
+                        }
                      
-            //             $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
-            //             $dco_emailed[] = $value;
+                        $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
+                        $dco_emailed[] = $value;
                     
-            //         }
-            //     } else {
-            //         if ( is_array( $dcoreviewedby ) ) {
-            //             foreach ($dcoreviewedby as $key => $value) {
+                    }
+                } else {
+                    if ( is_array( $dcoreviewedby ) ) {
+                        foreach ($dcoreviewedby as $key => $value) {
     
-            //                 if(!in_array($value, $dco_emailed)){    
-            //                     $dco = get_userdata($value)->data;
+                            if(!in_array($value, $dco_emailed)){    
+                                $dco = get_userdata($value)->data;
 
-            //                     if(get_option('notification_success_'.$value)){
-            //                         $options = get_option('notification_success_'.$value);
-            //                         $options[] = 'There is new QMS Document to review';
-            //                         update_option( 'notification_success_'.$value,  $options);
-            //                     } else {
-            //                         add_option( 'notification_success_'.$value,  ['There is new QMS Document to review']);
-            //                     }
+                                if(get_option('notification_success_'.$value)){
+                                    $options = get_option('notification_success_'.$value);
+                                    $options[] = 'There is new QMS Document to review';
+                                    update_option( 'notification_success_'.$value,  $options);
+                                } else {
+                                    add_option( 'notification_success_'.$value,  ['There is new QMS Document to review']);
+                                }
                              
     
-            //                     $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
-            //                     $dco_emailed[] = $value;
-            //                 }
+                                $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
+                                $dco_emailed[] = $value;
+                            }
                         
-            //             }
-            //         }
-            //     }
+                        }
+                    }
+                }
 
-            //     update_post_meta( $postID, 'dco_emailed', $dco_emailed );
-            // }
+                update_post_meta( $postID, 'dco_emailed', $dco_emailed );
+            }
            
 
     
         }
         
-        exit;
+        // exit;
         return $data;
     }
 
