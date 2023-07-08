@@ -97,7 +97,7 @@ class TransferDCM{
 
 
             $dcoreviewedby = $postarr['acf']['field_63d67a4f766a4'];
-            $process_owner = $postarr['acf']['field_63d67a4f766a4'];
+            $process_owner_raw = $postarr['acf']['field_632c70a0da093'];
 
             echo "<pre>";
             var_dump($dcoreviewedby);
@@ -111,9 +111,13 @@ class TransferDCM{
                     foreach ($dcoreviewedby as $key => $value) {
     
                         $dco = get_userdata($value)->data;
+                        $process_owner = get_userdata($process_owner_raw[0])->data;
+
+                        
 
                         echo "<pre>";
                         var_dump($dco);
+                        var_dump($process_owner);
                         echo "</pre>";
                         exit;
 
