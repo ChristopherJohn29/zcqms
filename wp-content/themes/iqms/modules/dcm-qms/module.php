@@ -7,7 +7,7 @@ class TransferDCM{
     function __construct(){
         
         add_action( 'acf/save_post', array($this, 'check_post'), 10, 3 );
-        add_filter( 'wp_insert_post_data' , array($this, 'filter_post_data_new') , '99', 2 );
+        add_filter( 'wp_insert_post_data' , array($this, 'filter_post_data') , '99', 2 );
         add_action( 'init', array($this, 'test_email'));
     }
 
