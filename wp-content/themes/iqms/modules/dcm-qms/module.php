@@ -104,7 +104,7 @@ class TransferDCM{
             }
 
 
-            if(is_array($final_reviewer_raw)){
+            if(is_array($process_owner_raw)){
 
                 if(empty($approver_emailed)){
 
