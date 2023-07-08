@@ -116,7 +116,7 @@ class TransferDCM{
                                 add_option( 'notification_'.$dco->ID,  ['You have a document due for review: "'.$post_title.'"']);
                             }
                          
-                            $this->sendEmail($dco->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            // $this->sendEmail($dco->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
                             $dco_emailed[] = $value;
                         
                         }
@@ -134,7 +134,7 @@ class TransferDCM{
                                 add_option( 'notification_'.$process_owner->ID,  ['Your document has been uploaded: "'.$post_title.'"']);
                             }
                          
-                            $this->sendEmail($process_owner->user_email, 'New QMS Document uploaded', 'Your document has been uploaded: "'.$post_title.'"');
+                            // $this->sendEmail($process_owner->user_email, 'New QMS Document uploaded', 'Your document has been uploaded: "'.$post_title.'"');
                             $dco_emailed[] = $value;
                         }
                     }
