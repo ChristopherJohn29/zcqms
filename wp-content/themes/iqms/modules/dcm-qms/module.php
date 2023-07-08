@@ -36,7 +36,7 @@ class TransferDCM{
 
             $is_approved = get_field( 'approval_status', $postID );
             $is_reviewed = get_field( 'review_status', $postID );
-     
+            
             $is_reviewed_new = $postarr['acf']['field_63d6812dd0c68'];
             $is_final_reviewed_new = $postarr['acf']['field_6331a3f94f0bc'];
             $is_approved_new = $postarr['acf']['field_632c62e991029'];
@@ -80,15 +80,15 @@ class TransferDCM{
 
 
                     if($is_reviewed_new == 'no' || $is_reviewed_new == 'review' ){
-                        foreach ($reviewer_raw as $key => $value) {
-                            $reviewer = get_userdata($value)->data;
+                        foreach ($process_owner_raw as $key => $value) {
+                            $process_owner = get_userdata($value)->data;
                         
-                            if(get_option('notification_'.$reviewer->ID)){
-                                $options = get_option('notification_'.$reviewer->ID);
+                            if(get_option('notification_'.$process_owner->ID)){
+                                $options = get_option('notification_'.$process_owner->ID);
                                 $options[] = 'The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.';
-                                update_option( 'notification_'.$reviewer->ID,  $options);
+                                update_option( 'notification_'.$process_owner->ID,  $options);
                             } else {
-                                add_option( 'notification_'.$reviewer->ID,  ['The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.']);
+                                add_option( 'notification_'.$process_owner->ID,  ['The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.']);
                             }
                         
                             // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
@@ -96,6 +96,8 @@ class TransferDCM{
                         
                         }
                     }
+
+                   
 
 
                     update_post_meta( $postID, 'reviewer_emailed', $reviewer_emailed );
@@ -152,14 +154,14 @@ class TransferDCM{
 
                     if($is_final_reviewed_new == 'no' || $is_final_reviewed_new == 'review'){
                         foreach ($process_owner_raw as $key => $value) {
-                            $approver = get_userdata($value)->data;
+                            $process_owner = get_userdata($value)->data;
                         
-                            if(get_option('notification_'.$approver->ID)){
-                                $options = get_option('notification_'.$approver->ID);
+                            if(get_option('notification_'.$process_owner->ID)){
+                                $options = get_option('notification_'.$process_owner->ID);
                                 $options[] = 'The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.';
-                                update_option( 'notification_'.$approver->ID,  $options);
+                                update_option( 'notification_'.$process_owner->ID,  $options);
                             } else {
-                                add_option( 'notification_'.$approver->ID,  ['The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.']);
+                                add_option( 'notification_'.$process_owner->ID,  ['The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.']);
                             }
                         
                             // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
@@ -234,10 +236,11 @@ class TransferDCM{
 
                     $dco_emailed = array();
 
+
                     if(is_array($dcoreviewedby)){
                         foreach ($dcoreviewedby as $key => $value) {
                             $dco = get_userdata($value)->data;
-                           
+                            
                             if(get_option('notification_'.$dco->ID)){
                                 $options = get_option('notification_'.$dco->ID);
                                 $options[] = 'You have a document due for review: "'.$post_title.'"';
@@ -245,17 +248,17 @@ class TransferDCM{
                             } else {
                                 add_option( 'notification_'.$dco->ID,  ['You have a document due for review: "'.$post_title.'"']);
                             }
-                         
+                            
                             // $this->sendEmail($dco->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
                             $dco_emailed[] = $value;
                         
                         }
                     }
-                  
+
                     if(is_array($process_owner_raw)){
                         foreach ($process_owner_raw as $key => $value) {
                             $process_owner = get_userdata($value)->data;
-                           
+                            
                             if(get_option('notification_'.$process_owner->ID)){
                                 $options = get_option('notification_'.$process_owner->ID);
                                 $options[] = 'Your document has been uploaded: "'.$post_title.'"';
@@ -263,11 +266,14 @@ class TransferDCM{
                             } else {
                                 add_option( 'notification_'.$process_owner->ID,  ['Your document has been uploaded: "'.$post_title.'"']);
                             }
-                         
+                            
                             // $this->sendEmail($process_owner->user_email, 'New QMS Document uploaded', 'Your document has been uploaded: "'.$post_title.'"');
                             $dco_emailed[] = $value;
                         }
                     }
+
+
+
 
                     update_post_meta( $postID, 'dco_emailed', $dco_emailed );
                     
