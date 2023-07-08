@@ -52,7 +52,7 @@ class TransferDCM{
 
             $post_title = get_the_title($postID);
             
-       
+            
 
             if(is_array($reviewer_raw)){
 
@@ -105,6 +105,10 @@ class TransferDCM{
 
 
             if(is_array($process_owner_raw)){
+
+                echo "<pre>";
+                var_dump($process_owner_raw);
+                echo "</pre>";
 
                 if(empty($approver_emailed)){
 
@@ -274,13 +278,9 @@ class TransferDCM{
                 } 
 
             }
-
-
-            // exit;
     
         }
         
-        // exit;
         return $data;
     }
 
