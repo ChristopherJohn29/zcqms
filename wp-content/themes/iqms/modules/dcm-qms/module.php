@@ -79,7 +79,7 @@ class TransferDCM{
                     }
 
 
-                    if($is_reviewed_new != 'yes'){
+                    if($is_reviewed_new == 'no' || $is_reviewed_new == 'review' ){
                         foreach ($reviewer_raw as $key => $value) {
                             $reviewer = get_userdata($value)->data;
                         
@@ -150,7 +150,7 @@ class TransferDCM{
                     }
 
 
-                    if($is_final_reviewed_new != 'yes'){
+                    if($is_final_reviewed_new == 'no' || $is_final_reviewed_new == 'review'){
                         foreach ($process_owner_raw as $key => $value) {
                             $approver = get_userdata($value)->data;
                         
@@ -201,7 +201,7 @@ class TransferDCM{
                     }
 
 
-                    if($is_approved_new != 'yes'){
+                    if($is_approved_new == 'no' || $is_approved_new == 'review'){
                         if(is_array($process_owner_raw)){
                             foreach ($process_owner_raw as $key => $value) {
                                 $process_owner = get_userdata($value)->data;
