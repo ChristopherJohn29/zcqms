@@ -3,10 +3,11 @@
 
 function notice__success() {
 
-	$options_success = get_option('notification_success_'.$data['post_author']);
-	$options_danger = get_option('notification_danger_'.$data['post_author']);
+	
 
-	foreach ($options_success as $key => $value) {
+	$options = get_option('notification_'.get_current_user_id());
+
+	foreach ($options as $key => $value) {
 		?>
 		<div class="notice notice-success is-dismissible">
 			<p><?php _e( $value, 'sample-text-domain' ); ?></p>
@@ -14,13 +15,6 @@ function notice__success() {
 		<?php
 	}
 
-	foreach ($options_danger as $key => $value) {
-		?>
-		<div class="notice notice-danger is-dismissible">
-			<p><?php _e( $value, 'sample-text-domain' ); ?></p>
-		</div>
-		<?php
-	}
 
 }
 
