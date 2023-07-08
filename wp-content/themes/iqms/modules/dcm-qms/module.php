@@ -106,10 +106,6 @@ class TransferDCM{
 
             if(is_array($process_owner_raw)){
 
-                echo "<pre>";
-                var_dump($process_owner_raw);
-                echo "</pre>";
-
                 if(empty($approver_emailed)){
 
                     $approver_emailed = array();
