@@ -102,7 +102,7 @@ class TransferDCM{
             var_dump($dcoreviewedby);
             var_dump($dco_emailed);
             echo "</pre>";
-            exit;
+           
 
             if(is_array($dcoreviewedby)){
                 if(empty($dco_emailed)){
@@ -110,6 +110,11 @@ class TransferDCM{
                     foreach ($dcoreviewedby as $key => $value) {
     
                         $dco = get_userdata($value)->data;
+
+                        echo "<pre>";
+                        var_dump($dco);
+                        echo "</pre>";
+                        exit;
 
                         if(get_option('notification_success_'.$value)){
                             $options = get_option('notification_success_'.$value);
@@ -149,6 +154,8 @@ class TransferDCM{
 
                 update_post_meta( $postID, 'dco_emailed', $dco_emailed );
             }
+
+            exit;
            
 
     
