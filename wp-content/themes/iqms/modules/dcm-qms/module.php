@@ -29,136 +29,136 @@ class TransferDCM{
         if($postID){
           
 
-            // $dco_emailed = get_post_meta(  $postID, 'dco_emailed', true);
+            $dco_emailed = get_post_meta(  $postID, 'dco_emailed', true);
 
-            // $is_approved = get_field( 'approval_status', $postID );
-            // $is_reviewed = get_field( 'review_status', $postID );
+            $is_approved = get_field( 'approval_status', $postID );
+            $is_reviewed = get_field( 'review_status', $postID );
 
-            // $is_reviewed_new = $postarr['acf']['field_63d6812dd0c68'];
-            // $is_approved_new = $postarr['acf']['field_632c62e991029'];
-            // $owner = get_userdata($data['post_author'])->data;
+            $is_reviewed_new = $postarr['acf']['field_63d6812dd0c68'];
+            $is_approved_new = $postarr['acf']['field_632c62e991029'];
+            $owner = get_userdata($data['post_author'])->data;
             
-            // if($is_reviewed_new != $is_reviewed){
-            //     if($is_reviewed_new == 'yes'){
-            //         if(get_option('notification_success_'.$data['post_author'])){
-            //             $options = get_option('notification_success_'.$data['post_author']);
-            //             $options[] = 'QMS Document review status'. $data['post_author'].' - QMS Document accepted';
-            //             update_option( 'notification_success_'.$data['post_author'],  $options);
-            //         } else {
-            //             add_option( 'notification_success_'.$data['post_author'],  ['QMS Document review status'. $data['post_author'].' - QMS Document accepted']);
-            //         }
+            if($is_reviewed_new != $is_reviewed){
+                if($is_reviewed_new == 'yes'){
+                    if(get_option('notification_success_'.$data['post_author'])){
+                        $options = get_option('notification_success_'.$data['post_author']);
+                        $options[] = 'QMS Document review status'. $data['post_author'].' - QMS Document accepted';
+                        update_option( 'notification_success_'.$data['post_author'],  $options);
+                    } else {
+                        add_option( 'notification_success_'.$data['post_author'],  ['QMS Document review status'. $data['post_author'].' - QMS Document accepted']);
+                    }
 
-            //         $this->sendEmail($owner->user_email, 'QMS Document review status', $data['post_author'].' - QMS Document accepted ');
-            //     }
+                    $this->sendEmail($owner->user_email, 'QMS Document review status', $data['post_author'].' - QMS Document accepted ');
+                }
 
-            //     if($is_reviewed_new == 'no'){
+                if($is_reviewed_new == 'no'){
 
-            //         if(get_option('notification_danger_'.$data['post_author'])){
-            //             $options = get_option('notification_danger_'.$data['post_author']);
-            //             $options[] = 'QMS Document review status'. $data['post_author'].' - QMS Document to disapproved';
-            //             update_option( 'notification_danger_'.$data['post_author'],  $options);
-            //         } else {
-            //             add_option( 'notification_danger_'.$data['post_author'],  ['QMS Document review status'. $data['post_author'].' - QMS Document to disapproved']);
-            //         }
-
-
-            //         $this->sendEmail($owner->user_email, 'QMS Document review status', $data['post_author'].' - QMS Document to disapproved');
-            //     }
-            // }
-
-            // if($is_approved_new != $is_approved){
-            //     if($is_approved_new == 'yes'){
-            //         if(get_option('notification_success_'.$data['post_author'])){
-            //             $options = get_option('notification_success_'.$data['post_author']);
-            //             $options[] = 'QMS Document status'. $data['post_author'].' -  QMS Document approved';
-            //             update_option( 'notification_success_'.$data['post_author'],  $options);
-            //         } else {
-            //             add_option( 'notification_success_'.$data['post_author'],  ['QMS Document status'. $data['post_author'].' -  QMS Document approved']);
-            //         }
-
-            //         $this->sendEmail($owner->user_email, 'QMS Document status', $data['post_author'].' -  QMS Document approved');
-            //     }
-
-            //     if($is_approved_new == 'no'){
-
-            //         if(get_option('notification_danger_'.$data['post_author'])){
-            //             $options = get_option('notification_danger_'.$data['post_author']);
-            //             $options[] = 'QMS Document  status'. $data['post_author'].' -  QMS Document denied';
-            //             update_option( 'notification_danger_'.$data['post_author'],  $options);
-            //         } else {
-            //             add_option( 'notification_danger_'.$data['post_author'],  ['QMS Document  status'. $data['post_author'].' -  QMS Document denied']);
-            //         }
+                    if(get_option('notification_danger_'.$data['post_author'])){
+                        $options = get_option('notification_danger_'.$data['post_author']);
+                        $options[] = 'QMS Document review status'. $data['post_author'].' - QMS Document to disapproved';
+                        update_option( 'notification_danger_'.$data['post_author'],  $options);
+                    } else {
+                        add_option( 'notification_danger_'.$data['post_author'],  ['QMS Document review status'. $data['post_author'].' - QMS Document to disapproved']);
+                    }
 
 
-            //         $this->sendEmail($owner->user_email, 'QMS Document  status', $data['post_author'].' -  QMS Document denied');
-            //     }
-            // }
+                    $this->sendEmail($owner->user_email, 'QMS Document review status', $data['post_author'].' - QMS Document to disapproved');
+                }
+            }
+
+            if($is_approved_new != $is_approved){
+                if($is_approved_new == 'yes'){
+                    if(get_option('notification_success_'.$data['post_author'])){
+                        $options = get_option('notification_success_'.$data['post_author']);
+                        $options[] = 'QMS Document status'. $data['post_author'].' -  QMS Document approved';
+                        update_option( 'notification_success_'.$data['post_author'],  $options);
+                    } else {
+                        add_option( 'notification_success_'.$data['post_author'],  ['QMS Document status'. $data['post_author'].' -  QMS Document approved']);
+                    }
+
+                    $this->sendEmail($owner->user_email, 'QMS Document status', $data['post_author'].' -  QMS Document approved');
+                }
+
+                if($is_approved_new == 'no'){
+
+                    if(get_option('notification_danger_'.$data['post_author'])){
+                        $options = get_option('notification_danger_'.$data['post_author']);
+                        $options[] = 'QMS Document  status'. $data['post_author'].' -  QMS Document denied';
+                        update_option( 'notification_danger_'.$data['post_author'],  $options);
+                    } else {
+                        add_option( 'notification_danger_'.$data['post_author'],  ['QMS Document  status'. $data['post_author'].' -  QMS Document denied']);
+                    }
+
+
+                    $this->sendEmail($owner->user_email, 'QMS Document  status', $data['post_author'].' -  QMS Document denied');
+                }
+            }
 
 
 
-            // $dcoreviewedby = $postarr['acf']['field_63d67a4f766a4'];
-            // $process_owner = $postarr['acf']['field_63d67a4f766a4'];
+            $dcoreviewedby = $postarr['acf']['field_63d67a4f766a4'];
+            $process_owner = $postarr['acf']['field_63d67a4f766a4'];
 
-            // echo "<pre>";
-            // var_dump($dcoreviewedby);
-            // var_dump($dco_emailed);
-            // echo "</pre>";
+            echo "<pre>";
+            var_dump($dcoreviewedby);
+            var_dump($dco_emailed);
+            echo "</pre>";
            
 
-            // if(is_array($dcoreviewedby)){
-            //     if(empty($dco_emailed)){
-            //         $dco_emailed = array();
-            //         foreach ($dcoreviewedby as $key => $value) {
+            if(is_array($dcoreviewedby)){
+                if(empty($dco_emailed)){
+                    $dco_emailed = array();
+                    foreach ($dcoreviewedby as $key => $value) {
     
-            //             $dco = get_userdata($value)->data;
+                        $dco = get_userdata($value)->data;
 
-            //             echo "<pre>";
-            //             var_dump($dco);
-            //             echo "</pre>";
-            //             exit;
+                        echo "<pre>";
+                        var_dump($dco);
+                        echo "</pre>";
+                        exit;
 
-            //             $post_title = get_the_title();
+                        $post_title = get_the_title();
 
-            //             if(get_option('notification_'.$value)){
-            //                 $options = get_option('notification_'.$value);
-            //                 $options[] = 'You have a document due for review: "Document Title"';
-            //                 update_option( 'notification_'.$value,  $options);
-            //             } else {
-            //                 add_option( 'notification_'.$value,  ['You have a document due for review: "Document Title"']);
-            //             }
+                        if(get_option('notification_'.$value)){
+                            $options = get_option('notification_'.$value);
+                            $options[] = 'You have a document due for review: "Document Title"';
+                            update_option( 'notification_'.$value,  $options);
+                        } else {
+                            add_option( 'notification_'.$value,  ['You have a document due for review: "Document Title"']);
+                        }
                      
-            //             $this->sendEmail($dco->user_email, 'New QMS Document to review', 'You have a document due for review: "Document Title"');
-            //             $dco_emailed[] = $value;
+                        $this->sendEmail($dco->user_email, 'New QMS Document to review', 'You have a document due for review: "Document Title"');
+                        $dco_emailed[] = $value;
                     
-            //         }
-            //     } else {
-            //         if ( is_array( $dcoreviewedby ) ) {
-            //             foreach ($dcoreviewedby as $key => $value) {
+                    }
+                } else {
+                    if ( is_array( $dcoreviewedby ) ) {
+                        foreach ($dcoreviewedby as $key => $value) {
     
-            //                 if(!in_array($value, $dco_emailed)){    
-            //                     $dco = get_userdata($value)->data;
+                            if(!in_array($value, $dco_emailed)){    
+                                $dco = get_userdata($value)->data;
 
-            //                     if(get_option('notification_success_'.$value)){
-            //                         $options = get_option('notification_success_'.$value);
-            //                         $options[] = 'There is new QMS Document to review';
-            //                         update_option( 'notification_success_'.$value,  $options);
-            //                     } else {
-            //                         add_option( 'notification_success_'.$value,  ['There is new QMS Document to review']);
-            //                     }
+                                if(get_option('notification_success_'.$value)){
+                                    $options = get_option('notification_success_'.$value);
+                                    $options[] = 'There is new QMS Document to review';
+                                    update_option( 'notification_success_'.$value,  $options);
+                                } else {
+                                    add_option( 'notification_success_'.$value,  ['There is new QMS Document to review']);
+                                }
                              
     
-            //                     $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
-            //                     $dco_emailed[] = $value;
-            //                 }
+                                $this->sendEmail($dco->user_email, 'New QMS Document to review', 'There is new QMS Document to review');
+                                $dco_emailed[] = $value;
+                            }
                         
-            //             }
-            //         }
-            //     }
+                        }
+                    }
+                }
 
-            //     update_post_meta( $postID, 'dco_emailed', $dco_emailed );
-            // }
+                update_post_meta( $postID, 'dco_emailed', $dco_emailed );
+            }
 
-            // exit;
+            exit;
            
 
     
