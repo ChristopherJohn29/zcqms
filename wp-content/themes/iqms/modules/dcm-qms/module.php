@@ -30,41 +30,122 @@ class TransferDCM{
           
 
             $dco_emailed = get_post_meta(  $postID, 'dco_emailed', true);
+            $reviewer_emailed = get_post_meta(  $postID, 'reviewer_emailed', true);
+            $final_reviewer_emailed = get_post_meta(  $postID, 'final_reviewer_emailed', true);
 
             $is_approved = get_field( 'approval_status', $postID );
             $is_reviewed = get_field( 'review_status', $postID );
-
+     
             $is_reviewed_new = $postarr['acf']['field_63d6812dd0c68'];
+
             $is_approved_new = $postarr['acf']['field_632c62e991029'];
             $owner = get_userdata($data['post_author'])->data;
             
-            // if($is_reviewed_new != $is_reviewed){
-            //     if($is_reviewed_new == 'yes'){
-            //         if(get_option('notification_success_'.$data['post_author'])){
-            //             $options = get_option('notification_success_'.$data['post_author']);
-            //             $options[] = 'QMS Document review status'. $data['post_author'].' - QMS Document accepted';
-            //             update_option( 'notification_success_'.$data['post_author'],  $options);
-            //         } else {
-            //             add_option( 'notification_success_'.$data['post_author'],  ['QMS Document review status'. $data['post_author'].' - QMS Document accepted']);
-            //         }
+            $reviewer_raw = $postarr['acf']['field_6331998b7e607'];
 
-            //         $this->sendEmail($owner->user_email, 'QMS Document review status', $data['post_author'].' - QMS Document accepted ');
-            //     }
+            $final_reviewer_raw = $postarr['acf']['field_6331998b7e607'];
+       
 
-            //     if($is_reviewed_new == 'no'){
+            if(is_array($reviewer_raw)){
 
-            //         if(get_option('notification_danger_'.$data['post_author'])){
-            //             $options = get_option('notification_danger_'.$data['post_author']);
-            //             $options[] = 'QMS Document review status'. $data['post_author'].' - QMS Document to disapproved';
-            //             update_option( 'notification_danger_'.$data['post_author'],  $options);
-            //         } else {
-            //             add_option( 'notification_danger_'.$data['post_author'],  ['QMS Document review status'. $data['post_author'].' - QMS Document to disapproved']);
-            //         }
+                if(empty($reviewer_emailed)){
+
+                    $reviewer_emailed = array();
+
+                    if($is_reviewed_new == 'yes'){
+                        foreach ($reviewer_raw as $key => $value) {
+                            $reviewer = get_userdata($value)->data;
+                        
+                            if(get_option('notification_'.$reviewer->ID)){
+                                $options = get_option('notification_'.$reviewer->ID);
+                                $options[] = 'You have a document due for review: "'.$post_title.'"';
+                                update_option( 'notification_'.$reviewer->ID,  $options);
+                            } else {
+                                add_option( 'notification_'.$reviewer->ID,  ['You have a document due for review: "'.$post_title.'"']);
+                            }
+                        
+                            // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            $reviewer_emailed[] = $value;
+                        
+                        }
+                    }
 
 
-            //         $this->sendEmail($owner->user_email, 'QMS Document review status', $data['post_author'].' - QMS Document to disapproved');
-            //     }
-            // }
+                    if($is_reviewed_new != 'yes'){
+                        foreach ($reviewer_raw as $key => $value) {
+                            $reviewer = get_userdata($value)->data;
+                        
+                            if(get_option('notification_'.$reviewer->ID)){
+                                $options = get_option('notification_'.$reviewer->ID);
+                                $options[] = 'The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.';
+                                update_option( 'notification_'.$reviewer->ID,  $options);
+                            } else {
+                                add_option( 'notification_'.$reviewer->ID,  ['The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.']);
+                            }
+                        
+                            // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            $reviewer_emailed[] = $value;
+                        
+                        }
+                    }
+
+
+                    update_post_meta( $postID, 'reviewer_emailed', $reviewer_emailed );
+                }
+
+            }
+
+
+            if(is_array($final_reviewer_raw)){
+
+                if(empty($reviewer_emailed)){
+
+                    $reviewer_emailed = array();
+
+                    if($is_reviewed_new == 'yes'){
+                        foreach ($final_reviewer_raw as $key => $value) {
+                            $final_reviewer = get_userdata($value)->data;
+                        
+                            if(get_option('notification_'.$final_reviewer->ID)){
+                                $options = get_option('notification_'.$final_reviewer->ID);
+                                $options[] = 'You have a document due for review: "'.$post_title.'"';
+                                update_option( 'notification_'.$final_reviewer->ID,  $options);
+                            } else {
+                                add_option( 'notification_'.$final_reviewer->ID,  ['You have a document due for review: "'.$post_title.'"']);
+                            }
+                        
+                            // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            $reviewer_emailed[] = $value;
+                        
+                        }
+                    }
+
+
+                    if($is_reviewed_new != 'yes'){
+                        foreach ($final_reviewer_raw as $key => $value) {
+                            $final_reviewer = get_userdata($value)->data;
+                        
+                            if(get_option('notification_'.$final_reviewer->ID)){
+                                $options = get_option('notification_'.$final_reviewer->ID);
+                                $options[] = 'The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.';
+                                update_option( 'notification_'.$final_reviewer->ID,  $options);
+                            } else {
+                                add_option( 'notification_'.$final_reviewer->ID,  ['The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.']);
+                            }
+                        
+                            // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            $reviewer_emailed[] = $value;
+                        
+                        }
+                    }
+
+
+                    update_post_meta( $postID, 'reviewer_emailed', $reviewer_emailed );
+                }
+
+            }
+
+
 
             // if($is_approved_new != $is_approved){
             //     if($is_approved_new == 'yes'){
@@ -98,7 +179,7 @@ class TransferDCM{
             $process_owner_raw = $postarr['acf']['field_632c70a0da093'];
 
             $post_title = get_the_title($postID);
-
+                
             if(is_array($dcoreviewedby) || is_array($process_owner_raw)){
                 if(empty($dco_emailed)){
 
@@ -146,7 +227,7 @@ class TransferDCM{
             }
 
 
-            exit;
+            // exit;
     
         }
         
