@@ -539,7 +539,7 @@
 												<td colspan="6">2.3 Corrective Action: (Action to eliminate the cause of the detected nonconformity)</td>
 											</tr>
 											<tr>
-												<td colspan="4">Root Cause/s</td>
+												<td colspan="">Root Cause/s</td>
 												<td>Corrective Action</td>
 												<td>Completion Date</td>
 												<td colspan="2">Implemented As Planned?</td>
