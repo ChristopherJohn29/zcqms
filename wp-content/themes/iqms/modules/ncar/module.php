@@ -204,6 +204,7 @@ if ( !class_exists('NCAR_Module') ) {
 
 				$to_return['data'] = [
 					'ncar_no' => $id,
+					'ncar_no_new' => get_post_meta( $id, 'ncar_no_new', true ),
 					'add_date' => get_post_meta( $id, 'add_date', true ),
 					'department' => get_post_meta( $id, 'department', true ),
 					'source_of_nc' => get_post_meta( $id, 'source_of_nc', true ),

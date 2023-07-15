@@ -67,6 +67,7 @@
 
 						$author = get_user_by( 'ID', $ncar->post_author );
 						$author = $author->data->display_name;
+						$ncar_no_new = get_post_meta( $id, 'ncar_no_new', true );
 						$source = get_post_meta( $id, 'source_of_nc', true );
 						$nc_desc = get_post_meta( $id, 'description_of_the_noncomformity', true );
 						$date = get_post_meta( $id, 'add_date', true );
@@ -124,7 +125,7 @@
 
 						?>
 						<tr data-id="<?= $ncar->ID ?>">
-							<td><?= $ncar->ID ?></td>
+							<td><?= $ncar_no_new ? $ncar_no_new : $ncar->ID ?></td>
 							<td><?= $author ?></td>
 							<td><?= $reviewed_by_person ?></td>
 							<td><?= $followup_by_person ?></td>
