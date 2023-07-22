@@ -1,7 +1,7 @@
 
 <!-- modals -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="add-modal">
-  <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="add-modal">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
 	<?php
 
@@ -215,8 +215,8 @@
   </div>
 </div>
 <!-- edit modal -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="edit-modal">
-  <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="edit-modal">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
     		
 				<div class="modal-header">
@@ -610,8 +610,8 @@
   </div>
 </div>
 <!-- remarks modal -->
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="remarks-modal">
-  <div class="modal-dialog modal-lg" role="document">
+<div class="modal fade bs-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="remarks-modal">
+  <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
     		
 				<div class="modal-header">
