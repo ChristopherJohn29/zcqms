@@ -675,12 +675,18 @@
                         /*form 2*/
                         $html2 = '';
                         $.each(r.form2.correction, function(i, v) {
-                            $html2 += '' + '<tr>' + '<td colspan="1"><input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary" data-toggle="modal" data-target="#view-modal">view</button></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                            $html2 += '' + '<tr>' + '<td colspan="1"><input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '" data-toggle="modal" data-target="#view-modal">view</button></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                             _correction_ind++;
                             
                             $('#form_2_1_b').html($html2);
                             app.bindDeleteBtns();
                         });
+
+                        jQuery('.view-button').click(function(){
+                            content = jQuery(this).data('content');
+                            jQuery('#view-form').html(view-form);
+                        });
+
                         $html = '';
                         $.each(r.form2.correction, function(i, v) {
                             $html += '' + '<tr>' + '<td colspan="5"><input type="text" class="form-control correction_text" value="' + v.correction_text + '"></td>' + '<td><input type="date" class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
