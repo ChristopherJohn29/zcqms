@@ -133,7 +133,7 @@
                 app.bindDeleteBtns();
             });
             $('#add_correction_rca').click(function() {
-                $html = '' + '<tr>' + '<td colspan="5"><input type="text" class="form-control correction_text"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                $html = '' + '<tr class="rca">' + '<td colspan="5"><input type="text" class="form-control correction_text"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                  _correction_ind++;
                 $('#form_2_2').append($html);
                 app.bindDeleteBtns();
@@ -160,6 +160,14 @@
                         correction_date: correction_date,
                     });
                 });
+
+                $('#form_2_2 tr.rca').each(function() {
+                    correction_text = $(this).find('.correction_text').val();
+                    correction_rca.push({
+                        correction_text: correction_text,
+                    });
+                });
+
                 corrective_action_data = [];
                 $('#form_2_3 tr').each(function() {
                     root_causes = $(this).find('.root_causes').val();
@@ -183,6 +191,7 @@
                         action: 'ncar_form2_save',
                         data: {
                             correction: correction,
+                            correction_rca: correction_rca,
                             files: files,
                             corrective_action_data: corrective_action_data,
                             ncar_no: ncar_no
@@ -692,6 +701,17 @@
                             $('#form_2_1').html($html);
                             app.bindDeleteBtns();
                         });
+
+                        $.each(r.form2.correction_rca, function(i, v) {
+                            $html += '' + '<tr class="rca">' + '<td colspan="5"><input type="text" class="form-control correction_text" value="' + v.correction_text + '"></td>' + '</tr>';
+                            _correction_ind++;
+
+                            $('#form_2_2 tr.rca').remove();
+                            $('#form_2_2').append($html);
+                            app.bindDeleteBtns();
+                        });
+
+
                         e_html = (r.form2.files.length ? r.form2.files.length + ' file(s) selected' : '');
                         e_input = '';
                         $.each(r.form2.files, function(a, b) {

@@ -103,6 +103,7 @@ if ( !class_exists('NCAR_Module') ) {
 			$data = $_POST['data'];
 
 			$correction = $data['correction'];
+			$correction_rca = $data['correction_rca'];
 			$files = ( $data['files'] ? $data['files'] : [] );
 			$corrective_action_data = $data['corrective_action_data'];
 
@@ -120,6 +121,13 @@ if ( !class_exists('NCAR_Module') ) {
 					$correction[$key]['correction_remarks'] = $correction[$key]['correction_remarks'] ? $correction[$key]['correction_remarks'] : $current_correction[$key]['correction_remarks'];
 				}
 
+				$current_correction_rca = get_post_meta( $post_id, 'correction_rca', true);
+
+
+				foreach ($correction_rca as $key => $value) {
+					$correction_rca[$key]['correction_text'] = $correction_rca[$key]['correction_text'] ? $correction_rca[$key]['correction_text'] : $current_correction_rca[$key]['correction_text'];
+				}
+
 				$current_corrective_action_data = get_post_meta( $post_id, 'corrective_action_data', true );
 
 				foreach ($corrective_action_data as $key => $value) {
@@ -131,6 +139,7 @@ if ( !class_exists('NCAR_Module') ) {
 				}
 
 				update_post_meta( $post_id, 'correction', $correction );
+				update_post_meta( $post_id, 'correction_rca', $correction_rca );
 				update_post_meta( $post_id, 'files', $files );
 				update_post_meta( $post_id, 'corrective_action_data', $corrective_action_data );
 
