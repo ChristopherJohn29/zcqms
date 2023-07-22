@@ -499,12 +499,12 @@
 									<table class="table">
 										<tbody>
 											<tr>
-												<td colspan="4"><button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button></td>
+												<td colspan="6"><button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button></td>
 											</tr>
 										</tbody>
 										<tbody>
 											<tr>
-												<td colspan="2">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
+												<td colspan="1">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
 												<td>Completion Date</td>
 												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
