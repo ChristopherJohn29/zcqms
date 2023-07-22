@@ -149,6 +149,7 @@
             $('#edit_form2_save').click(function(e) {
                 e.preventDefault();
                 correction = [];
+               
                 ncar_no = $('#edit-modal [name="ncar_no"]').val();
                 $('#form_2_1 tr').each(function() {
                     correction_text = $(this).find('.correction_text').val();
@@ -161,6 +162,7 @@
                     });
                 });
 
+                correction_rca = [];
                 $('#form_2_2 tr.rca').each(function() {
                     correction_text = $(this).find('.correction_text').val();
                     correction_rca.push({
