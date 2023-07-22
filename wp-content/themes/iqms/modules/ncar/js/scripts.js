@@ -684,7 +684,7 @@
 
                         jQuery('.view-button').click(function(){
                             content = jQuery(this).data('content');
-                            jQuery('#view-form').html(view-form);
+                            jQuery('#view-form').html("#view-form");
                         });
 
                         $html = '';
