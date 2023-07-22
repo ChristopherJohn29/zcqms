@@ -634,3 +634,24 @@
     </div>
   </div>
 </div>
+
+
+<!-- remarks modal -->
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="view-modal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+    		
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="gridSystemModalLabel"><i class="glyphicon glyphicon-file"></i> View</h4>
+				</div>
+				<div class="modal-body">
+					<div id="view-form">
+						
+
+					</div>
+				</div>
+
+    </div>
+  </div>
+</div>
