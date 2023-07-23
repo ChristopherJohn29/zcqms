@@ -227,6 +227,7 @@ if ( !class_exists('NCAR_Module') ) {
 
 				$to_return['form2'] = [
 					'correction' => get_post_meta( $id, 'correction', true ),
+					'correction_rca' => get_post_meta( $id, 'correction_rca', true ),
 					'files' => $files,
 					'corrective_action_data' => get_post_meta( $id, 'corrective_action_data', true ),
 				];
