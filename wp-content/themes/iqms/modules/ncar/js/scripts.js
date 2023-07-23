@@ -716,7 +716,7 @@
 
                         $html2 = '';
                         $.each(r.form2.correction_rca, function(i, v) {
-                            $html2 += '' + '<tr class="rca">' + '<td colspan="5"><input type="text" class="form-control correction_text" value="' + v.correction_text + '"></td>' + '</tr>';
+                            $html2 += '' + '<tr class="rca">' + '<td colspan="5"><input type="text" disabled class="form-control correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + '</tr>';
                             _correction_ind++;
 
                             $('#form_2_2_b tr.rca').remove();
