@@ -704,12 +704,23 @@
                             app.bindDeleteBtns();
                         });
 
+                        $html = '';
                         $.each(r.form2.correction_rca, function(i, v) {
                             $html += '' + '<tr class="rca">' + '<td colspan="5"><input type="text" class="form-control correction_text" value="' + v.correction_text + '"></td>' + '</tr>';
                             _correction_ind++;
 
                             $('#form_2_2 tr.rca').remove();
                             $('#form_2_2').append($html);
+                            app.bindDeleteBtns();
+                        });
+
+                        $html2 = '';
+                        $.each(r.form2.correction_rca, function(i, v) {
+                            $html2 += '' + '<tr class="rca">' + '<td colspan="5"><input type="text" class="form-control correction_text" value="' + v.correction_text + '"></td>' + '</tr>';
+                            _correction_ind++;
+
+                            $('#form_2_2_b tr.rca').remove();
+                            $('#form_2_2_b').append($html);
                             app.bindDeleteBtns();
                         });
 
