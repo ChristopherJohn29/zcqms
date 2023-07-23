@@ -720,7 +720,7 @@
                             _correction_ind++;
 
                             $('#form_2_2_b tr.rca').remove();
-                            $('#form_2_2_b').append($html);
+                            $('#form_2_2_b').append($html2);
                             app.bindDeleteBtns();
                         });
 
