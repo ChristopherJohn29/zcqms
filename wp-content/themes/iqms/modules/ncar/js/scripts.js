@@ -688,6 +688,10 @@
                         /*form 2*/
                         $html2 = '';
                         $.each(r.form2.correction, function(i, v) {
+                            if(v.correction_text  == undefined){
+                                v.correction_text = 'remarks';
+                            }
+
                             $html2 += '' + '<tr>' + '<td colspan="1"><input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                             _correction_ind++;
                             
@@ -698,6 +702,10 @@
 
                         $html = '';
                         $.each(r.form2.correction, function(i, v) {
+                            if(v.correction_text  == undefined){
+                                v.correction_text = 'remarks';
+                            }
+
                             $html += '' + '<tr>' + '<td colspan="5"><input type="text" class="form-control correction_text" value="' + v.correction_text + '"></td>' + '<td><input type="date" class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                             _correction_ind++;
                             $('#form_2_1').html($html);
@@ -716,6 +724,11 @@
 
                         $html2 = '';
                         $.each(r.form2.correction_rca, function(i, v) {
+
+                            if(v.correction_text  == undefined){
+                                v.correction_text = 'remarks';
+                            }
+
                             $html2 += '' + '<tr class="rca">' + '<td colspan="5"><input type="text" disabled class="form-control correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + '</tr>';
                             _correction_ind++;
 
@@ -735,6 +748,14 @@
                         $html = '';
                         $html2 = '';
                         $.each(r.form2.corrective_action_data, function(i, v) {
+                            if(v.root_causes  == undefined){
+                                v.root_causes = 'remarks';
+                            }
+
+                            if(v.corrective_action  == undefined){
+                                v.corrective_action = 'remarks';
+                            }
+
                             $html2 += '' + '<tr>' + '<td><input type="text" disabled class="form-control root_causes" value="' + v.root_causes + '"> <button class="btn btn-primary view-button" data-content="' + v.root_causes + '">view</button></td>' + '<td><input type="text" disabled class="form-control corrective_action" value="' + v.corrective_action + '"></td>' + '<td><input type="date" disabled class="form-control corrective_date" value="' + v.corrective_date + '"></td>' + '<td>' + '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="Yes" ' + (v.corrective_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="No" ' + (v.corrective_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td><input type="text" class="form-control input-sm corrective_remarks" placeholder="remarks" value="' + v.corrective_remarks + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                             $html += '' + '<tr>' + '<td colspan="4"><input type="text" class="form-control root_causes" value="' + v.root_causes + '"></td>' + '<td><input type="text" class="form-control corrective_action" value="' + v.corrective_action + '"></td>' + '<td><input type="date" class="form-control corrective_date" value="' + v.corrective_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                             _correction_ind++;
