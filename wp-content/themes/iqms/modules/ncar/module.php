@@ -89,6 +89,12 @@ if ( !class_exists('NCAR_Module') ) {
 			$post_id = $data['ncar_no'];
 			$to_return = [];
 			if ( $post_id ) {
+				if($final_decision == 'satisfactory'){
+					update_post_meta( $post_id, 'status', 'Closed' );
+				} else {
+					update_post_meta( $post_id, 'status', 'Reverted to For Action' );
+				}
+
 				update_post_meta( $post_id, 'verification', $verification );
 				update_post_meta( $post_id, 'final_decision', $final_decision );
 				$to_return = ['post_id' => $post_id];
@@ -106,10 +112,21 @@ if ( !class_exists('NCAR_Module') ) {
 			$correction_rca = $data['correction_rca'];
 			$files = ( $data['files'] ? $data['files'] : [] );
 			$corrective_action_data = $data['corrective_action_data'];
+			$satisfactory = ( isset($data['satisfactory']) ? $data['satisfactory']  : '' );
 
 			$post_id = $data['ncar_no'];
 			$to_return = [];
 			if ( $post_id ) {
+
+				if($satisfactory !== ''){
+					if($satisfactory == 1){
+						update_post_meta( $post_id, 'status', 'For Verification' );
+					} else {
+						update_post_meta( $post_id, 'status', 'Reverted to For Action' );
+					}
+				} else {
+					update_post_meta( $post_id, 'status', 'For Follow up' );
+				}
 
 				$current_correction = get_post_meta( $post_id, 'correction', true);
 
@@ -142,6 +159,7 @@ if ( !class_exists('NCAR_Module') ) {
 				update_post_meta( $post_id, 'correction_rca', $correction_rca );
 				update_post_meta( $post_id, 'files', $files );
 				update_post_meta( $post_id, 'corrective_action_data', $corrective_action_data );
+				
 
 				$to_return = ['post_id' => $post_id];
 			} else {
@@ -275,6 +293,8 @@ if ( !class_exists('NCAR_Module') ) {
 				foreach( $data as $field ) {
 					update_post_meta( $post_id, $field['name'], $field['value'] );
 				}
+
+				update_post_meta( $post_id, 'status', 'For Action' );
 
 				$to_return = ['post_id' => $post_id];
 				update_post_meta( $post_id, 'evidences', $evidences );

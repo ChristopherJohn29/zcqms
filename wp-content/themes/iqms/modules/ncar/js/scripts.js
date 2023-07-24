@@ -234,7 +234,7 @@
                     }
                 });
             });
-            $('#edit_form2_save_b').click(function(e) {
+            $('#edit_form2_save_satisfactory').click(function(e) {
                 e.preventDefault();
                 correction = [];
                 ncar_no = $('#edit-modal [name="ncar_no"]').val();
@@ -269,7 +269,82 @@
                             correction: correction,
                             files: files,
                             corrective_action_data: corrective_action_data,
-                            ncar_no: ncar_no
+                            ncar_no: ncar_no,
+                            satisfactory: 1
+                        },
+                    },
+                    type: 'POST',
+                    dataType: 'JSON',
+                    success: function(r) {
+                        Swal.close();
+                        if (r.post_id) {
+                            $icon = 'success';
+                            $title = 'NCAR Saved';
+                            $text = '';
+                        } else {
+                            $icon = 'error';
+                            $title = 'NCAR Not Saved';
+                            $text = 'Error occurred';
+                        }
+                        Swal.fire({
+                            icon: $icon,
+                            title: $title,
+                            allowOutsideClick: false,
+                            showConfirmButton: true,
+                            allowEscapeKey: false,
+                            html: $text,
+                        }).then(function(result) {
+                            location.reload();
+                        });
+                    },
+                    beforeSend: function() {
+                        Swal.fire({
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            allowEscapeKey: false,
+                            html: '<p style="font-size: 12px;"> Saving. Please wait...</p><i class="fa fa-refresh fa-spin"></i>',
+                        });
+                    }
+                });
+            });
+            $('#edit_form2_save_not_satisfactory').click(function(e) {
+                e.preventDefault();
+                correction = [];
+                ncar_no = $('#edit-modal [name="ncar_no"]').val();
+                $('#form_2_1_b tr').each(function() {
+                    correction_text = $(this).find('.correction_text').val();
+                    correction_date = $(this).find('.correction_date').val();
+                    correction_implemented = ($(this).find('.correction_implemented:checked') ? $(this).find('.correction_implemented:checked').val() : '');
+                    correction_remarks = $(this).find('.correction_remarks').val();
+                    correction.push({
+                        correction_implemented: correction_implemented,
+                        correction_remarks: correction_remarks,
+                    });
+                });
+                corrective_action_data = [];
+                $('#form_2_3_b tr').each(function() {
+                    root_causes = $(this).find('.root_causes').val();
+                    corrective_action = $(this).find('.corrective_action').val();
+                    corrective_date = $(this).find('.corrective_date').val();
+                    corrective_implemented = ($(this).find('.corrective_implemented:checked') ? $(this).find('.corrective_implemented:checked').val() : '');
+                    corrective_remarks = $(this).find('.corrective_remarks').val();
+                    corrective_action_data.push({
+                        corrective_implemented: corrective_implemented,
+                        corrective_remarks: corrective_remarks,
+                    });
+                });
+                files = [];
+                $.ajax({
+                    url: location.origin + '/wp-admin/admin-ajax.php',
+                    data: {
+                        action: 'ncar_form2_save',
+                        data: {
+                            correction: correction,
+                            files: files,
+                            corrective_action_data: corrective_action_data,
+                            ncar_no: ncar_no,
+                            satisfactory: 2
                         },
                     },
                     type: 'POST',
