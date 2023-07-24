@@ -68,6 +68,7 @@
 						$author = get_user_by( 'ID', $ncar->post_author );
 						$author = $author->data->display_name;
 						$ncar_no_new = get_post_meta( $id, 'ncar_no_new', true );
+						$status = get_post_meta( $id, 'status', true );
 						$source = get_post_meta( $id, 'source_of_nc', true );
 						$nc_desc = get_post_meta( $id, 'description_of_the_noncomformity', true );
 						$date = get_post_meta( $id, 'add_date', true );
@@ -102,17 +103,7 @@
 						// 	$verified = 0;
 						// }
 
-						if($final_decision == 'satisfactory'){
-							$status = 'Satisfactory';
-						} else if($final_decision == 'satisfactory'){
-							$status = 'Not satisfactory';
-						} else {
-							$status = 'On Progress';
-						}
-
 						
-
-
 
 						if(
 							$reviewed_by == $this_user || 
