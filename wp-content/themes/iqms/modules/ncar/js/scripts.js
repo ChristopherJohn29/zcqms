@@ -249,9 +249,10 @@
                     });
                 });
 
+                correction_rca = [];
                 $('#form_2_2_b tr.rca').each(function() {
                     correction_text = $(this).find('.correction_text').val();
-                    correction.push({
+                    correction_rca.push({
                         correction_text: correction_text,
                     });
                 });
