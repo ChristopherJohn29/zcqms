@@ -248,6 +248,14 @@
                         correction_remarks: correction_remarks,
                     });
                 });
+
+                $('#form_2_2_b tr.rca').each(function() {
+                    correction_text = $(this).find('.correction_text').val();
+                    correction.push({
+                        correction_text: correction_text,
+                    });
+                });
+
                 corrective_action_data = [];
                 $('#form_2_3_b tr').each(function() {
                     root_causes = $(this).find('.root_causes').val();
@@ -267,6 +275,7 @@
                         action: 'ncar_form2_save',
                         data: {
                             correction: correction,
+                            correction_rca: correction_rca,
                             files: files,
                             corrective_action_data: corrective_action_data,
                             ncar_no: ncar_no,
@@ -808,7 +817,7 @@
                             _correction_ind++;
 
                             $('#form_2_2_b tr.rca').remove();
-                            $('#form_2_2_b').append($html);
+                            $('#form_2_2_b').append($html2);
                             app.bindDeleteBtns();
                         });
 
