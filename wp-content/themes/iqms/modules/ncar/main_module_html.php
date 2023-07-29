@@ -20,6 +20,7 @@
 					<th>Follow-up by</th>
 					<th>Verified by</th>
 					<th>Source</th>
+					<th>Department</th>
 					<th>Date Issued</th>
 					<th>Date Closed</th>
 					<th>NC Description</th>
@@ -70,6 +71,7 @@
 						$ncar_no_new = get_post_meta( $id, 'ncar_no_new', true );
 						$status = get_post_meta( $id, 'status', true );
 						$source = get_post_meta( $id, 'source_of_nc', true );
+						$source = get_post_meta( $id, 'department', true );
 						$nc_desc = get_post_meta( $id, 'description_of_the_noncomformity', true );
 						$date = get_post_meta( $id, 'add_date', true );
 						$clause_no = get_post_meta( $id, 'clause_no', true );
