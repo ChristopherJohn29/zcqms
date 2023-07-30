@@ -236,7 +236,6 @@
 												</label>
 
 												<div class="form-group">
-													<label for="reviewed_by">Reviewed By</label>
 													<input type="text" name="other_source" class="other_source" style="display:none;">
 												</div>
 
@@ -249,7 +248,7 @@
 										<div class="col-sm-6">
 
 											<div class="form-group">
-												<label for="reviewed_by">Person Responsible</label>
+												<label for="reviewed_by">Reviewed By</label>
 												<select id="reviewed_by" name="reviewed_by" class="form-control">
 													<option value="">-</option>
 													<?php
