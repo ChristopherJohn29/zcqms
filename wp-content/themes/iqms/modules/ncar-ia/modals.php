@@ -88,7 +88,6 @@
 												</label>
 												
 												<div class="form-group">
-													<label for="reviewed_by">Reviewed By</label>
 													<input type="text" name="other_source" class="other_source" style="display:none;">
 												</div>
 												
