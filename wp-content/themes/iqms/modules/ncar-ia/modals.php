@@ -15,7 +15,7 @@
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#" role="tab"> Description of Improvement </a></li>
 							<li role="presentation"><a href="#" role="tab" > Improvement Actions </a></li>
-							<li role="presentation"><a href="#" role="tab" > Verifications </a></li>
+							<li role="presentation"><a href="#" role="tab" > Follow-up </a></li>
 						</ul>
 
 						<!-- Tab panes -->
@@ -59,7 +59,7 @@
 
 									<div class="row">
 										<div class="col-sm-12">
-											<label for="source_of_nc">Source of NC</label>
+											<label for="source_of_nc">Source of Improvement Action</label>
 											<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="This is a warning message."></i>
 											<div class="form-group">
 
@@ -79,33 +79,24 @@
 													<input type="radio" name="source_of_nc" value="Process Monitoring"> Process Monitoring
 												</label>
 
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Improvement Pretention"> Improvement Pretention
+												</label>
+
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Others"> Others
+												</label>
+												
+												<div class="form-group">
+													<label for="reviewed_by">Reviewed By</label>
+													<input type="text" name="other_source" class="other_source" style="display:none;">
+												</div>
+												
+
 											</div>
 										</div>
 									</div>
 
-									<div class="row">
-										<div class="col-sm-6">
-
-											<div class="form-group">
-												<label for="clause_no">Clause No.</label>
-												<select id="clause_no" name="clause_no" class="form-control">
-													<option value="">-</option>
-													<option value="test 2">Test 2</option>
-												</select>
-											</div>
-
-										</div>
-
-										<div class="col-sm-6">
-
-											<div class="form-group file-upload" data-multiple-upload="true">
-												<label for="evidences">Evidences (If available) <button type="" class="btn btn-info btn-sm upload-btn">Select files</button></label>
-												<div class="hidden file-group evidences"></div>
-												<input type="text" readonly class="selected_files form-control" value="">
-											</div>
-
-										</div>
-									</div>
 
 									<div class="row">
 										<div class="col-sm-6">
@@ -173,7 +164,7 @@
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#part1" aria-controls="part1" role="tab" data-toggle="tab"> Description of Improvement </a></li>
 							<li role="presentation"><a href="#part2" aria-controls="part2" role="tab" data-toggle="tab"> Improvement Actions </a></li>
-							<li role="presentation"><a href="#part3" aria-controls="part3" role="tab" data-toggle="tab"> Verifications </a></li>
+							<li role="presentation"><a href="#part3" aria-controls="part3" role="tab" data-toggle="tab"> Follow-up </a></li>
 						</ul>
 
 						<!-- Tab panes -->
@@ -216,7 +207,7 @@
 
 									<div class="row">
 										<div class="col-sm-12">
-											<label for="source_of_nc">Source of NC</label>
+											<label for="source_of_nc">Source of Improvement Action</label>
 											<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="This is a warning message."></i>
 											<div class="form-group">
 
@@ -236,39 +227,29 @@
 													<input type="radio" name="source_of_nc" value="Process Monitoring"> Process Monitoring
 												</label>
 
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Improvement Pretention"> Improvement Pretention
+												</label>
+
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Others"> Others
+												</label>
+
+												<div class="form-group">
+													<label for="reviewed_by">Reviewed By</label>
+													<input type="text" name="other_source" class="other_source" style="display:none;">
+												</div>
+
 											</div>
 										</div>
 									</div>
+
 
 									<div class="row">
 										<div class="col-sm-6">
 
 											<div class="form-group">
-												<label for="clause_no">Clause No.</label>
-												<select id="clause_no" name="clause_no" class="form-control">
-													<option value="">-</option>
-													<option value="test 2">Test 2</option>
-												</select>
-											</div>
-
-										</div>
-
-										<div class="col-sm-6">
-
-											<div class="form-group file-upload" data-multiple-upload="true">
-												<label for="evidences">Evidences (If available) <button type="" class="btn btn-info btn-sm upload-btn">Select files</button></label>
-												<div class="hidden file-group evidences"></div>
-												<input type="text" readonly class="selected_files form-control" value="">
-											</div>
-
-										</div>
-									</div>
-
-									<div class="row">
-										<div class="col-sm-6">
-
-											<div class="form-group">
-												<label for="reviewed_by">Reviewed By</label>
+												<label for="reviewed_by">Person Responsible</label>
 												<select id="reviewed_by" name="reviewed_by" class="form-control">
 													<option value="">-</option>
 													<?php
@@ -285,7 +266,7 @@
 										<div class="col-sm-6">
 
 											<div class="form-group">
-												<label for="approved_by">Approved By</label>
+												<label for="approved_by">Follow-up by</label>
 												<select id="approved_by" name="approved_by" class="form-control">
 													<option value="">-</option>
 													<?php
