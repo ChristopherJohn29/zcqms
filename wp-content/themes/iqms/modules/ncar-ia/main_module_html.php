@@ -21,6 +21,7 @@
 					<th>Follow-up by</th>
 					<th>Date Issued</th>
 					<th>Status</th>
+					<th>Department</th>
 					<th>Action Items</th>
 					<th>Remarks</th>
 				</tr>
