@@ -60,6 +60,7 @@
 
 						$author = get_user_by( 'ID', $ncar->post_author );
 						$author = $author->data->display_name;
+						$ncar_ia = get_post_meta( $id, 'ncar_ia', true );
 						$reviewed_by_id = get_post_meta( $id, 'reviewed_by', true );
 						$reviewed_by = get_user_by( 'ID', $reviewed_by_id );
 						$approved_by_id = get_post_meta( $id, 'approved_by', true );
@@ -72,7 +73,7 @@
 
 						?>
 						<tr data-id="<?= $ncar->ID ?>">
-							<td><?= $ncar->ID ?></td>
+							<td><?= $ncar_ia ?></td>
 							<td><?= $author ?></td>
 							<td><?= $reviewed_by->data->display_name; ?></td>
 							<td><?= $approved_by->data->display_name; ?></td>
