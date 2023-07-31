@@ -19,9 +19,9 @@
 					<th>Review by</th>
 					<th>Follow-up by</th>
 					<th>Source</th>
+					<th>Department</th>
 					<th>Date Issued</th>
 					<th>Status</th>
-					<th>Department</th>
 					<th>Action Items</th>
 					<th>Remarks</th>
 				</tr>
