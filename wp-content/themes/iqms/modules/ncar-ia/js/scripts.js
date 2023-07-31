@@ -678,6 +678,11 @@
 						});
 						/*end*/
 
+						jQuery('.view-button').click(function(){
+                            content = jQuery(this).data('content');
+                            alert(content);
+                        });
+
 						/*modal restriction*/
 						if ( r.cant_edit ) {
 							$('#edit-modal #part1').addClass( 'readonly' );
