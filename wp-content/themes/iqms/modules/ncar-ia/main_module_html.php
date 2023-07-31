@@ -57,8 +57,10 @@
 
 						$author = get_user_by( 'ID', $ncar->post_author );
 						$author = $author->data->display_name;
-						$reviewed_by = get_post_meta( $id, 'reviewed_by', true );
-						$approved_by = get_post_meta( $id, 'approved_by', true );
+						$reviewed_by_id = get_post_meta( $id, 'reviewed_by', true );
+						$reviewed_by = get_user_by( 'ID', $reviewed_by_id );
+						$approved_by_id = get_post_meta( $id, 'approved_by', true );
+						$approved_by = get_user_by( 'ID', $approved_by_id );
 						$source = get_post_meta( $id, 'source_of_nc', true );
 						$department = get_post_meta( $id, 'department', true );
 						$nc_desc = get_post_meta( $id, 'description_of_the_noncomformity', true );
