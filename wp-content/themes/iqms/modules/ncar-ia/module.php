@@ -84,15 +84,27 @@ if ( !class_exists('NCAR_IA_Module') ) {
 			$data = $_POST['data'];
 
 			$verification = $data['verification'];
+			$correction = $data['correction'];
 
 			$post_id = $data['ncar_no'];
 			$to_return = [];
 			if ( $post_id ) {
-				update_post_meta( $post_id, 'verification', $verification );
-				$to_return = ['post_id' => $post_id];
+				$current_correction = get_post_meta( $post_id, 'correction', true);
+
+				foreach ($correction as $key => $value) {
+					$correction[$key]['correction_text'] = $correction[$key]['correction_text'] ? $correction[$key]['correction_text'] : $current_correction[$key]['correction_text'];
+					$correction[$key]['correction_date'] = $correction[$key]['correction_date'] ? $correction[$key]['correction_date'] : $current_correction[$key]['correction_date'];
+					$correction[$key]['correction_implemented'] = $correction[$key]['correction_implemented'] ? $correction[$key]['correction_implemented'] : $current_correction[$key]['correction_implemented'];
+					$correction[$key]['correction_remarks'] = $correction[$key]['correction_remarks'] ? $correction[$key]['correction_remarks'] : $current_correction[$key]['correction_remarks'];
+				}
+
+				update_post_meta( $post_id, 'correction', $correction );
 			} else {
 				$to_return = ['error' => true];
 			}
+
+			
+
 			echo json_encode( $to_return );
 			exit;
 		}

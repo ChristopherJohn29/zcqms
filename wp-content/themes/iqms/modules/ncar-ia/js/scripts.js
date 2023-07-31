@@ -295,21 +295,18 @@
 
 			$('#edit_form3_save').click(function(e){
 				e.preventDefault();
-				verification = [];
-				ncar_no = $('#edit-modal [name="ncar_no"]').val();
-
-				$('#form_3_1 tr').each(function(){
-					verification_date = $(this).find('.verification_date').val();
-					verification_implemented = ( $(this).find('.verification_implemented:checked') ? $(this).find('.verification_implemented:checked').val() : '' );
-					verification_remarks = $(this).find('.verification_remarks').val();
-
-					verification.push({
-						verification_date: verification_date,
-						verification_implemented: verification_implemented,
-						verification_remarks: verification_remarks,
-					});
-
-				});
+                correction = [];
+                ncar_no = $('#edit-modal [name="ncar_no"]').val();
+                $('#form_3_1 tr').each(function() {
+                    correction_text = $(this).find('.correction_text').val();
+                    correction_date = $(this).find('.correction_date').val();
+                    correction_implemented = ($(this).find('.correction_implemented:checked') ? $(this).find('.correction_implemented:checked').val() : '');
+                    correction_remarks = $(this).find('.correction_remarks').val();
+                    correction.push({
+                        correction_implemented: correction_implemented,
+                        correction_remarks: correction_remarks,
+                    });
+                });
 
 				$.ajax({
 
@@ -317,8 +314,9 @@
 					data: {
 						action: 'ncar_ia_form3_save',
 						data: {
-							verification: verification,
-							ncar_no: ncar_no
+							correction: correction,
+                            ncar_no: ncar_no,
+                            satisfactory: 1
 						},
 					},
 					type: 'POST',
