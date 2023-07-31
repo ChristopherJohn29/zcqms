@@ -48,8 +48,15 @@
 											<div class="form-group">
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
-													<option value="">-</option>
-													<option value="test 2">Test 2</option>
+													<?php 
+														foreach( $terms  as $term ) {
+															if($term->parent != 0){
+																echo '<option value="'.$term->name.'">'.$term->name.'</option>';
+															}
+															
+														}
+													
+													?>
 												</select>
 											</div>
 
@@ -195,8 +202,15 @@
 											<div class="form-group">
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
-													<option value="">-</option>
-													<option value="test 2">Test 2</option>
+													<?php 
+														foreach( $terms  as $term ) {
+															if($term->parent != 0){
+																echo '<option value="'.$term->name.'">'.$term->name.'</option>';
+															}
+															
+														}
+													
+													?>
 												</select>
 											</div>
 

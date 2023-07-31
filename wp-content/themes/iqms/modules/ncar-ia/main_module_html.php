@@ -18,8 +18,6 @@
 					<th>Issued By</th>
 					<th>Source</th>
 					<th>Date Issued</th>
-					<th>NC Description</th>
-					<th>Clause No.</th>
 					<th>Status</th>
 					<th>Action Items</th>
 					<th>Remarks</th>
@@ -59,7 +57,10 @@
 
 						$author = get_user_by( 'ID', $ncar->post_author );
 						$author = $author->data->display_name;
+						$reviewed_by = get_post_meta( $id, 'reviewed_by', true );
+						$approved_by = get_post_meta( $id, 'approved_by', true );
 						$source = get_post_meta( $id, 'source_of_nc', true );
+						$department = get_post_meta( $id, 'department', true );
 						$nc_desc = get_post_meta( $id, 'description_of_the_noncomformity', true );
 						$date = get_post_meta( $id, 'add_date', true );
 						$clause_no = get_post_meta( $id, 'clause_no', true );
@@ -68,10 +69,11 @@
 						<tr data-id="<?= $ncar->ID ?>">
 							<td><?= $ncar->ID ?></td>
 							<td><?= $author ?></td>
+							<td><?= $reviewed_by ?></td>
+							<td><?= $approved_by ?></td>
 							<td><?= $source ?></td>
+							<td><?= $department ?></td>
 							<td><?= $date ?></td>
-							<td><?= $nc_desc ?></td>
-							<td><?= $clause_no ?></td>
 							<td>N/A</td>
 							<td class="action-group">
 								<button class="btn btn-sm btn-success btn-edit"><i class="glyphicon glyphicon glyphicon-eye-open"></i> <i class="glyphicon glyphicon glyphicon-pencil"></i></button> 

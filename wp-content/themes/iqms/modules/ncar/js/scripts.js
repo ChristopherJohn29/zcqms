@@ -884,7 +884,11 @@
                         }
                         
                         if (r.cant_followup) {
-                            $('#edit-modal #part2b').addClass('readonly');
+                            if (r.cant_approve) {
+                                $('#edit-modal #part2b').addClass('readonly');
+                            } else {
+                                $('#edit-modal #part2b').removeClass('readonly');
+                            }
                         } else {
                             $('#edit-modal #part2b').removeClass('readonly');
                             $('#edit-modal #part2b').find('.submit-group').css('display', 'block');
