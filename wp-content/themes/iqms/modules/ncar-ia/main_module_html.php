@@ -16,9 +16,9 @@
 				<tr>
 					<th>AI No.</th>
 					<th>Issued By</th>
-					<th>Source</th>
 					<th>Review by</th>
 					<th>Follow-up by</th>
+					<th>Source</th>
 					<th>Date Issued</th>
 					<th>Status</th>
 					<th>Department</th>
