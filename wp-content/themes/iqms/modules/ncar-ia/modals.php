@@ -3,7 +3,14 @@
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" id="add-modal">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-    		
+	<?php
+
+	$terms = get_terms( array(
+		'taxonomy'   => 'services',
+		'hide_empty' => false,
+	) );
+
+	?>
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="gridSystemModalLabel"><i class="glyphicon glyphicon-plus"></i> Improvement Action (AI)</h4>
