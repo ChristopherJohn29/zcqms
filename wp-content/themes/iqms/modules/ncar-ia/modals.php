@@ -399,9 +399,9 @@
 									<table class="table">
 										<tbody>
 											<tr>
-												<td colspan="2">3. verifications: Implemented as Planned?</td>
-												<td>Remarks</td>
-												<td>Date Stamp</td>
+												<td colspan="1">3. verifications: Implemented as Planned?</td>
+												<td>Completion Date</td>
+												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
 											</tr>
 										</tbody>
@@ -409,13 +409,7 @@
 										<tbody id="form_3_1">
 											
 										</tbody>
-										<tbody id="form_foot_3_1">
-											<tr>
-												<td colspan="3"></td>
-												<td><button class="pull-right btn btn-primary" id="add_verification">Add Verification</button></td>
-												<td></td>
-											</tr>
-										</tbody>
+								
 
 									</table>
 

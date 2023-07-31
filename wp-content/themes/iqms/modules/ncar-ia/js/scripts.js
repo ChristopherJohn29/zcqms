@@ -291,26 +291,7 @@
 			});
 
 			/*form 3*/
-			$('#add_verification').click(function(){
 
-				date = new Date;
-
-				$html = ''+
-				'<tr>'+
-					'<td colspan="2">'+
-						'<input type="radio" name="verification_'+_correction_ind+'" class="verification_implemented" value="Yes"> Yes'+
-						'<input type="radio" name="verification_'+_correction_ind+'" class="verification_implemented" value="No"> No'+
-					'</td>'+
-					'<td><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks"></td>'+
-					'<td><input type="date" class="form-control input-sm verification_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
-					'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
-				'</tr>';
-
-				_correction_ind++;
-				$('#form_3_1').append( $html );
-				app.bindDeleteBtns();
-
-			});
 
 			$('#edit_form3_save').click(function(e){
 				e.preventDefault();
@@ -685,21 +666,15 @@
 						/*end*/
 						/*form 3*/
 						$html = '';
-						$.each(r.form3.verification, function(i, v) {
+						$.each(r.form2.correction, function(i, v) {
+							if(v.correction_text  == undefined){
+								v.correction_text = 'remarks';
+							}
 
-							$html += ''+
-							'<tr>'+
-								'<td colspan="2">'+
-									'<input type="radio" name="verification_'+_correction_ind+'" class="verification_implemented" value="Yes" '+( v.verification_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
-									'<input type="radio" name="verification_'+_correction_ind+'" class="verification_implemented" value="No" '+( v.verification_implemented == 'No' ? 'checked' : '' )+'> No'+
-								'</td>'+
-								'<td><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks" value="'+v.verification_remarks+'"></td>'+
-								'<td><input type="date" class="form-control input-sm verification_date" value="'+v.verification_date+'"></td>'+
-								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
-							'</tr>';
-
+							$html2 += '' + '<tr>' + '<td colspan="1"><input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"><button class="btn btn-primary view-button" data-content="' + v.correction_remarks + '">view</button></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
 							_correction_ind++;
-							$('#form_3_1').html( $html );
+							
+							$('#form_3_1').html($html2);
 							app.bindDeleteBtns();
 						});
 						/*end*/
