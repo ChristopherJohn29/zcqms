@@ -664,6 +664,7 @@
 						/*end*/
 						/*form 3*/
 						$html = '';
+						$html2 = '';
 						$.each(r.form2.correction, function(i, v) {
 							if(v.correction_text  == undefined){
 								v.correction_text = 'remarks';
