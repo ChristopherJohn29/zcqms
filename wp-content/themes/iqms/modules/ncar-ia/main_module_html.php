@@ -71,8 +71,8 @@
 						<tr data-id="<?= $ncar->ID ?>">
 							<td><?= $ncar->ID ?></td>
 							<td><?= $author ?></td>
-							<td><?= $reviewed_by ?></td>
-							<td><?= $approved_by ?></td>
+							<td><?= $reviewed_by->data->display_name; ?></td>
+							<td><?= $approved_by->data->display_name; ?></td>
 							<td><?= $source ?></td>
 							<td><?= $department ?></td>
 							<td><?= $date ?></td>
