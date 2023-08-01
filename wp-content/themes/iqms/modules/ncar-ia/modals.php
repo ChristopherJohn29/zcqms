@@ -13,7 +13,7 @@
 	?>
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="gridSystemModalLabel"><i class="glyphicon glyphicon-plus"></i> Improvement Action (AI)</h4>
+					<h4 class="modal-title" id="gridSystemModalLabel"><i class="glyphicon glyphicon-plus"></i>  Improvement Action (IA)</h4>
 				</div>
 				<div class="modal-body">
 					<div>
@@ -95,7 +95,7 @@
 												</label>
 
 												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="Improvement Pretention"> Improvement Pretention
+													<input type="radio" name="source_of_nc" value="External Audit"> External Audit
 												</label>
 
 												<label class="radio-inline">
@@ -169,7 +169,7 @@
     		
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-					<h4 class="modal-title" id="gridSystemModalLabel"><i class="glyphicon glyphicon-plus"></i> Nonconformity and Corrective Action Report (NCAR)</h4>
+					<h4 class="modal-title" id="gridSystemModalLabel"><i class="glyphicon glyphicon-plus"></i>  Improvement Action (IA)</h4>
 				</div>
 				<div class="modal-body">
 					<div>
@@ -191,7 +191,8 @@
 											
 											<div class="form-group">
 												<label for="ncar_no">IA No.</label>
-												<input type="text" class="form-control" placeholder="System Generated" disabled name="ncar_no">
+												<input type="text" class="form-control" placeholder="" name="ncar_ia">
+												<input type="hidden" class="form-control" placeholder="System Generated" disabled name="ncar_no">
 											</div>
 
 										</div>
@@ -249,7 +250,7 @@
 												</label>
 
 												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="Improvement Pretention"> Improvement Pretention
+													<input type="radio" name="source_of_nc" value="External Audit"> External Audit
 												</label>
 
 												<label class="radio-inline">

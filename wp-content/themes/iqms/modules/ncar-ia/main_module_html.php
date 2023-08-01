@@ -7,7 +7,7 @@
 <!-- resources -->
 <div class="wrap">
 	<div class="section-head">
-		<button class="btn btn-primary pull-right" id="btn-add"><i class="glyphicon glyphicon-plus"></i> Create new AI</button>
+		<button class="btn btn-primary pull-right" id="btn-add"><i class="glyphicon glyphicon-plus"></i> Create new IA</button>
 		<h1> Improvement Action Dashboard </h1>
 	</div>
 	<div class="section-body">
