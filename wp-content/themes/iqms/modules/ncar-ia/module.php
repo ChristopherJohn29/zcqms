@@ -263,10 +263,10 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 		function ncar_ia_post_type() {
 			$labels = array(
-				'name'                  => _x( 'NCAR Improvement Action', 'Post type general name', 'textdomain' ),
-				'singular_name'         => _x( 'NCAR Improvement Action', 'Post type singular name', 'textdomain' ),
-				'menu_name'             => _x( 'NCAR Improvement Action', 'Admin Menu text', 'textdomain' ),
-				'name_admin_bar'        => _x( 'NCAR Improvement Action', 'Add New on Toolbar', 'textdomain' ),
+				'name'                  => _x( 'Improvement Action', 'Post type general name', 'textdomain' ),
+				'singular_name'         => _x( 'Improvement Action', 'Post type singular name', 'textdomain' ),
+				'menu_name'             => _x( 'Improvement Action', 'Admin Menu text', 'textdomain' ),
+				'name_admin_bar'        => _x( 'Improvement Action', 'Add New on Toolbar', 'textdomain' ),
 				'add_new'               => __( 'Add New', 'textdomain' ),
 				'add_new_item'          => __( 'Add New NCAR Improvement Action', 'textdomain' ),
 				'new_item'              => __( 'New NCAR Improvement Action', 'textdomain' ),
