@@ -291,14 +291,25 @@
 			});
 
 			/*form 3*/
-			$('#ncar_main_form [name="source_of_nc"]').on('change', function(){
-				source_of_nc = $(this).val();
+			jQuery('#ncar_main_form [name="source_of_nc"]').on('click', function(){
+				source_of_nc = jQuery(this).val();
 				if(source_of_nc == 'Others'){
-					$('.other_source').css('display', 'block');
+					jQuery('.other_source').css('display', 'block');
 				} else {
-					$('.other_source').css('display', 'none');
+					jQuery('.other_source').css('display', 'none');
 				}
 			});
+
+			jQuery('#ncar_edit_form [name="source_of_nc"]').on('click', function(){
+				source_of_nc = jQuery(this).val();
+				if(source_of_nc == 'Others'){
+					jQuery('.other_source').css('display', 'block');
+				} else {
+					jQuery('.other_source').css('display', 'none');
+				}
+			});
+
+			
 			
 			$('#edit_form3_save_satisfactory').click(function(e){
 				e.preventDefault();
