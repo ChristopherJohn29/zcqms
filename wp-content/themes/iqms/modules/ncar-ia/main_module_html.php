@@ -70,6 +70,7 @@
 						$nc_desc = get_post_meta( $id, 'description_of_the_noncomformity', true );
 						$date = get_post_meta( $id, 'add_date', true );
 						$clause_no = get_post_meta( $id, 'clause_no', true );
+						$status = get_post_meta( $id, 'status', true );
 
 						?>
 						<tr data-id="<?= $ncar->ID ?>">
@@ -80,7 +81,7 @@
 							<td><?= $source ?></td>
 							<td><?= $department ?></td>
 							<td><?= $date ?></td>
-							<td>N/A</td>
+							<td><?= $status ?></td>
 							<td class="action-group">
 								<button class="btn btn-sm btn-success btn-edit"><i class="glyphicon glyphicon glyphicon-eye-open"></i> <i class="glyphicon glyphicon glyphicon-pencil"></i></button> 
 								<button class="btn btn-sm btn-primary btn-remarks"><i class="glyphicon glyphicon glyphicon-file"></i></button>

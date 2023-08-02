@@ -415,9 +415,15 @@
 
 									</table>
 
-									<div class="submit-group" style="display: flex; flex-direction: row-reverse;">
+									<!-- <div class="submit-group" style="display: flex; flex-direction: row-reverse;">
 										<button type="submit" class="btn btn-success" id="edit_form3_save">Save changes</button>
+									</div> -->
+
+									<div class="submit-group" style="display: inline-block; text-align: right; width: 100%;">
+										<button type="submit" class="btn btn-success" id="edit_form3_save_satisfactory">Satisfactory</button>
+										<button type="submit" class="btn btn-success" id="edit_form3_save_not_satisfactory">Not Satisfactory</button>
 									</div>
+
 								</form>
 
 							</div>

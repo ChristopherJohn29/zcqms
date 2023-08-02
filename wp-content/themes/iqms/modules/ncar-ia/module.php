@@ -87,6 +87,8 @@ if ( !class_exists('NCAR_IA_Module') ) {
 			$correction = $data['correction'];
 
 			$post_id = $data['ncar_no'];
+			$satisfactory = $data['satisfactory'];
+			
 			$to_return = [];
 			if ( $post_id ) {
 				$current_correction = get_post_meta( $post_id, 'correction', true);
@@ -96,6 +98,12 @@ if ( !class_exists('NCAR_IA_Module') ) {
 					$correction[$key]['correction_date'] = $correction[$key]['correction_date'] ? $correction[$key]['correction_date'] : $current_correction[$key]['correction_date'];
 					$correction[$key]['correction_implemented'] = $correction[$key]['correction_implemented'] ? $correction[$key]['correction_implemented'] : $current_correction[$key]['correction_implemented'];
 					$correction[$key]['correction_remarks'] = $correction[$key]['correction_remarks'] ? $correction[$key]['correction_remarks'] : $current_correction[$key]['correction_remarks'];
+				}
+
+				if($satisfactory == 1){
+					update_post_meta( $post_id, 'status', 'Satisfactory' );
+				} else {
+					update_post_meta( $post_id, 'status', 'For Improvement Action' );
 				}
 
 				update_post_meta( $post_id, 'correction', $correction );
@@ -122,6 +130,7 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				update_post_meta( $post_id, 'correction', $correction );
 				update_post_meta( $post_id, 'files', $files );
 				update_post_meta( $post_id, 'corrective_action_data', $corrective_action_data );
+				update_post_meta( $post_id, 'status', 'For Follow up' );
 				$to_return = ['post_id' => $post_id];
 			} else {
 				$to_return = ['error' => true];
@@ -250,6 +259,8 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				foreach( $data as $field ) {
 					update_post_meta( $post_id, $field['name'], $field['value'] );
 				}
+
+				update_post_meta( $post_id, 'status', 'For Improvement Action' );
 
 				$to_return = ['post_id' => $post_id];
 				update_post_meta( $post_id, 'evidences', $evidences );

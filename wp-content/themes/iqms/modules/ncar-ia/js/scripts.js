@@ -291,9 +291,16 @@
 			});
 
 			/*form 3*/
-
-
-			$('#edit_form3_save').click(function(e){
+			$('#ncar_main_form [name="source_of_nc"]').on('change', function(){
+				source_of_nc = $(this).val();
+				if(source_of_nc == 'Others'){
+					$('.other_source').css('display', 'block');
+				} else {
+					$('.other_source').css('display', 'none');
+				}
+			});
+			
+			$('#edit_form3_save_satisfactory').click(function(e){
 				e.preventDefault();
                 correction = [];
                 ncar_no = $('#edit-modal [name="ncar_no"]').val();
@@ -317,6 +324,75 @@
 							correction: correction,
                             ncar_no: ncar_no,
                             satisfactory: 1
+						},
+					},
+					type: 'POST',
+					dataType: 'JSON',
+					success: function(r) {
+						Swal.close();
+						if ( r.post_id ) {
+
+							$icon = 'success';
+							$title = 'NCAR Saved';
+							$text = '';
+
+						} else {
+
+							$icon = 'error';
+							$title = 'NCAR Not Saved';
+							$text = 'Error occurred';
+
+						}
+						Swal.fire({
+							icon: $icon,
+							title: $title,
+							allowOutsideClick: false,
+							showConfirmButton: true,
+							allowEscapeKey: false,
+							html: $text,
+						}).then( function(result) {
+							location.reload();
+						});
+					},
+					beforeSend: function() {
+
+						Swal.fire({
+							icon: 'info',
+							allowOutsideClick: false,
+							showConfirmButton: false,
+							allowEscapeKey: false,
+							html: '<p style="font-size: 12px;"> Saving. Please wait...</p><i class="fa fa-refresh fa-spin"></i>',
+						});
+
+					}
+
+				});
+			});
+
+			$('#edit_form3_save_not_satisfactory').click(function(e){
+				e.preventDefault();
+                correction = [];
+                ncar_no = $('#edit-modal [name="ncar_no"]').val();
+                $('#form_3_1 tr').each(function() {
+                    correction_text = $(this).find('.correction_text').val();
+                    correction_date = $(this).find('.correction_date').val();
+                    correction_implemented = ($(this).find('.correction_implemented:checked') ? $(this).find('.correction_implemented:checked').val() : '');
+                    correction_remarks = $(this).find('.correction_remarks').val();
+                    correction.push({
+                        correction_implemented: correction_implemented,
+                        correction_remarks: correction_remarks,
+                    });
+                });
+
+				$.ajax({
+
+					url: location.origin + '/wp-admin/admin-ajax.php',
+					data: {
+						action: 'ncar_ia_form3_save',
+						data: {
+							correction: correction,
+                            ncar_no: ncar_no,
+                            satisfactory: 0
 						},
 					},
 					type: 'POST',
