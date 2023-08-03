@@ -103,7 +103,7 @@
 												</label>
 												
 												<div class="form-group">
-													<input type="text" name="other_source" class="other_source" style="display:none;">
+													<input type="text" name="other_source" class="other_source" style="display:none; float: right;">
 												</div>
 												
 
@@ -258,7 +258,7 @@
 												</label>
 
 												<div class="form-group">
-													<input type="text" name="other_source" class="other_source" style="display:none;">
+													<input type="text" name="other_source" class="other_source" style="display:none; float: right;">
 												</div>
 
 											</div>
