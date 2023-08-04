@@ -106,6 +106,7 @@ if ( !class_exists('NCAR_IA_Module') ) {
 					update_post_meta( $post_id, 'status', 'For Improvement Action' );
 				}
 
+				$to_return = ['post_id' => $post_id];
 				update_post_meta( $post_id, 'correction', $correction );
 			} else {
 				$to_return = ['error' => true];
