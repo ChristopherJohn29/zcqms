@@ -696,6 +696,7 @@
 									$('#edit-modal #part1 [name="'+i+'"]').val(v);
 								} else {
 									$('#edit-modal #part1 [name="'+i+'"]').css('display', 'none');
+									$('#edit-modal #part1 [name="'+i+'"]').val(v);
 								}
 							}else if ( i == 'ncar_ia' ) {
 								$('#edit-modal #part1 [name="'+i+'"]').val(v);
