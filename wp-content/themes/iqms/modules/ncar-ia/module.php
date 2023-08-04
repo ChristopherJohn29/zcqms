@@ -205,6 +205,7 @@ if ( !class_exists('NCAR_IA_Module') ) {
 					'add_date' => get_post_meta( $id, 'add_date', true ),
 					'department' => get_post_meta( $id, 'department', true ),
 					'source_of_nc' => get_post_meta( $id, 'source_of_nc', true ),
+					'other_source' => get_post_meta( $id, 'other_source', true ),
 					'clause_no' => get_post_meta( $id, 'clause_no', true ),
 					'evidences' => $evidences,
 					'reviewed_by' => get_post_meta( $id, 'reviewed_by', true ),

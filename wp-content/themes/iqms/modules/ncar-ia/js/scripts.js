@@ -657,7 +657,7 @@
 
 			}).addClass('loaded');
 			/*edit*/
-			$('.btn-edit:not(.loaded)').on('click', function(){
+			$('#ncar-main_wrapper').on('click', '.btn-edit:not(.loaded)', function() {
 
 				$('#edit-modal .nav-tabs li:first-child a').click();
 
@@ -690,6 +690,13 @@
 
 							} else if ( i == 'source_of_nc' ) {
 								$('#edit-modal #part1 [name="'+i+'"][value="'+v+'"]').prop('checked', true);
+							} else if ( i == 'other_source' ) {
+								if(v){
+									$('#edit-modal #part1 [name="'+i+'"]').css('display', 'block');
+									$('#edit-modal #part1 [name="'+i+'"]').val(v);
+								} else {
+									$('#edit-modal #part1 [name="'+i+'"]').css('display', 'none');
+								}
 							} else if ( $el.prop("tagName") == 'SELECT' ) {
 								$el.find('option[value="'+v+'"]').attr('selected', 'selected');
 							} else if ( $el.prop("tagName") == 'INPUT' ) {
@@ -697,6 +704,8 @@
 							}  else if ( $el.prop("tagName") == 'TEXTAREA' ) {
 								$el.html(v);
 							}
+
+
 
 						});
 
