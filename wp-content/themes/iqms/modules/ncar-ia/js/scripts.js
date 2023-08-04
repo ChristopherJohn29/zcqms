@@ -697,6 +697,8 @@
 								} else {
 									$('#edit-modal #part1 [name="'+i+'"]').css('display', 'none');
 								}
+							}else if ( i == 'ncar_ia' ) {
+								$('#edit-modal #part1 [name="'+i+'"]').val(v);
 							} else if ( $el.prop("tagName") == 'SELECT' ) {
 								$el.find('option[value="'+v+'"]').attr('selected', 'selected');
 							} else if ( $el.prop("tagName") == 'INPUT' ) {
