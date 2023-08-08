@@ -148,6 +148,17 @@
 										</div>
 									</div>
 
+									<div class="row">
+										<div class="col-sm-12">
+
+											<div class="form-group">
+												<label for="description_of_the_noncomformity">Description of Improvement Action</label>
+												<textarea class="form-control" rows="5" name="description_of_improvement_action" id="description_of_improvement_action"></textarea>
+											</div>
+
+										</div>
+									</div>
+
 									<div class="submit-group" style="display: flex; flex-direction: row-reverse;">
 										<button type="submit" class="btn btn-success" id="main_form_save">Save changes</button>
 									</div>
@@ -304,12 +315,12 @@
 										</div>
 									</div>
 									
-									<div class="row hidden">
+									<div class="row">
 										<div class="col-sm-12">
 
 											<div class="form-group">
-												<label for="description_of_the_noncomformity">Description of the Noncomformity</label>
-												<textarea class="form-control" rows="5" name="description_of_the_noncomformity" id="description_of_the_noncomformity"></textarea>
+												<label for="description_of_the_noncomformity">Description of Improvement Action</label>
+												<textarea class="form-control" rows="5" name="description_of_improvement_action" id="description_of_improvement_action"></textarea>
 											</div>
 
 										</div>

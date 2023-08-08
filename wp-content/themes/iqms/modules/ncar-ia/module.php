@@ -212,7 +212,7 @@ if ( !class_exists('NCAR_IA_Module') ) {
 					'evidences' => $evidences,
 					'reviewed_by' => get_post_meta( $id, 'reviewed_by', true ),
 					'approved_by' => get_post_meta( $id, 'approved_by', true ),
-					'description_of_the_noncomformity' => get_post_meta( $id, 'description_of_the_noncomformity', true ),
+					'description_of_improvement_action' => get_post_meta( $id, 'description_of_improvement_action', true ),
 				];
 
 				$to_return['form2'] = [
