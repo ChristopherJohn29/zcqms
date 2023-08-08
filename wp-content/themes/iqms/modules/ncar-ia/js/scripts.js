@@ -158,6 +158,7 @@
 				$html = ''+
 				'<tr>'+
 					'<td colspan="2"><input type="text" class="form-control correction_text"></td>'+
+					'<td><input type="date" class="form-control target_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
 					'<td><input type="date" class="form-control correction_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
 					'<td class="hidden">'+
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes"> Yes'+
@@ -200,12 +201,14 @@
 				ncar_no = $('#edit-modal [name="ncar_no"]').val();
 				$('#form_2_1 tr').each(function(){
 					correction_text = $(this).find('.correction_text').val();
+					target_date = $(this).find('.target_date').val();
 					correction_date = $(this).find('.correction_date').val();
 					correction_implemented = ( $(this).find('.correction_implemented:checked') ? $(this).find('.correction_implemented:checked').val() : '' );
 					correction_remarks = $(this).find('.correction_remarks').val();
 
 					correction.push({
 						correction_text: correction_text,
+						target_date: target_date,
 						correction_date: correction_date,
 						correction_implemented: correction_implemented,
 						correction_remarks: correction_remarks,
@@ -717,7 +720,8 @@
 						$.each(r.form2.correction, function(i, v) {
 							$html += ''+
 							'<tr>'+
-								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
+								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'
+								'<td><input type="date" class="form-control target_date" value="'+v.target_date+'"></td>'++
 								'<td><input type="date" class="form-control correction_date" value="'+v.correction_date+'"></td>'+
 								'<td class="hidden">'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes" '+( v.correction_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
@@ -769,7 +773,7 @@
 								v.correction_text = 'remarks';
 							}
 
-							$html2 += '' + '<tr>' + '<td colspan="1"><input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"><button class="btn btn-primary view-button" data-content="' + v.correction_remarks + '">view</button></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+							$html2 += '' + '<tr>' + '<td colspan="1"><input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + '<td><input type="date" disabled class="form-control target_date" value="' + v.target_date + '"></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"><button class="btn btn-primary view-button" data-content="' + v.correction_remarks + '">view</button></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
 							_correction_ind++;
 							
 							$('#form_3_1').html($html2);

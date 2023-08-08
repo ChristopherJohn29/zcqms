@@ -338,6 +338,7 @@
 										<tbody>
 											<tr>
 												<td colspan="2">2.1 Improvement Action</td>
+												<td>Target Date</td>
 												<td>Completion Date</td>
 												<td colspan="2" class="hidden">Implemented As Planned?</td>
 												<td></td>
