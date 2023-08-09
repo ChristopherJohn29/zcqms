@@ -414,6 +414,7 @@
 										<tbody>
 											<tr>
 												<td colspan="1">3. verifications: Implemented as Planned?</td>
+												<td>Target Date</td>
 												<td>Completion Date</td>
 												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
