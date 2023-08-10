@@ -567,7 +567,7 @@
 
 			$('.file-upload .upload-btn-new').on('click', function() {
 				$this = $(this).parents('.file-upload');
-				multiple = false;
+				multiple = true;
 
 			    if ( typeof _uploader != 'undefined' ) {
 			      _uploader.open();
@@ -779,6 +779,11 @@
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes" '+( v.correction_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No" '+( v.correction_implemented == 'No' ? 'checked' : '' )+'> No'+
 								'</td>'+
+								'<td><div class="form-group file-upload noncoformity-evidence-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
+								'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
+								'<div class="hidden file-group evidences" id="noncoformity-evidence"></div>' +
+								'<input type="text" readonly class="selected_files_'+_correction_ind+' form-control" id="noncoformity-evidence-file" value="">' +
+								'</div></td>'+
 								'<td class="hidden"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="'+v.correction_remarks+'"></td>'+
 								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
 							'</tr>';
