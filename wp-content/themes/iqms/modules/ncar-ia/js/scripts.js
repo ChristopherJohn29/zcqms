@@ -164,6 +164,11 @@
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes"> Yes'+
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No"> No'+
 					'</td>'+
+					'<td><div class="form-group file-upload noncoformity-evidence-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
+					'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
+					'<div class="hidden file-group evidences" id="noncoformity-evidence"></div>' +
+					'<input type="text" readonly class="selected_files_'+_correction_ind+' form-control" id="noncoformity-evidence-file" value="">' +
+					'</div></td>'+
 					'<td class="hidden"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks"></td>'+
 					'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
 				'</tr>';
@@ -538,6 +543,53 @@
 
 					if ( list ) {
 						$this.find('.selected_files').val( uploaded_files.length + ' file(s) selected' );
+					}
+				});
+
+				_uploader.on('open', function(){
+					/*reassign selected files*/
+				    // if ( typeof uploaded_files != 'undefined' ) {
+				    // 	var lib = _uploader.state().get('library');
+				    // 	uploaded_files.forEach(function(v, i){
+				    // 		attachment = wp.media.attachment(v.id);
+				    //         attachment.fetch();
+				    //         console.log( attachment );
+				    //         lib.add(attachment);
+				    // 	});
+				    // }
+				});
+				_uploader.on('close', function(){
+					$('body').addClass('modal-open');
+				});
+				_uploader.open();
+			});
+
+
+			$('.file-upload .upload-btn-new').on('click', function() {
+				$this = $(this).parents('.file-upload');
+				multiple = false;
+
+			    if ( typeof _uploader != 'undefined' ) {
+			      _uploader.open();
+			      return;
+			    }
+
+				_uploader = wp.media( {
+					title: 'Upload Files',
+					multiple: multiple
+				} ).on( 'select', function(e){
+					$('body').addClass('modal-open');
+					/** This will return the selected image from the featured-image Uploader, the result is an object */
+					uploaded_files = _uploader.state().get( 'selection' );
+					uploaded_files = uploaded_files.toJSON();
+					list = '';
+					uploaded_files.forEach(function(v, i){
+						list += '<input type="hidden" data-url="'+v.url+'" value="'+v.id+'" data-title="'+v.title+'" class="evidences_'+$this.data('id')+'">';
+					});
+					$this.find('.file-group').html( list );
+
+					if ( list ) {
+						$this.find('.selected_files_'+$this.data('id')+'').val( uploaded_files.length + ' file(s) selected' );
 					}
 				});
 
