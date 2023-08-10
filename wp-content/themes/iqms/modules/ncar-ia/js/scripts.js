@@ -612,7 +612,7 @@
 			});
 
 			/*view evidences*/
-			$('#ncar_edit_form2').on('click', 'selected_files', function(){
+			$('#ncar_edit_form2').on('click', '.selected_files', function(){
 				if ( $('.evidences input').length ) {
 					$this = $(this).parents('.file-upload');
 					html = '';
@@ -782,7 +782,7 @@
 								'<td><div class="form-group file-upload noncoformity-evidence-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
 								'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
 								'<div class="hidden file-group evidences" id="noncoformity-evidence"></div>' +
-								'<input type="text" readonly class="selected_files_'+_correction_ind+' form-control" id="noncoformity-evidence-file" value="">' +
+								'<input type="text" readonly class="selected_files form-control" id="noncoformity-evidence-file" value="">' +
 								'</div></td>'+
 								'<td class="hidden"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="'+v.correction_remarks+'"></td>'+
 								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
