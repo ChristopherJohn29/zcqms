@@ -565,7 +565,7 @@
 			});
 
 
-			$('.file-upload .upload-btn-new').on('click', function() {
+			$('#ncar_edit_form2').on('.file-upload .upload-btn-new', 'click', function() {
 				$this = $(this).parents('.file-upload');
 				multiple = true;
 
