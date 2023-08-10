@@ -210,6 +210,9 @@
 					correction_date = $(this).find('.correction_date').val();
 					correction_implemented = ( $(this).find('.correction_implemented:checked') ? $(this).find('.correction_implemented:checked').val() : '' );
 					correction_remarks = $(this).find('.correction_remarks').val();
+					correction_attachment_url = $(this).find('.improvement-action-file-upload .evidences ').find('input').data('url');
+					correction_attachment_id = $(this).find('.improvement-action-file-upload .evidences ').find('input').val();
+					correction_attachment_title = $(this).find('.improvement-action-file-upload .evidences ').find('input').data('title');
 
 					correction.push({
 						correction_text: correction_text,
@@ -217,6 +220,9 @@
 						correction_date: correction_date,
 						correction_implemented: correction_implemented,
 						correction_remarks: correction_remarks,
+						correction_attachment_url: correction_attachment_url,
+						correction_attachment_id: correction_attachment_id,
+						correction_attachment_title: correction_attachment_title,
 					});
 
 				});
@@ -567,7 +573,7 @@
 
 			$('#ncar_edit_form2').on( 'click', '.file-upload .upload-btn-new', function() {
 				$this = $(this).parents('.file-upload');
-				multiple = true;
+				multiple = false;
 
 			    if ( typeof _uploader != 'undefined' ) {
 			      _uploader.open();
@@ -770,6 +776,10 @@
 						/*form 2*/
 						$html = '';
 						$.each(r.form2.correction, function(i, v) {
+							e_html_attachment = (v.correction_attachment_url ? ' 1 file selected' : '');
+							e_input_attachment = (v.correction_attachment_url ? '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + + '" data-title="' + v.correction_attachment_title + + '" class="evidences">' : '');
+
+								
 							$html += ''+
 							'<tr>'+
 								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
@@ -779,10 +789,10 @@
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes" '+( v.correction_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No" '+( v.correction_implemented == 'No' ? 'checked' : '' )+'> No'+
 								'</td>'+
-								'<td><div class="form-group file-upload noncoformity-evidence-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
+								'<td><div class="form-group file-upload improvement-action-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
 								'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
-								'<div class="hidden file-group evidences" id="noncoformity-evidence"></div>' +
-								'<input type="text" readonly class="selected_files form-control" id="noncoformity-evidence-file" value="">' +
+								'<div class="hidden file-group evidences" id="improvement-action">'+e_input_attachment+'</div>' +
+								'<input type="text" readonly class="selected_files form-control" id="improvement-action-file" value="'+e_html_attachment+'">' +
 								'</div></td>'+
 								'<td class="hidden"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="'+v.correction_remarks+'"></td>'+
 								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
