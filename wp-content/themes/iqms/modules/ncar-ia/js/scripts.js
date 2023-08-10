@@ -164,10 +164,10 @@
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes"> Yes'+
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No"> No'+
 					'</td>'+
-					'<td><div class="form-group file-upload noncoformity-evidence-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
+					'<td><div class="form-group file-upload improvement-action-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
 					'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
-					'<div class="hidden file-group evidences" id="noncoformity-evidence"></div>' +
-					'<input type="text" readonly class="selected_files_'+_correction_ind+' form-control" id="noncoformity-evidence-file" value="">' +
+					'<div class="hidden file-group evidences" id="improvement-action"></div>' +
+					'<input type="text" readonly class="selected_files form-control" id="improvement-action-file-'+_correction_ind+'" value="">' +
 					'</div></td>'+
 					'<td class="hidden"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks"></td>'+
 					'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
@@ -589,7 +589,7 @@
 					$this.find('.file-group').html( list );
 
 					if ( list ) {
-						$this.find('.selected_files_'+$this.data('id')+'').val( uploaded_files.length + ' file(s) selected' );
+						$this.find('.selected_files').val( uploaded_files.length + ' file(s) selected' );
 					}
 				});
 
@@ -612,7 +612,7 @@
 			});
 
 			/*view evidences*/
-			$('.selected_files').click(function(){
+			$('#ncar_edit_form2').on('click', 'selected_files', function(){
 				if ( $('.evidences input').length ) {
 					$this = $(this).parents('.file-upload');
 					html = '';
