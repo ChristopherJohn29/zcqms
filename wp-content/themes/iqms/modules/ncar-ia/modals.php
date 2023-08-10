@@ -32,7 +32,7 @@
     						<form id="ncar_main_form">
     							<input type="hidden" name="_user_id" value="<?= $this_user ?>">
 									<div class="row">
-										<div class="col-sm-4">
+										<div class="col-sm-3">
 											
 											<div class="form-group">
 												<label for="ncar_no">IA No.</label>
@@ -42,7 +42,7 @@
 
 										</div>
 
-										<div class="col-sm-4">
+										<div class="col-sm-3">
 											
 											<div class="form-group">
 												<label for="add_date">Date</label>
@@ -51,7 +51,15 @@
 
 										</div>
 
-										<div class="col-sm-4">
+										<div class="col-sm-3">
+
+											<div class="form-group">
+												<label for="clause_no">Clause No. (Optional)</label>
+												<input type="text" name="clause_no" class="form-control" value="">
+											</div>
+										</div>
+
+										<div class="col-sm-3">
 											
 											<div class="form-group">
 												<label for="department">Department</label>
@@ -198,7 +206,7 @@
 
     						<form id="ncar_edit_form">
 									<div class="row">
-										<div class="col-sm-4">
+										<div class="col-sm-3">
 											
 											<div class="form-group">
 												<label for="ncar_no">IA No.</label>
@@ -208,7 +216,7 @@
 
 										</div>
 
-										<div class="col-sm-4">
+										<div class="col-sm-3">
 											
 											<div class="form-group">
 												<label for="add_date">Date</label>
@@ -217,7 +225,17 @@
 
 										</div>
 
-										<div class="col-sm-4">
+										<div class="col-sm-3">
+
+											<div class="form-group">
+												<label for="clause_no">Clause No. (Optional)</label>
+												<input type="text" name="clause_no" class="form-control" value="">
+											</div>
+										</div>
+
+										
+
+										<div class="col-sm-3">
 											
 											<div class="form-group">
 												<label for="department">Department</label>
