@@ -778,9 +778,9 @@
 						$.each(r.form2.correction, function(i, v) {
 
 							console.log(v);
-							e_html_attachment =  '1 file selected';
-							e_input_attachment = '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + + '" data-title="' + v.correction_attachment_title + + '" class="evidences">';
-							console.log(e_input_attachment);
+							e_html_attachment = (v.correction_attachment_url ? ' 1 file selected' : '');
+							e_input_attachment = (v.correction_attachment_url ? '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + '" data-title="' + v.correction_attachment_title + '" class="evidences">' : '');
+
 								
 							$html += ''+
 							'<tr>'+
@@ -843,7 +843,7 @@
 							}
 							
 							e_html_attachment = (v.correction_attachment_url ? ' 1 file selected' : '');
-							e_input_attachment = (v.correction_attachment_url ? '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + + '" data-title="' + v.correction_attachment_title + + '" class="evidences">' : '');
+							e_input_attachment = (v.correction_attachment_url ? '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + '" data-title="' + v.correction_attachment_title + '" class="evidences">' : '');
 
 							$html2 += '' + '<tr>' + '<td colspan="1">' +
 							 '<input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + 
