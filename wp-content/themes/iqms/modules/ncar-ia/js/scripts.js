@@ -637,6 +637,26 @@
 					});
 				}
 			});
+			
+			$('#ncar_edit_form3').on('click', '.selected_files', function(){
+				if ( $('.evidences input').length ) {
+					$this = $(this).parents('.file-upload');
+					html = '';
+					$this.find('.evidences input').each(function(){
+
+						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
+						Swal.fire({
+							icon: 'info',
+							title: 'Selected File(s)',
+							allowOutsideClick: false,
+							showConfirmButton: true,
+							allowEscapeKey: false,
+							html: html,
+						});
+
+					});
+				}
+			});
 			/*end init*/
 		},
 		loadBtnAction: function() {
