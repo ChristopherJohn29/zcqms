@@ -776,8 +776,8 @@
 						/*form 2*/
 						$html = '';
 						$.each(r.form2.correction, function(i, v) {
-							e_html_attachment = (v.correction_attachment_url != '' ? ' 1 file selected' : '');
-							e_input_attachment = (v.correction_attachment_url != '' ? '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + + '" data-title="' + v.correction_attachment_title + + '" class="evidences">' : '');
+							e_html_attachment =  '1 file selected';
+							e_input_attachment = '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + + '" data-title="' + v.correction_attachment_title + + '" class="evidences">';
 
 								
 							$html += ''+
