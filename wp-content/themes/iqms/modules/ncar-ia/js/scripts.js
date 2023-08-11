@@ -618,6 +618,47 @@
 			});
 
 			/*view evidences*/
+			view-btn-new
+
+			$('#ncar_edit_form2').on('click', '.view-btn-new', function(){
+				if ( $(this).parent().find('.evidences').length ) {
+					$this = $(this).parent().find('.evidences');
+					html = '';
+					$this.each(function(){
+
+						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
+						Swal.fire({
+							icon: 'info',
+							title: 'Selected File(s)',
+							allowOutsideClick: false,
+							showConfirmButton: true,
+							allowEscapeKey: false,
+							html: html,
+						});
+
+					});
+				}
+			});
+			$('#ncar_edit_form3').on('click', '.view-btn-new', function(){
+				if ( $(this).parent().find('.evidences').length ) {
+					$this = $(this).parent().find('.evidences');
+					html = '';
+					$this.each(function(){
+
+						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
+						Swal.fire({
+							icon: 'info',
+							title: 'Selected File(s)',
+							allowOutsideClick: false,
+							showConfirmButton: true,
+							allowEscapeKey: false,
+							html: html,
+						});
+
+					});
+				}
+			});
+
 			$('#ncar_edit_form2').on('click', '.selected_files', function(){
 				if ( $('.evidences input').length ) {
 					$this = $(this).parents('.file-upload');
@@ -811,7 +852,7 @@
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes" '+( v.correction_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No" '+( v.correction_implemented == 'No' ? 'checked' : '' )+'> No'+
 								'</td>'+
-								'<td><class="btn btn-info btn-sm upload-btn-new>View Uploaded File<button>'+e_input_attachment+'</td>'+
+								'<td><button class="btn btn-info btn-sm view-btn-new>View Uploaded File</button>'+e_input_attachment+'</td>'+
 								'<td><div class="form-group file-upload" data-id="'+_correction_ind+'">' +
 								'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select New file</button></label>' +
 								'<div class="hidden file-group evidences" id="improvement-action-'+_correction_ind+'">'+e_input_attachment+'</div>' +
@@ -869,10 +910,7 @@
 							$html2 += '' + '<tr>' + '<td colspan="1">' +
 							 '<input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + 
 							 '<td><input type="date" disabled class="form-control target_date" value="' + v.target_date + '"></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' +
-							 '<td><div class="form-group file-upload">' +
-								'<div class="hidden file-group evidences">'+e_input_attachment+'</div>' +
-								'<input type="text" readonly class="selected_files form-control" id="improvement-action-file" value="'+e_html_attachment+'">' +
-								'</div></td>'+
+							 '<td><button class="btn btn-info btn-sm view-btn-new>View Uploaded File</button>'+e_input_attachment+'</td></td>'+
 							 '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"><button class="btn btn-primary view-button" data-content="' + v.correction_remarks + '">view</button></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
 							_correction_ind++;
 							
