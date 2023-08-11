@@ -848,7 +848,7 @@
 							$html2 += '' + '<tr>' + '<td colspan="1">' +
 							 '<input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + 
 							 '<td><input type="date" disabled class="form-control target_date" value="' + v.target_date + '"></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' +
-							 '<td><div class="form-group file-upload>' +
+							 '<td><div class="form-group file-upload">' +
 								'<div class="hidden file-group evidences">'+e_input_attachment+'</div>' +
 								'<input type="text" readonly class="selected_files form-control" id="improvement-action-file" value="'+e_html_attachment+'">' +
 								'</div></td>'+
