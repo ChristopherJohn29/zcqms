@@ -804,14 +804,19 @@
 							console.log(e_input_attachment);
 							$html += ''+
 							'<tr>'+
-								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+e_html_attachment+'">'+e_input_attachment+'</td>'+
+								'<td><div class="form-group file-upload" data-id="'+_correction_ind+'">' +
+								'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
+								'<div class="hidden file-group evidences" id="improvement-action-'+_correction_ind+'">'+e_input_attachment+'</div>' +
+								'<input type="text" readonly class="selected_files form-control" id="improvement-action-file-'+_correction_ind+'" value="'+e_html_attachment+'">' +
+								'</div></td>'+
+								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
 								'<td><input type="date" class="form-control target_date" value="'+v.target_date+'"></td>'+
 								'<td><input type="date" class="form-control correction_date" value="'+v.correction_date+'"></td>'+
 								'<td class="hidden">'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes" '+( v.correction_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No" '+( v.correction_implemented == 'No' ? 'checked' : '' )+'> No'+
 								'</td>'+
-								'<td><div class="" data-id="'+_correction_ind+'">' +
+								'<td><div class="form-group file-upload" data-id="'+_correction_ind+'">' +
 								'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
 								'<div class="hidden file-group evidences" id="improvement-action-'+_correction_ind+'">'+e_input_attachment+'</div>' +
 								'<input type="text" readonly class="selected_files form-control" id="improvement-action-file-'+_correction_ind+'" value="'+e_html_attachment+'">' +
