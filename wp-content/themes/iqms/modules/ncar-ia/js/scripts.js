@@ -780,7 +780,7 @@
 							console.log(v);
 							e_html_attachment =  '1 file selected';
 							e_input_attachment = '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + + '" data-title="' + v.correction_attachment_title + + '" class="evidences">';
-
+							console.log(e_input_attachment);
 								
 							$html += ''+
 							'<tr>'+
