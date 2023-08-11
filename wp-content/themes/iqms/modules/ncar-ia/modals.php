@@ -402,6 +402,7 @@
 												<td>Root Cause/s</td>
 												<td>Corrective Action</td>
 												<td>Completion Date</td>
+												<td>Attachment</td>
 												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
 											</tr>
