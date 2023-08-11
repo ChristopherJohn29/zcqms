@@ -804,7 +804,7 @@
 							console.log(e_input_attachment);
 							$html += ''+
 							'<tr>'+
-								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+e_html_attachment+'"></td>'+
+								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+e_html_attachment+'">'+e_input_attachment+'</td>'+
 								'<td><input type="date" class="form-control target_date" value="'+v.target_date+'"></td>'+
 								'<td><input type="date" class="form-control correction_date" value="'+v.correction_date+'"></td>'+
 								'<td class="hidden">'+
