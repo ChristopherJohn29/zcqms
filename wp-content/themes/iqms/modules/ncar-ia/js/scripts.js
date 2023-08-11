@@ -595,7 +595,7 @@
 					$this.find('.file-group').html( list );
 
 					if ( list ) {
-						$this.find('.selected_files').val( uploaded_files.length + ' file(s) selected' );
+						$this.find('.selected_files').val( uploaded_files.length + ' file selected' );
 					}
 				});
 
@@ -839,8 +839,19 @@
 							if(v.correction_text  == undefined){
 								v.correction_text = 'remarks';
 							}
+							
+							e_html_attachment = (v.correction_attachment_url ? ' 1 file selected' : '');
+							e_input_attachment = (v.correction_attachment_url ? '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + + '" data-title="' + v.correction_attachment_title + + '" class="evidences">' : '');
 
-							$html2 += '' + '<tr>' + '<td colspan="1"><input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + '<td><input type="date" disabled class="form-control target_date" value="' + v.target_date + '"></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"><button class="btn btn-primary view-button" data-content="' + v.correction_remarks + '">view</button></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+							$html2 += '' + '<tr>' + '<td colspan="1">' +
+							 '<input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + 
+							 '<td><input type="date" disabled class="form-control target_date" value="' + v.target_date + '"></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' +
+							 '<td><div class="form-group file-upload improvement-action-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
+								'<label for="evidences"></label>' +
+								'<div class="hidden file-group evidences" id="improvement-action">'+e_input_attachment+'</div>' +
+								'<input type="text" readonly class="selected_files form-control" id="improvement-action-file" value="'+e_html_attachment+'">' +
+								'</div></td>'+
+							 '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"><button class="btn btn-primary view-button" data-content="' + v.correction_remarks + '">view</button></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
 							_correction_ind++;
 							
 							$('#form_3_1').html($html2);
