@@ -781,7 +781,7 @@
 							e_html_attachment = (v.correction_attachment_url ? ' 1 file selected' : '');
 							e_input_attachment = (v.correction_attachment_url ? '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + '" data-title="' + v.correction_attachment_title + '" class="evidences">' : '');
 
-								
+							console.log(e_input_attachment);
 							$html += ''+
 							'<tr>'+
 								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
