@@ -164,7 +164,7 @@
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes"> Yes'+
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No"> No'+
 					'</td>'+
-					'<td><div class="form-group file-upload improvement-action-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
+					'<td><div class="form-group file-upload improvement-action-file-upload" data-id="'+_correction_ind+'">' +
 					'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
 					'<div class="hidden file-group evidences" id="improvement-action"></div>' +
 					'<input type="text" readonly class="selected_files form-control" id="improvement-action-file-'+_correction_ind+'" value="">' +
@@ -798,7 +798,7 @@
 						$.each(r.form2.correction, function(i, v) {
 
 							console.log(v);
-							e_html_attachment = (v.correction_attachment_url ? ' 1 file selected' : '');
+							e_html_attachment = (v.correction_attachment_url ? '1 file selected' : '');
 							e_input_attachment = (v.correction_attachment_url ? '<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + '" data-title="' + v.correction_attachment_title + '" class="evidences">' : '');
 
 							console.log(e_input_attachment);
@@ -811,13 +811,13 @@
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes" '+( v.correction_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No" '+( v.correction_implemented == 'No' ? 'checked' : '' )+'> No'+
 								'</td>'+
-								'<td><div class="form-group file-upload improvement-action-file-upload" data-id="'+_correction_ind+'" data-multiple-upload="true">' +
+								'<td><div class="form-group file-upload improvement-action-file-upload" data-id="'+_correction_ind+'>' +
 								'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
 								'<div class="hidden file-group evidences" id="improvement-action">'+e_input_attachment+'</div>' +
 								'<input type="text" readonly class="selected_files form-control" id="improvement-action-file" value="'+e_html_attachment+'">' +
 								'</div></td>'+
 								'<td class="hidden"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="'+v.correction_remarks+'"></td>'+
-								'<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>'+
+								'<td></td>'+
 							'</tr>';
 
 							_correction_ind++;
