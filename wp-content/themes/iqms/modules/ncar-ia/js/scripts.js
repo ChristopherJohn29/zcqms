@@ -618,7 +618,6 @@
 			});
 
 			/*view evidences*/
-			view-btn-new
 
 			$('#ncar_edit_form2').on('click', '.view-btn-new', function(){
 				if ( $(this).parent().find('.evidences').length ) {
