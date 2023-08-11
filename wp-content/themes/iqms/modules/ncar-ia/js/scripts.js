@@ -813,7 +813,7 @@
 								'</td>'+
 								'<td><div class="form-group file-upload" data-id="'+_correction_ind+'">' +
 								'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
-								'<div class="hidden file-group evidences" id="improvement-action-'+_correction_ind+'">'+'<input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + '" data-title="' + v.correction_attachment_title + '" class="evidences">'+'</div>' +
+								'<div class="hidden file-group evidences" id="improvement-action-'+_correction_ind+'"><input type="hidden" data-url="' + v.correction_attachment_url + '" value="' + v.correction_attachment_id + '" data-title="' + v.correction_attachment_title + '" class="evidences"></div>' +
 								'<input type="text" readonly class="selected_files form-control" id="improvement-action-file-'+_correction_ind+'" value="'+e_html_attachment+'">' +
 								'</div></td>'+
 								'<td class="hidden"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="'+v.correction_remarks+'"></td>'+
