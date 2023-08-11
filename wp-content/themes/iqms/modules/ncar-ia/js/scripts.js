@@ -590,7 +590,7 @@
 					uploaded_files = uploaded_files.toJSON();
 					list = '';
 					uploaded_files.forEach(function(v, i){
-						list += '<input type="hidden" data-url="'+v.url+'" value="'+v.id+'" data-title="'+v.title+'" class="evidences_'+$this.data('id')+'">';
+						list += '<input type="hidden" data-url="'+v.url+'" value="'+v.id+'" data-title="'+v.title+'" class="evidences">';
 					});
 					$this.find('.file-group').html( list );
 
