@@ -89,10 +89,32 @@ if ( !class_exists('NCAR_Module') ) {
 			$post_id = $data['ncar_no'];
 			$to_return = [];
 			if ( $post_id ) {
+
+				$owner = get_post_field('post_author',$post_id);
+				$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
+
 				if($final_decision == 'satisfactory'){
 					update_post_meta( $post_id, 'status', 'Closed' );
+
+					if(get_option('notification_'.$owner)){
+						$options = get_option('notification_'.$owner);
+						$options[] = 'The '.$ncar_no_new.' you raised has already been verified and is now closed.';
+						update_option( 'notification_'.$owner,  $options);
+					} else {
+						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified and is now closed.']);
+					}
+
 				} else {
 					update_post_meta( $post_id, 'status', 'Reverted to For Action' );
+
+					if(get_option('notification_'.$owner)){
+						$options = get_option('notification_'.$owner);
+						$options[] = 'The '.$ncar_no_new.' you raised has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action.';
+						update_option( 'notification_'.$owner,  $options);
+					} else {
+						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action.
+						']);
+					}
 				}
 
 				update_post_meta( $post_id, 'verification', $verification );
@@ -115,17 +137,98 @@ if ( !class_exists('NCAR_Module') ) {
 			$satisfactory = ( isset($data['satisfactory']) ? $data['satisfactory']  : '' );
 
 			$post_id = $data['ncar_no'];
+			
+
 			$to_return = [];
 			if ( $post_id ) {
 
 				if($satisfactory !== ''){
+					
+					$owner = get_post_field('post_author',$post_id);
+					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
+					$review_by_id = get_post_meta($post_id, 'review_by', true);
+
+					$review_by = get_user_by('id', $review_by_id);
+
 					if($satisfactory == 1){
 						update_post_meta( $post_id, 'status', 'For Verification' );
+
+	
+
+						if(get_option('notification_'.$owner)){
+							$options = get_option('notification_'.$owner);
+							$options[] = 'The '.$ncar_no_new.' you raised has already been followed up';
+							update_option( 'notification_'.$owner,  $options);
+						} else {
+							add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been followed up']);
+						}
+
+						$owner_data = get_user_by('id', $owner);
+
+						if ( ! empty( $owner_data ) ) {
+							$owner_name = $owner_data->first_name .' '. $owner_data->last_name;
+						}
+
+						$approved_by_id = get_post_meta($post_id, 'approved_by', true);
+
+						if(get_option('notification_'.$approved_by_id)){
+							$options = get_option('notification_'.$approved_by_id);
+							$options[] = 'A corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.';
+							update_option( 'notification_'.$approved_by_id,  $options);
+						} else {
+							add_option( 'notification_'.$approved_by_id,  ['A corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.']);
+						}
+
+
+
 					} else {
 						update_post_meta( $post_id, 'status', 'Reverted to For Action' );
+
+					
 					}
 				} else {
 					update_post_meta( $post_id, 'status', 'For Follow up' );
+
+					$owner = get_post_field('post_author',$post_id);
+					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
+					$review_by_id = get_post_meta($post_id, 'review_by', true);
+					$followup_by_id = get_post_meta($post_id, 'followup_by', true);
+
+					$review_by = get_user_by('id', $review_by_id);
+					$followup_by = get_user_by('id', $followup_by_id);
+
+					if ( ! empty( $review_by ) ) {
+						$review_by_name = $user->first_name .' '. $user->last_name;
+					}
+
+					if ( ! empty( $followup_by ) ) {
+						$followup_by_name = $followup_by->first_name .' '. $followup_by->last_name;
+					}
+
+					$owner_data = get_user_by('id', $owner);
+
+					if ( ! empty( $owner_data ) ) {
+						$owner_name = $owner_data->first_name .' '. $owner_data->last_name;
+					}
+
+
+					if(get_option('notification_'.$owner)){
+						$options = get_option('notification_'.$owner);
+						$options[] = 'The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name;
+						update_option( 'notification_'.$owner,  $options);
+					} else {
+						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name]);
+					}
+
+					if(get_option('notification_'.$followup_by_id)){
+						$options = get_option('notification_'.$followup_by_id);
+						$options[] = 'A corrective action implemented by '.$owner_name.' requires you to verify its implementation.';
+						update_option( 'notification_'.$followup_by_id,  $options);
+					} else {
+						add_option( 'notification_'.$followup_by_id,  ['A corrective action implemented by '.$owner_name.' requires you to verify its implementation.']);
+					}
+
+
 				}
 
 				$current_correction = get_post_meta( $post_id, 'correction', true);
@@ -292,9 +395,39 @@ if ( !class_exists('NCAR_Module') ) {
 			if ( $post_id ) {
 				foreach( $data as $field ) {
 					update_post_meta( $post_id, $field['name'], $field['value'] );
+					if($field['name'] == 'ncar_no_new'){
+						$ncar_no_new = $field['value'];
+					}
 				}
 
 				update_post_meta( $post_id, 'status', 'For Action' );
+
+				if(get_option('notification_'.$this->this_user)){
+					$options = get_option('notification_'.$this->this_user);
+					$options[] = 'The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.';
+					update_option( 'notification_'.$this->this_user,  $options);
+				} else {
+					add_option( 'notification_'.$this->this_user,  ['The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.']);
+				}
+				
+
+				$review_by_id = get_post_meta($post_id, 'review_by', true);
+
+				$review_by = get_user_by('id', $review_by_id);
+
+				if ( ! empty( $review_by ) ) {
+					$review_by_name = $user->first_name .' '. $user->last_name;
+				}
+
+
+				if(get_option('notification_'.$review_by_id)){
+					$options = get_option('notification_'.$review_by_id);
+					$options[] = 'You have an NCAR due for response.';
+					update_option( 'notification_'.$review_by_id,  $options);
+				} else {
+					add_option( 'notification_'.$review_by_id,  ['You have an NCAR due for response.']);
+				}
+				
 
 				$to_return = ['post_id' => $post_id];
 				update_post_meta( $post_id, 'evidences', $evidences );
