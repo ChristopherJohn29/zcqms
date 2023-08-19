@@ -118,13 +118,20 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				} else {
 					update_post_meta( $post_id, 'status', 'For Improvement Action' );
 
+					$review_by_id = get_post_meta($post_id, 'review_by', true);
 
-					if(get_option('notification_'.$owner)){
-						$options = get_option('notification_'.$owner);
-						$options[] = 'The '.$ncar_no_new.' you raised has already been verified, however it is found to be unsatisfactory. You are required to make another improvement action.';
-						update_option( 'notification_'.$owner,  $options);
+					$review_by = get_user_by('id', $review_by_id);
+	
+					if ( ! empty( $review_by ) ) {
+						$review_by_name = $user->first_name .' '. $user->last_name;
+					}
+
+					if(get_option('notification_'.$review_by_id)){
+						$options = get_option('notification_'.$review_by_id);
+						$options[] = 'The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another improvement action.';
+						update_option( 'notification_'.$review_by_id,  $options);
 					} else {
-						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified, however it is found to be unsatisfactory. You are required to make another improvement action']);
+						add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another improvement action']);
 					}
 				}
 
@@ -188,9 +195,6 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				} else {
 					add_option( 'notification_'.$followup_by_id,  ['A corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.']);
 				}
-
-
-
 
 				update_post_meta( $post_id, 'correction', $correction );
 				update_post_meta( $post_id, 'files', $files );
