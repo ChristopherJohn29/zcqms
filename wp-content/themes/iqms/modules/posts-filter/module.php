@@ -7,6 +7,8 @@ function notice__success() {
 
 	$options = get_option('notification_'.get_current_user_id());
 
+	$options = array_reverse($options);
+
 	foreach ($options as $key => $value) {
 		?>
 		<div class="notice notice-success is-dismissible">
