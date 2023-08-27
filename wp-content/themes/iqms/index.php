@@ -8,6 +8,7 @@ get_header(); ?>
     $get_current_object = get_queried_object();
     $image = !is_tax() ? get_stylesheet_directory_uri().'/images/single-banner.jpg' :  get_field('tax-services-image', $get_current_object);
 
+    if(is_home()){
 ?>
   <!-- Slider -->
   <div class="container">
@@ -22,7 +23,11 @@ get_header(); ?>
   <!-- End Slider -->
 
   <!-- Content Tabs -->
-  <?php if( !is_home() ): ?>
+  <?php 
+
+  }
+  
+  if( !is_home() ): ?>
     <div class="container">
 
         <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
