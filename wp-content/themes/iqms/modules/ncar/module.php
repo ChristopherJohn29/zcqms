@@ -107,7 +107,7 @@ if ( !class_exists('NCAR_Module') ) {
 				} else {
 					update_post_meta( $post_id, 'status', 'Reverted to For Action' );
 
-					$review_by_id = get_post_meta($post_id, 'review_by', true);
+					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 
 					$review_by = get_user_by('id', $review_by_id);
 	
@@ -154,7 +154,7 @@ if ( !class_exists('NCAR_Module') ) {
 					
 					$owner = get_post_field('post_author',$post_id);
 					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
-					$review_by_id = get_post_meta($post_id, 'review_by', true);
+					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 
 					$review_by = get_user_by('id', $review_by_id);
 
@@ -199,7 +199,7 @@ if ( !class_exists('NCAR_Module') ) {
 
 					$owner = get_post_field('post_author',$post_id);
 					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
-					$review_by_id = get_post_meta($post_id, 'review_by', true);
+					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 					$followup_by_id = get_post_meta($post_id, 'followup_by', true);
 
 					$review_by = get_user_by('id', $review_by_id);
@@ -419,10 +419,7 @@ if ( !class_exists('NCAR_Module') ) {
 				}
 				
 
-				$review_by_id = get_post_meta($post_id, 'review_by', true);
-
-				var_dump($review_by_id);
-				exit;
+				$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 
 				$review_by = get_user_by('id', $review_by_id);
 

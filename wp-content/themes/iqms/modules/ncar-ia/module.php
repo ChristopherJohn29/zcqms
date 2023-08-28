@@ -118,7 +118,7 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				} else {
 					update_post_meta( $post_id, 'status', 'For Improvement Action' );
 
-					$review_by_id = get_post_meta($post_id, 'review_by', true);
+					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 
 					$review_by = get_user_by('id', $review_by_id);
 	
@@ -346,7 +346,7 @@ if ( !class_exists('NCAR_IA_Module') ) {
 					add_option( 'notification_'.$this->this_user,  ['The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.']);
 				}
 
-				$review_by_id = get_post_meta($post_id, 'review_by', true);
+				$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 
 				$review_by = get_user_by('id', $review_by_id);
 
