@@ -101,7 +101,7 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				}
 
 				$owner = get_post_field('post_author',$post_id);
-				$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
+				$ncar_no_new = get_post_meta($post_id, 'ncar_ia', true);
 
 				if($satisfactory == 1){
 					update_post_meta( $post_id, 'status', 'Satisfactory' );
