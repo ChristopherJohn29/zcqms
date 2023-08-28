@@ -421,6 +421,9 @@ if ( !class_exists('NCAR_Module') ) {
 
 				$review_by_id = get_post_meta($post_id, 'review_by', true);
 
+				var_dump($review_by_id);
+				exit;
+
 				$review_by = get_user_by('id', $review_by_id);
 
 				if ( ! empty( $review_by ) ) {
