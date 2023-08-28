@@ -177,8 +177,7 @@ if ( !class_exists('NCAR_Module') ) {
 
 						$approved_by_id = get_post_meta($post_id, 'approved_by', true);
 						
-						var_dump($approved_by_id);
-						exit;
+			
 
 						if(get_option('notification_'.$approved_by_id)){
 							$options = get_option('notification_'.$approved_by_id);
@@ -200,6 +199,9 @@ if ( !class_exists('NCAR_Module') ) {
 					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
 					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 					$followup_by_id = get_post_meta($post_id, 'followup_by', true);
+
+					var_dump($followup_by_id);
+					exit;
 
 					$review_by = get_user_by('id', $review_by_id);
 					$followup_by = get_user_by('id', $followup_by_id);
