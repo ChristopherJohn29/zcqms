@@ -181,10 +181,10 @@ if ( !class_exists('NCAR_Module') ) {
 
 						if(get_option('notification_'.$approved_by_id)){
 							$options = get_option('notification_'.$approved_by_id);
-							$options[] = 'A corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.';
+							$options[] = 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.';
 							update_option( 'notification_'.$approved_by_id,  $options);
 						} else {
-							add_option( 'notification_'.$approved_by_id,  ['A corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.']);
+							add_option( 'notification_'.$approved_by_id,  ['The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.']);
 						}
 
 					} else {
@@ -199,9 +199,6 @@ if ( !class_exists('NCAR_Module') ) {
 					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
 					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 					$followup_by_id = get_post_meta($post_id, 'followup_by', true);
-
-					var_dump($followup_by_id);
-					exit;
 
 					$review_by = get_user_by('id', $review_by_id);
 					$followup_by = get_user_by('id', $followup_by_id);
@@ -231,10 +228,10 @@ if ( !class_exists('NCAR_Module') ) {
 
 					if(get_option('notification_'.$followup_by_id)){
 						$options = get_option('notification_'.$followup_by_id);
-						$options[] = 'A corrective action implemented by '.$owner_name.' requires you to verify its implementation.';
+						$options[] = 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation.';
 						update_option( 'notification_'.$followup_by_id,  $options);
 					} else {
-						add_option( 'notification_'.$followup_by_id,  ['A corrective action implemented by '.$owner_name.' requires you to verify its implementation.']);
+						add_option( 'notification_'.$followup_by_id,  ['The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation.']);
 					}
 
 
@@ -431,10 +428,10 @@ if ( !class_exists('NCAR_Module') ) {
 
 				if(get_option('notification_'.$review_by_id)){
 					$options = get_option('notification_'.$review_by_id);
-					$options[] = 'You have an NCAR due for response.';
+					$options[] = 'You have an NCAR ('.$ncar_no_new.') due for response.';
 					update_option( 'notification_'.$review_by_id,  $options);
 				} else {
-					add_option( 'notification_'.$review_by_id,  ['You have an NCAR due for response.']);
+					add_option( 'notification_'.$review_by_id,  ['You have an NCAR ('.$ncar_no_new.') due for response.']);
 				}
 				
 
