@@ -161,8 +161,6 @@ if ( !class_exists('NCAR_Module') ) {
 					if($satisfactory == 1){
 						update_post_meta( $post_id, 'status', 'For Verification' );
 
-	
-
 						if(get_option('notification_'.$owner)){
 							$options = get_option('notification_'.$owner);
 							$options[] = 'The '.$ncar_no_new.' you raised has already been followed up';
@@ -178,6 +176,9 @@ if ( !class_exists('NCAR_Module') ) {
 						}
 
 						$approved_by_id = get_post_meta($post_id, 'approved_by', true);
+						
+						var_dump($approved_by_id);
+						exit;
 
 						if(get_option('notification_'.$approved_by_id)){
 							$options = get_option('notification_'.$approved_by_id);
@@ -186,8 +187,6 @@ if ( !class_exists('NCAR_Module') ) {
 						} else {
 							add_option( 'notification_'.$approved_by_id,  ['A corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.']);
 						}
-
-
 
 					} else {
 						update_post_meta( $post_id, 'status', 'Reverted to For Action' );
