@@ -17,6 +17,13 @@ function notice__success() {
 		<?php
 	}
 
+	?>
+
+	<div class="notice notice-success is-dismissible">
+        <p><?php _e( 'Done!', 'sample-text-domain' ); ?></p>
+    </div>
+	
+	<?php
 
 }
 
@@ -27,7 +34,7 @@ add_action('init', function(){
 	if($_GET['test']){
 		$options = get_option('notification_'.get_current_user_id());
 		$options = array_reverse($options);
-		
+
 		var_dump($options);
 		exit;
 	}
