@@ -124,7 +124,7 @@
 										<div class="col-sm-6">
 
 											<div class="form-group">
-												<label for="reviewed_by">Reviewed By</label>
+												<label for="reviewed_by">Person responsible</label>
 												<select id="reviewed_by" name="reviewed_by" class="form-control">
 													<option value="">-</option>
 													<?php
@@ -141,7 +141,7 @@
 										<div class="col-sm-6">
 
 											<div class="form-group">
-												<label for="approved_by">Approved By</label>
+												<label for="approved_by">Follow-up By</label>
 												<select id="approved_by" name="approved_by" class="form-control">
 													<option value="">-</option>
 													<?php
@@ -370,7 +370,7 @@
 										<tbody id="form_foot_2_1">
 											<tr>
 												<td colspan="2"></td>
-												<td><button class="pull-right btn btn-primary" id="add_correction">Add Correction</button></td>
+												<td><button class="pull-right btn btn-primary" id="add_correction">Add improvement action</button></td>
 												<td></td>
 											</tr>
 										</tbody>
