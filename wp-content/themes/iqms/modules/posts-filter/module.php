@@ -7,6 +7,9 @@ function notice__success() {
 
 	$options = get_option('notification_'.get_current_user_id());
 
+	var_dump($options);
+	exit;
+
 	$options = array_reverse($options);
 
 	foreach ($options as $key => $value) {
