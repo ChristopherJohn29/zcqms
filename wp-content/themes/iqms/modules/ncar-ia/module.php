@@ -161,6 +161,9 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 				$ncar_no_new = get_post_meta($post_id, 'ncar_ia', true);
 
+				$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
+				$followup_by_id = get_post_meta($post_id, 'approved_by', true);
+
 				$review_by = get_user_by('id', $review_by_id);
 				$followup_by = get_user_by('id', $followup_by_id);
 				$owner = get_post_field('post_author',$post_id);
@@ -347,6 +350,7 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				}
 
 				$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
+				$followup_by_id = get_post_meta($post_id, 'approved_by', true);
 
 				$review_by = get_user_by('id', $review_by_id);
 
