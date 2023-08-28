@@ -20,7 +20,7 @@ function notice__success() {
 	?>
 
 	<div class="notice notice-success is-dismissible">
-        <p><?php _e( 'Done!', 'sample-text-domain' ); ?></p>
+        <p><?php _e( 'testinggggggggg!', 'sample-text-domain' ); ?></p>
     </div>
 	
 	<?php
