@@ -25,7 +25,7 @@ li#collapse-menu {
 }
 
 .anm-notice-timestap .anm-time{
-    display: none !important;
+    opacity: 0 !important;
 }
 
 .post-type-dcm .disabled-radio {
