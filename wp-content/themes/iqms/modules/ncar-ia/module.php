@@ -356,10 +356,10 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 				if(get_option('notification_'.$review_by_id)){
 					$options = get_option('notification_'.$review_by_id);
-					$options[] = 'You have an Improvement Action due for response.';
+					$options[] = 'You have an Improvement Action ('.$ncar_no_new.' ) due for response.';
 					update_option( 'notification_'.$review_by_id,  $options);
 				} else {
-					add_option( 'notification_'.$review_by_id,  ['You have an Improvement Action due for response.']);
+					add_option( 'notification_'.$review_by_id,  ['You have an Improvement Action ('.$ncar_no_new.' ) due for response.']);
 				}
 				
 
