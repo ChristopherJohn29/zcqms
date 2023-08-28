@@ -24,6 +24,10 @@ li#collapse-menu {
     display: block;
 }
 
+.anm-notice-timestap .anm-time{
+    display: none !important;
+}
+
 .post-type-dcm .disabled-radio {
     opacity: 0.4;
     filter: alpha(opacity=40);
