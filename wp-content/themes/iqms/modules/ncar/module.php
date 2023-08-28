@@ -200,6 +200,9 @@ if ( !class_exists('NCAR_Module') ) {
 					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 					$followup_by_id = get_post_meta($post_id, 'followup_by', true);
 
+					var_dump($followup_by_id);
+					exit;
+
 					$review_by = get_user_by('id', $review_by_id);
 					$followup_by = get_user_by('id', $followup_by_id);
 
