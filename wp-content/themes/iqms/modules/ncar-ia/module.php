@@ -190,10 +190,10 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 				if(get_option('notification_'.$followup_by_id)){
 					$options = get_option('notification_'.$followup_by_id);
-					$options[] = 'A corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.';
+					$options[] = 'The '.$ncar_no_new.' raised by '.$owner_name.' requires you to verify its implementation.';
 					update_option( 'notification_'.$followup_by_id,  $options);
 				} else {
-					add_option( 'notification_'.$followup_by_id,  ['A corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.']);
+					add_option( 'notification_'.$followup_by_id,  ['The '.$ncar_no_new.' raised by '.$owner_name.' requires you to verify its implementation.']);
 				}
 
 				update_post_meta( $post_id, 'correction', $correction );
