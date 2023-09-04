@@ -284,7 +284,7 @@ get_header(); ?>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="calendar-wrapper">
-                            <iframe src="https://calendar.google.com/calendar/embed?src=rennzzzublasquillo%40gmail.com&ctz=Asia%2FManila" style="border: 0" width="400" height="200" frameborder="0" scrolling="no"></iframe>
+                           <?=do_shortcode('[contact-form-7 id="eadc0bf" title="request file"]')?>
                         </div>
                     </div>
                 </div>
