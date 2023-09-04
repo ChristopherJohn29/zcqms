@@ -264,23 +264,27 @@ get_header(); ?>
                 <div class="row">
                     <div class="col-md-8">
                         <div class="cuentoy-salud-wrap">
-                            <h1 class="global-title" >
-                            <strong>Cuento'y Salud</strong>
-                            </h1>
+                          
                             <div class="welcome-img">
                                 <img src="<?=get_stylesheet_directory_uri()?>/images/salud.jpg" alt="Salud">
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="calendar-wrapper">
-                            <iframe src="https://calendar.google.com/calendar/embed?src=rennzzzublasquillo%40gmail.com&ctz=Asia%2FManila" style="border: 0" width="400" height="200" frameborder="0" scrolling="no"></iframe>
-                        </div>
-
+                        <h1 class="global-title" >
+                            <strong>Send us Email</strong>
+                        </h1>
                         <div class="calendar-wrapper">
                         <?=do_shortcode('[contact-form-7 id="eadc0bf" title="request file"]')?>
                         </div>
                         
+                        
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="calendar-wrapper">
+                            <iframe src="https://calendar.google.com/calendar/embed?src=rennzzzublasquillo%40gmail.com&ctz=Asia%2FManila" style="border: 0" width="400" height="200" frameborder="0" scrolling="no"></iframe>
+                        </div>
                         
                     </div>
                 
