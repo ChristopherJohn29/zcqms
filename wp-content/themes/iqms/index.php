@@ -281,8 +281,11 @@ get_header(); ?>
                     
                 </div>
 
-                <div class="row">
+                <div class="row" style="margin-top:20px;">
                     <div class="col-md-12">
+                            <h1 class="global-title" >
+                                <strong>Cuento'y Salud</strong>
+                            </h1>
                         <div class="calendar-wrapper">
                            <?=do_shortcode('[contact-form-7 id="eadc0bf" title="request file"]')?>
                         </div>
