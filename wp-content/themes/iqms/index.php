@@ -276,22 +276,15 @@ get_header(); ?>
                         <div class="calendar-wrapper">
                             <iframe src="https://calendar.google.com/calendar/embed?src=rennzzzublasquillo%40gmail.com&ctz=Asia%2FManila" style="border: 0" width="400" height="200" frameborder="0" scrolling="no"></iframe>
                         </div>
+
+                        <div class="calendar-wrapper">
+                           <?=do_shortcode('[contact-form-7 id="eadc0bf" title="request file"]')?>
+                        </div>
                     </div>
                     
                     
                 </div>
 
-                <div class="row" style="margin-top:20px;">
-                    <div class="col-md-12">
-                            <h1 class="global-title" >
-                                <strong>Cuento'y Salud</strong>
-                            </h1>
-                        <div class="calendar-wrapper">
-                           <?=do_shortcode('[contact-form-7 id="eadc0bf" title="request file"]')?>
-                        </div>
-                    </div>
-                </div>
-                
             </div>
         </section>
 
