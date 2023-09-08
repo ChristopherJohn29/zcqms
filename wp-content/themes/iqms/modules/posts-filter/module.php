@@ -5,6 +5,7 @@ function notice__success() {
 
 	
 
+
 	$options = get_option('notification_'.get_current_user_id());
 
 	$options = array_reverse($options);

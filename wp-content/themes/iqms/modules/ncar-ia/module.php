@@ -109,10 +109,10 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 					if(get_option('notification_'.$owner)){
 						$options = get_option('notification_'.$owner);
-						$options[] = 'The '.$ncar_no_new.' you raised has already been verified and is now closed.';
+						$options[] = 'The '.$ncar_no_new.' you raised has already been verified and is now closed.  <br>'.$this->get_date();
 						update_option( 'notification_'.$owner,  $options);
 					} else {
-						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified and is now closed.']);
+						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified and is now closed.  <br>'.$this->get_date()]);
 					}
 					
 				} else {
@@ -128,10 +128,10 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 					if(get_option('notification_'.$review_by_id)){
 						$options = get_option('notification_'.$review_by_id);
-						$options[] = 'The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another improvement action.';
+						$options[] = 'The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another improvement action. <br>'.$this->get_date();
 						update_option( 'notification_'.$review_by_id,  $options);
 					} else {
-						add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another improvement action']);
+						add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another improvement action  <br>'.$this->get_date()]);
 					}
 				}
 
@@ -185,18 +185,18 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 				if(get_option('notification_'.$owner)){
 					$options = get_option('notification_'.$owner);
-					$options[] = 'The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name;
+					$options[] = 'The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name.' <br>'.$this->get_date();
 					update_option( 'notification_'.$owner,  $options);
 				} else {
-					add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name]);
+					add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name .' <br>'.$this->get_date()]);
 				}
 
 				if(get_option('notification_'.$followup_by_id)){
 					$options = get_option('notification_'.$followup_by_id);
-					$options[] = 'The '.$ncar_no_new.' raised by '.$owner_name.' requires you to verify its implementation.';
+					$options[] = 'The '.$ncar_no_new.' raised by '.$owner_name.' requires you to verify its implementation.  <br>'.$this->get_date();
 					update_option( 'notification_'.$followup_by_id,  $options);
 				} else {
-					add_option( 'notification_'.$followup_by_id,  ['The '.$ncar_no_new.' raised by '.$owner_name.' requires you to verify its implementation.']);
+					add_option( 'notification_'.$followup_by_id,  ['The '.$ncar_no_new.' raised by '.$owner_name.' requires you to verify its implementation.  <br>'.$this->get_date()]);
 				}
 
 				update_post_meta( $post_id, 'correction', $correction );
@@ -343,10 +343,10 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 				if(get_option('notification_'.$this->this_user)){
 					$options = get_option('notification_'.$this->this_user);
-					$options[] = 'The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.';
+					$options[] = 'The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.  <br>'.$this->get_date();
 					update_option( 'notification_'.$this->this_user,  $options);
 				} else {
-					add_option( 'notification_'.$this->this_user,  ['The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.']);
+					add_option( 'notification_'.$this->this_user,  ['The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.  <br>'.$this->get_date()]);
 				}
 
 				$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
@@ -360,10 +360,10 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 				if(get_option('notification_'.$review_by_id)){
 					$options = get_option('notification_'.$review_by_id);
-					$options[] = 'You have an Improvement Action ('.$ncar_no_new.' ) due for response.';
+					$options[] = 'You have an Improvement Action ('.$ncar_no_new.' ) due for response.  <br>'.$this->get_date();
 					update_option( 'notification_'.$review_by_id,  $options);
 				} else {
-					add_option( 'notification_'.$review_by_id,  ['You have an Improvement Action ('.$ncar_no_new.' ) due for response.']);
+					add_option( 'notification_'.$review_by_id,  ['You have an Improvement Action ('.$ncar_no_new.' ) due for response.  <br>'.$this->get_date()]);
 				}
 				
 
