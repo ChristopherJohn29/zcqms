@@ -23,7 +23,7 @@ class TransferDCM{
 
         date_default_timezone_set('Asia/Shanghai');
 
-        $currentDateTime = date("Y-m-d"). 'at' .date('h:i:s A');
+        $currentDateTime = date("Y-m-d"). ' at ' .date('h:i A');
 
         return $currentDateTime;
 
