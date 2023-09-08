@@ -29,6 +29,13 @@
 					'post_type' => 'ncar-ia',
 					'posts_per_page' => 6
 				] );
+				
+
+				if(get_option('visitor_count')){
+					$v_count = get_option('visitor_count');
+				} else {
+					$v_count = 0;
+				}
 
 			?>
 			<div class="col-md-2 col-sm-4  tile_stats_count">
@@ -38,27 +45,32 @@
 			</div>
 
 			<div class="col-md-2 col-sm-4  tile_stats_count">
-				<span class="count_top"><i class="glyphicon glyphicon-users"></i> Total DCM</span>
+				<span class="count_top"><i class="glyphicon glyphicon-user"></i> Total DCM</span>
 				<div class="count green"><?= $dcm->found_posts ?></div>
 				<span class="count_bottom"><a href="<?= get_site_url() ?>/wp-admin/edit.php?post_type=dcm" target="_blank">View All DCM</a></span>
 			</div>
 
 			<div class="col-md-2 col-sm-4  tile_stats_count">
-				<span class="count_top"><i class="glyphicon glyphicon-users"></i> Total QMS Documents</span>
+				<span class="count_top"><i class="glyphicon glyphicon-user"></i> Total QMS Documents</span>
 				<div class="count blue"><?= $qms->found_posts ?></div>
 				<span class="count_bottom"><a href="<?= get_site_url() ?>/wp-admin/edit.php?post_type=qms-documents" target="_blank">View All QMS Documents</a></span>
 			</div>
 
 			<div class="col-md-2 col-sm-4  tile_stats_count">
-				<span class="count_top"><i class="glyphicon glyphicon-users"></i> Total NCAR</span>
+				<span class="count_top"><i class="glyphicon glyphicon-user"></i> Total NCAR</span>
 				<div class="count"><?= $ncar->found_posts ?></div>
 				<span class="count_bottom"><a href="<?= get_site_url() ?>/wp-admin/admin.php?page=ncar" target="_blank">View All NCAR</a></span>
 			</div>
 
 			<div class="col-md-2 col-sm-4  tile_stats_count">
-				<span class="count_top"><i class="glyphicon glyphicon-users"></i> Total Improvement Action</span>
+				<span class="count_top"><i class="glyphicon glyphicon-user"></i> Total Improvement Action</span>
 				<div class="count"><?= $ia->found_posts ?></div>
 				<span class="count_bottom"><a href="<?= get_site_url() ?>/wp-admin/admin.php?page=ncar-ia" target="_blank">View All Improvement Action</a></span>
+			</div>
+
+			<div class="col-md-2 col-sm-4  tile_stats_count">
+				<span class="count_top"><i class="glyphicon glyphicon-user"></i> Visitor Count</span>
+				<div class="count"><?= $v_count ?></div>
 			</div>
 
 		</div>

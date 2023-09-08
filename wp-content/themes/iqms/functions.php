@@ -132,3 +132,18 @@ function sort_hierarchical(array &$cats, array &$into, $parent_id = 0){
 add_theme_support('post-thumbnails', array(
     'news-events',
 ));
+
+function custom_after_login_action($user_login, $user) {
+
+    if(get_option('visitor_count')){
+        $options = get_option('visitor_count');
+        $options =  intval(intval($options) + 1);
+        update_option( 'visitor_count',  $options);
+    } else {
+        $options =  1;
+        add_option( 'visitor_count',  $options);
+    }
+}
+
+// Hook the custom action to the wp_login hook
+add_action('wp_login', 'custom_after_login_action', 10, 2);
