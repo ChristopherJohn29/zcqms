@@ -39,6 +39,15 @@ if ( !class_exists('NCAR_Module') ) {
         	add_action('wp_ajax_nopriv_ncar_save_remarks', array($this, 'ncar_save_remarks'));
 		}
 
+		public function sendEmail($toemail = '', $subject = '', $message = ''){
+
+
+
+			$sent = wp_mail($toemail, $subject, strip_tags($message), $headers);
+				
+			return $sent;
+		}
+
 		function get_date(){
 
 			date_default_timezone_set('Asia/Shanghai');
