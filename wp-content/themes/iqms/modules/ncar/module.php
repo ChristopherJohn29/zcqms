@@ -41,6 +41,8 @@ if ( !class_exists('NCAR_Module') ) {
 
 		function get_date(){
 
+			date_default_timezone_set('Asia/Shanghai');
+
 			$currentDateTime = date("Y-m-d H:i:s");
 
 			return $currentDateTime;
@@ -106,10 +108,10 @@ if ( !class_exists('NCAR_Module') ) {
 
 					if(get_option('notification_'.$owner)){
 						$options = get_option('notification_'.$owner);
-						$options[] = 'The '.$ncar_no_new.' you raised has already been verified and is now closed. <br>'.$this->get_date();
+						$options[] = 'The '.$ncar_no_new.' you raised has already been verified and is now closed. <br><br>'.$this->get_date();
 						update_option( 'notification_'.$owner,  $options);
 					} else {
-						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified and is now closed. <br>'.$this->get_date()]);
+						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified and is now closed. <br><br>'.$this->get_date()]);
 					}
 
 				} else {
@@ -125,10 +127,10 @@ if ( !class_exists('NCAR_Module') ) {
 
 					if(get_option('notification_'.$review_by_id)){
 						$options = get_option('notification_'.$review_by_id);
-						$options[] = 'The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action <br>'.$this->get_date();
+						$options[] = 'The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action <br><br>'.$this->get_date();
 						update_option( 'notification_'.$review_by_id,  $options);
 					} else {
-						add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action. <br>'.$this->get_date()]);
+						add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action. <br><br>'.$this->get_date()]);
 					}
 				}
 
@@ -170,10 +172,10 @@ if ( !class_exists('NCAR_Module') ) {
 
 						if(get_option('notification_'.$owner)){
 							$options = get_option('notification_'.$owner);
-							$options[] = 'The '.$ncar_no_new.' you raised has already been followed up <br>'.$this->get_date();
+							$options[] = 'The '.$ncar_no_new.' you raised has already been followed up <br><br>'.$this->get_date();
 							update_option( 'notification_'.$owner,  $options);
 						} else {
-							add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been followed up  <br>'.$this->get_date()]);
+							add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been followed up  <br><br>'.$this->get_date()]);
 						}
 
 						$owner_data = get_user_by('id', $owner);
@@ -188,10 +190,10 @@ if ( !class_exists('NCAR_Module') ) {
 
 						if(get_option('notification_'.$approved_by_id)){
 							$options = get_option('notification_'.$approved_by_id);
-							$options[] = 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.  <br>'.$this->get_date();
+							$options[] = 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.  <br><br>'.$this->get_date();
 							update_option( 'notification_'.$approved_by_id,  $options);
 						} else {
-							add_option( 'notification_'.$approved_by_id,  ['The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.  <br>'.$this->get_date()]);
+							add_option( 'notification_'.$approved_by_id,  ['The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.  <br><br>'.$this->get_date()]);
 						}
 
 					} else {
@@ -207,10 +209,10 @@ if ( !class_exists('NCAR_Module') ) {
 	
 						if(get_option('notification_'.$review_by_id)){
 							$options = get_option('notification_'.$review_by_id);
-							$options[] = 'The '.$ncar_no_new.' you responded has already been Followed-up, however it is found to be unsatisfactory. You are required to make another corrective action.  <br>'.$this->get_date();
+							$options[] = 'The '.$ncar_no_new.' you responded has already been Followed-up, however it is found to be unsatisfactory. You are required to make another corrective action.  <br><br>'.$this->get_date();
 							update_option( 'notification_'.$review_by_id,  $options);
 						} else {
-							add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been Followed-up, however it is found to be unsatisfactory. You are required to make another corrective action. <br>'.$this->get_date()]);
+							add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been Followed-up, however it is found to be unsatisfactory. You are required to make another corrective action. <br><br>'.$this->get_date()]);
 						}
 					
 					}
@@ -242,18 +244,18 @@ if ( !class_exists('NCAR_Module') ) {
 
 					if(get_option('notification_'.$owner)){
 						$options = get_option('notification_'.$owner);
-						$options[] = 'The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name . '<br>'.$this->get_date();
+						$options[] = 'The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name . '<br><br>'.$this->get_date();
 						update_option( 'notification_'.$owner,  $options);
 					} else {
-						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name . ' <br>'.$this->get_date()]);
+						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name . ' <br><br>'.$this->get_date()]);
 					}
 
 					if(get_option('notification_'.$followup_by_id)){
 						$options = get_option('notification_'.$followup_by_id);
-						$options[] = 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation. <br>'.$this->get_date();
+						$options[] = 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation. <br><br>'.$this->get_date();
 						update_option( 'notification_'.$followup_by_id,  $options);
 					} else {
-						add_option( 'notification_'.$followup_by_id,  ['The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation.  <br>'.$this->get_date()]);
+						add_option( 'notification_'.$followup_by_id,  ['The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation. <br><br>'.$this->get_date()]);
 					}
 
 
@@ -432,10 +434,10 @@ if ( !class_exists('NCAR_Module') ) {
 
 				if(get_option('notification_'.$this->this_user)){
 					$options = get_option('notification_'.$this->this_user);
-					$options[] = 'The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.  <br>'.$this->get_date();
+					$options[] = 'The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.  <br><br>'.$this->get_date();
 					update_option( 'notification_'.$this->this_user,  $options);
 				} else {
-					add_option( 'notification_'.$this->this_user,  ['The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.  <br>'.$this->get_date()]);
+					add_option( 'notification_'.$this->this_user,  ['The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.  <br><br>'.$this->get_date()]);
 				}
 				
 
@@ -450,10 +452,10 @@ if ( !class_exists('NCAR_Module') ) {
 
 				if(get_option('notification_'.$review_by_id)){
 					$options = get_option('notification_'.$review_by_id);
-					$options[] = 'You have an NCAR ('.$ncar_no_new.') due for response.  <br>'.$this->get_date();
+					$options[] = 'You have an NCAR ('.$ncar_no_new.') due for response.  <br><br>'.$this->get_date();
 					update_option( 'notification_'.$review_by_id,  $options);
 				} else {
-					add_option( 'notification_'.$review_by_id,  ['You have an NCAR ('.$ncar_no_new.') due for response.  <br>'.$this->get_date()]);
+					add_option( 'notification_'.$review_by_id,  ['You have an NCAR ('.$ncar_no_new.') due for response.  <br><br>'.$this->get_date()]);
 				}
 				
 

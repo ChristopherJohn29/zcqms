@@ -39,6 +39,16 @@ if ( !class_exists('NCAR_IA_Module') ) {
         	add_action('wp_ajax_nopriv_ncar_ia_save_remarks', array($this, 'ncar_ia_save_remarks'));
 		}
 
+		function get_date(){
+
+			date_default_timezone_set('Asia/Shanghai');
+
+			$currentDateTime = date("Y-m-d H:i:s");
+
+			return $currentDateTime;
+
+		}
+
 		function ncar_ia_save_remarks() {
 			$data = $_POST['data'];
 
