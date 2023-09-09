@@ -170,6 +170,10 @@ get_header(); ?>
     <?php else: ?>
     <!-- Blogs -->
     <div class="container">
+        <div class="col-md-10" style="background:red;"></div>
+        <div class="col-md-3"  style="background:green;"></div>
+    </div>
+    <div class="container">
 
         <section id="hp-welcome" class="hp-welcome">
             <div class="container">
