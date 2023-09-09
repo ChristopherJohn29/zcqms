@@ -11,7 +11,7 @@ get_header(); ?>
     if(is_home()){
 ?>
   <!-- Slider -->
-  <div class="container">
+  <div class="container-fluid">
     <div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 1, "autoPlay": 3500, "freeScroll": true }'>
 
         <?php
@@ -172,7 +172,7 @@ get_header(); ?>
     <div class="container-fluid">
 
         <section id="hp-welcome" class="hp-welcome">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="welcome-wrap">
                     
                     <div class="row welcome-inner">
@@ -210,7 +210,7 @@ get_header(); ?>
         </section>
 
         <section id="hp-announcement" class="hp-announcement">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="announcement-wrap">
                         
                     <div class="row announcement-inner">
@@ -238,7 +238,7 @@ get_header(); ?>
         </section>
 
         <section id="hp-blog" class="hp-blog">
-            <div class="container">
+            <div class="containe-fluid">
                 <div class="blog-wrap">
                         <h1 class="global-title" >
                             <strong>News & Events</strong>
@@ -259,7 +259,7 @@ get_header(); ?>
       
 
         <section id="hp-cuentoy-salud" class="hp-cuentoy-salud">
-            <div class="container">
+            <div class="container-fluid">
 
                 <div class="row">
                     <div class="col-md-8">
