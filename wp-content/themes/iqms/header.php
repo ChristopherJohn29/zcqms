@@ -36,7 +36,7 @@
         </div>
         <div class="fixed-header">
             <div class="container-fluid">
-                <div class="row">
+              
                     <div class="col-md-12">
                         <div class="fixed-header-inner">
                             <div class="header-logo">
@@ -107,7 +107,7 @@
 
                         </div>
                     </div>
-                </div>
+                
             </div>
         </div>
 
