@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="fixed-header">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="fixed-header-inner">
@@ -44,11 +44,6 @@
                                 <?php endif ?>
 
                                 <div id="logo"> 
-                                    <a rel="home" href="https://zcmc-iqms.infoadvance.com.ph/">
-                                        <h1 rel="home" class="site-title" title="IQMS Portal">IQMS Portal</h1>
-                                        <h2 class="site-description" title="Online Quality Management System"> Online Quality Management System</h2>
-                                    </a>
-
                                     <div class="toggle-menu">
                                         <a class="toggle-nav" href="#">
                                             <span class="icon-bar"></span>

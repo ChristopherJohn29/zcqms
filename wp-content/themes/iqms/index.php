@@ -28,7 +28,7 @@ get_header(); ?>
   }
   
   if( !is_home() ): ?>
-    <div class="container">
+    <div class="container-fluid">
 
         <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
 
@@ -169,7 +169,7 @@ get_header(); ?>
 
     <?php else: ?>
     <!-- Blogs -->
-    <div class="container">
+    <div class="container-fluid">
 
         <section id="hp-welcome" class="hp-welcome">
             <div class="container">
