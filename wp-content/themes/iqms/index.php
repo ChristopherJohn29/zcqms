@@ -11,7 +11,7 @@ get_header(); ?>
     if(is_home()){
 ?>
   <!-- Slider -->
-  <div class="container=fluid">
+  <div class="container-fluid">
     <div class="carousel" data-flickity='{ "fullscreen": true, "lazyLoad": 1, "autoPlay": 3500, "freeScroll": true }'>
 
         <?php
