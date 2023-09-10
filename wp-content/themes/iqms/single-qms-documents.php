@@ -70,9 +70,8 @@ $service = str_replace(', asd12312asd','', $service);
 // $display_name = ( $users[0]['user_firstname'] ? $users[0]['user_firstname'] . ' ' . $users[0]['user_lastname'] : $display_name );
 
 ?>
-<div class="ip-banner">
-    <canvas width="1600" height="350" style="display: block; position: relative; z-index: 0; width: 100%; min-height: 350px; background-color: #999; background-position: center center; background-repeat: no-repeat; background-size: cover; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<?=get_stylesheet_directory_uri()?>/images/single-banner.jpg);"></canvas>
-    <h1><?=$service?></h1> 
+<div class="ip-banner-new">
+   <h1><?=$service?></h1> 
 </div>
 <div class="container">
     <div class="document-info-container row">
