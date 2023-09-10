@@ -56,13 +56,9 @@ if (strpos($current_url, "/" . $taxonomy_slug . "/") !== false) {
     $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 1];
     
     // Output the term value
-    echo "Current Taxonomy Term Value: " . $term_value;
-} else {
-    echo "Not on a taxonomy archive page.";
-}
+    $service = ucwords(str_replace('-', '', $term_value));
 
-
-  
+} 
   ?>
   
     <div class="ip-banner-new">
