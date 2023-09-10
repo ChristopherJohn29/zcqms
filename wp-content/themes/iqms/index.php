@@ -44,13 +44,24 @@ foreach ($term as $key => $value) {
 $service .= 'asd12312asd';
 $service = str_replace(', asd12312asd','', $service);
 
-if (is_tax()) {
-    $current_taxonomy = get_queried_object(); // Get the current taxonomy object
-    $taxonomy_name = $current_taxonomy->taxonomy; // Get the taxonomy name
-    echo "Current Taxonomy Name: " . $taxonomy_name;
+$current_url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+
+// Define the taxonomy slug you want to extract (e.g., "category" or "tag")
+$taxonomy_slug = "services"; // Replace with your desired taxonomy
+
+// Check if the current URL contains the taxonomy slug
+if (strpos($current_url, "/" . $taxonomy_slug . "/") !== false) {
+    // Extract the term value from the URL
+    $url_parts = explode("/", $current_url);
+    $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 1];
+    
+    // Output the term value
+    echo "Current Taxonomy Term Value: " . $term_value;
 } else {
     echo "Not on a taxonomy archive page.";
 }
+
+
   
   ?>
   
