@@ -27,7 +27,21 @@ get_header(); ?>
 
   }
   
-  if( !is_home() ): ?>
+  if( !is_home() ): 
+
+$term = get_the_terms($post_idm, 'services');
+
+$service = "";
+
+foreach ($term as $key => $value) {
+    $service .= $value->name.', ';
+}
+
+$service .= 'asd12312asd';
+$service = str_replace(', asd12312asd','', $service);
+  
+  ?>
+  
     <div class="ip-banner-new">
         <h1>Sample</h1> 
     </div>
