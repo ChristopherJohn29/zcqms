@@ -340,7 +340,7 @@ body { font-family: sans-serif; }
 }
 
 #hp-blog .blog-list .blog-col {
-    width: calc(100%/3);
+    width: calc(100%/2);
     padding: 0 15px;
     vertical-align: middle;
 }
