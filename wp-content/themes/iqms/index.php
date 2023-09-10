@@ -49,6 +49,9 @@ if (strpos($current_url, "/" . $taxonomy_slug . "/") !== false) {
 
     if(!$term_value){
         $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 1];
+    } else {
+        $term_new =  $term_value;
+        $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 1].' / '. str_replace($term_new,$url_parts[array_search($taxonomy_slug, $url_parts) + 1], $term_new);
     }
     
     // Output the term value
