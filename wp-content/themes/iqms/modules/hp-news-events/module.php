@@ -24,7 +24,7 @@ function hp_newsevents($atts){
             $response .= '<div class="blog-col">
                             <div class="blog-img">
                                 <a href="#blog-popup'.get_the_ID().'" class="open-popup-link">
-                                <canvas width="393" height="285" style="background-image: url('.get_the_post_thumbnail_url(get_the_ID(), 'full').'); background-size: 100% 100%;background-repeat: no-repeat; "></canvas>
+                                <canvas width="293" height="185" style="background-image: url('.get_the_post_thumbnail_url(get_the_ID(), 'full').'); background-size: 100% 100%;background-repeat: no-repeat; "></canvas>
                                 </a>
                             </div>
                             <div class="blog-info">
