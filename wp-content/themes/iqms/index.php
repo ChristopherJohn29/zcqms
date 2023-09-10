@@ -31,16 +31,10 @@ get_header(); ?>
 
     $post_id = get_the_ID();
 
-$term = get_the_terms($post_id, 'services');
 
 $service = "";
 
-foreach ($term as $key => $value) {
-    $service .= $value->name.', ';
-}
 
-$service .= 'asd12312asd';
-$service = str_replace(', asd12312asd','', $service);
 
 $current_url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
