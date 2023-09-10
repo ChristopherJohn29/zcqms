@@ -39,6 +39,10 @@ body {
     overflow-x: clip;
 }
 
+.submit-form{
+    text-align: right;
+}
+
 .request-form{
     display: flex;
 }
