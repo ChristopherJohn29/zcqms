@@ -95,22 +95,30 @@ $service = str_replace(', asd12312asd','', $service);
     <?=$iframe_html?>
     </div>
 
-    <div class="document-info-wrapper row">
-        <div class="col">
-            <div>Prepared by:</div>
-            <div class="document-info-name"><?=$prepared_by_name?></div>
-            <div><?=$prepared_by_position?></div>
-        </div>
-        <div class="col">
-            <div>Reviewed by:</div>
-            <div class="document-info-name"><?=$reviewed_by_name?></div>
-            <div><?=$reviewed_by_position?></div>
-        </div>
-        <div class="col">
-            <div>Approved by:</div>
-            <div class="document-info-name"><?=$approved_by_name?></div>
-            <div><?=$approved_by_position?></div>
-        </div>
+
+
+    <div class="document-container table">
+        <table border="1">
+            <tr>
+                <th>PREPARED BY:</th>
+                <th>REVIEWED BY:</th>
+                <th>APPROVED BY:</th>
+            </tr>
+            <tr>
+                <td>
+                <div class="document-info-name"><?=$prepared_by_name?></div>
+                <div><?=$prepared_by_position?></div>
+                </td>
+                <td>
+                <div class="document-info-name"><?=$reviewed_by_name?></div>
+                <div><?=$reviewed_by_position?></div>
+                </td>
+                <td>
+                <div class="document-info-name"><?=$approved_by_name?></div>
+                <div><?=$approved_by_position?></div>
+                </td>
+            </tr>
+        </table>
     </div>
     
     <?php 
