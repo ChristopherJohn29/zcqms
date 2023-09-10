@@ -52,7 +52,7 @@ $prepared_by_position = get_field('user_position', 'user_'.$prepared_by_user->ID
 
 $author_id = get_post_field ('post_author', $post_id);
 
-$term = get_the_terms($post_id, 'services');
+$term = get_the_terms($post_idm, 'services');
 
 $service = "";
 
