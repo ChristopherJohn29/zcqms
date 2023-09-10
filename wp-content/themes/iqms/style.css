@@ -102,15 +102,16 @@ ul#menu-services>li{
 }
 .main-nav ul ul li:hover a {
     font-weight: 900;
+    background-color: #bad1a5;
 }
 
 .main-nav .sub-menu a {
-    color: #aaa;
+    color: black;
     display: block;
     padding: 8px;
-    background: #292929;
+    background: white;
     font-size: 10px;
-    font-weight: 300;
+    font-weight: bold;
     text-transform: uppercase;
     font-family: roboto,sans-serif;
     text-align: center;
