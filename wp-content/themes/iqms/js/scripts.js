@@ -46,12 +46,23 @@ var app = {
 
     blog:function(){
         jQuery('.blog-list').slick({
-            slidesToShow: 2,
+            slidesToShow: 3,
             autoplay: true,
             autoplaySpeed: 4000,
             dots: false,
             prevArrow: false,
             nextArrow: false,
+            responsive: [
+                {
+                    breakpoint: 992,
+                    settings: {
+                        variableWidth: false,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        swipe: true,
+                    }
+                }
+            ]
        });
 
         jQuery('.open-popup-link').magnificPopup({
