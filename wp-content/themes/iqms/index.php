@@ -28,9 +28,8 @@ get_header(); ?>
   }
   
   if( !is_home() ): ?>
-  <div class="ip-banner">
-        <canvas width="100%" height="30" style="background-img: url(<?=get_stylesheet_directory_uri()?>/images/title-banner.jpg);"></canvas>
-        <h1>Sample</h1> 
+    <div class="ip-banner-new">
+        Sample
     </div>
     <div class="container">
 
