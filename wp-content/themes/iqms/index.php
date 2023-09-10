@@ -29,7 +29,7 @@ get_header(); ?>
   
   if( !is_home() ): 
 
-$term = get_the_terms($post_idm, 'services');
+$term = get_the_terms($post_id, 'services');
 
 $service = "";
 
@@ -43,7 +43,7 @@ $service = str_replace(', asd12312asd','', $service);
   ?>
   
     <div class="ip-banner-new">
-        <h1>Sample</h1> 
+        <h1><?=$service?></h1> 
     </div>
     <div class="container">
 
