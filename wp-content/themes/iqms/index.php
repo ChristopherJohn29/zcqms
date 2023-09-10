@@ -28,11 +28,13 @@ get_header(); ?>
   }
   
   if( !is_home() ): ?>
+  <div class="ip-banner">
+        <canvas width="100%" height="250" style="display: block; position: relative; z-index: 0; width: 100%; min-height: 350px; background-color: #999; background-position: center center; background-repeat: no-repeat; background-size: cover; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<?=get_stylesheet_directory_uri()?>/images/title-banner.jpg);"></canvas>
+        <h1>Sample</h1> 
+    </div>
     <div class="container">
 
-        <div class="banner-title">
-
-        </div>
+        
 
         <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
 
