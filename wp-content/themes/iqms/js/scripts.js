@@ -46,7 +46,7 @@ var app = {
 
     blog:function(){
         jQuery('.blog-list').slick({
-            slidesToShow: 2,
+            slidesToShow: 3,
             autoplay: true,
             autoplaySpeed: 4000,
             dots: false,
