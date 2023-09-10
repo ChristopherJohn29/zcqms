@@ -51,8 +51,14 @@ body {
     padding-top: 20px;
     padding-left: 100px;
     padding-right: 72px;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #f0f0f0;
 }
 
+#hp-blog{
+    margin-top: 42px;
+}
 .announcement-section{
     margin-top: 10px;
 }
