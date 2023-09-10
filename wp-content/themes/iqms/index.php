@@ -45,7 +45,11 @@ $taxonomy_slug = "services"; // Replace with your desired taxonomy
 if (strpos($current_url, "/" . $taxonomy_slug . "/") !== false) {
     // Extract the term value from the URL
     $url_parts = explode("/", $current_url);
-    $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 1];
+    $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 2];
+
+    if(!$term_value){
+        $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 1];
+    }
     
     // Output the term value
     $service = strtoupper(str_replace('-', ' ', $term_value));
