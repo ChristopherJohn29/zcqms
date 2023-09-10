@@ -115,6 +115,7 @@ ul#menu-services>li{
 
 .document-container table td{
     border: 1px solid;
+    padding: 10px;
 }
 
 .document-container table tbody{
