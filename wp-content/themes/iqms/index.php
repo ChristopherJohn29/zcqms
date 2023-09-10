@@ -33,6 +33,8 @@ get_header(); ?>
 
 $term = get_the_terms($post_id, 'services');
 
+var_dump($term);
+
 $service = "";
 
 foreach ($term as $key => $value) {
