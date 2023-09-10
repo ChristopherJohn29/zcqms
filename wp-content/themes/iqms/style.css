@@ -36,7 +36,7 @@ div#logo a {
 }
 
 body {
-    overflow-x: clip;
+    /* overflow-x: clip; */
 }
 
 .submit-form{
