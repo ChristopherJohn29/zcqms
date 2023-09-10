@@ -189,7 +189,7 @@ get_header(); ?>
             <div class="calendar-section">
                 <div class="calendar-wrapper">
                 <?php
-                    echo do_shortcode('[tribe_mini_calendar]');
+                    echo do_shortcode('[events-calendar-templates category="all" template="default" style="style-1" date_format="default" start_date="" end_date="" limit="10" order="ASC" hide-venue="no" socialshare="no" time="future"]');
                 ?>
                 </div>
             </div>
