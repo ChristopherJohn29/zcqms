@@ -105,6 +105,18 @@ ul#menu-services>li{
     background-color: #bad1a5;
 }
 
+.document-container table tr{
+    border: 1px solid;
+}
+
+.document-container table th{
+    background-color: yellow;
+}
+
+.document-container.table{
+    text-align: center;
+}
+
 .main-nav .sub-menu a {
     color: black;
     display: block;
