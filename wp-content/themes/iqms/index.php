@@ -206,7 +206,7 @@ get_header(); ?>
         </div>
     </div>
 
-    <div class="container">
+    <div class="container-fluid">
 
 
         <section id="hp-blog" class="hp-blog">

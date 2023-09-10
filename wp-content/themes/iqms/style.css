@@ -305,7 +305,7 @@ body { font-family: sans-serif; }
     position: relative;
     z-index: 1;
     background: var(--background-color-darker);
-    padding: 73px 0 57px;
+    /* padding: 73px 0 57px; */
     overflow: hidden;
 }
 /* Blog */
