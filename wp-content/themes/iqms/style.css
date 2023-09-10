@@ -217,11 +217,9 @@ li.children{
 }
 
 .ip-banner-new h1 {
-    position: absolute;
-    left: 0;
-    right: 0;
+    
     text-align: center;
-    top: 40%;
+    padding-top: 40%;
     color: black;
     font-size: 60px;
 }
