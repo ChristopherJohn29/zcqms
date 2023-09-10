@@ -366,8 +366,6 @@ body { font-family: sans-serif; }
     text-transform: uppercase;
     line-height: 1;
     letter-spacing: 1.61px;
-    margin-top: auto;
-    padding-top: 15px;
 }
 #hp-blog .blog-content, #hp-blog .blog-link {
     font-size: 14px;
