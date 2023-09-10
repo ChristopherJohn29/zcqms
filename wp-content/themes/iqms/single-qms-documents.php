@@ -74,19 +74,18 @@ $service = str_replace(', asd12312asd','', $service);
    <h1><?=$service?></h1> 
 </div>
 <div class="container">
-    <div class="document-info-container row">
-        <div class="doc-id-wrapper col">
-            <div>Document ID</div>
-            <span><?=$document_id?></span>
-        </div>
-        <div class="doc-title-wrapper col">
-            <span><?=get_the_title()?></span>
-        </div>
-        <div class="doc-date-wrapper col">
-            <div>Effectivity Date</div>
-            <span><?=$date_of_effectivity?></span>
-        </div>
-    </div>
+    <table border="1">
+        <tr>
+            <th>DOCUMENT ID</th>
+            <th>DOCUMENT TITLE</th>
+            <th>EFFECTIVITY DATE</th>
+        </tr>
+        <tr>
+            <td><?=$document_id?></td>
+            <td><?=get_the_title()?></td>
+            <td><?=$date_of_effectivity?></td>
+        </tr>
+    </table>
     
     <div class="document-container">
     <?=$iframe_html?>
