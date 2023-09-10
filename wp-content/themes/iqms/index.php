@@ -29,6 +29,8 @@ get_header(); ?>
   
   if( !is_home() ): 
 
+    $post_id = get_the_ID();
+
 $term = get_the_terms($post_id, 'services');
 
 $service = "";
