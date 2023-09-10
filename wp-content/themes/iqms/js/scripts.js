@@ -54,7 +54,6 @@ var app = {
             nextArrow: false,
             responsive: [
                 {
-                    breakpoint: 892,
                     settings: {
                         variableWidth: false,
                         slidesToShow: 1,
