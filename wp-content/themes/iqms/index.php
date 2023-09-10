@@ -43,6 +43,14 @@ foreach ($term as $key => $value) {
 
 $service .= 'asd12312asd';
 $service = str_replace(', asd12312asd','', $service);
+
+if (is_tax()) {
+    $current_taxonomy = get_queried_object(); // Get the current taxonomy object
+    $taxonomy_name = $current_taxonomy->taxonomy; // Get the taxonomy name
+    echo "Current Taxonomy Name: " . $taxonomy_name;
+} else {
+    echo "Not on a taxonomy archive page.";
+}
   
   ?>
   
