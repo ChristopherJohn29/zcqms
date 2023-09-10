@@ -38,6 +38,15 @@ div#logo a {
 body {
     /* overflow-x: clip; */
 }
+.container {
+    max-width: 100%;
+    /* You can adjust the maximum width as needed */
+  }
+
+  .container-fluid {
+    max-width: 100%;
+    /* You can adjust the maximum width as needed */
+  }
 
 .submit-form{
     text-align: right;
