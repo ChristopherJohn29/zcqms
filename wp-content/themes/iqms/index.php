@@ -175,7 +175,7 @@ get_header(); ?>
                 <img style="width:100%;" src="<?=get_stylesheet_directory_uri()?>/images/mission-vision.jpg" alt="Mission Vision" title="Zamboanga City Medical Center" style="text-align:left;">
             </div>
 
-            <section id="hp-blog" class="hp-blog">
+            <div id="hp-blog" class="hp-blog">
                 <div class="container">
                     <div class="blog-wrap">
                             <h1 class="global-title" >
@@ -192,7 +192,7 @@ get_header(); ?>
                         </div>
                     </div>
                 </div>
-            </section>
+             </div>
   
         </div>
         <div class="col-md-4">
