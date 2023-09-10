@@ -109,6 +109,14 @@ ul#menu-services>li{
     border: 1px solid;
 }
 
+.document-container table th{
+    border: 1px solid;
+}
+
+.document-container table td{
+    border: 1px solid;
+}
+
 .document-container table tbody{
     border: 1px solid;
 }
