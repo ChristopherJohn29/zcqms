@@ -24,6 +24,16 @@ div#logo a {
     margin: auto;
 }
 
+.mission-vision
+{
+    border: 2px solid;
+    margin: 19px;
+}
+
+.calendar-section{
+    text-align: center;
+}
+
 ul#menu-services>li{
     margin: 0 15px;
     position: relative;
