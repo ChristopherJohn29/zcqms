@@ -178,7 +178,7 @@ get_header(); ?>
         <div class="col-md-4"  style="background:green;">
             <div class="calendar-section">
                 <div class="calendar-wrapper">
-                    <iframe src="https://calendar.google.com/calendar/embed?src=rennzzzublasquillo%40gmail.com&ctz=Asia%2FManila" style="border: 0" width="400" height="200" frameborder="0" scrolling="no"></iframe>
+                    <iframe src="https://calendar.google.com/calendar/embed?height=300&wkst=1&bgcolor=%23ffffff&ctz=Asia%2FManila&showTitle=0&showNav=0&showTabs=0&showCalendars=1&showPrint=0&src=Y2hyaXN0b3BoZXJqb2huZ2Ftb0BnbWFpbC5jb20&src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&src=ZW4ucGhpbGlwcGluZXMjaG9saWRheUBncm91cC52LmNhbGVuZGFyLmdvb2dsZS5jb20&color=%23039BE5&color=%2333B679&color=%230B8043" style="border:solid 1px #777" width="400" height="300" frameborder="0" scrolling="no"></iframe>
                 </div>
             </div>
             <div class="announcement-section">
