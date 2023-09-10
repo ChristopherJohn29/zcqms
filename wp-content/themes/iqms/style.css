@@ -64,7 +64,7 @@ body {
 .ip-banner-new{
     width: 100%;
     background-color: #bad1a5;
-    min-height: 150px;
+    min-height: 100px;
 }
 
 .printing-wrapper{
