@@ -52,16 +52,6 @@ var app = {
             dots: false,
             prevArrow: false,
             nextArrow: false,
-            responsive: [
-                {
-                    settings: {
-                        variableWidth: false,
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        swipe: true,
-                    }
-                }
-            ]
        });
 
         jQuery('.open-popup-link').magnificPopup({
