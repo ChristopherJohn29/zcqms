@@ -32,7 +32,9 @@ div#logo a {
 
 .calendar-section{
     text-align: center;
+    margin-top: 5px;
 }
+
 
 ul#menu-services>li{
     margin: 0 15px;
