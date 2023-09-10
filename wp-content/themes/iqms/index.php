@@ -29,7 +29,7 @@ get_header(); ?>
   
   if( !is_home() ): ?>
     <div class="ip-banner-new">
-        Sample
+        <h1>Sample</h1> 
     </div>
     <div class="container">
 
