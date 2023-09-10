@@ -109,8 +109,20 @@ ul#menu-services>li{
     border: 1px solid;
 }
 
+.document-container table tbody{
+    border: 1px solid;
+}
+
+.document-container table{
+    width: 92%;
+    text-align: center;
+
+}
+
 .document-container table th{
     background-color: yellow;
+    padding: 20px;
+
 }
 
 .document-container.table{
