@@ -52,25 +52,16 @@ $prepared_by_position = get_field('user_position', 'user_'.$prepared_by_user->ID
 
 $author_id = get_post_field ('post_author', $post_id);
 
-$term = get_the_terms($post_id, 'services');
+$term = get_the_terms($post_idm, 'services');
 
 $service = "";
 
-$current_url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+foreach ($term as $key => $value) {
+    $service .= $value->name.', ';
+}
 
-// Define the taxonomy slug you want to extract (e.g., "category" or "tag")
-$taxonomy_slug = "services"; // Replace with your desired taxonomy
-
-// Check if the current URL contains the taxonomy slug
-if (strpos($current_url, "/" . $taxonomy_slug . "/") !== false) {
-    // Extract the term value from the URL
-    $url_parts = explode("/", $current_url);
-    $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 1];
-    
-    // Output the term value
-    $service = strtoupper(str_replace('-', ' ', $term_value));
-
-} 
+$service .= 'asd12312asd';
+$service = str_replace(', asd12312asd','', $service);
 
 // var_dump($prepared_by);
 // $prepared_by_position = get_field('user_position', 'user_'.$author_id);
@@ -79,10 +70,10 @@ if (strpos($current_url, "/" . $taxonomy_slug . "/") !== false) {
 // $display_name = ( $users[0]['user_firstname'] ? $users[0]['user_firstname'] . ' ' . $users[0]['user_lastname'] : $display_name );
 
 ?>
-
-<div class="ip-banner-new">
-        <h1><?=$service?></h1> 
-    </div>
+<div class="ip-banner">
+    <canvas width="1600" height="350" style="display: block; position: relative; z-index: 0; width: 100%; min-height: 350px; background-color: #999; background-position: center center; background-repeat: no-repeat; background-size: cover; background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(<?=get_stylesheet_directory_uri()?>/images/single-banner.jpg);"></canvas>
+    <h1><?=$service?></h1> 
+</div>
 <div class="container">
     <div class="document-info-container row">
         <div class="doc-id-wrapper col">
