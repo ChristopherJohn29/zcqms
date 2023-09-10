@@ -35,6 +35,10 @@ div#logo a {
     margin-top: 5px;
 }
 
+.request-form{
+    display: flex;
+}
+
 .printing-wrapper{
     padding: 20px;
 }
