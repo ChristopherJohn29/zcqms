@@ -170,7 +170,11 @@ get_header(); ?>
     <?php else: ?>
     <!-- Blogs -->
     <div class="container">
-        <div class="col-md-10" style="background:red;"></div>
+        <div class="col-md-10" style="background:red;">
+            <div class="mission-vission">
+                <img src="<?=get_stylesheet_directory_uri()?>/images/mission-vision.jpg" alt="Mission Vision" title="Zamboanga City Medical Center" style="text-align:left;">
+            </div>
+        </div>
         <div class="col-md-3"  style="background:green;"></div>
     </div>
     <div class="container">
