@@ -197,10 +197,12 @@ get_header(); ?>
             </div> 
 
             <div class="announcement-section">
+              
                     <h1 class="global-title" >
                             <strong>REQUEST FOR PRINTING <br> OF QMS DOCUMENTS</strong>
                     </h1>
-                    <div class="calendar-wrapper">
+
+                    <div class="printing-wrapper">
                         <?=do_shortcode('[contact-form-7 id="eadc0bf" title="request file"]')?>
                     </div>
             </div>
