@@ -171,7 +171,7 @@ get_header(); ?>
     <!-- Blogs -->
     <div class="container-fluid" style="display:flex;">
         <div class="col-md-8" style="">
-            <div class="mission-vission">
+            <div class="mission-vision">
                 <img style="width:100%;" src="<?=get_stylesheet_directory_uri()?>/images/mission-vision.jpg" alt="Mission Vision" title="Zamboanga City Medical Center" style="text-align:left;">
             </div>
         </div>
