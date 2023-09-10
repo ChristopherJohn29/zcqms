@@ -170,13 +170,30 @@ get_header(); ?>
     <?php else: ?>
     <!-- Blogs -->
     <div class="container">
-        <div class="col-md-10" style="background:red;">
+        <div class="col-md-8" style="background:red;">
             <div class="mission-vission">
-                <img src="<?=get_stylesheet_directory_uri()?>/images/mission-vision.jpg" alt="Mission Vision" title="Zamboanga City Medical Center" style="text-align:left;">
+                <img style="width:100%;" src="<?=get_stylesheet_directory_uri()?>/images/mission-vision.jpg" alt="Mission Vision" title="Zamboanga City Medical Center" style="text-align:left;">
             </div>
         </div>
-        <div class="col-md-3"  style="background:green;"></div>
+        <div class="col-md-4"  style="background:green;">
+            <div class="announcement-section">
+                <h1 class="global-title" >
+                    <strong>Announcement</strong>
+                </h1>
+                <div class="announcement-right bootstrap-extend-right announcement-carousel">
+                <?php
+                    echo do_shortcode('[hp_announcements]');
+                ?> 
+                </div>
+            </div> 
+            <div class="calendar-section">
+                <div class="calendar-wrapper">
+                    <iframe src="https://calendar.google.com/calendar/embed?src=rennzzzublasquillo%40gmail.com&ctz=Asia%2FManila" style="border: 0" width="400" height="200" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
+    
     <div class="container">
 
         <section id="hp-welcome" class="hp-welcome">
