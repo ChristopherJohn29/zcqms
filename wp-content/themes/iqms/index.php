@@ -174,25 +174,26 @@ get_header(); ?>
             <div class="mission-vision">
                 <img style="width:100%;" src="<?=get_stylesheet_directory_uri()?>/images/mission-vision.jpg" alt="Mission Vision" title="Zamboanga City Medical Center" style="text-align:left;">
             </div>
-            <div>
-            
-            <div class="container">
-                <div class="blog-wrap">
-                        <h1 class="global-title" >
-                            <strong>News & Events</strong>
-                        </h1>
-                    <div class="blog-list-wrap">
-                        <div class="blog-list">
 
-                            <?=do_shortcode('[hp_newsevents type="main"]')?>
-                        
+            <section id="hp-blog" class="hp-blog">
+                <div class="container">
+                    <div class="blog-wrap">
+                            <h1 class="global-title" >
+                                <strong>News & Events</strong>
+                            </h1>
+                        <div class="blog-list-wrap">
+                            <div class="blog-list">
+
+                                <?=do_shortcode('[hp_newsevents type="main"]')?>
+                            
+                            </div>
+
+                            <?=do_shortcode('[hp_newsevents type="popup"]')?>
                         </div>
-
-                        <?=do_shortcode('[hp_newsevents type="popup"]')?>
                     </div>
                 </div>
-            </div>
-            </div>
+            </section>
+  
         </div>
         <div class="col-md-4">
             <div class="calendar-section">
@@ -220,17 +221,14 @@ get_header(); ?>
     <div class="container-fluid">
 
 
-        <section id="hp-blog" class="hp-blog">
-
+    <div>
             <h1 class="global-title" >
-                    <strong>REQUEST FOR PRINTING OF QMS DOCUMENTS</strong>
+                <strong>REQUEST FOR PRINTING OF QMS DOCUMENTS</strong>
             </h1>
             <div class="printing-wrapper">
                 <?=do_shortcode('[contact-form-7 id="eadc0bf" title="request file"]')?>
             </div>
-
-            
-        </section>
+            </div>
 
       
         
