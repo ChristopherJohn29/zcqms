@@ -56,7 +56,7 @@ if (strpos($current_url, "/" . $taxonomy_slug . "/") !== false) {
     $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 1];
     
     // Output the term value
-    $service = ucwords(str_replace('-', '', $term_value));
+    $service = strtoupper(str_replace('-', ' ', $term_value));
 
 } 
   ?>
