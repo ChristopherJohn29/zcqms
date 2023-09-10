@@ -176,6 +176,11 @@ get_header(); ?>
             </div>
         </div>
         <div class="col-md-4"  style="background:green;">
+            <div class="calendar-section">
+                <div class="calendar-wrapper">
+                    <iframe src="https://calendar.google.com/calendar/embed?src=rennzzzublasquillo%40gmail.com&ctz=Asia%2FManila" style="border: 0" width="400" height="200" frameborder="0" scrolling="no"></iframe>
+                </div>
+            </div>
             <div class="announcement-section">
                 <h1 class="global-title" >
                     <strong>Announcement</strong>
@@ -186,13 +191,7 @@ get_header(); ?>
                 ?> 
                 </div>
             </div> 
-            <div class="calendar-section">
-                <div class="calendar-wrapper">
-                <?php
-                    echo do_shortcode('[events-calendar-templates category="all"]');
-                ?>
-                </div>
-            </div>
+            
         </div>
     </div>
 
