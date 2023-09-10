@@ -175,11 +175,22 @@ get_header(); ?>
                 <img style="width:100%;" src="<?=get_stylesheet_directory_uri()?>/images/mission-vision.jpg" alt="Mission Vision" title="Zamboanga City Medical Center" style="text-align:left;">
             </div>
             <div>
-            <h1 class="global-title" >
-                <strong>REQUEST FOR PRINTING OF QMS DOCUMENTS</strong>
-            </h1>
-            <div class="printing-wrapper">
-                <?=do_shortcode('[contact-form-7 id="eadc0bf" title="request file"]')?>
+            
+            <div class="container">
+                <div class="blog-wrap">
+                        <h1 class="global-title" >
+                            <strong>News & Events</strong>
+                        </h1>
+                    <div class="blog-list-wrap">
+                        <div class="blog-list">
+
+                            <?=do_shortcode('[hp_newsevents type="main"]')?>
+                        
+                        </div>
+
+                        <?=do_shortcode('[hp_newsevents type="popup"]')?>
+                    </div>
+                </div>
             </div>
             </div>
         </div>
@@ -210,22 +221,15 @@ get_header(); ?>
 
 
         <section id="hp-blog" class="hp-blog">
-            <div class="container">
-                <div class="blog-wrap">
-                        <h1 class="global-title" >
-                            <strong>News & Events</strong>
-                        </h1>
-                    <div class="blog-list-wrap">
-                        <div class="blog-list">
 
-                            <?=do_shortcode('[hp_newsevents type="main"]')?>
-                        
-                        </div>
-
-                        <?=do_shortcode('[hp_newsevents type="popup"]')?>
-                    </div>
-                </div>
+            <h1 class="global-title" >
+                    <strong>REQUEST FOR PRINTING OF QMS DOCUMENTS</strong>
+            </h1>
+            <div class="printing-wrapper">
+                <?=do_shortcode('[contact-form-7 id="eadc0bf" title="request file"]')?>
             </div>
+
+            
         </section>
 
       
