@@ -56,12 +56,21 @@ $term = get_the_terms($post_id, 'services');
 
 $service = "";
 
-foreach ($term as $key => $value) {
-    $service .= $value->name.', ';
-}
+$current_url = "http://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 
-$service .= 'asd12312asd';
-$service = str_replace(', asd12312asd','', $service);
+// Define the taxonomy slug you want to extract (e.g., "category" or "tag")
+$taxonomy_slug = "services"; // Replace with your desired taxonomy
+
+// Check if the current URL contains the taxonomy slug
+if (strpos($current_url, "/" . $taxonomy_slug . "/") !== false) {
+    // Extract the term value from the URL
+    $url_parts = explode("/", $current_url);
+    $term_value = $url_parts[array_search($taxonomy_slug, $url_parts) + 1];
+    
+    // Output the term value
+    $service = strtoupper(str_replace('-', ' ', $term_value));
+
+} 
 
 // var_dump($prepared_by);
 // $prepared_by_position = get_field('user_position', 'user_'.$author_id);
