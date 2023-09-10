@@ -30,6 +30,10 @@ get_header(); ?>
   if( !is_home() ): ?>
     <div class="container">
 
+        <div class="banner-title">
+
+        </div>
+
         <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
 
             <?php
