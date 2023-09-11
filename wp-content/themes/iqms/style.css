@@ -100,7 +100,7 @@ ul#menu-services>li{
 .main-nav ul ul li {
     margin: 0 0 !important;
 }
-.main-nav ul ul li:hover a {
+.main-nav ul ul li a:hover{
     font-weight: 900;
     background-color: #bad1a5;
 }
