@@ -172,3 +172,8 @@ div#acf-group_632c62d0dc846 {
 .post-type-qms-documents .page-title-action{
     display: none;
 }
+
+#registerform{
+    background: rgba(0,0,0,0.2);
+    color: #FFF;
+}
