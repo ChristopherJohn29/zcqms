@@ -183,6 +183,11 @@ li.children{
     position: relative;
 }
 
+#registerform{
+    background: rgba(0,0,0,0.2);
+    color: #FFF;
+}
+
 .main-nav ul.grandchild {
     list-style: none outside none;
     position: absolute;
