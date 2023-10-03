@@ -32,6 +32,9 @@ if ( !class_exists('NCAR_IA_Module') ) {
 			add_action('wp_ajax_ncar_ia_form3_save', array($this, 'ncar_ia_form3_save'));
         	add_action('wp_ajax_nopriv_ncar_ia_form3_save', array($this, 'ncar_ia_form3_save'));
 
+			add_action('wp_ajax_ncar_ia_form3b_save', array($this, 'ncar_ia_form3b_save'));
+        	add_action('wp_ajax_nopriv_ncar_ia_form3b_save', array($this, 'ncar_ia_form3b_save'));
+
 			add_action('wp_ajax_ncar_ia_load_remarks', array($this, 'ncar_ia_load_remarks'));
         	add_action('wp_ajax_nopriv_ncar_ia_load_remarks', array($this, 'ncar_ia_load_remarks'));
 
@@ -181,19 +184,25 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				$ncar_no_new = get_post_meta($post_id, 'ncar_ia', true);
 
 				$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
-				$followup_by_id = get_post_meta($post_id, 'approved_by', true);
+				$followup_by_id = get_post_meta($post_id, 'followup_by', true);
+				$approve_by_id = get_post_meta($post_id, 'approved_by', true);
 
 				$review_by = get_user_by('id', $review_by_id);
 				$followup_by = get_user_by('id', $followup_by_id);
+				$approve_by = get_user_by('id', $approve_by_id);
 				$owner = get_post_field('post_author',$post_id);
 
 
 				if ( ! empty( $review_by ) ) {
-					$review_by_name = $user->first_name .' '. $user->last_name;
+					$review_by_name = $review_by->first_name .' '. $review_by->last_name;
 				}
 
 				if ( ! empty( $followup_by ) ) {
 					$followup_by_name = $followup_by->first_name .' '. $followup_by->last_name;
+				}
+
+				if ( ! empty( $approve_by ) ) {
+					$approve_by_name = $approve_by->first_name .' '. $approve_by->last_name;
 				}
 
 				$owner_data = get_user_by('id', $owner);
@@ -222,6 +231,84 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				update_post_meta( $post_id, 'files', $files );
 				update_post_meta( $post_id, 'corrective_action_data', $corrective_action_data );
 				update_post_meta( $post_id, 'status', 'For Follow up' );
+				$to_return = ['post_id' => $post_id];
+			} else {
+				$to_return = ['error' => true];
+			}
+			echo json_encode( $to_return );
+			exit;
+		}
+
+		function ncar_ia_form3b_save() {
+
+			$data = $_POST['data'];
+			$verification = $data['verification'];
+			$final_decision = $data['final_decision'];
+
+			$post_id = $data['ncar_no'];
+			$to_return = [];
+			if ( $post_id ) {
+
+				$owner = get_post_field('post_author',$post_id);
+				$ncar_no_new = get_post_meta($post_id, 'ncar_ia', true);
+
+				$review_by = get_user_by('id', $review_by_id);
+				$followup_by = get_user_by('id', $followup_by_id);
+				$approve_by = get_user_by('id', $approve_by_id);
+				$owner = get_post_field('post_author',$post_id);
+
+
+				if ( ! empty( $review_by ) ) {
+					$review_by_name = $review_by->first_name .' '. $review_by->last_name;
+				}
+
+				if ( ! empty( $followup_by ) ) {
+					$followup_by_name = $followup_by->first_name .' '. $followup_by->last_name;
+				}
+
+				if ( ! empty( $approve_by ) ) {
+					$approve_by_name = $approve_by->first_name .' '. $approve_by->last_name;
+				}
+
+				if ( ! empty( $owner ) ) {
+					$owner_by_name = $owner_by->first_name .' '. $owner_by->last_name;
+				}
+
+
+
+				if($final_decision == 'satisfactory'){
+					update_post_meta( $post_id, 'status', 'Closed' );
+
+					if(get_option('notification_'.$owner)){
+						$options = get_option('notification_'.$owner);
+						$options[] = 'The '.$ncar_no_new.' implemented by '.$owner_by_name.' requires you to verify its effectiveness.<br><br>'.$this->get_date();
+						update_option( 'notification_'.$owner,  $options);
+					} else {
+						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' implemented by '.$owner_by_name.' requires you to verify its effectiveness.<br><br>'.$this->get_date()]);
+					}
+
+				} else {
+					update_post_meta( $post_id, 'status', 'Reverted to For Action' );
+
+					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
+
+					$review_by = get_user_by('id', $review_by_id);
+	
+					if ( ! empty( $review_by ) ) {
+						$review_by_name = $review_by->first_name .' '. $review_by->last_name;
+					}
+
+					if(get_option('notification_'.$review_by_id)){
+						$options = get_option('notification_'.$review_by_id);
+						$options[] = 'The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action <br><br>'.$this->get_date();
+						update_option( 'notification_'.$review_by_id,  $options);
+					} else {
+						add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action. <br><br>'.$this->get_date()]);
+					}
+				}
+
+				update_post_meta( $post_id, 'verification', $verification );
+				update_post_meta( $post_id, 'final_decision', $final_decision );
 				$to_return = ['post_id' => $post_id];
 			} else {
 				$to_return = ['error' => true];
@@ -369,12 +456,13 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				}
 
 				$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
-				$followup_by_id = get_post_meta($post_id, 'approved_by', true);
+				$followup_by_id = get_post_meta($post_id, 'followup_by', true);
+				$approved_by_id = get_post_meta($post_id, 'approved_by', true);
 
 				$review_by = get_user_by('id', $review_by_id);
 
 				if ( ! empty( $review_by ) ) {
-					$review_by_name = $user->first_name .' '. $user->last_name;
+					$review_by_name = $review_by->first_name .' '. $review_by->last_name;
 				}
 
 				if(get_option('notification_'.$review_by_id)){

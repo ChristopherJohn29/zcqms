@@ -141,11 +141,28 @@
 										<div class="col-sm-6">
 
 											<div class="form-group">
-												<label for="approved_by">Follow-up By</label>
-												<select id="approved_by" name="approved_by" class="form-control">
+												<label for="followup_by">Follow-up By</label>
+												<select id="followup_by" name="followup_by" class="form-control">
 													<option value="">-</option>
 													<?php
 														$users = get_users();
+														foreach( $users as $user ) {
+															echo '<option value="'.$user->data->ID.'" '.( $user->data->ID == $this_user ? 'selected="selected"' : '' ).'>'.$user->data->display_name.'</option>';
+														}
+													?>
+												</select>
+											</div>
+
+										</div>
+
+										<div class="col-sm-3">
+
+											<div class="form-group">
+												<label for="approved_by">Verified By</label>
+												<select id="approved_by" name="approved_by" class="form-control">
+													<option value="">-</option>
+													<?php
+														$users = get_users('orderby=meta_value&meta_key=first_name');
 														foreach( $users as $user ) {
 															echo '<option value="'.$user->data->ID.'" '.( $user->data->ID == $this_user ? 'selected="selected"' : '' ).'>'.$user->data->display_name.'</option>';
 														}
@@ -197,7 +214,9 @@
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#part1" aria-controls="part1" role="tab" data-toggle="tab"> Description of Improvement </a></li>
 							<li role="presentation"><a href="#part2" aria-controls="part2" role="tab" data-toggle="tab"> Improvement Actions </a></li>
-							<li role="presentation"><a href="#part3" aria-controls="part3" role="tab" data-toggle="tab"> Follow-up </a></li>
+							<li role="presentation"><a href="#part2b" aria-controls="part2b" role="tab" data-toggle="tab"> Follow-up </a></li>
+							<li role="presentation"><a href="#part3" aria-controls="part3" role="tab" data-toggle="tab"> Verifications </a></li>
+
 						</ul>
 
 						<!-- Tab panes -->
@@ -316,7 +335,26 @@
 										<div class="col-sm-6">
 
 											<div class="form-group">
-												<label for="approved_by">Follow-up by</label>
+												<label for="followup_by">Follow-up by</label>
+												<select id="followup_by" name="followup_by" class="form-control">
+													<option value="">-</option>
+													<?php
+														$users = get_users();
+														foreach( $users as $user ) {
+															// var_dump( $user->data->ID == $this_user );
+															echo '<option value="'.$user->data->ID.'" '.( $user->data->ID == $this_user ? 'selected="selected"' : '' ).'>'.$user->data->display_name.'</option>';
+														}
+														// exit;
+													?>
+												</select>
+											</div>
+
+										</div>
+
+										<div class="col-sm-6">
+
+											<div class="form-group">
+												<label for="approved_by">Verified By</label>
 												<select id="approved_by" name="approved_by" class="form-control">
 													<option value="">-</option>
 													<?php
@@ -426,7 +464,7 @@
 									</div>
 								</form>
 							</div>
-							<div role="tabpanel" class="tab-pane" id="part3">
+							<div role="tabpanel" class="tab-pane" id="part2b">
 								
 								<form id="ncar_edit_form3">
 									<table class="table">
@@ -440,22 +478,54 @@
 											</tr>
 										</tbody>
 
-										<tbody id="form_3_1">
+										<tbody id="form_2_3_b">
 											
 										</tbody>
 								
 
 									</table>
 
-									<!-- <div class="submit-group" style="display: flex; flex-direction: row-reverse;">
-										<button type="submit" class="btn btn-success" id="edit_form3_save">Save changes</button>
-									</div> -->
 
 									<div class="submit-group" style="display: inline-block; text-align: right; width: 100%;">
 										<button type="submit" class="btn btn-success" id="edit_form3_save_satisfactory">Satisfactory</button>
 										<button type="submit" class="btn btn-success" id="edit_form3_save_not_satisfactory">Not Satisfactory</button>
 									</div>
 
+								</form>
+
+							</div>
+
+							<div role="tabpanel" class="tab-pane" id="part3">
+								
+								<form id="ncar_edit_form3b">
+									
+									<table class="table">
+										<tbody>
+											<tr>
+												<td colspan="2">3. verifications: Implemented as Planned?</td>
+												<td>Remarks</td>
+												<td>Date Stamp</td>
+												<td></td>
+											</tr>
+										</tbody>
+
+										<tbody id="form_3_1">
+											
+										</tbody>
+										<tbody id="form_foot_3_1">
+											<tr>
+												<td colspan="3"></td>
+												<td><button class="pull-right btn btn-primary" id="add_verification">Add Verification</button></td>
+												<td></td>
+											</tr>
+										</tbody>
+
+									</table>
+
+									<div class="submit-group" style="display: inline-block; text-align: right; width: 100%;">
+										<button type="submit" class="btn btn-success" id="edit_form3b_save_satisfactory">Satisfactory</button>
+										<button type="submit" class="btn btn-success" id="edit_form3b_save_not_satisfactory">Not Satisfactory</button>
+									</div>
 								</form>
 
 							</div>

@@ -18,6 +18,7 @@
 					<th>Issued By</th>
 					<th>Review by</th>
 					<th>Follow-up by</th>
+					<th>Verify by</th>
 					<th>Source</th>
 					<th>Department</th>
 					<th>Date Issued</th>
@@ -63,6 +64,8 @@
 						$ncar_ia = get_post_meta( $id, 'ncar_ia', true );
 						$reviewed_by_id = get_post_meta( $id, 'reviewed_by', true );
 						$reviewed_by = get_user_by( 'ID', $reviewed_by_id );
+						$followup_by_id = get_post_meta( $id, 'followup_by', true );
+						$followup_by = get_user_by( 'ID', $followup_by_id );
 						$approved_by_id = get_post_meta( $id, 'approved_by', true );
 						$approved_by = get_user_by( 'ID', $approved_by_id );
 						$source = get_post_meta( $id, 'source_of_nc', true );
@@ -70,6 +73,7 @@
 						$nc_desc = get_post_meta( $id, 'description_of_the_noncomformity', true );
 						$date = get_post_meta( $id, 'add_date', true );
 						$clause_no = get_post_meta( $id, 'clause_no', true );
+						$verification = get_post_meta( $id, 'verification', true );
 						$status = get_post_meta( $id, 'status', true );
 
 						?>
@@ -77,6 +81,7 @@
 							<td><?= $ncar_ia ?></td>
 							<td><?= $author ?></td>
 							<td><?= $reviewed_by->data->display_name; ?></td>
+							<td><?= $followup_by->data->display_name; ?></td>
 							<td><?= $approved_by->data->display_name; ?></td>
 							<td><?= $source ?></td>
 							<td><?= $department ?></td>
