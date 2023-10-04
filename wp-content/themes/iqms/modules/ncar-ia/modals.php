@@ -478,7 +478,7 @@
 											</tr>
 										</tbody>
 
-										<tbody id="form_2_3_b">
+										<tbody id="form_3_1">
 											
 										</tbody>
 								
@@ -509,10 +509,10 @@
 											</tr>
 										</tbody>
 
-										<tbody id="form_3_1">
+										<tbody id="form_3_1_b">
 											
 										</tbody>
-										<tbody id="form_foot_3_1">
+										<tbody id="form_foot_3_1_b">
 											<tr>
 												<td colspan="3"></td>
 												<td><button class="pull-right btn btn-primary" id="add_verification">Add Verification</button></td>
