@@ -465,7 +465,7 @@
 
 			$('#add_verification').click(function() {
                 date = new Date;
-                $html = '' + '<tr>' + '<td colspan="2">' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented" value="Yes"> Satisfactory' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented" value="No"> Not Satisfactory' + '</td>' + '<td><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks"></td>' + '<td><input type="date" class="form-control input-sm verification_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                $html = '' + '<tr>' + '<td colspan="2">' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented" value="Yes"> Yes' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented" value="No"> No' + '</td>' + '<td><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks"></td>' + '<td><input type="date" class="form-control input-sm verification_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                 _correction_ind++;
                 $('#form_3_1_b').append($html);
                 app.bindDeleteBtns();
@@ -534,7 +534,7 @@
                 e.preventDefault();
                 verification = [];
                 ncar_no = $('#edit-modal [name="ncar_no"]').val();
-                $('#form_3_1 tr').each(function() {
+                $('#form_3_1_b tr').each(function() {
                     verification_date = $(this).find('.verification_date').val();
                     verification_implemented = ($(this).find('.verification_implemented:checked') ? $(this).find('.verification_implemented:checked').val() : '');
                     verification_remarks = $(this).find('.verification_remarks').val();

@@ -123,18 +123,18 @@ if ( !class_exists('NCAR_IA_Module') ) {
 				}
 
 				$owner = get_post_field('post_author',$post_id);
+				$approved_by_id = get_post_meta($post_id, 'approved_by', true);
 				$ncar_no_new = get_post_meta($post_id, 'ncar_ia', true);
 
 				if($satisfactory == 1){
-					update_post_meta( $post_id, 'status', 'Satisfactory' );
+					update_post_meta( $post_id, 'status', 'For Verification' );
 
-
-					if(get_option('notification_'.$owner)){
-						$options = get_option('notification_'.$owner);
-						$options[] = 'The '.$ncar_no_new.' you raised has already been verified and is now closed.  <br>'.$this->get_date();
-						update_option( 'notification_'.$owner,  $options);
+					if(get_option('notification_'.$approved_by_id)){
+						$options = get_option('notification_'.$approved_by_id);
+						$options[] = 'The '.$ncar_no_new.' implemented by '.$owner_by_name.' requires you to verify its effectiveness.<br><br>'.$this->get_date();
+						update_option( 'notification_'.$approved_by_id,  $options);
 					} else {
-						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified and is now closed.  <br>'.$this->get_date()]);
+						add_option( 'notification_'.$approved_by_id,  ['The '.$ncar_no_new.' implemented by '.$owner_by_name.' requires you to verify its effectiveness.<br><br>'.$this->get_date()]);
 					}
 					
 				} else {
@@ -281,10 +281,10 @@ if ( !class_exists('NCAR_IA_Module') ) {
 
 					if(get_option('notification_'.$owner)){
 						$options = get_option('notification_'.$owner);
-						$options[] = 'The '.$ncar_no_new.' implemented by '.$owner_by_name.' requires you to verify its effectiveness.<br><br>'.$this->get_date();
+						$options[] = 'The '.$ncar_no_new.' you raised has already been verified and is now closed.  <br>'.$this->get_date();
 						update_option( 'notification_'.$owner,  $options);
 					} else {
-						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' implemented by '.$owner_by_name.' requires you to verify its effectiveness.<br><br>'.$this->get_date()]);
+						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified and is now closed.  <br>'.$this->get_date()]);
 					}
 
 				} else {
