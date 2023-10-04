@@ -475,7 +475,7 @@
                 e.preventDefault();
                 verification = [];
                 ncar_no = $('#edit-modal [name="ncar_no"]').val();
-                $('#form_3_1 tr').each(function() {
+                $('#form_3_1_b tr').each(function() {
                     verification_date = $(this).find('.verification_date').val();
                     verification_implemented = ($(this).find('.verification_implemented:checked') ? $(this).find('.verification_implemented:checked').val() : '');
                     verification_remarks = $(this).find('.verification_remarks').val();
