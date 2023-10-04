@@ -463,6 +463,13 @@
 				});
 			});
 
+			$('#add_verification').click(function() {
+                date = new Date;
+                $html = '' + '<tr>' + '<td colspan="2">' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented" value="Yes"> Satisfactory' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented" value="No"> Not Satisfactory' + '</td>' + '<td><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks"></td>' + '<td><input type="date" class="form-control input-sm verification_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                _correction_ind++;
+                $('#form_3_1_b').append($html);
+                app.bindDeleteBtns();
+            });
 
 			$('#edit_form3b_save_satisfactory').click(function(e) {
                 e.preventDefault();
@@ -1037,6 +1044,15 @@
 							app.bindDeleteBtns();
 						});
 						/*end*/
+
+						/*form 3*/
+                        $html = '';
+                        $.each(r.form3.verification, function(i, v) {
+                            $html += '' + '<tr>' + '<td colspan="2">' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented" value="Yes" ' + (v.verification_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented" value="No" ' + (v.verification_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks" value="' + v.verification_remarks + '"></td>' + '<td><input type="date" class="form-control input-sm verification_date" value="' + v.verification_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                            _correction_ind++;
+                            $('#form_3_1_b').html($html);
+                            app.bindDeleteBtns();
+                        });
 
 						jQuery('.view-button').click(function(){
                             content = jQuery(this).data('content');
