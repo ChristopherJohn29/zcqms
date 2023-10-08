@@ -359,7 +359,7 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 		case 'approved_by' :
 
 			$display = '';
-			$approved_by = get_post_meta( $post_id, 'approved_by', true );
+			$approved_by = get_post_meta( $post_id, 'approve_by', true );
 			if ( $approved_by ) {
 
 				$user = get_user_by('ID', $approved_by);
