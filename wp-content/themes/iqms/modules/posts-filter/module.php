@@ -70,6 +70,26 @@ function filter_post_fields() {
 			echo '<style>.acf-field[data-name="approval_status"] {display: none;}</style>';
 
 		}
+
+		$this_post_id = get_the_id();
+
+		$approval_status = get_field( 'approval_status' );
+
+		// var_dump();
+		$document_title = get_field( 'document_title' );
+		var_dump($document_title);
+
+		if($approval_status == 'yes'){
+				echo '<script>
+
+				(function($){
+					$(window).on(\'load\', function(){
+						$(\'.inside.acf-fields\').prepend(\'<a href="" style="margin:20px;">View Document to print</a>\');
+					});
+				})(jQuery);
+
+				</script>';
+		}
 	}
 
 
