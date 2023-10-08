@@ -46,6 +46,35 @@ add_action( 'edit_form_top', 'filter_post_fields' );
 
 function filter_post_fields() {
 
+		
+
+
+	if( get_post_type() == 'printing'){
+
+		$approve_by = false;
+
+
+		$approve_by_data = get_field( 'approve_by' );
+
+		$approve_by_data = ( is_array( $approve_by_data ) ? $approve_by_data : [] );
+
+		foreach( $approve_by_data as $p ) {
+
+			if ( $user_id == $p['ID'] ) {
+
+				$approve_by = true;
+
+			}
+
+		}
+
+		if ( $approve_by === false ) {
+
+			echo '<style>.acf-field[data-name="approve_by"] {display: none;}</style>';
+
+		}
+	}
+
 
 
 	if ( get_post_type() == 'dcm' ) {
