@@ -329,8 +329,7 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 			$document_title = get_field( 'document_title',  $post_id );
 			if ( $document_title->guid ) {
 
-				var_dump($document_title);
-				$display = '<label><a href="'.$document_title->guid.'" target="_blank">' . $document_title->name . '</a> </label>';
+				$display = '<label><a href="'.$document_title->guid.'" target="_blank">' . $document_title->post_title . '</a> </label>';
 			}
 			echo $display;
 			break;
