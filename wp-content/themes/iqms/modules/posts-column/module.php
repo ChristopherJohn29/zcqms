@@ -324,19 +324,20 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 		case 'document_title' :
 
 			$display = '';
-			$document_title = get_post_meta( $post_id, 'document_title', true );
-			if ( $document_title ) {
-
 			
+			$document_title = get_field( 'document_title',  $post_id );
+			if ( $document_title->guid ) {
 
-				$display = '<label>' . $document_title . ' </label>';
+		
+				$display = '<label>' . $document_title->guid . ' </label>';
 			}
 			echo $display;
 			break;
 		case 'approval_status' :
 
 			$display = '';
-			$approval_status = get_post_meta( $post_id, 'approval_status', true );
+			
+			$approval_status = get_field( 'approval_status',  $post_id );
 			if ( $approval_status == 'yes') {
 
 
