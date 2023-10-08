@@ -77,7 +77,7 @@ function filter_post_fields() {
 
 		// var_dump();
 		$document_title = get_field( 'document_title' );
-		var_dump($document_title);
+		var_dump($document_title->guid);
 
 		if($approval_status == 'yes'){
 				echo '<script>
