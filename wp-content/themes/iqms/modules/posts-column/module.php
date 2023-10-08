@@ -313,6 +313,7 @@ function set_custom_edit_printing_columns( $columns ) {
 	$columns['document_title'] = 'Document Title';
 	$columns['approval_status'] = 'Approval Status';
 	$columns['approved_by'] = 'Approve By';
+	$columns['requestor'] = 'Requestor';
 
 	return $columns;
 }
@@ -362,6 +363,22 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 			if ( $approved_by ) {
 
 				$user = get_user_by('ID', $approved_by);
+				$name = $user->data->display_name;
+				$role = ( ($user->roles[0] ? $user->roles[0] : '') );
+
+				$display = ( $name ? '<label class="table-label-success">' . $name . ' ('.$role.')</label>' : '' );
+
+			}
+			echo $display;
+			break;
+
+		case 'requestor' :
+
+			$display = '';
+			$requestor = get_post_meta( $post_id, 'requestor', true );
+			if ( $requestor ) {
+
+				$user = get_user_by('ID', $requestor);
 				$name = $user->data->display_name;
 				$role = ( ($user->roles[0] ? $user->roles[0] : '') );
 
