@@ -83,7 +83,7 @@ function filter_post_fields() {
 
 				(function($){
 					$(window).on(\'load\', function(){
-						$(\'[data-name="document_title"]\').prepend(\'<a href="'.$document_title->guid.'" style="margin:20px;">View Document to print</a>\');
+						$(\'[data-name="document_title"]\').append(\'<a href="'.$document_title->guid.'"">View Document to print</a>\');
 					});
 				})(jQuery);
 
