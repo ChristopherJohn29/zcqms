@@ -67,7 +67,7 @@ function filter_post_fields() {
 
 		if ( $approve_by === false ) {
 
-			echo '<style>.acf-field[data-name="approve_by"] {display: none;}</style>';
+			echo '<style>.acf-field[data-name="approval_status"] {display: none;}</style>';
 
 		}
 	}
