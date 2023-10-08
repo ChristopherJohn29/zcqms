@@ -303,3 +303,73 @@ function set_custom_edit_qms_documents_column_column( $column, $post_id ) {
 			break;
 	}
 }
+
+
+/*printing documents*/
+add_filter( 'manage_printing_posts_columns', 'set_custom_edit_printing_columns', 99 );
+add_action( 'manage_printing_posts_custom_column' , 'set_custom_edit_printing_column_column', 10, 2 );
+function set_custom_edit_printing_columns( $columns ) {
+
+	$columns['document_title'] = 'Document Title';
+	$columns['approval_status'] = 'Approval Status';
+	$columns['approved_by'] = 'Approve By';
+
+	return $columns;
+}
+
+
+function set_custom_edit_printing_column_column( $column, $post_id ) {
+
+	switch ( $column ) {
+		case 'document_title' :
+
+			$display = '';
+			$document_title = get_post_meta( $post_id, 'document_title', true );
+			if ( $document_title ) {
+
+			
+
+				$display = '<label>' . $document_title . ' </label>';
+			}
+			echo $display;
+			break;
+		case 'approval_status' :
+
+			$display = '';
+			$approval_status = get_post_meta( $post_id, 'approval_status', true );
+			if ( $approval_status == 'yes') {
+
+
+				$display = '<label class="table-label-success">Approved</label>';
+
+			} 
+
+			if ( $approval_status == 'no') {
+
+
+				$display = '<label class="table-label-danger">Disapproved</label>';
+
+			}
+
+			echo $display;
+
+			break;
+		case 'approved_by' :
+
+			$display = '';
+			$approved_by = get_post_meta( $post_id, 'approved_by', true );
+			if ( $approved_by ) {
+
+				$user = get_user_by('ID', $approved_by);
+				$name = $user->data->display_name;
+				$role = ( ($user->roles[0] ? $user->roles[0] : '') );
+
+				$display = ( $name ? '<label class="table-label-success">' . $name . ' ('.$role.')</label>' : '' );
+
+			}
+			echo $display;
+			break;
+
+
+	}
+}
