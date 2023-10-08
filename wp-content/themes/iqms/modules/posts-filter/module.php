@@ -51,6 +51,9 @@ function filter_post_fields() {
 
 	if( get_post_type() == 'printing'){
 
+		$this_user = wp_get_current_user();
+
+		$user_id = $this_user->ID;
 		$approve_by = false;
 
 
@@ -58,10 +61,7 @@ function filter_post_fields() {
 
 		$approve_by_data = ( is_array( $approve_by_data ) ? $approve_by_data : [] );
 
-		var_dump($approve_by_data);
-		var_dump($user_id);
-
-		if ( $user_id == $p['ID'] ) {
+		if ( $user_id == $approve_by_data['ID'] ) {
 			$approve_by = true;
 		}
 
