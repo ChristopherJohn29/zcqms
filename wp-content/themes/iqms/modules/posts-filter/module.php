@@ -59,11 +59,10 @@ function filter_post_fields() {
 		$approve_by_data = ( is_array( $approve_by_data ) ? $approve_by_data : [] );
 
 		var_dump($approve_by_data);
-		
+		var_dump($user_id);
+
 		if ( $user_id == $p['ID'] ) {
-
 			$approve_by = true;
-
 		}
 
 		if ( $approve_by === false ) {
