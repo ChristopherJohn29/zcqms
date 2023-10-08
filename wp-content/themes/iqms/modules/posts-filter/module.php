@@ -77,14 +77,13 @@ function filter_post_fields() {
 
 		// var_dump();
 		$document_title = get_field( 'document_title' );
-		var_dump($document_title->guid);
 
 		if($approval_status == 'yes'){
 				echo '<script>
 
 				(function($){
 					$(window).on(\'load\', function(){
-						$(\'.inside.acf-fields\').prepend(\'<a href="" style="margin:20px;">View Document to print</a>\');
+						$(\'.inside.acf-fields\').prepend(\'<a href="'.$document_title->guid.'" style="margin:20px;">View Document to print</a>\');
 					});
 				})(jQuery);
 
