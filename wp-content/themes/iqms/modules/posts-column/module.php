@@ -123,7 +123,7 @@ function filter_posts_list($query)
 				$approve_by_raw =  get_field('approve_by', get_the_ID());
 				if(is_array($approve_by_raw)){
 					foreach ($approve_by_raw as $key => $value) {
-						$approve_by_raw[] = $value['ID'];
+						$approve_by[] = $value['ID'];
 					}
 				}
 				
@@ -131,7 +131,7 @@ function filter_posts_list($query)
 				
 				if
 				(
-					in_array($cur_id, $approved_by) || 
+					in_array($cur_id, $approve_by) || 
 					in_array($cur_id, $requestor) 
 				)
 				{
