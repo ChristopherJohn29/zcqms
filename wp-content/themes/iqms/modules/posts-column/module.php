@@ -116,13 +116,11 @@ function filter_posts_list($query)
 				while ( $the_query->have_posts() ) : $the_query->the_post();
 
 				$requestor = [];
-				$requestor_raw =  get_post_field('post_author',get_the_ID());
-				var_dump($requestor_raw,'requestor');
-				if(is_array($requestor_raw)){
-					foreach ($requestor_raw as $key => $value) {
-						$requestor[] = $value['ID'];
-					}
-				}
+				$requestor_id =  get_post_field('post_author',get_the_ID());
+				
+				$requestor[] = $requestor_id;
+
+				var_dump($requestor,'requestor');
 
 				$approve_by = [];
 				$approve_by_raw =  get_field('approve_by', get_the_ID());
