@@ -93,6 +93,9 @@ function filter_posts_list($query)
 
         }
 
+			var_dump($query->query['fields']);
+			exit;
+
 
 		if('edit.php' == $pagenow &&  $typenow == 'printing' && $query->query['fields'] == 'id=>parent')
         { 
