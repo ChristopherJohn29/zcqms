@@ -125,6 +125,9 @@ function filter_posts_list($query)
 
 				$approve_by = [];
 				$approve_by_raw =  get_field('approve_by', get_the_ID());
+
+				var_dump($approve_by_raw);
+				
 				if(is_array($approve_by_raw)){
 					foreach ($approve_by_raw as $key => $value) {
 						$approve_by[] = $value['ID'];
