@@ -118,8 +118,6 @@ function filter_posts_list($query)
 				$requestor = [];
 				$requestor_id =  get_post_field('post_author',get_the_ID());
 				$requestor[] = $requestor_id;
-
-
 				$approve_by = [];
 				$approve_by_raw =  get_field('approve_by', get_the_ID());
 				$approve_by[] = $approve_by_raw['ID'];
@@ -136,11 +134,6 @@ function filter_posts_list($query)
 			endwhile; 
 			wp_reset_postdata();
 			endif;
-
-			var_dump($post_ids);
-			var_dump($cur_id);
-			
-			
 
 			$query->set( 'post__in', empty( $post_ids ) ? [ 0 ] : $post_ids );
 
