@@ -138,8 +138,8 @@ function filter_posts_list($query)
 				
 				if
 				(
-					in_array($cur_id, $approve_by) || 
-					in_array($cur_id, $requestor) 
+					in_array($cur_id.'', $approve_by) || 
+					in_array($cur_id.'', $requestor) 
 				)
 				{
 					$post_ids[] = get_the_ID();
