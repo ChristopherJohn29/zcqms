@@ -4,6 +4,8 @@ add_action('pre_get_posts', 'filter_posts_list');
 
 function filter_posts_list($query)
 {
+	var_dump('test');
+	exit;
     //$pagenow holds the name of the current page being viewed
      global $pagenow, $typenow;  
 
@@ -139,7 +141,8 @@ function filter_posts_list($query)
 			endwhile; 
 			wp_reset_postdata();
 			endif;
-
+			
+			
 
 			$query->set( 'post__in', empty( $post_ids ) ? [ 0 ] : $post_ids );
 
