@@ -89,7 +89,7 @@ function filter_posts_list($query)
 
         }
 
-		if('printing' == $pagenow)
+		if('edit.php' == $pagenow && 'printing' == $pagenow)
         { 
         //global $query's set() method for setting the author as the current user's id
 			
