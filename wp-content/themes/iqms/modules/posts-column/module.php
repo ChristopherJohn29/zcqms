@@ -4,8 +4,7 @@ add_action('pre_get_posts', 'filter_posts_list');
 
 function filter_posts_list($query)
 {
-	var_dump('test');
-	exit;
+
     //$pagenow holds the name of the current page being viewed
      global $pagenow, $typenow;  
 
@@ -91,8 +90,10 @@ function filter_posts_list($query)
 
         }
 
-		if('edit.php' == $pagenow &&  $typenow == 'printing' && $query->query['fields'] == 'id=>parent')
+		if('edit.php' == $pagenow &&  $typenow == 'printing')
         { 
+			var_dump('test');
+			exit;
         //global $query's set() method for setting the author as the current user's id
 			
 			if($roles[0] == 'dco' || $roles[0] == 'administrator'){
