@@ -93,7 +93,7 @@ function filter_posts_list($query)
 
         }
 
-			var_dump($query->query['fields']);
+			var_dump($query);
 			exit;
 
 
