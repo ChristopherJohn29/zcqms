@@ -88,6 +88,62 @@ function filter_posts_list($query)
 			$query->set( 'post__in', empty( $post_ids ) ? [ 0 ] : $post_ids );
 
         }
+
+		if('printing' == $pagenow)
+        { 
+        //global $query's set() method for setting the author as the current user's id
+			
+			if($roles[0] == 'dco' || $roles[0] == 'administrator'){
+				return;
+			}
+			
+			$post_ids = array();
+
+			$args = array(
+				'post_type' => 'printing',
+				'posts_per_page' => -1
+			);
+
+			$the_query = new WP_Query( $args );
+
+			if ( $the_query->have_posts() ) :
+				while ( $the_query->have_posts() ) : $the_query->the_post();
+
+				$requestor = [];
+				$requestor_raw =  get_post_field('post_author',get_the_ID());
+				if(is_array($requestor_raw)){
+					foreach ($requestor_raw as $key => $value) {
+						$requestor[] = $value['ID'];
+					}
+				}
+
+				$approve_by = [];
+				$approve_by_raw =  get_field('approve_by', get_the_ID());
+				if(is_array($approve_by_raw)){
+					foreach ($approve_by_raw as $key => $value) {
+						$approve_by_raw[] = $value['ID'];
+					}
+				}
+				
+
+				
+				if
+				(
+					in_array($cur_id, $approved_by) || 
+					in_array($cur_id, $requestor) 
+				)
+				{
+					$post_ids[] = get_the_ID();
+				}
+
+			endwhile; 
+			wp_reset_postdata();
+			endif;
+
+
+			$query->set( 'post__in', empty( $post_ids ) ? [ 0 ] : $post_ids );
+
+        }
 }
 
 
