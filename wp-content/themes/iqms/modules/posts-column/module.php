@@ -93,8 +93,6 @@ function filter_posts_list($query)
         { 
         //global $query's set() method for setting the author as the current user's id
 			
-		var_dump('test');
-		exit;
 			if($roles[0] == 'dco' || $roles[0] == 'administrator'){
 				return;
 			}
