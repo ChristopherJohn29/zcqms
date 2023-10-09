@@ -92,8 +92,7 @@ function filter_posts_list($query)
 
 		if('edit.php' == $pagenow &&  $typenow == 'printing')
         { 
-			var_dump('test');
-			exit;
+
         //global $query's set() method for setting the author as the current user's id
 			
 			if($roles[0] == 'dco' || $roles[0] == 'administrator'){
