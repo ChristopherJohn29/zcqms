@@ -90,7 +90,7 @@ function filter_posts_list($query)
 
         }
 
-		if('edit.php' == $pagenow &&  $typenow == 'printing')
+		if('edit.php' == $pagenow &&  $typenow == 'printing' && $query->query['fields'] == 'id=>parent')
         { 
 
         //global $query's set() method for setting the author as the current user's id
