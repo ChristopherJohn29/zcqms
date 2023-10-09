@@ -148,6 +148,8 @@ function filter_posts_list($query)
 			endwhile; 
 			wp_reset_postdata();
 			endif;
+
+			var_dump($post_ids);
 			
 			
 
