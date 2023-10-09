@@ -17,6 +17,9 @@ function filter_posts_list($query)
         //Shouldn't happen for the admin, but for any role with the edit_posts capability and only on the posts list page, that is edit.php
         if('edit.php' == $pagenow &&  $typenow == 'dcm' && $query->query['fields'] == 'id=>parent')
         { 
+
+			var_dump('test');
+			exit;
         //global $query's set() method for setting the author as the current user's id
 			
 			if($roles[0] == 'dco' || $roles[0] == 'administrator'){
