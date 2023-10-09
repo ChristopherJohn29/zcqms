@@ -117,7 +117,7 @@ function filter_posts_list($query)
 
 				$requestor = [];
 				$requestor_raw =  get_post_field('post_author',get_the_ID());
-				var_dump($requestor_raw);
+				var_dump($requestor_raw,'requestor');
 				if(is_array($requestor_raw)){
 					foreach ($requestor_raw as $key => $value) {
 						$requestor[] = $value['ID'];
@@ -127,7 +127,7 @@ function filter_posts_list($query)
 				$approve_by = [];
 				$approve_by_raw =  get_field('approve_by', get_the_ID());
 
-				var_dump($approve_by_raw);
+				var_dump($approve_by_raw,'approve_by_raw');
 				if(is_array($approve_by_raw)){
 					foreach ($approve_by_raw as $key => $value) {
 						$approve_by[] = $value['ID'];
