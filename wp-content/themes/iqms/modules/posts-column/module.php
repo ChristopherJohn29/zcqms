@@ -18,8 +18,7 @@ function filter_posts_list($query)
         if('edit.php' == $pagenow &&  $typenow == 'dcm' && $query->query['fields'] == 'id=>parent')
         { 
 
-			var_dump($query->query['fields']);
-			exit;
+		
         //global $query's set() method for setting the author as the current user's id
 			
 			if($roles[0] == 'dco' || $roles[0] == 'administrator'){
@@ -93,9 +92,7 @@ function filter_posts_list($query)
 
         }
 
-			var_dump($query);
-			exit;
-
+		
 
 		if('edit.php' == $pagenow &&  $typenow == 'printing' && $query->query['fields'] == 'id=>parent')
         { 
