@@ -150,6 +150,7 @@ function filter_posts_list($query)
 			endif;
 
 			var_dump($post_ids);
+			var_dump($cur_id);
 			
 			
 
