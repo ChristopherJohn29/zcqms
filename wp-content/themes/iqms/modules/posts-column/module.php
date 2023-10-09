@@ -345,10 +345,15 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 
 			} 
 
-			if ( $approval_status == 'no') {
+			elseif ( $approval_status == 'no') {
 
 
 				$display = '<label class="table-label-danger">Disapproved</label>';
+
+			} else {
+
+
+				$display = '<label>For Approval</label>';
 
 			}
 
@@ -374,7 +379,9 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 		case 'requestor' :
 
 			$display = '';
-			$requestor = get_post_meta( $post_id, 'requestor', true );
+			// $requestor = get_post_meta( $post_id, 'requestor', true );
+			$requestor = get_post_field('post_author',$post_id);
+
 			if ( $requestor ) {
 
 				$user = get_user_by('ID', $requestor);
