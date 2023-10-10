@@ -75,7 +75,7 @@
 
 									<div class="row">
 										<div class="col-sm-12">
-											<label for="source_of_nc">Source of NC</label>
+											<label for="source_of_nc">1.Source of NC</label>
 											<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="This is a warning message."></i>
 											<div class="form-group">
 
@@ -193,7 +193,7 @@
 										<div class="col-sm-12">
 
 											<div class="form-group">
-												<label for="description_of_the_noncomformity">Description of the Noncomformity</label>
+												<label for="description_of_the_noncomformity">2.Description of the Noncomformity</label>
 												<textarea class="form-control" rows="5" name="description_of_the_noncomformity" id="description_of_the_noncomformity"></textarea>
 											</div>
 
@@ -303,7 +303,7 @@
 
 									<div class="row">
 										<div class="col-sm-12">
-											<label for="source_of_nc">Source of NC</label>
+											<label for="source_of_nc">1.Source of NC</label>
 											<i class="glyphicon glyphicon-question-sign" data-toggle="tooltip" data-placement="right" title="This is a warning message."></i>
 											<div class="form-group">
 
@@ -425,7 +425,7 @@
 										<div class="col-sm-12">
 
 											<div class="form-group">
-												<label for="description_of_the_noncomformity">Description of the Noncomformity</label>
+												<label for="description_of_the_noncomformity">2.Description of the Noncomformity</label>
 												<textarea class="form-control" rows="5" name="description_of_the_noncomformity" id="description_of_the_noncomformity"></textarea>
 											</div>
 
@@ -448,7 +448,7 @@
 										</tbody>
 										<tbody>
 											<tr>
-												<td colspan="5">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
+												<td colspan="5">4. Correction: (Action to eliminate detected Nonconformity)</td>
 												<td>Completion Date</td>
 												<td></td>
 											</tr>
@@ -469,7 +469,7 @@
 										<tbody>
 											
 											<tr>
-												<td colspan="6">2.2 Root Cause Analysis</td>
+												<td colspan="6">5. Root Cause Analysis</td>
 											</tr>
 
 										</tbody>
@@ -494,7 +494,7 @@
 										<tbody>
 											
 											<tr>
-												<td colspan="6">2.3 Corrective Action: (Action to eliminate the cause of the detected nonconformity)</td>
+												<td colspan="6">6. Corrective Action: (Action to eliminate the cause of the detected nonconformity)</td>
 											</tr>
 											<tr>
 												<td colspan="4">Root Cause/s</td>
@@ -527,12 +527,15 @@
 									<table class="table">
 										<tbody>
 											<tr>
+												<td colspan="6">7. Follow up on implementation of Action</td>
+											</tr>
+											<tr>
 												<td colspan="6"><button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button></td>
 											</tr>
 										</tbody>
 										<tbody>
 											<tr>
-												<td colspan="1">2.1 Correction: (Action to eliminate detected Nonconformity)</td>
+												<td colspan="1">Correction: (Action to eliminate detected Nonconformity)</td>
 												<td>Completion Date</td>
 												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
@@ -548,7 +551,7 @@
 										<tbody>
 											
 											<tr>
-												<td colspan="6">2.2 Root Cause Analysis</td>
+												<td colspan="6"> Root Cause Analysis</td>
 											</tr>
 
 										</tbody>
@@ -564,7 +567,7 @@
 										<tbody>
 											
 											<tr>
-												<td colspan="6">2.3 Corrective Action: (Action to eliminate the cause of the detected nonconformity)</td>
+												<td colspan="6"> Corrective Action: (Action to eliminate the cause of the detected nonconformity)</td>
 											</tr>
 											<tr>
 												<td colspan="">Root Cause/s</td>
@@ -608,7 +611,7 @@
 										</tbody>
 										<tbody>
 											<tr>
-												<td colspan="2">3. verifications: Implemented as Planned?</td>
+												<td colspan="2">8. verifications: Implemented as Planned?</td>
 												<td>Remarks</td>
 												<td>Date Stamp</td>
 												<td></td>
