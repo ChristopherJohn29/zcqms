@@ -19,6 +19,17 @@ function iqms_assets(){
     
 }
 
+function custom_wp_mail_from($from_email) {
+    return 'zcmc-iqms@zcmc-iqms.infoadvance.com.ph'; // Change to the email address you want to use as the sender
+}
+
+function custom_wp_mail_from_name($from_name) {
+    return 'zcmc-iqms'; // Change to the name you want to use as the sender
+}
+
+add_filter('wp_mail_from', 'custom_wp_mail_from');
+add_filter('wp_mail_from_name', 'custom_wp_mail_from_name');
+
 
 function sample_admin_notice__success() {
     ?>
