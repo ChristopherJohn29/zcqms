@@ -103,7 +103,7 @@ function filter_post_fields() {
 		$requestor = get_post_field('post_author',$post_id);
 		$post_status = get_post_status($post_id);
 		// $requestor = get_user_by('ID', $requestor);
-		var_dump($post_status);
+
 
 		if(($roles[0] !== 'administrator' || $roles[0] !== 'dco') && $user_id == $requestor && $post_status != 'auto-draft'){
 			echo '<style>#publishing-action {display: none;}</style>';
