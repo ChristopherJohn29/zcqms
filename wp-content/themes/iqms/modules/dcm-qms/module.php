@@ -82,7 +82,7 @@ class TransferDCM{
                                 add_option( 'notification_'.$reviewer->ID,  ['You have a document due for review: "'.$post_title.'" <br><br>'.$this->get_date()]);
                             }
                         
-                            // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            $this->sendEmail($reviewer->user_email, 'DCM Notification', 'You have a document due for review: "'.$post_title.'"');
                             $reviewer_emailed[] = $value;
                         
                         }
@@ -101,7 +101,7 @@ class TransferDCM{
                                 add_option( 'notification_'.$process_owner->ID,  ['The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks. <br><br>'.$this->get_date()]);
                             }
                         
-                            // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            $this->sendEmail($process_owner->user_email, 'DCM Notification', 'The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.');
                             $reviewer_emailed = [];
                         
                         }
@@ -135,7 +135,7 @@ class TransferDCM{
                                 add_option( 'notification_'.$approver->ID,  ['The "'.$post_title.'" is due for your final review and approval <br><br>'.$this->get_date()]);
                             }
                         
-                            // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            $this->sendEmail($approver->user_email, 'DCM Notification', 'The "'.$post_title.'" is due for your final review and approval');
                             $approver_emailed[] = $value;
                         
                         }
@@ -152,7 +152,7 @@ class TransferDCM{
                                     add_option( 'notification_'.$process_owner->ID,  ['The "'.$post_title.'" you have uploaded has been reviewed <br><br>'.$this->get_date()]);
                                 }
                              
-                                // $this->sendEmail($process_owner->user_email, 'New QMS Document uploaded', 'Your document has been uploaded: "'.$post_title.'"');
+                                $this->sendEmail($process_owner->user_email, 'DCM Notification', 'The "'.$post_title.'" you have uploaded has been reviewed');
                                 $approver_emailed[] = $value;
                             }
                         }
@@ -174,7 +174,7 @@ class TransferDCM{
                                 add_option( 'notification_'.$process_owner->ID,  ['The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks. <br><br>'.$this->get_date()]);
                             }
                         
-                            // $this->sendEmail($final_reviewer->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            $this->sendEmail($process_owner->user_email, 'DCM Notification', 'The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks');
                             $approver_emailed = [];
                         
                         }
@@ -206,7 +206,7 @@ class TransferDCM{
                                     add_option( 'notification_'.$process_owner->ID,  ['The "'.$post_title.'" you have uploaded has been approved <br><br>'.$this->get_date()]);
                                 }
                              
-                                // $this->sendEmail($process_owner->user_email, 'New QMS Document uploaded', 'Your document has been uploaded: "'.$post_title.'"');
+                                $this->sendEmail($process_owner->user_email, 'DCM Notification', 'The "'.$post_title.'" you have uploaded has been approved');
                                 $process_owner_emailed[] = $value;
                             }
                         }
@@ -226,7 +226,7 @@ class TransferDCM{
                                     add_option( 'notification_'.$process_owner->ID,  [ 'The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks. <br><br>'.$this->get_date()]);
                                 }
                              
-                                // $this->sendEmail($process_owner->user_email, 'New QMS Document uploaded', 'Your document has been uploaded: "'.$post_title.'"');
+                                $this->sendEmail($process_owner->user_email, 'DCM Notification', 'The document "'.$post_title.'" you have uploaded has been disapproved. Please check the remarks.');
                                 $process_owner_emailed = [];
                             }
                         }
@@ -259,7 +259,7 @@ class TransferDCM{
                                 add_option( 'notification_'.$dco->ID,  ['You have a document due for review: "'.$post_title.'" <br><br>'.$this->get_date()]);
                             }
                             
-                            // $this->sendEmail($dco->user_email, 'New QMS Document to review', 'You have a document due for review: "'.$post_title.'"');
+                            $this->sendEmail($dco->user_email, 'DCM Notification', 'You have a document due for review: "'.$post_title.'"');
                             $dco_emailed[] = $value;
                         
                         }
@@ -277,7 +277,7 @@ class TransferDCM{
                                 add_option( 'notification_'.$process_owner->ID,  ['Your document has been uploaded: "'.$post_title.'" <br><br>'.$this->get_date()]);
                             }
                             
-                            // $this->sendEmail($process_owner->user_email, 'New QMS Document uploaded', 'Your document has been uploaded: "'.$post_title.'"');
+                            $this->sendEmail($process_owner->user_email, 'DCM Notification', 'Your document has been uploaded: "'.$post_title.'"');
                             $dco_emailed[] = $value;
                         }
                     }
