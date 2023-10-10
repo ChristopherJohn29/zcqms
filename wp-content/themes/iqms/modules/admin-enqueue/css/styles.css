@@ -121,10 +121,7 @@ div#acf-group_632c62d0dc846 {
     width: 20% !important;
 }
 
-.post-type-qms-documents [data-name="auto_approve"],
-.urm-user-cant-edit.urm-user-cant-create.post-type-dcm [data-name="auto_approve"] {
-    /*display: none;*/
-}
+
 /*urm*/
 .urm-user-cant-create #menu-posts-dcm ul li:nth-child(3) {
     display: none;
