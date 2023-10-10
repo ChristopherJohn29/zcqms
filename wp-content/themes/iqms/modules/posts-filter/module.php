@@ -105,7 +105,7 @@ function filter_post_fields() {
 		// $requestor = get_user_by('ID', $requestor);
 		var_dump($post_status);
 
-		if(($roles[0] !== 'administrator' || $roles[0] !== 'dco') && $user_id == $requestor && $post_status != 'draft'){
+		if(($roles[0] !== 'administrator' || $roles[0] !== 'dco') && $user_id == $requestor && $post_status != 'auto-draft'){
 			echo '<style>#publishing-action {display: none;}</style>';
 		}
 
