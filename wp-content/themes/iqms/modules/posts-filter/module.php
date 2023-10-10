@@ -72,6 +72,7 @@ function filter_post_fields() {
 		}
 
 		$initial_approval_status = get_field( 'initial_approval_status',  $post_id );
+		$final_approval_status = get_field( 'final_approval_status',  $post_id );
 
 		$approve_by_final = false;
 
@@ -88,6 +89,11 @@ function filter_post_fields() {
 			echo '<style>.acf-field[data-name="final_approval_status"] {display: none;}</style>';
 
 		}
+
+		if($initial_approval_status == 'yes' && $final_approval_status == 'yes'){
+			echo '<style>#publishing-action {display: none;}</style>';
+		}
+		
 
 		$this_post_id = get_the_id();
 
