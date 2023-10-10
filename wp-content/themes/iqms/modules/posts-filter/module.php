@@ -113,9 +113,9 @@ function filter_post_fields() {
 			echo '<style>#publishing-action {display: block;}</style>';
 		}
 
-		if(($roles[0] !== 'administrator' || $roles[0] !== 'dco') ){
-			echo '<style>[data-name="initial_approver"] {display: none;}</style>';
-			echo '<style>[data-name="final_approver"] {display: none;}</style>';
+		if(($roles[0] === 'administrator' || $roles[0] === 'dco') ){
+			echo '<style>[data-name="initial_approver"] {display: block;}</style>';
+			echo '<style>[data-name="final_approver"] {display: block;}</style>';
 		}
 
 		echo '<style>#pageparentdiv {display: none;}</style>';
