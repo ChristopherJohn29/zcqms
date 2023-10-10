@@ -70,6 +70,15 @@ li#collapse-menu {
 [data-name="approval_status"] {
     background-color: #92d7eb;
 }
+
+[data-name="initial_approval_status"] {
+    background-color: #92d7eb;
+}
+
+[data-name="final_approval_status"] {
+    background-color: #92d7eb;
+}
+
 [data-name="review_status"] {
     background-color: #b5e0b5;
 }

@@ -119,12 +119,16 @@ function filter_posts_list($query)
 				$requestor_id =  get_post_field('post_author',get_the_ID());
 				$requestor[] = $requestor_id;
 				$approve_by = [];
-				$approve_by_raw =  get_field('approve_by', get_the_ID());
+				$approve_by_raw =  get_field('initial_approver', get_the_ID());
 				$approve_by[] = $approve_by_raw['ID'];
+				$approve_by_final = [];
+				$approve_by_final_raw =  get_field('final_approver', get_the_ID());
+				$approve_by_final[] = $approve_by_final_raw['ID'];
 				
 				if
 				(
 					in_array($cur_id.'', $approve_by) || 
+					in_array($cur_id.'', $approve_by_final) || 
 					in_array($cur_id.'', $requestor) 
 				)
 				{
@@ -362,7 +366,8 @@ function set_custom_edit_printing_columns( $columns ) {
 
 	$columns['document_title'] = 'Document Title';
 	$columns['approval_status'] = 'Approval Status';
-	$columns['approved_by'] = 'Approve By';
+	$columns['initial_approver'] = 'Initial Approved By';
+	$columns['final_approver'] = 'Final Approved By';
 	$columns['requestor'] = 'Requestor';
 
 	return $columns;
@@ -387,44 +392,104 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 
 			$display = '';
 			
-			$approval_status = get_field( 'approval_status',  $post_id );
-			if ( $approval_status == 'yes') {
+			$initial_approval_status = get_field( 'initial_approval_status',  $post_id );
+			$final_approval_status = get_field( 'final_approval_status',  $post_id );
+
+
+			if ( $initial_approval_status == 'yes' && $final_approval_status == 'yes') {
 
 
 				$display = '<label class="table-label-success">Approved</label>';
 
+				echo $display;
+
+				break;
+
 			} 
 
-			elseif ( $approval_status == 'no') {
+			if ( $initial_approval_status == 'no' || $final_approval_status == 'no') {
 
 
-				$display = '<label class="table-label-danger">Disapproved</label>';
+				$display = '<label class="table-label-success">Disapproved</label>';
 
-			} else {
+				echo $display;
+
+				break;
+
+			} 
+
+			if ( $initial_approval_status == 'yes') {
 
 
-				$display = '<label>For Approval</label>';
+				$display = '<label class="table-label-success">For Final Approval</label>';
 
-			}
+				echo $display;
+
+				break;
+
+			} 
+
+			$display = '<label class="table-label-success">For Initial Approval</label>';
 
 			echo $display;
 
 			break;
-		case 'approved_by' :
+		case 'initial_approver' :
 
 			$display = '';
-			$approved_by = get_post_meta( $post_id, 'approve_by', true );
+			$approved_by = get_post_meta( $post_id, 'initial_approver', true );
 			if ( $approved_by ) {
+
+				$initial_approval_status = get_field( 'initial_approval_status',  $post_id );
 
 				$user = get_user_by('ID', $approved_by);
 				$name = $user->data->display_name;
 				$role = ( ($user->roles[0] ? $user->roles[0] : '') );
 
-				$display = ( $name ? '<label class="table-label-success">' . $name . ' ('.$role.')</label>' : '' );
+				if ( $initial_approval_status == 'yes') {
 
+					$display = ( $name ? '<label class="table-label-success">' . $name . ' ('.$role.')</label>' : '' );
+				
+				} else{
+
+					$display = 'Assigned waiting for approval';
+				}
+
+			
+			} else {
+				$display = 'Not Assigned';
 			}
 			echo $display;
 			break;
+
+		case 'final_approver' :
+
+			$display = '';
+			$approved_by_final = get_post_meta( $post_id, 'final_approver', true );
+			if ( $approved_by_final ) {
+
+				$final_approval_status = get_field( 'final_approval_status',  $post_id );
+
+				$user = get_user_by('ID', $approved_by_final);
+				$name = $user->data->display_name;
+				$role = ( ($user->roles[0] ? $user->roles[0] : '') );
+
+				if ( $final_approval_status == 'yes') {
+
+					$display = ( $name ? '<label class="table-label-success">' . $name . ' ('.$role.')</label>' : '' );
+				
+				} else{
+					
+					$display = 'Assigned waiting for approval';
+				}
+				
+
+			} else {
+				$display = 'Not Assigned';
+			}
+			echo $display;
+			break;
+
 
 		case 'requestor' :
 

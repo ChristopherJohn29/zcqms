@@ -54,10 +54,10 @@ function filter_post_fields() {
 		$this_user = wp_get_current_user();
 
 		$user_id = $this_user->ID;
+
 		$approve_by = false;
 
-
-		$approve_by_data = get_field( 'approve_by' );
+		$approve_by_data = get_field( 'initial_approver' );
 
 		$approve_by_data = ( is_array( $approve_by_data ) ? $approve_by_data : [] );
 
@@ -67,28 +67,44 @@ function filter_post_fields() {
 
 		if ( $approve_by === false ) {
 
-			echo '<style>.acf-field[data-name="approval_status"] {display: none;}</style>';
+			echo '<style>.acf-field[data-name="initial_approval_status"] {display: none;}</style>';
+
+		}
+
+		$initial_approval_status = get_field( 'initial_approval_status',  $post_id );
+
+		$approve_by_final = false;
+
+		$approve_by_final_data = get_field( 'initial_approver' );
+
+		$approve_by_final_data = ( is_array( $approve_by_final_data ) ? $approve_by_final_data : [] );
+
+		if ( $user_id == $approve_by_final_data['ID'] && $initial_approval_status == 'yes') {
+			$approve_by_final = true;
+		}
+
+		if ( $approve_by_final === false ) {
+
+			echo '<style>.acf-field[data-name="final_approval_status"] {display: none;}</style>';
 
 		}
 
 		$this_post_id = get_the_id();
 
-		$approval_status = get_field( 'approval_status' );
-
 		// var_dump();
 		$document_title = get_field( 'document_title' );
 
-		if($approval_status == 'yes'){
-				echo '<script>
+		
+		echo '<script>
 
-				(function($){
-					$(window).on(\'load\', function(){
-						$(\'[data-name="document_title"]\').append(\'<a href="'.$document_title->guid.'" style="margin:5px;" target="_blank">View Document</a>\');
-					});
-				})(jQuery);
+		(function($){
+			$(window).on(\'load\', function(){
+				$(\'[data-name="document_title"]\').append(\'<a href="'.$document_title->guid.'" style="margin:5px;" target="_blank">View Document</a>\');
+			});
+		})(jQuery);
 
-				</script>';
-		}
+		</script>';
+		
 	}
 
 
