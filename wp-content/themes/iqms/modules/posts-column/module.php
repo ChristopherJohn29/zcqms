@@ -105,7 +105,7 @@ function filter_posts_list($query)
 			$post_ids = array();
 
 			$args = array(
-				'post_type' => 'dcm',
+				'post_type' => 'qms-documents',
 				'posts_per_page' => -1
 			);
 
