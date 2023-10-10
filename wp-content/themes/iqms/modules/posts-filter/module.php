@@ -105,14 +105,17 @@ function filter_post_fields() {
 		// $requestor = get_user_by('ID', $requestor);
 
 
-		if(($roles[0] !== 'administrator' || $roles[0] !== 'dco') && $user_id == $requestor && $post_status != 'auto-draft'){
+		if($user_id == $requestor && $post_status != 'auto-draft'){
 			echo '<style>#publishing-action {display: none;}</style>';
+		}
+
+		if(($roles[0] === 'administrator' || $roles[0] === 'dco') ){
+			echo '<style>#publishing-action {display: block;}</style>';
 		}
 
 		echo '<style>#pageparentdiv {display: none;}</style>';
 		
 		
-
 		$this_post_id = get_the_id();
 
 		// var_dump();
