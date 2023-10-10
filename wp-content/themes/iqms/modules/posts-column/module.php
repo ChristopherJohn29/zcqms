@@ -115,10 +115,10 @@ function filter_posts_list($query)
 				while ( $the_query->have_posts() ) : $the_query->the_post();
 
 				$approved_by = [];
-				$approved_by[] = get_post_meta( $post_id, '_user_approved', true );
+				$approved_by[] = get_post_meta( get_the_ID(), '_user_approved', true );
 				
 				$review_by = [];
-				$review_by[] = get_post_meta( $post_id, '_user_reviewed', true );
+				$review_by[] = get_post_meta( get_the_ID(), '_user_reviewed', true );
 
 				$author = [];
 				$author_id =  get_post_field('post_author',get_the_ID());
