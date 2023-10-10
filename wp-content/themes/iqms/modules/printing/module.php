@@ -7,8 +7,7 @@ function updatePrinting($meta_id, $post_id, $meta_key='', $meta_value='') {
     if ($post_type === 'printing') {
 
        
-        wp_redirect(home_url().'/wp-admin/edit.php?post_type=printing');
-      
+        // wp_redirect(home_url().'/wp-admin/edit.php?post_type=printing');
     }
 }
 
