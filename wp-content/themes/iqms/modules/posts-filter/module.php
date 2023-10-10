@@ -76,7 +76,7 @@ function filter_post_fields() {
 
 		$approve_by_final = false;
 
-		$approve_by_final_data = get_field( 'initial_approver' );
+		$approve_by_final_data = get_field( 'final_approver' );
 
 		$approve_by_final_data = ( is_array( $approve_by_final_data ) ? $approve_by_final_data : [] );
 
