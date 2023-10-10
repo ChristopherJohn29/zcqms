@@ -1,15 +1,23 @@
 <?php 
 
-function updatePrinting($meta_id, $post_id, $meta_key='', $meta_value='') {
+function redirect_on_post_update($post_id) {
+    // Check if this is a post update (not a new post)
+    if (wp_is_post_revision($post_id) || defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
 
-    $post_type = get_post_type($post_id);
-    
-    if ($post_type === 'printing') {
+    // Get the post object
+    $post = get_post($post_id);
 
-       
-        // wp_redirect(home_url().'/wp-admin/edit.php?post_type=printing');
+    // Check if it's of a specific post type (replace 'your_post_type' with your actual post type)
+    if ($post->post_type === 'printing') {
+        // Define the URL you want to redirect to
+        $redirect_url = home_url().'/wp-admin/edit.php?post_type=printing'; // Change to your desired destination URL
+
+        // Perform the redirection
+        wp_redirect($redirect_url);
+        exit;
     }
 }
 
-
-add_action('updated_post_meta', 'updatePrinting', 10, 4); 
+add_action('save_post', 'redirect_on_post_update');
