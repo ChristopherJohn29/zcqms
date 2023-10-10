@@ -106,6 +106,9 @@ function filter_post_fields() {
 		if(($roles[0] !== 'administrator' || $roles[0] !== 'dco') && $user_id == $requestor){
 			echo '<style>#publishing-action {display: none;}</style>';
 		}
+
+		echo '<style>#pageparentdiv {display: none;}</style>';
+		
 		
 
 		$this_post_id = get_the_id();
