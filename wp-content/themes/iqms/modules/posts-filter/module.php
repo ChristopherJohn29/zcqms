@@ -93,6 +93,19 @@ function filter_post_fields() {
 		if($initial_approval_status == 'yes' && $final_approval_status == 'yes'){
 			echo '<style>#publishing-action {display: none;}</style>';
 		}
+
+		$cur_user = wp_get_current_user();
+
+
+		$roles = $cur_user->roles;
+
+		$user_id = $cur_user->ID;
+		$requestor = get_post_field('post_author',$post_id);
+		// $requestor = get_user_by('ID', $requestor);
+
+		if(($roles[0] !== 'administrator' || $roles[0] !== 'dco') && $user_id == $requestor){
+			echo '<style>#publishing-action {display: none;}</style>';
+		}
 		
 
 		$this_post_id = get_the_id();
