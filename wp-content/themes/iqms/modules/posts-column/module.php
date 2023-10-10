@@ -447,6 +447,13 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 			$initial_approval_status = get_field( 'initial_approval_status',  $post_id );
 			$final_approval_status = get_field( 'final_approval_status',  $post_id );
 
+			if(!$initial_approval_status && !$final_approval_status){
+				$display = 'For DCO Review';
+
+				echo $display;
+
+				break;
+			}
 
 			if ( $initial_approval_status == 'yes' && $final_approval_status == 'yes') {
 
