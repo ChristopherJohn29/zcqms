@@ -15,7 +15,7 @@ function redirect_on_post_update($post_id) {
         $redirect_url = home_url().'/wp-admin/edit.php?post_type=printing'; // Change to your desired destination URL
 
         // Perform the redirection
-        wp_redirect($redirect_url);
+        // wp_redirect($redirect_url);
         exit;
     }
 }
