@@ -123,6 +123,10 @@ if ( !class_exists('NCAR_Module') ) {
 						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified and is now closed. <br><br>'.$this->get_date()]);
 					}
 
+					$po = get_user_by('id', $owner);
+					$this->sendEmail($po->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' you raised has already been verified and is now closed.');
+				
+
 				} else {
 					update_post_meta( $post_id, 'status', 'Reverted to For Action' );
 
@@ -141,6 +145,8 @@ if ( !class_exists('NCAR_Module') ) {
 					} else {
 						add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action. <br><br>'.$this->get_date()]);
 					}
+
+					$this->sendEmail($review_by->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' you responded has already been verified, however it is found to be unsatisfactory. You are required to make another corrective action.');
 				}
 
 				update_post_meta( $post_id, 'verification', $verification );
@@ -193,6 +199,9 @@ if ( !class_exists('NCAR_Module') ) {
 							$owner_name = $owner_data->first_name .' '. $owner_data->last_name;
 						}
 
+						$this->sendEmail($owner_data->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' you raised has already been followed up.');
+				
+
 						$approved_by_id = get_post_meta($post_id, 'approved_by', true);
 						
 			
@@ -204,6 +213,10 @@ if ( !class_exists('NCAR_Module') ) {
 						} else {
 							add_option( 'notification_'.$approved_by_id,  ['The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its effectiveness.  <br><br>'.$this->get_date()]);
 						}
+
+						$approve_by = get_user_by('id', $approved_by_id);
+
+						$this->sendEmail($approve_by->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its effectiveness. ');
 
 					} else {
 						update_post_meta( $post_id, 'status', 'Reverted to For Action' );
@@ -223,6 +236,9 @@ if ( !class_exists('NCAR_Module') ) {
 						} else {
 							add_option( 'notification_'.$review_by_id,  ['The '.$ncar_no_new.' you responded has already been Followed-up, however it is found to be unsatisfactory. You are required to make another corrective action. <br><br>'.$this->get_date()]);
 						}
+
+						$this->sendEmail($review_by->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' you responded has already been Followed-up, however it is found to be unsatisfactory. You are required to make another corrective action.');
+
 					
 					}
 				} else {
@@ -259,6 +275,9 @@ if ( !class_exists('NCAR_Module') ) {
 						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name . ' <br><br>'.$this->get_date()]);
 					}
 
+					$this->sendEmail($owner_data->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' you raised has already been responded by '.$review_by_name . '');
+
+
 					if(get_option('notification_'.$followup_by_id)){
 						$options = get_option('notification_'.$followup_by_id);
 						$options[] = 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation. <br><br>'.$this->get_date();
@@ -266,6 +285,12 @@ if ( !class_exists('NCAR_Module') ) {
 					} else {
 						add_option( 'notification_'.$followup_by_id,  ['The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation. <br><br>'.$this->get_date()]);
 					}
+
+					if ( ! empty( $followup_by ) ) {
+						$this->sendEmail($followup_by->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation.');
+
+					}
+					
 
 
 				}
@@ -448,6 +473,9 @@ if ( !class_exists('NCAR_Module') ) {
 				} else {
 					add_option( 'notification_'.$this->this_user,  ['The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.  <br><br>'.$this->get_date()]);
 				}
+
+				$po = get_user_by('id', $this->this_user);
+				$this->sendEmail($po->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' you raised has been forwarded to the process owner for action.');
 				
 
 				$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
@@ -466,8 +494,11 @@ if ( !class_exists('NCAR_Module') ) {
 				} else {
 					add_option( 'notification_'.$review_by_id,  ['You have an NCAR ('.$ncar_no_new.') due for response.  <br><br>'.$this->get_date()]);
 				}
-				
 
+				if ( ! empty( $review_by ) ) {
+					$this->sendEmail($review_by->user_email, 'NCAR Notification', 'You have an NCAR ('.$ncar_no_new.') due for response.');
+				}
+				
 				$to_return = ['post_id' => $post_id];
 				update_post_meta( $post_id, 'evidences', $evidences );
 			} else {
