@@ -92,6 +92,87 @@ function filter_posts_list($query)
 
         }
 
+		if('edit.php' == $pagenow &&  $typenow == 'qms-documents' && $query->query['fields'] == 'id=>parent')
+        { 
+
+		
+        //global $query's set() method for setting the author as the current user's id
+			
+			if($roles[0] == 'dco' || $roles[0] == 'administrator'){
+				return;
+			}
+			
+			$post_ids = array();
+
+			$args = array(
+				'post_type' => 'dcm',
+				'posts_per_page' => -1
+			);
+
+			$the_query = new WP_Query( $args );
+
+			if ( $the_query->have_posts() ) :
+				while ( $the_query->have_posts() ) : $the_query->the_post();
+
+				$assigned_dco = [];
+				$assigned_dco_raw =  get_field('assigned_dco', get_the_ID());
+
+				if(is_array($assigned_dco_raw)){
+					foreach ($assigned_dco_raw as $key => $value) {
+						$assigned_dco[] = $value['ID'];
+					}
+				}
+
+				$approved_by = [];
+				$approved_by_raw =  get_field('approved_by', get_the_ID());
+				if(is_array($approved_by_raw)){
+					foreach ($approved_by_raw as $key => $value) {
+						$approved_by[] = $value['ID'];
+					}
+				}
+				
+				$review_by = [];
+				$review_by_raw =  get_field('review_by', get_the_ID());
+				if(is_array($review_by_raw)){
+					foreach ($review_by_raw as $key => $value) {
+						$review_by[] = $value['ID'];
+					}
+				}
+
+				$users = [];
+				$users_raw =  get_field('users', get_the_ID());
+				if(is_array($users_raw)){
+					foreach ($users_raw as $key => $value) {
+						$users[] = $value['ID'];
+					}
+				}
+
+				$author = [];
+				$author_id =  get_post_field('post_author',get_the_ID());
+				$author[] = $author_id;
+				
+				if
+				(
+					in_array($cur_id, $assigned_dco) || 
+					in_array($cur_id, $approved_by) || 
+					in_array($cur_id, $review_by) || 
+					in_array($cur_id, $users) || 
+					in_array($cur_id, $author)
+					
+				)
+				{
+					$post_ids[] = get_the_ID();
+				}
+
+			endwhile; 
+			wp_reset_postdata();
+			endif;
+
+
+			$query->set( 'post__in', empty( $post_ids ) ? [ 0 ] : $post_ids );
+
+        }
+
 		
 
 		if('edit.php' == $pagenow &&  $typenow == 'printing' && $query->query['fields'] == 'id=>parent')
