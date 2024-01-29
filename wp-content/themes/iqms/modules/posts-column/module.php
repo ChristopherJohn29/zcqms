@@ -344,6 +344,7 @@ function set_custom_edit_qms_documents_columns( $columns ) {
 	$columns['document-label'] = 'Document Label';
 	$columns['reviewed_by'] = 'Reviewed By';
 	$columns['approved_by'] = 'Approve By';
+	$columns['date'] = 'Date of Approval';
 
 	return $columns;
 }
