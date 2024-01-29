@@ -23,7 +23,6 @@
 					<th>Department</th>
 					<th>Date Issued</th>
 					<th>Date Closed</th>
-					<th>NC Description</th>
 					<th>Clause No.</th>
 					<th>Status</th>
 					<th>Action Items</th>
@@ -127,7 +126,6 @@
 							<td><?= $department ?></td>
 							<td><?= $date ?></td>
 							<td></td>
-							<td><?= $nc_desc ?></td>
 							<td><?= $clause_no ?></td>
 							<td><?=$status ?></td>
 							<td class="action-group">
