@@ -243,6 +243,7 @@ function filter_post_fields() {
 		if ( $hide ) {
 
 			echo '<style>.acf-field[data-name="approved_by"],.acf-field[data-name="review_by"] {display: none;}</style>';
+			echo '<style>.acf-field[data-name="auto_approve"] {display: none;}</style>';
 
 		}
 
