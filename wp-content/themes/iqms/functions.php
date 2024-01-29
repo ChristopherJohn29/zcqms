@@ -161,7 +161,7 @@ add_action('wp_login', 'custom_after_login_action', 10, 2);
 
 function hide_field_based_on_role() {
     // Check if the current user has the "dco" role
-    if (!current_user_can('DCO')) {
+    if (!current_user_can('dco')) {
         ?>
         <style>
             .auto-approve {
