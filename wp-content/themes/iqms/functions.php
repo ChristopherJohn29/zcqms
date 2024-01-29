@@ -158,3 +158,17 @@ function custom_after_login_action($user_login, $user) {
 
 // Hook the custom action to the wp_login hook
 add_action('wp_login', 'custom_after_login_action', 10, 2);
+
+function hide_field_based_on_role() {
+    // Check if the current user has the "dco" role
+    if (!current_user_can('DCO')) {
+        ?>
+        <style>
+            .auto-approve {
+                display: none;
+            }
+        </style>
+        <?php
+    }
+}
+add_action('wp_footer', 'hide_field_based_on_role');

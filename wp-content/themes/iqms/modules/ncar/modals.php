@@ -487,7 +487,7 @@
 										<tbody id="form_foot_2_2">
 											<tr>
 												<td colspan="4"></td>
-												<td><button class="pull-right btn btn-primary" id="add_correction_rca">Add Correction</button></td>
+												<td><button class="pull-right btn btn-primary" id="add_correction_rca">Add Root Cause Analysis</button></td>
 												<td></td>
 											</tr>
 										</tbody>
