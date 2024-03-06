@@ -787,40 +787,101 @@
 
                         $html = '';
                         $.each(r.form2.correction, function(i, v) {
-                            if(v.correction_text  == undefined){
+                            if(v.correction_text == undefined){
                                 v.correction_text = 'remarks';
                             }
 
-                            $html += '' + '<tr>' + '<td colspan="5"><textarea class="form-control correction_text" rows="5">' + v.correction_text + '</textarea></td>' + '<td><input type="date" class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                            $html += '<tr>' + 
+                                        '<td colspan="5">' + 
+                                            '<textarea class="form-control correction_text">' + v.correction_text + '</textarea>' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<input type="date" class="form-control correction_date" value="' + v.correction_date + '">' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
+                                        '</td>' + 
+                                    '</tr>';
                             _correction_ind++;
-                            $('#form_2_1').html($html);
-                            app.bindDeleteBtns();
                         });
+
+                        $('#form_2_1').html($html);
+
+                        // Adjust textarea heights based on content
+                        jQuery('.correction_text').each(function() {
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
+                        });
+
+                        app.bindDeleteBtns();
 
                         $html = '';
                         $.each(r.form2.correction_rca, function(i, v) {
-                            $html += '' + '<tr class="rca">' + '<td colspan="5"><textarea class="form-control correction_text" rows="5">' + v.correction_text + '</textarea></td>' + '</tr>';
+                            $html += '<tr class="rca">' + 
+                                        '<td colspan="5">' + 
+                                            '<textarea class="form-control correction_text">' + v.correction_text + '</textarea>' + 
+                                        '</td>' + 
+                                    '</tr>';
                             _correction_ind++;
-
-                            $('#form_2_2 tr.rca').remove();
-                            $('#form_2_2').append($html);
-                            app.bindDeleteBtns();
                         });
+
+                        $('#form_2_2 tr.rca').remove();
+                        $('#form_2_2').append($html);
+
+                        // Adjust textarea heights based on content
+                        jQuery('.correction_text').each(function() {
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
+                        });
+
+                        app.bindDeleteBtns();
 
                         $html2 = '';
                         $.each(r.form2.correction_rca, function(i, v) {
-
                             if(v.correction_text  == undefined){
                                 v.correction_text = 'remarks';
                             }
-
-                            $html2 += '' + '<tr class="rca">' + '<td colspan="5"><textarea disabled class="form-control correction_text" rows="5">' + v.correction_text + '</textarea><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + '</tr>';
+                        
+                            $html2 += '<tr class="rca">' + 
+                                        '<td colspan="5">' + 
+                                            '<textarea disabled class="form-control correction_text">' + v.correction_text + '</textarea>' + 
+                                            '<button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button>' + 
+                                        '</td>' + 
+                                    '</tr>';
                             _correction_ind++;
-
-                            $('#form_2_2_b tr.rca').remove();
-                            $('#form_2_2_b').append($html2);
-                            app.bindDeleteBtns();
                         });
+                        
+                        $('#form_2_2_b tr.rca').remove();
+                        $('#form_2_2_b').append($html2);
+                        
+                        // Adjust textarea heights based on content
+                        jQuery('.correction_text').each(function() {
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
+                        });
+                        
+                        app.bindDeleteBtns();
 
 
                         e_html = (r.form2.files.length ? r.form2.files.length + ' file(s) selected' : '');
@@ -830,24 +891,78 @@
                         });
                         $('#edit-modal #part2 .file-group').html(e_input);
                         $('#edit-modal #part2 .selected_files').val(e_html);
+
                         $html = '';
                         $html2 = '';
                         $.each(r.form2.corrective_action_data, function(i, v) {
-                            if(v.root_causes  == undefined){
+                            if(v.root_causes == undefined){
                                 v.root_causes = 'remarks';
                             }
 
-                            if(v.corrective_action  == undefined){
+                            if(v.corrective_action == undefined){
                                 v.corrective_action = 'remarks';
                             }
 
-                            $html2 += '' + '<tr>' + '<td><textarea disabled class="form-control root_causes" rows="5">' + v.root_causes + '</textarea> <button class="btn btn-primary view-button" data-content="' + v.root_causes + '">view</button></td>' + '<td><textarea disabled class="form-control corrective_action" rows="5">' + v.corrective_action + '</textarea> <button class="btn btn-primary view-button" data-content="' + v.corrective_action + '">view</button></td>' + '<td><input type="date" disabled class="form-control corrective_date" value="' + v.corrective_date + '"></td>' + '<td>' + '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="Yes" ' + (v.corrective_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="No" ' + (v.corrective_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td><input type="text" class="form-control input-sm corrective_remarks" placeholder="remarks" value="' + v.corrective_remarks + '"><button class="btn btn-primary view-button" data-content="' + v.correction_remarks + '">view</button></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
-                            $html += '' + '<tr>' + '<td colspan="4"><textarea disabled class="form-control root_causes" rows="5">' + v.root_causes + '</textarea></td>' + '<td><input type="text" class="form-control corrective_action" value="' + v.corrective_action + '"></td>' + '<td><textarea disabled class="form-control corrective_date" rows="5">' + v.corrective_date + '</textarea> </td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                            $html2 += '<tr>' + 
+                                        '<td>' + 
+                                            '<textarea disabled class="form-control root_causes">' + v.root_causes + '</textarea>' + 
+                                            '<button class="btn btn-primary view-button" data-content="' + v.root_causes + '">view</button>' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<textarea disabled class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
+                                            '<button class="btn btn-primary view-button" data-content="' + v.corrective_action + '">view</button>' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<input type="date" disabled class="form-control corrective_date" value="' + v.corrective_date + '">' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="Yes" ' + (v.corrective_implemented == 'Yes' ? 'checked' : '') + '> Yes' + 
+                                            '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="No" ' + (v.corrective_implemented == 'No' ? 'checked' : '') + '> No' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<input type="text" class="form-control input-sm corrective_remarks" placeholder="remarks" value="' + v.corrective_remarks + '">' + 
+                                            '<button class="btn btn-primary view-button" data-content="' + v.corrective_remarks + '">view</button>' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
+                                        '</td>' + 
+                                    '</tr>';
+
+                            $html += '<tr>' + 
+                                        '<td colspan="4">' + 
+                                            '<textarea disabled class="form-control root_causes">' + v.root_causes + '</textarea>' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<input type="text" class="form-control corrective_action" value="' + v.corrective_action + '">' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '">' + 
+                                        '</td>' + 
+                                        '<td>' + 
+                                            '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
+                                        '</td>' + 
+                                    '</tr>';
+
                             _correction_ind++;
-                            $('#form_2_3_b').html($html2);
-                            $('#form_2_3').html($html);
-                            app.bindDeleteBtns();
                         });
+
+                        $('#form_2_3_b').html($html2);
+                        $('#form_2_3').html($html);
+
+                        // Adjust textarea heights based on content
+                        $('.root_causes, .corrective_action').each(function() {
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
+                        });
+
+                        app.bindDeleteBtns();
 
                         
                         jQuery('.view-button').click(function(){
@@ -893,6 +1008,18 @@
                             $('#edit-modal #part2b').removeClass('readonly');
                             $('#edit-modal #part2b').find('.submit-group').css('display', 'block');
                         }
+
+                        jQuery('.root_causes, .corrective_action, .correction_text').each(function() {
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
+                        });
                         
                     },
                     beforeSend: function() {
