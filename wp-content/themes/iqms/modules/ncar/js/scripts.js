@@ -808,9 +808,16 @@
                         $('#form_2_1').html($html);
 
                         // Adjust textarea heights based on content
-                        $('.correction_text').each(function() {
-                            this.style.height = 'auto';
-                            this.style.height = (this.scrollHeight + 35) + 'px';
+                        jQuery('.correction_text').each(function() {
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                         });
 
                         app.bindDeleteBtns();
@@ -829,9 +836,16 @@
                         $('#form_2_2').append($html);
 
                         // Adjust textarea heights based on content
-                        $('.correction_text').each(function() {
-                            this.style.height = 'auto';
-                            this.style.height = (this.scrollHeight + 35) + 'px';
+                        jQuery('.correction_text').each(function() {
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                         });
 
                         app.bindDeleteBtns();
@@ -855,9 +869,16 @@
                         $('#form_2_2_b').append($html2);
                         
                         // Adjust textarea heights based on content
-                        $('.correction_text').each(function() {
-                            this.style.height = 'auto';
-                            this.style.height = (this.scrollHeight + 35) + 'px';
+                        jQuery('.correction_text').each(function() {
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                         });
                         
                         app.bindDeleteBtns();
@@ -930,8 +951,15 @@
 
                         // Adjust textarea heights based on content
                         $('.root_causes, .corrective_action').each(function() {
-                            this.style.height = 'auto';
-                            this.style.height = (this.scrollHeight + 35) + 'px';
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                         });
 
                         app.bindDeleteBtns();
