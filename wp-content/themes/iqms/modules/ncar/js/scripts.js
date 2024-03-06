@@ -933,7 +933,7 @@
                                             '<textarea disabled class="form-control root_causes">' + v.root_causes + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
-                                            '<input type="text" class="form-control corrective_action" value="' + v.corrective_action + '">' + 
+                                            '<textarea disabled class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '">' + 
