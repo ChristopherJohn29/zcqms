@@ -127,13 +127,13 @@
             });
             $('#add_correction').click(function() {
                 date = new Date;
-                $html = '' + '<tr>' + '<td colspan="5"><input type="text" class="form-control correction_text"></td>' + '<td><input type="date" class="form-control correction_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                $html = '' + '<tr>' + '<td colspan="5"><textarea class="form-control correction_text" rows="5"></textarea></td>' + '<td><input type="date" class="form-control correction_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                 _correction_ind++;
                 $('#form_2_1').append($html);
                 app.bindDeleteBtns();
             });
             $('#add_correction_rca').click(function() {
-                $html = '' + '<tr class="rca">' + '<td colspan="5"><input type="text" class="form-control correction_text"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                $html = '' + '<tr class="rca">' + '<td colspan="5"><textarea class="form-control correction_text" rows="5"></textarea></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                  _correction_ind++;
                 $('#form_2_2').append($html);
                 app.bindDeleteBtns();
@@ -141,7 +141,7 @@
             /*corrective action*/
             $('#add_corrective_action').click(function() {
                 date = new Date;
-                $html = '' + '<tr>' + '<td colspan="4"><input type="text" class="form-control root_causes"></td>' + '<td><input type="text" class="form-control corrective_action"></td>' + '<td><input type="date" class="form-control corrective_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                $html = '' + '<tr>' + '<td colspan="4"><textarea class="form-control root_causes" rows="5"></textarea></td>' + '<td><textarea class="form-control corrective_action" rows="5"></textarea></td>' + '<td><input type="date" class="form-control corrective_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                _correction_ind++;
                 $('#form_2_3').append($html);
                 app.bindDeleteBtns();
