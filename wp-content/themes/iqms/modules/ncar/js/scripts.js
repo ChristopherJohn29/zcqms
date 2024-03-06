@@ -810,7 +810,7 @@
                         // Adjust textarea heights based on content
                         $('.correction_text').each(function() {
                             this.style.height = 'auto';
-                            this.style.height = (this.scrollHeight + 10) + 'px';
+                            this.style.height = (this.scrollHeight + 35) + 'px';
                         });
 
                         app.bindDeleteBtns();
@@ -831,7 +831,7 @@
                         // Adjust textarea heights based on content
                         $('.correction_text').each(function() {
                             this.style.height = 'auto';
-                            this.style.height = (this.scrollHeight + 10) + 'px';
+                            this.style.height = (this.scrollHeight + 35) + 'px';
                         });
 
                         app.bindDeleteBtns();
@@ -857,7 +857,7 @@
                         // Adjust textarea heights based on content
                         $('.correction_text').each(function() {
                             this.style.height = 'auto';
-                            this.style.height = (this.scrollHeight + 10) + 'px';
+                            this.style.height = (this.scrollHeight + 35) + 'px';
                         });
                         
                         app.bindDeleteBtns();
@@ -931,7 +931,7 @@
                         // Adjust textarea heights based on content
                         $('.root_causes, .corrective_action').each(function() {
                             this.style.height = 'auto';
-                            this.style.height = (this.scrollHeight + 10) + 'px';
+                            this.style.height = (this.scrollHeight + 35) + 'px';
                         });
 
                         app.bindDeleteBtns();
