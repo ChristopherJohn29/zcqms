@@ -1062,7 +1062,7 @@
         app.init();
         app.loadBtnAction();
 
-        jQuery('a[data-toggle="tab"]').click(function(){
+        jQuery('li[role="presentation"]').click(function(){
             jQuery('.root_causes, .corrective_action, .correction_text').each(function() {
                 this.style.height = 'auto'; // Reset height to auto
                 let scrollHeight = this.scrollHeight;
