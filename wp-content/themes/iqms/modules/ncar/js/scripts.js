@@ -1075,7 +1075,7 @@
                     // Adjust height by considering padding and border
                     this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                 });
-            }, 500); // Adjust the timeout value (in milliseconds) as per your requirement
+            }, 2000 ); // Adjust the timeout value (in milliseconds) as per your requirement
         });
     });
 })(jQuery)
