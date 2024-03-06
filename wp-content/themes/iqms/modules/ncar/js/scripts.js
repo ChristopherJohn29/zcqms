@@ -932,7 +932,7 @@
                                             '<textarea class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
-                                            '<input type="date" class="form-control correction_date" value="' + v.correction_date + '">' + 
+                                            '<input type="date" class="form-control corrective_date" value="' + v.corrective_date + '">' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
