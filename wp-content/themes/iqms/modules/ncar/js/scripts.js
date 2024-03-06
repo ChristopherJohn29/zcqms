@@ -930,13 +930,13 @@
 
                             $html += '<tr>' + 
                                         '<td colspan="4">' + 
-                                            '<textarea disabled class="form-control root_causes">' + v.root_causes + '</textarea>' + 
+                                            '<textarea class="form-control root_causes">' + v.root_causes + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
-                                            '<textarea disabled class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
+                                            '<textarea class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
-                                            '<input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '">' + 
+                                            '<input type="date" class="form-control correction_date" value="' + v.correction_date + '">' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
