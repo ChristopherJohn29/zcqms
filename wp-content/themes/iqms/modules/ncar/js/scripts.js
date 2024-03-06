@@ -1008,6 +1008,18 @@
                             $('#edit-modal #part2b').removeClass('readonly');
                             $('#edit-modal #part2b').find('.submit-group').css('display', 'block');
                         }
+
+                        jQuery('.root_causes, .corrective_action, .correction_text').each(function() {
+                            this.style.height = 'auto'; // Reset height to auto
+                            let scrollHeight = this.scrollHeight;
+                            let computedStyle = window.getComputedStyle(this); // Get the computed style of the textarea
+                            let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
+                            let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
+                            let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
+                        
+                            // Adjust height by considering padding and border
+                            this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
+                        });
                         
                     },
                     beforeSend: function() {
