@@ -22,8 +22,8 @@
 }
 
 input[type="radio"] {
-    margin-right: 8px; /* Adjust the margin as per your requirement */
-    margin-left: 8px; /* Adjust the margin as per your requirement */
+    margin-right: 8px !important;/* Adjust the margin as per your requirement */
+    margin-left: 8px !important; /* Adjust the margin as per your requirement */
 }
 
 #edit-modal .tab-content .readonly:after {
