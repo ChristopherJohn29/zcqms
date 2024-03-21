@@ -21,6 +21,11 @@
     width: 100%;
 }
 
+input[type="radio"] {
+    margin-right: 8px; /* Adjust the margin as per your requirement */
+    margin-left: 8px; /* Adjust the margin as per your requirement */
+}
+
 #edit-modal .tab-content .readonly:after {
     text-align: center;
     font-size: 150px;
