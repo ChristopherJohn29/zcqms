@@ -67,6 +67,10 @@ li#collapse-menu {
     
 }
 
+ul.subsubsub{
+    display: none !important;
+}
+
 [data-name="approval_status"] {
     background-color: #92d7eb;
 }
