@@ -9,6 +9,41 @@ class TransferDCM{
         add_action( 'acf/save_post', array($this, 'check_post'), 10, 3 );
         add_filter( 'wp_insert_post_data' , array($this, 'filter_post_data') , '99', 2 );
         add_action( 'init', array($this, 'test_email'));
+        add_action('save_post', array($this, 'validate_post_title'));
+    }
+
+    public function validate_post_title($post_id) {
+        if ($this->is_autosave_or_revision($post_id)) {
+            return;
+        }
+
+        if (!$this->is_required_post_type($post_id)) {
+            return;
+        }
+
+        if ($this->is_post_title_empty($post_id)) {
+            $this->show_error_message();
+        }
+    }
+
+    private function is_autosave_or_revision($post_id) {
+        return defined('DOING_AUTOSAVE') && DOING_AUTOSAVE || wp_is_post_revision($post_id);
+    }
+
+    private function is_required_post_type($post_id) {
+        $post_type = get_post_type($post_id);
+        $required_post_types = array('dcm'); // Add your custom post types here
+        return in_array($post_type, $required_post_types);
+    }
+
+    private function is_post_title_empty($post_id) {
+        $post_title = get_post_field('post_title', $post_id);
+        return empty($post_title);
+    }
+
+    private function show_error_message() {
+        $error_message = __('Post title is required.', 'text-domain');
+        wp_die($error_message);
     }
 
     function test_email(){
