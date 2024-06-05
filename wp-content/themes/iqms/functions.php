@@ -159,6 +159,23 @@ function custom_after_login_action($user_login, $user) {
 // Hook the custom action to the wp_login hook
 add_action('wp_login', 'custom_after_login_action', 10, 2);
 
+function custom_login_redirect($redirect_to, $request, $user) {
+    // Check if the user has logged in successfully
+    if (isset($user->roles) && is_array($user->roles)) {
+        // Redirect based on user role
+        if (in_array('administrator', $user->roles)) {
+            // Redirect administrators to the dashboard
+            return admin_url();
+        } else {
+            // Redirect all other users to a specific page
+            return 'https://home.zcmc.ph/';
+        }
+    }
+    // Default redirect if no user roles matched
+    return $redirect_to;
+}
+add_filter('login_redirect', 'custom_login_redirect', 10, 3);
+
 function hide_field_based_on_role() {
     // Check if the current user has the "dco" role
     if (!current_user_can('dco')) {
