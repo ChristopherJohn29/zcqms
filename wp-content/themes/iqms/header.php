@@ -62,7 +62,7 @@
                             sort_hierarchical($terms,$services) ;
                                 
                             foreach( $services as $q ){
-
+/*
                                 $main_nav .= '<li class="menu-item menu-item-type-taxonomy menu-item-object-services"><a href="'.get_term_link( $q->term_id, $taxonomy_name ) .'">'.$q->name.'</a>';
                                 if( count($q->children) > 0 ){
                                     $main_nav .= '<ul class="sub-menu">';
@@ -85,6 +85,7 @@
                                     $main_nav .= '</ul>';
                                 }
                                 $main_nav .= '</li>';
+                                */
                             }
                            
                             ?>
