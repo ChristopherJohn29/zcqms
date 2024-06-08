@@ -93,7 +93,7 @@
                             <nav class="nav">
                                <div class="main-nav">
                                   <ul id="menu-services" class="menu">
-                                  <li class="menu-item"  style="text-transform:none;"><a href="https://home.zcmc.ph/"  style="text-transform:none;"><h1 style="font-size 5rem;">Home</h1></a></li>
+                                  <li class="menu-item"  style="text-transform:none;"><a href="https://home.zcmc.ph/"  style="text-transform:none;"><h1 style="font-size:5rem;">Home</h1></a></li>
                                   </ul>
                                </div>
                             </nav>
@@ -101,7 +101,7 @@
                             <div class="nav-toggle-wrapper">
                                <div class="nav-toggle-menu">
                                   <ul id="menu-services" class="menu">
-                                  <li class="menu-item" style="text-transform:none;"><a href="https://home.zcmc.ph/"  style="text-transform:none;"><h1 style="font-size 5rem;">Home</h1></a></li>
+                                  <li class="menu-item" style="text-transform:none;"><a href="https://home.zcmc.ph/"  style="text-transform:none;"><h1 style="font-size:5rem;">Home</h1></a></li>
                                   </ul>
                                </div>
                             </div>
