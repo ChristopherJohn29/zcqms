@@ -29,7 +29,7 @@
             <div id="logo" class="row">
                 
                     <a href="https://home.zcmc.ph/">
-                        <img src="<?=get_stylesheet_directory_uri()?>/images/site-banner.jpg" alt="Site Logo" title="Zamboanga City Medical Center" style="text-align:left;">
+                        <img src="<?=get_stylesheet_directory_uri()?>/images/site-banner.png" alt="Site Logo" title="Zamboanga City Medical Center" style="text-align:left;">
                     </a>
                 
             </div>
