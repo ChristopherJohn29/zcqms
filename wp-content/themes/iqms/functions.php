@@ -169,7 +169,17 @@ function custom_login_redirect($user_login, $user) {
         }
     }
 }
+
+
 add_action('wp_login', 'custom_login_redirect', 10, 2);
+
+function redirect_homepage() {
+    if ( is_front_page() ) {
+        wp_redirect( 'https://home.zcmc.ph/' );
+        exit();
+    }
+}
+add_action( 'template_redirect', 'redirect_homepage' );
 
 function hide_field_based_on_role() {
     // Check if the current user has the "dco" role
