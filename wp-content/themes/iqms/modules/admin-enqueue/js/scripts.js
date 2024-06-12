@@ -21,4 +21,12 @@ var app = {
 jQuery(document).ready(function(){
     app.limitTerm();
     app.addViewFileLink();
+
+    jQuery('#post').submit(function(e) {
+        if (jQuery('#title').val().trim() === '') {
+            alert('The title is required.');
+            jQuery('#title').focus();
+            return false;
+        }
+    });
 });
