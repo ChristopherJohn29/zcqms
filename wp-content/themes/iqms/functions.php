@@ -164,7 +164,7 @@ function custom_login_redirect($user_login, $user) {
     if (isset($user->roles) && is_array($user->roles)) {
         // Redirect non-administrators to another website
         if (!in_array('administrator', $user->roles)) {
-            wp_redirect('https://home.zcmc.ph/');
+            wp_redirect( home_url( '/logged' ) );
             exit;
         }
     }
