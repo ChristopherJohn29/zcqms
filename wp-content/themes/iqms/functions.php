@@ -174,6 +174,15 @@ function custom_login_redirect($user_login, $user) {
 add_action('wp_login', 'custom_login_redirect', 10, 2);
 
 function redirect_based_on_login_status() {
+    // Check if the current URL contains 'logged' or 'out'
+    $current_url = home_url( $_SERVER['REQUEST_URI'] );
+    if ( strpos( $current_url, 'logged' ) !== false || strpos( $current_url, 'out' ) !== false ) {
+        // Redirect to https://home.zcmc.ph/
+        wp_redirect( 'https://home.zcmc.ph/' );
+        exit();
+    }
+
+    // For other conditions like is_home(), handle login status as before
     if ( is_home() ) {
         if ( is_user_logged_in() ) {
             // Redirect to the logged-in page
@@ -184,12 +193,6 @@ function redirect_based_on_login_status() {
             wp_redirect( home_url( '/out' ) );
             exit();
         }
-    }
-
-    // Check if user is on logged-in or logged-out page
-    if ( is_page( 'logged' ) || is_page( 'out' ) ) {
-        wp_redirect( 'https://home.zcmc.ph/' );
-        exit();
     }
 }
 
