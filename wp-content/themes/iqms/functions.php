@@ -182,20 +182,19 @@ function redirect_based_on_login_status() {
         exit();
     }
 
-    // For other conditions like is_home(), handle login status as before
-    if ( is_home() ) {
+    // For the homepage, handle login status
+    if ( is_home() || is_front_page() ) {
         if ( is_user_logged_in() ) {
-            // Redirect to the logged-in page
+            // Redirect logged-in users to '/logged' page
             wp_redirect( home_url( '/logged' ) );
             exit();
         } else {
-            // Redirect to the logged-out page
+            // Redirect logged-out users to '/out' page
             wp_redirect( home_url( '/out' ) );
             exit();
         }
     }
 }
-
 add_action( 'template_redirect', 'redirect_based_on_login_status' );
 
 
