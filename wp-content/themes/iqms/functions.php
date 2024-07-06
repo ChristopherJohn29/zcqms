@@ -173,13 +173,29 @@ function custom_login_redirect($user_login, $user) {
 
 add_action('wp_login', 'custom_login_redirect', 10, 2);
 
-function redirect_homepage() {
-    if ( is_front_page() ) {
-        wp_redirect( 'https://home.zcmc.ph/' );
+function redirect_based_on_login_status() {
+    if ( is_home() ) {
+        if ( is_user_logged_in() ) {
+            // Redirect to the logged-in page
+            wp_redirect( home_url( '/logged' ) );
+        } else {
+            // Redirect to the logged-out page
+            wp_redirect( home_url( '/out' ) );
+        }
         exit();
     }
+
+    if ( home_url( '/logged' ) || home_url( '/out' ) ) {
+        wp_redirect( 'https://home.zcmc.ph/' );
+
+        exit();
+    }
+
 }
-add_action( 'template_redirect', 'redirect_homepage' );
+add_action( 'template_redirect', 'redirect_based_on_login_status' );
+
+
+
 
 function hide_field_based_on_role() {
     // Check if the current user has the "dco" role
