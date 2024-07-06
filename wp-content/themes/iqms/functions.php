@@ -174,10 +174,9 @@ function custom_login_redirect($user_login, $user) {
 add_action('wp_login', 'custom_login_redirect', 10, 2);
 
 function redirect_based_on_login_status() {
-    // Check if the current URL contains 'logged' or 'out'
+    // Check if the current URL contains 'logged' or 'out' and redirect to home.zcmc.ph
     $current_url = home_url( $_SERVER['REQUEST_URI'] );
     if ( strpos( $current_url, 'logged' ) !== false || strpos( $current_url, 'out' ) !== false ) {
-        // Redirect to https://home.zcmc.ph/
         wp_redirect( 'https://home.zcmc.ph/' );
         exit();
     }
@@ -185,10 +184,16 @@ function redirect_based_on_login_status() {
     // For the homepage, handle login status
     if ( is_home() || is_front_page() ) {
         if ( is_user_logged_in() ) {
+            // Set cookie for logged-in users
+            setcookie( 'my_custom_cookie', 'logged_in', time() + 3600, '/', '.infoadvance.com.ph', false, true );
+
             // Redirect logged-in users to '/logged' page
             wp_redirect( home_url( '/logged' ) );
             exit();
         } else {
+            // Clear cookie for logged-out users (if needed)
+            setcookie( 'my_custom_cookie', '', time() - 3600, '/', '.infoadvance.com.ph', false, true );
+
             // Redirect logged-out users to '/out' page
             wp_redirect( home_url( '/out' ) );
             exit();
