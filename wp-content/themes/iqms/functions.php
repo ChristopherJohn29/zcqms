@@ -178,22 +178,22 @@ function redirect_based_on_login_status() {
         if ( is_user_logged_in() ) {
             // Redirect to the logged-in page
             wp_redirect( home_url( '/logged' ) );
+            exit();
         } else {
             // Redirect to the logged-out page
             wp_redirect( home_url( '/out' ) );
+            exit();
         }
-        exit();
     }
 
-    if ( home_url( '/logged' ) || home_url( '/out' ) ) {
+    // Check if user is on logged-in or logged-out page
+    if ( is_page( 'logged' ) || is_page( 'out' ) ) {
         wp_redirect( 'https://home.zcmc.ph/' );
-
         exit();
     }
-
 }
-add_action( 'template_redirect', 'redirect_based_on_login_status' );
 
+add_action( 'template_redirect', 'redirect_based_on_login_status' );
 
 
 
