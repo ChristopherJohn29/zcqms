@@ -185,10 +185,13 @@ function redirect_based_on_login_status() {
     if ( is_home() || is_front_page() ) {
         if ( is_user_logged_in() ) {
             // Set cookie for logged-in users
+            setcookie( 'my_custom_cookie', 'logged_in', time() + 3600, '/', '.infoadvance.com.ph', false, true );
+            // Redirect logged-in users to '/logged' page
             wp_redirect( home_url( '/logged' ) );
             exit();
         } else {
-
+            // Clear cookie for logged-out users (if needed)
+            setcookie( 'my_custom_cookie', '', time() - 3600, '/', '.infoadvance.com.ph', false, true );
             // Redirect logged-out users to '/out' page
             wp_redirect( home_url( '/out' ) );
             exit();
@@ -207,23 +210,27 @@ function add_cors_http_header() {
 
 add_action('init', 'add_cors_http_header');
 
-// Add the custom endpoint
 function custom_login_status_endpoint() {
     register_rest_route('custom/v1', '/login-status', array(
         'methods' => 'GET',
         'callback' => 'get_login_status',
-        'permission_callback' => '__return_true', // Adjust permissions as needed
+        'permission_callback' => '__return_true', // Allows all requests
     ));
 }
-
 add_action('rest_api_init', 'custom_login_status_endpoint');
 
 // Callback function to handle the request
 function get_login_status() {
-    error_log(print_r($_COOKIE, true)); // Log all cookies to error log for debugging
+    error_log('Request received at /login-status endpoint');
+    error_log('Session ID: ' . session_id());
+    error_log('Cookies: ' . print_r($_COOKIE, true));
+    error_log('Session Data: ' . print_r($_SESSION, true));
+    
     if (is_user_logged_in()) {
+        error_log('User is logged in'); // Log when user is logged in
         return new WP_REST_Response(array('status' => 'logged_in'), 200);
     } else {
+        error_log('User is logged out'); // Log when user is logged out
         return new WP_REST_Response(array('status' => 'logged_out'), 200);
     }
 }
