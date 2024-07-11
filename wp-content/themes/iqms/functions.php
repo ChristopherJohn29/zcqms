@@ -198,7 +198,11 @@ function redirect_based_on_login_status() {
 add_action( 'template_redirect', 'redirect_based_on_login_status' );
 
 function add_cors_http_header() {
-    header("Access-Control-Allow-Origin: *");
+    // Allow requests from the specific domain
+    header("Access-Control-Allow-Origin: https://home.zcmc.ph"); 
+    header("Access-Control-Allow-Credentials: true");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    header("Access-Control-Allow-Headers: Content-Type, Authorization");
 }
 
 add_action('init', 'add_cors_http_header');
@@ -211,10 +215,12 @@ function custom_login_status_endpoint() {
         'permission_callback' => '__return_true', // Adjust permissions as needed
     ));
 }
+
 add_action('rest_api_init', 'custom_login_status_endpoint');
 
 // Callback function to handle the request
 function get_login_status() {
+    error_log(print_r($_COOKIE, true)); // Log all cookies to error log for debugging
     if (is_user_logged_in()) {
         return new WP_REST_Response(array('status' => 'logged_in'), 200);
     } else {
