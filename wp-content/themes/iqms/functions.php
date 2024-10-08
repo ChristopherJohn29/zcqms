@@ -156,13 +156,16 @@ function custom_after_login_action($user_login, $user) {
     }
 }
 
-// Hook the custom action to the wp_login hook
-add_action('wp_login', 'custom_after_login_action', 10, 2);
+add_filter('login_redirect', 'custom_login_redirect', 10, 3);
 
-function custom_login_redirect($user_login, $user) {
-    // Check if the user has logged in successfully
-    wp_redirect(home_url('/wp-admin'));
-    exit;
+function custom_login_redirect($redirect_to, $request, $user) {
+    // If the user is logging in and they have no specific redirect URL (like from wp-admin)
+    if (empty($redirect_to) || $redirect_to === home_url('/wp-admin/') || $redirect_to === home_url('/')) {
+        return 'https://home.zcmc.ph';
+    }
+    
+    // Otherwise, follow the default redirect behavior (e.g., if they tried to access wp-admin)
+    return $redirect_to;
 }
 
 add_action('template_redirect', 'custom_login_redirect2');
