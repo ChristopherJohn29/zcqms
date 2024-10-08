@@ -210,31 +210,23 @@ function add_cors_http_header() {
 
 add_action('init', 'add_cors_http_header');
 
-function custom_login_status_endpoint() {
-    register_rest_route('custom/v1', '/login-status', array(
-        'methods' => 'GET',
-        'callback' => 'get_login_status',
-        'permission_callback' => '__return_true', // Allows all requests
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/is-logged-in/', array(
+        'methods' => 'POST',
+        'callback' => 'check_user_logged_in',
+        'permission_callback' => function () {
+            // Replace 'your_secret_key' with a more secure, unique key
+            return isset($_POST['key']) && $_POST['key'] === 'your_secret_key';
+        },
     ));
-}
-add_action('rest_api_init', 'custom_login_status_endpoint');
+});
 
-// Callback function to handle the request
-function get_login_status() {
-    error_log('Request received at /login-status endpoint');
-    error_log('Session ID: ' . session_id());
-    error_log('Cookies: ' . print_r($_COOKIE, true));
-    error_log('Session Data: ' . print_r($_SESSION, true));
-    
+function check_user_logged_in() {
     if (is_user_logged_in()) {
-        error_log('User is logged in'); // Log when user is logged in
-        return new WP_REST_Response(array('status' => 'logged_in'), 200);
-    } else {
-        error_log('User is logged out'); // Log when user is logged out
-        return new WP_REST_Response(array('status' => 'logged_out'), 200);
+        return new WP_REST_Response(['status' => 'logged_in'], 200);
     }
+    return new WP_REST_Response(['status' => 'not_logged_in'], 200);
 }
-
 
 
 function hide_field_based_on_role() {
