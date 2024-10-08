@@ -159,12 +159,12 @@ function custom_after_login_action($user_login, $user) {
 add_filter('login_redirect', 'custom_login_redirect', 10, 3);
 
 function custom_login_redirect($redirect_to, $request, $user) {
-    // If the user is logging in and they have no specific redirect URL (like from wp-admin)
-    if (empty($redirect_to) || $redirect_to === home_url('/wp-admin/') || $redirect_to === home_url('/')) {
+    // Check if the user is logging in and they have no specific redirect URL or are going to the site's homepage
+    if ($redirect_to === '' || $redirect_to === home_url('/')) {
         return 'https://home.zcmc.ph';
     }
     
-    // Otherwise, follow the default redirect behavior (e.g., if they tried to access wp-admin)
+    // If the user is trying to access wp-admin directly, allow the default behavior
     return $redirect_to;
 }
 
@@ -183,10 +183,6 @@ function custom_login_redirect2() {
         }
     }
 }
-
-
-
-add_action('wp_login', 'custom_login_redirect', 10, 2);
 
 function redirect_based_on_login_status() {
     // Check if the current URL contains 'logged' or 'out' and redirect to home.zcmc.ph
