@@ -200,39 +200,55 @@ function redirect_based_on_login_status() {
 }
 add_action( 'template_redirect', 'redirect_based_on_login_status' );
 
-function add_cors_http_header() {
-    // Allow requests from the specific domain
-    header("Access-Control-Allow-Origin: https://home.zcmc.ph"); 
-    header("Access-Control-Allow-Credentials: true");
-    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type, Authorization");
-}
 
-add_action('init', 'add_cors_http_header');
+add_action('rest_api_init', function () {
+    header("Access-Control-Allow-Origin: https://home.zcmc.ph");
+    header("Access-Control-Allow-Methods: POST, GET");
+    header("Access-Control-Allow-Headers: Content-Type");
+});
+
+
+add_action('rest_api_init', function () {
+    register_rest_route('custom/v1', '/generate-token/', array(
+        'methods' => 'GET',
+        'callback' => 'generate_user_token',
+        'permission_callback' => function () {
+            return is_user_logged_in();
+        },
+    ));
+});
+
+function generate_user_token() {
+    $user = wp_get_current_user();
+    if ($user->ID) {
+        $token = wp_generate_password(20, false);
+        update_user_meta($user->ID, 'auth_token', $token);
+        return new WP_REST_Response(['token' => $token], 200);
+    }
+    return new WP_REST_Response(['error' => 'User not logged in'], 401);
+}
 
 add_action('rest_api_init', function () {
     register_rest_route('custom/v1', '/is-logged-in/', array(
         'methods' => 'POST',
         'callback' => 'check_user_logged_in',
-        'permission_callback' => function () {
-            // Replace 'your_secret_key' with a more secure, unique key
-            return isset($_POST['key']) && $_POST['key'] === 'your_secret_key';
-        },
+        'permission_callback' => '__return_true', // Adjust for security
     ));
 });
 
-function check_user_logged_in() {
-    if (is_user_logged_in()) {
+function check_user_logged_in(WP_REST_Request $request) {
+    $token = sanitize_text_field($request->get_param('token'));
+    $user_query = new WP_User_Query(array(
+        'meta_key' => 'auth_token',
+        'meta_value' => $token,
+        'number' => 1,
+    ));
+
+    if (!empty($user_query->get_results())) {
         return new WP_REST_Response(['status' => 'logged_in'], 200);
     }
     return new WP_REST_Response(['status' => 'not_logged_in'], 200);
 }
-
-add_action('rest_api_init', function () {
-    header("Access-Control-Allow-Origin: https://home.zcmc.ph");
-    header("Access-Control-Allow-Methods: POST");
-});
-
 
 function hide_field_based_on_role() {
     // Check if the current user has the "dco" role
