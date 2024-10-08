@@ -202,7 +202,7 @@ add_action( 'template_redirect', 'redirect_based_on_login_status' );
 
 
 add_action('rest_api_init', function () {
-    header("Access-Control-Allow-Origin: https://home.zcmc.ph"); // Replace with Site B's URL
+    header("Access-Control-Allow-Origin: https://home.zcmc.ph/"); // Replace with Site B's URL
     header("Access-Control-Allow-Credentials: true");
 });
 
