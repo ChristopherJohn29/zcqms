@@ -156,30 +156,22 @@ function custom_after_login_action($user_login, $user) {
     }
 }
 
-add_filter('login_redirect', 'custom_login_redirect', 10, 3);
+// Hook the custom action to the wp_login hook
+add_action('wp_login', 'custom_after_login_action', 10, 2);
 
-function custom_login_redirect($redirect_to, $request, $user) {
-    // Check if the user is logging in without a specific target (e.g., accessing the homepage)
-    if ($redirect_to === home_url('/') || empty($redirect_to)) {
-        return 'https://home.zcmc.ph';
-    }
-
-    // If the user is trying to access wp-admin directly, allow the default behavior
-    return $redirect_to;
-}
-
-add_action('template_redirect', 'custom_template_redirect');
-function custom_template_redirect() {
-    // Check if the current URL is the homepage of the site
-    if (is_front_page()) {
-        // If the user is not logged in, redirect to the WordPress login page
-        if (!is_user_logged_in()) {
-            wp_redirect(home_url('/wp-login.php'));
+function custom_login_redirect($user_login, $user) {
+    // Check if the user has logged in successfully
+    if (isset($user->roles) && is_array($user->roles)) {
+        // Redirect non-administrators to another website
+        if (!in_array('administrator', $user->roles)) {
+            wp_redirect( home_url( '/logged' ) );
             exit;
         }
     }
 }
 
+
+add_action('wp_login', 'custom_login_redirect', 10, 2);
 
 function redirect_based_on_login_status() {
     // Check if the current URL contains 'logged' or 'out' and redirect to home.zcmc.ph
@@ -208,8 +200,14 @@ function redirect_based_on_login_status() {
 }
 add_action( 'template_redirect', 'redirect_based_on_login_status' );
 
+
 add_action('rest_api_init', function () {
-    header("Access-Control-Allow-Origin: https://home.zcmc.ph"); // Replace with Site B's URL
+    header("Access-Control-Allow-Origin: https://home.zcmc.ph/"); // Replace with Site B's URL
+    header("Access-Control-Allow-Credentials: true");
+});
+
+add_action('rest_api_init', function () {
+    header("Access-Control-Allow-Origin: https://home.zcmc.ph/"); // Replace with Site B's URL
     header("Access-Control-Allow-Credentials: true");
     header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
     header("Access-Control-Allow-Headers: Content-Type, Authorization");
