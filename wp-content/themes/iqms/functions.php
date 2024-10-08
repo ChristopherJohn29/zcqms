@@ -228,6 +228,11 @@ function check_user_logged_in() {
     return new WP_REST_Response(['status' => 'not_logged_in'], 200);
 }
 
+add_action('rest_api_init', function () {
+    header("Access-Control-Allow-Origin: https://home.zcmc.ph");
+    header("Access-Control-Allow-Methods: POST");
+});
+
 
 function hide_field_based_on_role() {
     // Check if the current user has the "dco" role
