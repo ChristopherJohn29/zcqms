@@ -157,9 +157,16 @@ function custom_after_login_action($user_login, $user) {
 }
 
 // Hook the custom action to the wp_login hook
+add_action('wp_login', 'custom_after_login_action', 10, 2);
 
-add_action('template_redirect', 'custom_login_redirect');
-function custom_login_redirect() {
+function custom_login_redirect($user_login, $user) {
+    // Check if the user has logged in successfully
+    wp_redirect(home_url('/wp-admin'));
+    exit;
+}
+
+add_action('template_redirect', 'custom_login_redirect2');
+function custom_login_redirect2() {
     // Check if the current URL is the homepage of the site
     if (is_front_page()) {
         // If the user is not logged in, redirect to the WordPress login page
@@ -173,6 +180,37 @@ function custom_login_redirect() {
         }
     }
 }
+
+
+
+add_action('wp_login', 'custom_login_redirect', 10, 2);
+
+function redirect_based_on_login_status() {
+    // Check if the current URL contains 'logged' or 'out' and redirect to home.zcmc.ph
+    $current_url = home_url( $_SERVER['REQUEST_URI'] );
+    if ( strpos( $current_url, 'logged' ) !== false || strpos( $current_url, 'out' ) !== false ) {
+        wp_redirect( 'https://home.zcmc.ph/' );
+        exit();
+    }
+
+    // For the homepage, handle login status
+    if ( is_home() || is_front_page() ) {
+        if ( is_user_logged_in() ) {
+            // Set cookie for logged-in users
+            setcookie( 'my_custom_cookie', 'logged_in', time() + 3600, '/', '.infoadvance.com.ph', false, true );
+            // Redirect logged-in users to '/logged' page
+            wp_redirect( home_url( '/logged' ) );
+            exit();
+        } else {
+            // Clear cookie for logged-out users (if needed)
+            setcookie( 'my_custom_cookie', '', time() - 3600, '/', '.infoadvance.com.ph', false, true );
+            // Redirect logged-out users to '/out' page
+            wp_redirect( home_url( '/out' ) );
+            exit();
+        }
+    }
+}
+add_action( 'template_redirect', 'redirect_based_on_login_status' );
 
 add_action('rest_api_init', function () {
     header("Access-Control-Allow-Origin: https://home.zcmc.ph"); // Replace with Site B's URL
