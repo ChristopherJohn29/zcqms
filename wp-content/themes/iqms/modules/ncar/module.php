@@ -398,7 +398,7 @@ if ( !class_exists('NCAR_Module') ) {
 
 				$to_return['data'] = [
 					'ncar_no' => $id,
-					'ncar_no_new' => get_post_meta( $id, 'ncar_no_new', true ),
+					// 'ncar_no_new' => get_post_meta( $id, 'ncar_no_new', true ),
 					'add_date' => get_post_meta( $id, 'add_date', true ),
 					'department' => get_post_meta( $id, 'department', true ),
 					'source_of_nc' => get_post_meta( $id, 'source_of_nc', true ),
@@ -457,10 +457,14 @@ if ( !class_exists('NCAR_Module') ) {
 
 			$to_return = [];
 			if ( $post_id ) {
+				$year = date('Y'); // Get the current year
+				$number_series = str_pad($post_id, 3, '0', STR_PAD_LEFT); // Pad the post_id to be 3 digits
+				$ncar_no_new = "ZCMC-NCAR-{$year}-{$number_series}"; // Generate the NCAR code
+			
 				foreach( $data as $field ) {
 					update_post_meta( $post_id, $field['name'], $field['value'] );
 					if($field['name'] == 'ncar_no_new'){
-						$ncar_no_new = $field['value'];
+						update_post_meta( $post_id, 'ncar_no_new', $ncar_no_new );
 					}
 				}
 
