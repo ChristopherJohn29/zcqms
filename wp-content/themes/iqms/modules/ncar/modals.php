@@ -72,7 +72,7 @@
 														
 															// Display each child term
 															foreach( $child_terms as $child_term ) {
-																echo '<option value="' . esc_attr($child_term->term_id) . '">' . esc_html($child_term->name) . '</option>';
+																echo '<option value="' . esc_attr($child_term->name) . '">' . esc_html($child_term->name) . '</option>';
 															}
 														}
 													
@@ -309,7 +309,7 @@
 														
 															// Display each child term
 															foreach( $child_terms as $child_term ) {
-																echo '<option value="' . esc_attr($child_term->term_id) . '">' . esc_html($child_term->name) . '</option>';
+																echo '<option value="' . esc_attr($child_term->name) . '">' . esc_html($child_term->name) . '</option>';
 															}
 														}
 														
