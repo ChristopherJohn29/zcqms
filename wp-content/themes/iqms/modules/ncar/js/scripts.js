@@ -912,9 +912,9 @@
                                         '<td>' + 
                                             '<input type="date" disabled class="form-control corrective_date" value="' + v.corrective_date + '">' + 
                                         '</td>' + 
-                                        '<td>' + 
+                                        '<td style="display:flex;">' + 
                                             '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="Yes" ' + (v.corrective_implemented == 'Yes' ? 'checked' : '') + '> Yes' + 
-                                            '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="No" ' + (v.corrective_implemented == 'No' ? 'checked' : '') + '> No' + 
+                                            '<input  style="margin-left:5px;" type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="No" ' + (v.corrective_implemented == 'No' ? 'checked' : '') + '> No' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<input type="text" class="form-control input-sm corrective_remarks" placeholder="remarks" value="' + v.corrective_remarks + '">' + 
