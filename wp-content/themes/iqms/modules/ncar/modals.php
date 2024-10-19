@@ -212,11 +212,34 @@
 												<select id="approved_by" name="approved_by" class="form-control">
 													<option value="">-</option>
 													<?php
-														$users = get_users('orderby=meta_value&meta_key=first_name');
+														// Get users by specific roles
+														$users = get_users( array(
+															'role__in' => array('pgsqms-chair'), // Filter users by these roles
+														));
+
+														// Initialize an array to store users with their first names
+														$user_array = array();
+
+														// Loop through the users and retrieve their first names
 														foreach( $users as $user ) {
-															echo '<option value="'.$user->data->ID.'" '.( $user->data->ID == $this_user ? 'selected="selected"' : '' ).'>'.$user->data->display_name.'</option>';
+															$first_name = get_user_meta($user->ID, 'first_name', true); // Get the first name of the user
+															$user_array[] = array(
+																'id'         => $user->ID,
+																'first_name' => $first_name,
+																'display_name' => $user->display_name,
+															);
 														}
-													?>
+
+														// Sort the users by first name
+														usort($user_array, function($a, $b) {
+															return strcmp($a['first_name'], $b['first_name']);
+														});
+
+														// Now display the sorted users
+														foreach( $user_array as $user ) {
+															echo '<option value="' . esc_attr($user['id']) . '" ' . selected( $user['id'], $this_user, false ) . '>' . esc_html($user['display_name']) . '</option>';
+														}
+														?>
 												</select>
 											</div>
 
