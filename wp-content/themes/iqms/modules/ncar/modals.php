@@ -623,10 +623,10 @@
 									<table class="table">
 										<tbody>
 											<tr>
-												<td colspan="6">7. Follow up on implementation of Action</td>
+												<td colspan="8">7. Follow up on implementation of Action</td>
 											</tr>
 											<tr>
-												<td colspan="6"><button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button></td>
+												<td colspan="8"><button for="noncoformity-evidence" class="btn btn-primary noncoformity-evidence-file-view">View uploaded non conformity evidences</button></td>
 											</tr>
 										</tbody>
 										<tbody>
