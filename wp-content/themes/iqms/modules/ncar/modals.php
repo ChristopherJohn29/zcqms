@@ -7,8 +7,9 @@
 			$terms = get_terms( array(
 				'taxonomy'   => 'services',
 				'hide_empty' => false,
-				'orderby'    => 'name',   // Order by name
-				'order'      => 'ASC',    // Ascending order (alphabetical)
+				'orderby'    => 'name',
+				'order'      => 'ASC',
+				'parent'     => 0, // Fetch only top-level terms
 			) );
 
 		?>
@@ -59,11 +60,20 @@
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
 													<?php 
-														foreach( $terms  as $term ) {
-															if($term->parent != 0){
-																echo '<option value="'.$term->name.'">'.$term->name.'</option>';
+														foreach( $terms as $term ) {
+															// Fetch child terms
+															$child_terms = get_terms( array(
+																'taxonomy'   => 'services',
+																'hide_empty' => false,
+																'orderby'    => 'name',
+																'order'      => 'ASC',
+																'parent'     => $term->term_id, // Fetch only child terms
+															));
+														
+															// Display each child term
+															foreach( $child_terms as $child_term ) {
+																echo '<option value="' . esc_attr($child_term->term_id) . '">' . esc_html($child_term->name) . '</option>';
 															}
-															
 														}
 													
 													?>
@@ -287,11 +297,20 @@
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
 													<?php 
-														foreach( $terms  as $term ) {
-															if($term->parent != 0){
-																echo '<option value="'.$term->name.'">'.$term->name.'</option>';
+														foreach( $terms as $term ) {
+															// Fetch child terms
+															$child_terms = get_terms( array(
+																'taxonomy'   => 'services',
+																'hide_empty' => false,
+																'orderby'    => 'name',
+																'order'      => 'ASC',
+																'parent'     => $term->term_id, // Fetch only child terms
+															));
+														
+															// Display each child term
+															foreach( $child_terms as $child_term ) {
+																echo '<option value="' . esc_attr($child_term->term_id) . '">' . esc_html($child_term->name) . '</option>';
 															}
-															
 														}
 														
 														?>
