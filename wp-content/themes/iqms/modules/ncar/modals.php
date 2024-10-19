@@ -37,8 +37,8 @@
 											
 											<div class="form-group">
 												<label for="ncar_no">NCAR No.</label>
-												<input type="text" class="form-control" placeholder="System Generated" disabled name="ncar_no">
-												<input type="hidden" class="form-control" placeholder="" name="ncar_no_new">
+												<input type="hidden" class="form-control" placeholder="System Generated" disabled name="ncar_no">
+												<input type="text" class="form-control" placeholder="" name="ncar_no_new">
 											</div>
 
 										</div>
@@ -265,8 +265,8 @@
 											
 											<div class="form-group">
 												<label for="ncar_no">NCAR No.</label>
-												<input type="hidden" class="form-control" placeholder="System Generated" disabled name="ncar_no">
-												<input type="text" class="form-control" placeholder="" name="ncar_no_new">
+												<input type="text" class="form-control" placeholder="System Generated" disabled name="ncar_no">
+												<input type="hidden" class="form-control" placeholder="" name="ncar_no_new">
 											</div>
 
 										</div>
