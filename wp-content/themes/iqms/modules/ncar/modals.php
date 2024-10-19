@@ -4,13 +4,25 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 	<?php
-			$terms = get_terms( array(
-				'taxonomy'   => 'services',
-				'hide_empty' => false,
-				'orderby'    => 'name',
-				'order'      => 'ASC',
-				'parent'     => 0, // Fetch only top-level terms
-			) );
+
+		$terms = get_terms( array(
+			'taxonomy'   => 'services',
+			'hide_empty' => false,
+		) );
+
+		$child_terms = array();
+
+		// Loop through the terms and store only the child terms (with non-zero parent)
+		foreach( $terms as $term ) {
+			if ( $term->parent != 0 ) {
+				$child_terms[] = $term;
+			}
+		}
+
+		usort($child_terms, function($a, $b) {
+			return strcmp($a->name, $b->name);
+		});
+
 
 		?>
 				<div class="modal-header">
@@ -60,20 +72,8 @@
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
 													<?php 
-														foreach( $terms as $term ) {
-															// Fetch child terms
-															$child_terms = get_terms( array(
-																'taxonomy'   => 'services',
-																'hide_empty' => false,
-																'orderby'    => 'name',
-																'order'      => 'ASC',
-																'parent'     => $term->term_id, // Fetch only child terms
-															));
-														
-															// Display each child term
-															foreach( $child_terms as $child_term ) {
-																echo '<option value="' . esc_attr($child_term->name) . '">' . esc_html($child_term->name) . '</option>';
-															}
+														foreach( $child_terms as $term ) {
+															echo '<option value="' . esc_attr($term->name) . '">' . esc_html($term->name) . '</option>';
 														}
 													
 													?>
@@ -296,24 +296,12 @@
 											<div class="form-group">
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
-													<?php 
-														foreach( $terms as $term ) {
-															// Fetch child terms
-															$child_terms = get_terms( array(
-																'taxonomy'   => 'services',
-																'hide_empty' => false,
-																'orderby'    => 'name',
-																'order'      => 'ASC',
-																'parent'     => $term->term_id, // Fetch only child terms
-															));
-														
-															// Display each child term
-															foreach( $child_terms as $child_term ) {
-																echo '<option value="' . esc_attr($child_term->name) . '">' . esc_html($child_term->name) . '</option>';
-															}
+														<?php 
+														foreach( $child_terms as $term ) {
+															echo '<option value="' . esc_attr($term->name) . '">' . esc_html($term->name) . '</option>';
 														}
-														
-														?>
+													
+													?>
 												</select>
 											</div>
 
