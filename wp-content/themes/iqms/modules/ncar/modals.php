@@ -545,7 +545,7 @@
 										<tbody>
 											<tr>
 												<td colspan="5">4. Correction: (Action to eliminate detected Nonconformity)</td>
-												<td>Completion Date</td>
+												<td>Date</td>
 												<td></td>
 											</tr>
 										</tbody>
@@ -595,7 +595,7 @@
 											<tr>
 												<td colspan="4">Root Cause/s</td>
 												<td>Corrective Action</td>
-												<td>Completion Date</td>
+												<td>Target Date</td>
 												<td></td>
 											</tr>
 
@@ -632,7 +632,7 @@
 										<tbody>
 											<tr>
 												<td colspan="1">Correction: (Action to eliminate detected Nonconformity)</td>
-												<td>Completion Date</td>
+												<td>Date</td>
 												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
 											</tr>
@@ -668,7 +668,7 @@
 											<tr>
 												<td colspan="">Root Cause/s</td>
 												<td>Corrective Action</td>
-												<td>Completion Date</td>
+												<td>Target Date</td>
 												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
 											</tr>
