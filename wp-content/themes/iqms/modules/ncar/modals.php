@@ -633,8 +633,8 @@
 											<tr>
 												<td colspan="1">Correction: (Action to eliminate detected Nonconformity)</td>
 												<td>Date</td>
-												<td colspan="2">Implemented As Planned?</td>
-												<td></td>
+												<!-- <td colspan="2">Implemented As Planned?</td>
+												<td></td> -->
 											</tr>
 										</tbody>
 
