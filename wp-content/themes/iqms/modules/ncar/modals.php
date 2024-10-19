@@ -590,7 +590,7 @@
 										<tbody>
 											
 											<tr>
-												<td colspan="6">6. Corrective Action: (Action to eliminate the cause of the detected nonconformity)</td>
+												<td colspan="6">6. Corrective Action Plan: (Action to eliminate the cause of the detected nonconformity)</td>
 											</tr>
 											<tr>
 												<td colspan="4">Root Cause/s</td>
@@ -663,7 +663,7 @@
 										<tbody>
 											
 											<tr>
-												<td colspan="6"> Corrective Action: (Action to eliminate the cause of the detected nonconformity)</td>
+												<td colspan="6"> Corrective Action Plan: (Action to eliminate the cause of the detected nonconformity)</td>
 											</tr>
 											<tr>
 												<td colspan="">Root Cause/s</td>
