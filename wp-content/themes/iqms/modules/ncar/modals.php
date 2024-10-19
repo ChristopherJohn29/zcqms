@@ -4,11 +4,12 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
 	<?php
-
-		$terms = get_terms( array(
-			'taxonomy'   => 'services',
-			'hide_empty' => false,
-		) );
+			$terms = get_terms( array(
+				'taxonomy'   => 'services',
+				'hide_empty' => false,
+				'orderby'    => 'name',   // Order by name
+				'order'      => 'ASC',    // Ascending order (alphabetical)
+			) );
 
 		?>
 				<div class="modal-header">
