@@ -777,7 +777,7 @@
                                 v.correction_text = 'remarks';
                             }
 
-                            $html2 += '' + '<tr>' + '<td colspan="3"><textarea disabled class="form-control correction_text" rows="5">' + v.correction_text + '</textarea></td>' + '<td colspan="3"><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                            $html2 += '' + '<tr>' + '<td colspan="4"><textarea disabled class="form-control correction_text" rows="5">' + v.correction_text + '</textarea></td>' + '<td colspan="2"><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                             _correction_ind++;
                             
                             $('#form_2_1_b').html($html2);
