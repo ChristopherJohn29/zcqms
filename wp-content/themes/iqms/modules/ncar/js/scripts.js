@@ -790,7 +790,14 @@
                             if(v.correction_text == undefined){
                                 v.correction_text = 'remarks';
                             }
-
+                        
+                            // Set default date to today if correction_date is undefined or empty
+                            if(v.correction_date == undefined || v.correction_date == '') {
+                                var today = new Date();
+                                var defaultDate = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+                                v.correction_date = defaultDate;
+                            }
+                        
                             $html += '<tr>' + 
                                         '<td colspan="5">' + 
                                             '<textarea class="form-control correction_text">' + v.correction_text + '</textarea>' + 
@@ -804,6 +811,7 @@
                                     '</tr>';
                             _correction_ind++;
                         });
+                        
 
                         $('#form_2_1').html($html);
 
