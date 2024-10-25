@@ -4,6 +4,8 @@ jQuery(document).ready(function($) {
         $('.meta-box-sortables').sortable('destroy');
         $('.handle-actions').addClass('hidden');
         $('.misc-pub-section').addClass('hidden');
+        $('.preview-action').addClass('hidden');
+        $('.save-action').css('width',"100%");
     }
 
     // Disable sortable on page load
