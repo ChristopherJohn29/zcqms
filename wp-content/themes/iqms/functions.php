@@ -326,3 +326,26 @@ $term = get_term($user_service_term, 'services');
 if ($term && !is_wp_error($term)) {
     echo 'Services: ' . esc_html($term->name);
 }
+
+// Hook into 'add_meta_boxes' to modify the 'services' taxonomy metabox in 'dcm' post type
+function preselect_user_service_for_dcm() {
+    global $current_user;
+    wp_get_current_user();
+    
+    // Get the user's saved service term from user meta
+    $user_service_term = get_user_meta($current_user->ID, 'user_service_term', true);
+    
+    if (!empty($user_service_term)) {
+        // Modify the 'services' metabox
+        add_filter('wp_terms_checklist_args', function ($args, $post_id) use ($user_service_term) {
+            if ($post_id === 0 && get_post_type() === 'dcm') { // Ensure this is a new 'dcm' post
+                $args['checked_ontop'] = false; // Prevent checked terms from being displayed on top
+                
+                // Preselect the user's service term
+                $args['selected_cats'] = array($user_service_term);
+            }
+            return $args;
+        }, 10, 2);
+    }
+}
+add_action('add_meta_boxes', 'preselect_user_service_for_dcm');
