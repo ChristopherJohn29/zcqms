@@ -3,6 +3,7 @@ jQuery(document).ready(function($) {
     function disableSortable() {
         $('.meta-box-sortables').sortable('destroy');
         $('.handle-actions').addClass('hidden');
+        $('.misc-pub-section').addClass('hidden');
     }
 
     // Disable sortable on page load
