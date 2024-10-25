@@ -327,25 +327,59 @@ if ($term && !is_wp_error($term)) {
     echo 'Services: ' . esc_html($term->name);
 }
 
-// Hook into 'add_meta_boxes' to modify the 'services' taxonomy metabox in 'dcm' post type
-function preselect_user_service_for_dcm() {
+function remove_services_metabox() {
+    remove_meta_box('servicesdiv', 'dcm', 'side'); // 'servicesdiv' is the ID of the taxonomy metabox
+}
+add_action('admin_menu', 'remove_services_metabox');
+
+// Add a custom metabox with a dropdown for the 'services' taxonomy
+function add_custom_services_dropdown_metabox() {
+    add_meta_box('custom_services_dropdown', 'Select Service', 'custom_services_dropdown_callback', 'dcm', 'side', 'default');
+}
+add_action('add_meta_boxes', 'add_custom_services_dropdown_metabox');
+
+function custom_services_dropdown_callback($post) {
     global $current_user;
     wp_get_current_user();
     
     // Get the user's saved service term from user meta
     $user_service_term = get_user_meta($current_user->ID, 'user_service_term', true);
     
-    if (!empty($user_service_term)) {
-        // Modify the 'services' metabox
-        add_filter('wp_terms_checklist_args', function ($args, $post_id) use ($user_service_term) {
-            if ($post_id === 0 && get_post_type() === 'dcm') { // Ensure this is a new 'dcm' post
-                $args['checked_ontop'] = true; // Prevent checked terms from being displayed on top
-                
-                // Preselect the user's service term
-                $args['selected_cats'] = array($user_service_term);
-            }
-            return $args;
-        }, 10, 2);
+    // Get all terms in the 'services' taxonomy
+    $terms = get_terms(array(
+        'taxonomy' => 'services',
+        'hide_empty' => false,
+    ));
+
+    // Output a dropdown (select box)
+    echo '<select name="post_services_term" id="post_services_term">';
+    echo '<option value="">Select a Service</option>'; // Default option
+    if (!empty($terms) && !is_wp_error($terms)) {
+        foreach ($terms as $term) {
+            // Preselect the user's saved service
+            $selected = ($user_service_term == $term->term_id) ? 'selected="selected"' : '';
+            echo '<option value="' . esc_attr($term->term_id) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
+        }
+    }
+    echo '</select>';
+}
+
+// Save the selected 'services' taxonomy term from the dropdown
+function save_selected_service_term($post_id) {
+    // Verify if this is not an autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    // Check if the service term is set in the POST request
+    if (isset($_POST['post_services_term']) && $_POST['post_services_term'] !== '') {
+        $service_term_id = intval($_POST['post_services_term']);
+
+        // Set the taxonomy term for the 'dcm' post type
+        wp_set_post_terms($post_id, array($service_term_id), 'services');
+    } else {
+        // If no term is selected, remove the term
+        wp_set_post_terms($post_id, array(), 'services');
     }
 }
-add_action('add_meta_boxes', 'preselect_user_service_for_dcm');
+add_action('save_post', 'save_selected_service_term');
