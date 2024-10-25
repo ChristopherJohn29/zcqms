@@ -579,3 +579,28 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 
 	}
 }
+
+
+// Add custom column to the users list table
+function add_service_column($columns) {
+    $columns['service'] = 'Service'; // Add a new column for Service
+    return $columns;
+}
+add_filter('manage_users_columns', 'add_service_column');
+
+// Populate the custom "Service" column
+function show_service_column_content($value, $column_name, $user_id) {
+    if ('service' == $column_name) {
+        $service = get_user_meta($user_id, 'service', true); // Fetch the service value from user meta
+        return $service ? esc_html($service) : 'No service selected'; // Display the service or fallback text
+    }
+    return $value;
+}
+add_filter('manage_users_custom_column', 'show_service_column_content', 10, 3);
+
+// Make the Service column sortable
+function service_column_sortable($columns) {
+    $columns['service'] = 'service';
+    return $columns;
+}
+add_filter('manage_users_sortable_columns', 'service_column_sortable');
