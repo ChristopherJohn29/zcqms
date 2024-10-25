@@ -395,7 +395,7 @@
             /*form 3*/
             $('#add_verification').click(function() {
                 date = new Date;
-                $html = '' + '<tr>' + '<td colspan="3"><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks">' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented hidden" value="Yes"> Satisfactory' + '<input type="radio" name="verification_' + _correction_ind + '" class="hidden verification_implemented" value="No"> Not Satisfactory' + '</td>'  + '<td><input type="date" class="form-control input-sm verification_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                $html = '' + '<tr>' + '<td colspan="3"><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks">' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented hidden" value="Yes"> ' + '<input type="radio" name="verification_' + _correction_ind + '" class="hidden verification_implemented" value="No">' + '</td>'  + '<td><input type="date" class="form-control input-sm verification_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                 _correction_ind++;
                 $('#form_3_1').append($html);
                 app.bindDeleteBtns();
