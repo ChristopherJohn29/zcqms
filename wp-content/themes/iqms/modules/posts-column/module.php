@@ -581,10 +581,17 @@ function set_custom_edit_printing_column_column( $column, $post_id ) {
 }
 
 
-// Add custom column to the users list table
+// Add custom column to the users list table and position it after 'Role'
 function add_service_column($columns) {
-    $columns['service'] = 'Service'; // Add a new column for Service
-    return $columns;
+    // Get the position of the 'role' column
+    $new_columns = [];
+    foreach ($columns as $key => $value) {
+        $new_columns[$key] = $value;
+        if ($key == 'role') {
+            $new_columns['service'] = 'Service'; // Add service column after role
+        }
+    }
+    return $new_columns;
 }
 add_filter('manage_users_columns', 'add_service_column');
 
