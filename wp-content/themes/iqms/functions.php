@@ -269,3 +269,60 @@ function hide_field_based_on_role() {
     }
 }
 add_action('wp_footer', 'hide_field_based_on_role');
+
+
+// Add custom field on the Add New User page and Edit User page
+function add_services_field_to_user($user) {
+    // Get all terms from the 'services' taxonomy in the 'dcm' post type
+    $terms = get_terms(array(
+        'taxonomy' => 'services',
+        'hide_empty' => false,
+    ));
+
+    // Get saved value for this user (if you're editing)
+    $user_service_term = get_user_meta($user->ID, 'user_service_term', true);
+    ?>
+    <h3>Select Services</h3>
+    <table class="form-table">
+        <tr>
+            <th><label for="user_service_term">Select Services</label></th>
+            <td>
+                <select name="user_service_term" id="user_service_term">
+                    <option value="">Select a Services</option>
+                    <?php
+                    if (!empty($terms) && !is_wp_error($terms)) {
+                        foreach ($terms as $term) {
+                            echo '<option value="' . esc_attr($term->term_id) . '" ' . selected($user_service_term, $term->term_id, false) . '>' . esc_html($term->name) . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <?php
+}
+
+// Hook into the 'user_new_form' and 'edit_user_profile' actions to display the custom field
+add_action('user_new_form', 'add_services_field_to_user');
+add_action('show_user_profile', 'add_services_field_to_user');
+add_action('edit_user_profile', 'add_services_field_to_user');
+
+// Save custom field value when user is added/updated
+function save_services_field_to_user($user_id) {
+    // Check if the value is set and save it
+    if (isset($_POST['user_service_term'])) {
+        update_user_meta($user_id, 'user_service_term', sanitize_text_field($_POST['user_service_term']));
+    }
+}
+
+// Hook into the 'user_register' and 'edit_user_profile_update' actions to save the custom field value
+add_action('user_register', 'save_services_field_to_user');
+add_action('edit_user_profile_update', 'save_services_field_to_user');
+
+$user_service_term = get_user_meta($user_id, 'user_service_term', true);
+$term = get_term($user_service_term, 'services');
+
+if ($term && !is_wp_error($term)) {
+    echo 'Services: ' . esc_html($term->name);
+}
