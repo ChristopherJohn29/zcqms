@@ -468,20 +468,12 @@ function save_selected_document_terms($post_id) {
 }
 add_action('save_post', 'save_selected_document_terms');
 
-function disable_drag_and_drop_on_post_edit() {
+function disable_drag_and_drop_script() {
     global $pagenow;
 
-    // Ensure this is only applied to the post edit and add new screens
+    // Only enqueue the script on the post add/edit pages
     if (in_array($pagenow, array('post.php', 'post-new.php'))) {
-        ?>
-        <script type="text/javascript">
-            jQuery(document).ready(function($) {
-                // Disable sortable functionality for post meta boxes
-                $('#poststuff').removeClass('meta-box-sortables');
-                $('.meta-box-sortables').sortable('disable');
-            });
-        </script>
-        <?php
+        wp_enqueue_script('disable-drag', get_template_directory_uri() . '/js/disable-drag.js', array('jquery'), null, true);
     }
 }
-add_action('admin_footer', 'disable_drag_and_drop_on_post_edit');
+add_action('admin_enqueue_scripts', 'disable_drag_and_drop_script');
