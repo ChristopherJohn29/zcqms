@@ -111,6 +111,10 @@
 											<div class="form-group">
 
 												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Unmet Goals/ Objectives"> Unmet Goals/ Objectives
+												</label>
+
+												<label class="radio-inline">
 													<input type="radio" name="source_of_nc" value="Material or Product"> Material or Product
 												</label>
 
@@ -122,17 +126,18 @@
 													<input type="radio" name="source_of_nc" value="Service Nonconformity"> Service Nonconformity
 												</label>
 
-												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="Internal Control Unit"> Internal Control Unit
-												</label>
 
 											</div>
 
 											<div class="form-group">
 
 												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="Unmet Goals/ Objectives"> Unmet Goals/ Objectives
+													<input type="radio" name="source_of_nc" value="Customer Satisfaction Survey "> Customer Satisfaction Survey 
 												</label>
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Internal Control Unit"> Internal Control Unit
+												</label>
+												
 											</div>
 										</div>
 									</div>
