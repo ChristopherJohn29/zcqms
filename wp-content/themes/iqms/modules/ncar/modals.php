@@ -106,9 +106,6 @@
 													<input type="radio" name="source_of_nc" value="Sentinel Event"> Sentinel Event 
 												</label>
 
-												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="Unmet Goals/ Objectives"> Unmet Goals/ Objectives
-												</label>
 
 											</div>
 											<div class="form-group">
@@ -129,6 +126,13 @@
 													<input type="radio" name="source_of_nc" value="Internal Control Unit"> Internal Control Unit
 												</label>
 
+											</div>
+
+											<div class="form-group">
+
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Unmet Goals/ Objectives"> Unmet Goals/ Objectives
+												</label>
 											</div>
 										</div>
 									</div>
