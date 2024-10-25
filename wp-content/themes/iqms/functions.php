@@ -339,7 +339,7 @@ function preselect_user_service_for_dcm() {
         // Modify the 'services' metabox
         add_filter('wp_terms_checklist_args', function ($args, $post_id) use ($user_service_term) {
             if ($post_id === 0 && get_post_type() === 'dcm') { // Ensure this is a new 'dcm' post
-                $args['checked_ontop'] = false; // Prevent checked terms from being displayed on top
+                $args['checked_ontop'] = true; // Prevent checked terms from being displayed on top
                 
                 // Preselect the user's service term
                 $args['selected_cats'] = array($user_service_term);
