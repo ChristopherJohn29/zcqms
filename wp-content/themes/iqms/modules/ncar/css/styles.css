@@ -29,8 +29,8 @@ input[type="radio"] {
 #edit-modal .tab-content .readonly:after {
     text-align: center;
     font-size: 150px;
-    /* content: 'viewing only'; */
-    color: #000;
+    content: 'viewing only';
+    color: gray;
     position: absolute;
     left: 0;
     right: 0;
