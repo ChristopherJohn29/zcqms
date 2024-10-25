@@ -468,3 +468,20 @@ function save_selected_document_terms($post_id) {
 }
 add_action('save_post', 'save_selected_document_terms');
 
+function disable_drag_and_drop_on_post_edit() {
+    global $pagenow;
+
+    // Ensure this is only applied to the post edit and add new screens
+    if (in_array($pagenow, array('post.php', 'post-new.php'))) {
+        ?>
+        <script type="text/javascript">
+            jQuery(document).ready(function($) {
+                // Disable sortable functionality for post meta boxes
+                $('#poststuff').removeClass('meta-box-sortables');
+                $('.meta-box-sortables').sortable('disable');
+            });
+        </script>
+        <?php
+    }
+}
+add_action('admin_footer', 'disable_drag_and_drop_on_post_edit');
