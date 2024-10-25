@@ -588,11 +588,21 @@ function add_service_column($columns) {
 }
 add_filter('manage_users_columns', 'add_service_column');
 
-// Populate the custom "Service" column
+// Populate the custom "Service" column with the selected taxonomy term
 function show_service_column_content($value, $column_name, $user_id) {
     if ('service' == $column_name) {
-        $service = get_user_meta($user_id, 'service', true); // Fetch the service value from user meta
-        return $service ? esc_html($service) : 'No service selected'; // Display the service or fallback text
+        // Get the post ID linked to the user (assuming you store the post ID in user meta)
+        $post_id = get_user_meta($user_id, 'dcm_post_id', true);
+
+        // If the post ID exists, fetch the service term from the 'services' taxonomy
+        if ($post_id) {
+            $terms = get_the_terms($post_id, 'services');
+            if ($terms && !is_wp_error($terms)) {
+                $service_names = wp_list_pluck($terms, 'name'); // Get the names of the services
+                return implode(', ', $service_names); // Return the list of services, if multiple
+            }
+        }
+        return 'No service selected'; // Fallback if no service is found
     }
     return $value;
 }
