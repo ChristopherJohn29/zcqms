@@ -478,27 +478,3 @@ function disable_drag_and_drop_script() {
 }
 add_action('admin_enqueue_scripts', 'disable_drag_and_drop_script');
 
-// Remove default "Save Draft" button using CSS
-function remove_save_draft_button() {
-    global $pagenow;
-    if (in_array($pagenow, array('post.php', 'post-new.php'))) {
-        echo '<style>
-            #save-post { display: none; }
-        </style>';
-    }
-}
-add_action('admin_head', 'remove_save_draft_button');
-
-// Add custom "Save Draft" button above the Publish button
-function add_custom_save_draft_button() {
-    global $post;
-    
-    if ($post && $post->post_status == 'draft') {
-        ?>
-        <div id="custom-save-draft-button" style="margin-bottom: 10px;">
-            <input type="submit" name="save" id="save-post-top" class="button button-secondary" value="Save Draft">
-        </div>
-        <?php
-    }
-}
-add_action('post_submitbox_start', 'add_custom_save_draft_button');
