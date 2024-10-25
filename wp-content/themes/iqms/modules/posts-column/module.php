@@ -588,29 +588,21 @@ function add_service_column($columns) {
 }
 add_filter('manage_users_columns', 'add_service_column');
 
-// Populate the custom "Service" column with the selected taxonomy term
+// Populate the custom "Service" column
 function show_service_column_content($value, $column_name, $user_id) {
     if ('service' == $column_name) {
-        // Get the post ID linked to the user (assuming you store the post ID in user meta)
-        $post_id = get_user_meta($user_id, 'dcm_post_id', true);
+        // Get the saved service term ID from user meta
+        $user_service_term = get_user_meta($user_id, 'user_service_term', true);
 
-        // If the post ID exists, fetch the service term from the 'services' taxonomy
-        if ($post_id) {
-            $terms = get_the_terms($post_id, 'services');
-            if ($terms && !is_wp_error($terms)) {
-                $service_names = wp_list_pluck($terms, 'name'); // Get the names of the services
-                return implode(', ', $service_names); // Return the list of services, if multiple
+        // Get the term name from the 'services' taxonomy
+        if ($user_service_term) {
+            $term = get_term($user_service_term, 'services');
+            if ($term && !is_wp_error($term)) {
+                return esc_html($term->name); // Return the service name
             }
         }
-        return 'No service selected'; // Fallback if no service is found
+        return 'No service selected'; // Fallback if no service is selected
     }
     return $value;
 }
 add_filter('manage_users_custom_column', 'show_service_column_content', 10, 3);
-
-// Make the Service column sortable
-function service_column_sortable($columns) {
-    $columns['service'] = 'service';
-    return $columns;
-}
-add_filter('manage_users_sortable_columns', 'service_column_sortable');
