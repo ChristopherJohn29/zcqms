@@ -379,6 +379,30 @@
 											<div class="form-group">
 
 												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Internal/ 3rd Party Audit"> Internal/ 3rd Party Audit
+												</label>
+
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Occupational/ Patient Safety Event"> Occupational/ Patient Safety Event
+												</label>
+
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Improvement Potential"> Improvement Potential
+												</label>
+
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Sentinel Event"> Sentinel Event 
+												</label>
+
+
+											</div>
+											<div class="form-group">
+
+												<label class="radio-inline">
+													<input type="radio" name="source_of_nc" value="Unmet Goals/ Objectives"> Unmet Goals/ Objectives
+												</label>
+
+												<label class="radio-inline">
 													<input type="radio" name="source_of_nc" value="Material or Product"> Material or Product
 												</label>
 
@@ -387,28 +411,21 @@
 												</label>
 
 												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="Internal Audit"> Internal Audit 
-												</label>
-
-												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="Unmet Goals/Objectives"> Unmet Goals/Objectives
-												</label>
-
-												<label class="radio-inline">
 													<input type="radio" name="source_of_nc" value="Service Nonconformity"> Service Nonconformity
 												</label>
 
+
 											</div>
+
 											<div class="form-group">
 
 												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="Internal Control"> Internal Control
+													<input type="radio" name="source_of_nc" value="Customer Satisfaction Survey "> Customer Satisfaction Survey 
 												</label>
-
 												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="External Audit"> External Audit
+													<input type="radio" name="source_of_nc" value="Internal Control Unit"> Internal Control Unit
 												</label>
-
+												
 											</div>
 											
 										</div>
