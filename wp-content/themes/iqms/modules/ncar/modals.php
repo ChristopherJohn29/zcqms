@@ -707,7 +707,7 @@
 										</tbody>
 										<tbody>
 											<tr>
-												<td colspan="2">8. verifications: Implemented as Planned?</td>
+												<td colspan="2">8. verifications: On the Effectiveness of Action?</td>
 												<td>Remarks</td>
 												<td>Date Stamp</td>
 												<td></td>
