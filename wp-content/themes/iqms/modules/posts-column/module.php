@@ -201,6 +201,7 @@ add_filter( 'manage_dcm_posts_columns', 'set_custom_edit_dcm_columns', 99 );
 add_action( 'manage_dcm_posts_custom_column' , 'set_custom_edit_dcm_column_column', 10, 2 );
 function set_custom_edit_dcm_columns( $columns ) {
 	
+	$columns['author'] = 'Uploaded by';
 	$columns['application-status'] = 'Application Status';
 	$columns['dco-review-status'] = 'DCO Review Status';
 	$columns['review-status'] = 'Review Status';
