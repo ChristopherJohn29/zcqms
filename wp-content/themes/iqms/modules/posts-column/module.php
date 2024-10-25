@@ -594,7 +594,6 @@ function show_service_column_content($value, $column_name, $user_id) {
         // Get the saved service term ID from user meta
         $user_service_term = get_user_meta($user_id, 'user_service_term', true);
 
-		return $user_service_term;
 
         // Get the term name from the 'services' taxonomy
         if ($user_service_term) {
