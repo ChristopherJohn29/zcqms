@@ -289,45 +289,51 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 			$approval_status = get_field( 'approval_status', $post_id );
 			$for_revision = get_field( 'for_revision', $post_id );
 			$assigned_dco_raw =  get_field('assigned_dco', $post_id);
+			
+			// Check if the post is a draft
+			if (get_post_status($post_id) == 'draft') {
+				$display = '<label class="table-label-primary"> Unpublished </label>';
+			} else {
+				if($dco_reviewed_status == 'review'){
+					$display = '<label class="table-label-primary"> For Review (DCO Complied) </label> ';
+				} else if($dco_reviewed_status == 'yes') {
 
-			if($dco_reviewed_status == 'review'){
-				$display = '<label class="table-label-primary"> For Review (DCO Complied) </label> ';
-			} else if($dco_reviewed_status == 'yes') {
+					if($reviewed_status == 'yes'){
 
-				if($reviewed_status == 'yes'){
-
-					if($approval_status == 'no') {
-						$display = '<label class="table-label-primary"> For Correction </label> ';	
-					} else if($approval_status == 'review') {
+						if($approval_status == 'no') {
+							$display = '<label class="table-label-primary"> For Correction </label> ';	
+						} else if($approval_status == 'review') {
+							$display =  '<label class="table-label-primary"> For Review (Complied) </label> ';
+						} else {
+							$display = '<label class="table-label-primary"> For Approval </label> ';	
+						}
+						
+					} else if($reviewed_status == 'no'){
+						$display = '<label class="table-label-primary"> For Correction </label> ';
+					} else if($reviewed_status == 'review'){
 						$display =  '<label class="table-label-primary"> For Review (Complied) </label> ';
 					} else {
-						$display = '<label class="table-label-primary"> For Approval </label> ';	
+						$display =  '<label class="table-label-primary"> For Recommendation </label> ';
 					}
-					
-				} else if($reviewed_status == 'no'){
-					$display = '<label class="table-label-primary"> For Correction </label> ';
-				} else if($reviewed_status == 'review'){
-					$display =  '<label class="table-label-primary"> For Review (Complied) </label> ';
-				} else {
-					$display =  '<label class="table-label-primary"> For Recommendation </label> ';
-				}
 
-			} else if($dco_reviewed_status == 'no') {
-				$display =  '<label class="table-label-primary"> For Correction</label> ';
-			} else {
-				if($for_revision[0]  == 'yes'){
-					if(!empty($assigned_dco_raw)){
-						$display =  '<label class="table-label-primary"> Initial Review</label>';
+				} else if($dco_reviewed_status == 'no') {
+					$display =  '<label class="table-label-primary"> For Correction</label> ';
+				} else {
+					if($for_revision[0]  == 'yes'){
+						if(!empty($assigned_dco_raw)){
+							$display =  '<label class="table-label-primary"> Initial Review</label>';
+						} else {
+							$display =  '<label class="table-label-primary"> For Revision</label>';
+						}
+						
 					} else {
-						$display =  '<label class="table-label-primary"> For Revision</label>';
+						$display =  '<label class="table-label-primary"> Initial Review</label>';
 					}
 					
-				} else {
-					$display =  '<label class="table-label-primary"> Initial Review</label>';
 				}
-				
-			}
 
+			}
+		
 
 			echo $display;
 
