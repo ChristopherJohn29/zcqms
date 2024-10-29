@@ -61,6 +61,43 @@
 					];
 					$query = new WP_Query( $args );
 
+					$source_of_nc = array(
+						'iqa-lead' => array(
+							'Internal/ 3rd Party Audit',
+							'Improvement Potential',
+							'Unmet Goals/ Objectives',
+							'Service Nonconformity',
+						),
+						'iqa-lead / safety-environment-unit-head' => array(
+							'Occupational/ Patient Safety Event',
+							'Sentinel Event',
+						),
+						'iqa-lead / materials-management-head' => array(
+							'Material or Product',
+						),
+						'iqa-lead / paccu-supervisor' => array(
+							'Customer Complaints',
+							'Customer Satisfaction Survey',
+						),
+						'iqa-lead / internal-control-unit-head' => array(
+							'Internal Control Unit',
+						),
+					);
+					
+					// Function to find matching NC sources for the user based on their roles
+					function find_sources_for_user($source_of_nc, $roles) {
+						$matched_sources = [];
+						foreach ($source_of_nc as $role => $sources) {
+							$role_parts = array_map('trim', explode('/', $role));
+							foreach ($roles as $user_role) {
+								if (in_array($user_role, $role_parts)) {
+									$matched_sources = array_merge($matched_sources, (array)$sources);
+								}
+							}
+						}
+						return $matched_sources;
+					}
+
 					foreach( $query->posts as $ncar ) {
 
 						$id = $ncar->ID;
@@ -69,7 +106,7 @@
 						$author = $author->data->display_name;
 						$ncar_no_new = get_post_meta( $id, 'ncar_no_new', true );
 						$status = get_post_meta( $id, 'status', true );
-						$source = get_post_meta( $id, 'source_of_nc', true );
+						$source = get_post_meta($id, 'source_of_nc', true);
 						$department = get_post_meta( $id, 'department', true );
 						$nc_desc = get_post_meta( $id, 'description_of_the_noncomformity', true );
 						$date = get_post_meta( $id, 'add_date', true );
@@ -92,6 +129,8 @@
 
 						$final_decision = get_post_meta( $id, 'final_decision', true );
 
+						
+
 						// if(is_array($verification)){
 						// 	foreach ($verification as $key => $value) {
 						// 		if(isset($value['verification_implemented'])){
@@ -104,7 +143,7 @@
 						// 	$verified = 0;
 						// }
 
-						
+						$sources_for_user = find_sources_for_user($source_of_nc, $roles);
 
 						if(
 							$reviewed_by == $this_user || 
@@ -112,7 +151,8 @@
 							$approved_by == $this_user || 
 							$ncar->post_author == $this_user || 
 							$roles[0] == 'administrator' || 
-							$roles[0] == 'dco'
+							$roles[0] == 'dco' ||
+							in_array($source, $sources_for_user)
 							){
 
 						?>

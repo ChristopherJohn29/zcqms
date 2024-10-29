@@ -132,7 +132,7 @@
 											<div class="form-group">
 
 												<label class="radio-inline">
-													<input type="radio" name="source_of_nc" value="Customer Satisfaction Survey "> Customer Satisfaction Survey 
+													<input type="radio" name="source_of_nc" value="Customer Satisfaction Survey"> Customer Satisfaction Survey 
 												</label>
 												<label class="radio-inline">
 													<input type="radio" name="source_of_nc" value="Internal Control Unit"> Internal Control Unit
