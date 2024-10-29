@@ -478,3 +478,90 @@ function disable_drag_and_drop_script() {
 }
 add_action('admin_enqueue_scripts', 'disable_drag_and_drop_script');
 
+// Ensure PhpSpreadsheet classes are loaded (if using Composer)
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+// Hook for admin-post.php action for non-logged-in users (use 'admin_post_' for logged-in users)
+add_action('admin_post_nopriv_download_ncar_report', 'download_ncar_report');
+add_action('admin_post_download_ncar_report', 'download_ncar_report');
+
+function download_ncar_report() {
+    // Check if PhpSpreadsheet is available
+    if (!class_exists('PhpOffice\PhpSpreadsheet\Spreadsheet')) {
+        // Include PhpSpreadsheet autoload (if you're using it manually)
+        require 'path/to/PhpSpreadsheet/vendor/autoload.php';
+    }
+
+    // Query NCAR posts
+    $args = [
+        'post_type' => 'ncar',
+        'posts_per_page' => -1
+    ];
+    $query = new WP_Query($args);
+
+    // Create a new Spreadsheet
+    $spreadsheet = new Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Set the headers for the spreadsheet
+    $sheet->setCellValue('A1', 'NCAR No.')
+          ->setCellValue('B1', 'Author')
+          ->setCellValue('C1', 'Reviewed By')
+          ->setCellValue('D1', 'Follow-up by')
+          ->setCellValue('E1', 'Approved By')
+          ->setCellValue('F1', 'Source')
+          ->setCellValue('G1', 'Department')
+          ->setCellValue('H1', 'Date Issued')
+          ->setCellValue('I1', 'Status')
+          ->setCellValue('J1', 'Clause No.');
+
+    // Populate the data in the spreadsheet from NCAR posts
+    $row = 2;
+    foreach ($query->posts as $ncar) {
+        $id = $ncar->ID;
+        $author = get_user_by('ID', $ncar->post_author)->data->display_name;
+        $ncar_no_new = get_post_meta($id, 'ncar_no_new', true);
+        $status = get_post_meta($id, 'status', true);
+        $source = get_post_meta($id, 'source_of_nc', true);
+        $department = get_post_meta($id, 'department', true);
+        $date = get_post_meta($id, 'add_date', true);
+        $clause_no = get_post_meta($id, 'clause_no', true);
+
+        $reviewed_by = get_post_meta($id, 'reviewed_by', true);
+        $reviewed_by_person = get_user_by('ID', $reviewed_by)->data->display_name;
+
+        $followup_by = get_post_meta($id, 'followup_by', true);
+        $followup_by_person = get_user_by('ID', $followup_by)->data->display_name;
+
+        $approved_by = get_post_meta($id, 'approved_by', true);
+        $approved_by_person = get_user_by('ID', $approved_by)->data->display_name;
+
+        // Populate the sheet with NCAR data
+        $sheet->setCellValue('A' . $row, $ncar_no_new ? $ncar_no_new : $ncar->ID)
+              ->setCellValue('B' . $row, $author)
+              ->setCellValue('C' . $row, $reviewed_by_person)
+              ->setCellValue('D' . $row, $followup_by_person)
+              ->setCellValue('E' . $row, $approved_by_person)
+              ->setCellValue('F' . $row, $source)
+              ->setCellValue('G' . $row, $department)
+              ->setCellValue('H' . $row, $date)
+              ->setCellValue('I' . $row, $status)
+              ->setCellValue('J' . $row, $clause_no);
+
+        $row++;
+    }
+
+    // Set headers to force download
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="ncar_report.xlsx"');
+    header('Cache-Control: max-age=0');
+
+    // Write the spreadsheet to output
+    $writer = new Xlsx($spreadsheet);
+    $writer->save('php://output');
+
+    // Exit to prevent any additional output
+    exit();
+}
+

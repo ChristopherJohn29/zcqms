@@ -8,6 +8,7 @@
 <div class="wrap">
 	<div class="section-head">
 		<button class="btn btn-primary pull-right" id="btn-add"><i class="glyphicon glyphicon-plus"></i> Create new NCAR</button>
+		<button class="btn btn-primary pull-right" id="btn-download"><i class="glyphicon glyphicon-download"></i> Download NCAR Report</button>
 		<h1> NCAR Dashboard </h1>
 	</div>
 	<div class="section-body">
@@ -185,3 +186,11 @@
 		</table>
 	</div>
 </div>
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        $('#btn-download').on('click', function(e) {
+            e.preventDefault();
+            window.location.href = '<?php echo admin_url('admin-post.php?action=download_ncar_report'); ?>';
+        });
+    });
+</script>
