@@ -1,6 +1,7 @@
 <?php
 
 
+require 'path/to/vendor/autoload.php';
 
 add_action( 'wp_enqueue_scripts', 'iqms_assets', 11 );
 function iqms_assets(){
