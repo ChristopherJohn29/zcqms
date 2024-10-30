@@ -84,7 +84,9 @@ function filter_posts_list($query)
 				) {
 					$post_ids[] = get_the_ID();
 				}
-				
+
+				$post_ids = [];
+
 			endwhile; 
 			wp_reset_postdata();
 			endif;
