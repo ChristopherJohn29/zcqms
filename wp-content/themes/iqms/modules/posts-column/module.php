@@ -91,6 +91,10 @@ function filter_posts_list($query)
 			wp_reset_postdata();
 			endif;
 
+			if (in_array('dco', $roles)) {
+				$query->set('post_status', array('publish', 'pending', 'private')); // Exclude drafts
+			}
+
 
 			$query->set( 'post__in', empty( $post_ids ) ? [ 0 ] : $post_ids );
 
