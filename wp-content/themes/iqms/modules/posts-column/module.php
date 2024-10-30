@@ -70,16 +70,15 @@ function filter_posts_list($query)
 					}
 				}
 
-				$author_id = get_post_field( 'post_author', get_the_ID() );
-				
-				if
-				(
-					in_array($cur_id, $assigned_dco) || 
-					in_array($cur_id, $approved_by) || 
-					in_array($cur_id, $review_by) || 
-					in_array($cur_id, $users) 
-				)
-				{
+				$author_id = get_post_field('post_author', get_the_ID());
+
+				if (
+					in_array($cur_id, $assigned_dco) ||
+					in_array($cur_id, $approved_by) ||
+					in_array($cur_id, $review_by) ||
+					in_array($cur_id, $users) ||
+					$cur_id == $author_id // Include posts where the current user is the author
+				) {
 					$post_ids[] = get_the_ID();
 				}
 
