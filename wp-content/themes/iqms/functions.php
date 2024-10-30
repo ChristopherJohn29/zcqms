@@ -1,7 +1,7 @@
 <?php
 
 
-require 'path/to/vendor/autoload.php';
+require get_template_directory() . '/vendor/autoload.php';
 
 add_action( 'wp_enqueue_scripts', 'iqms_assets', 11 );
 function iqms_assets(){
@@ -491,7 +491,7 @@ function download_ncar_report() {
     // Check if PhpSpreadsheet is available
     if (!class_exists('PhpOffice\PhpSpreadsheet\Spreadsheet')) {
         // Include PhpSpreadsheet autoload (if you're using it manually)
-        require 'path/to/PhpSpreadsheet/vendor/autoload.php';
+        require get_template_directory() . '/vendor/autoload.php';
     }
 
     // Query NCAR posts
