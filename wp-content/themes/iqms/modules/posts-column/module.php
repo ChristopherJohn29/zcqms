@@ -85,8 +85,9 @@ function filter_posts_list($query)
 					$post_ids[] = get_the_ID();
 				}
 
-				$post_ids = [];
-
+				var_dump($roles);
+				
+				
 			endwhile; 
 			wp_reset_postdata();
 			endif;
