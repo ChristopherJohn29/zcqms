@@ -507,15 +507,16 @@ function download_ncar_report() {
 
     // Set the headers for the spreadsheet
     $sheet->setCellValue('A1', 'NCAR No.')
-          ->setCellValue('B1', 'Author')
-          ->setCellValue('C1', 'Reviewed By')
-          ->setCellValue('D1', 'Follow-up by')
-          ->setCellValue('E1', 'Approved By')
-          ->setCellValue('F1', 'Source')
-          ->setCellValue('G1', 'Department')
-          ->setCellValue('H1', 'Date Issued')
-          ->setCellValue('I1', 'Status')
-          ->setCellValue('J1', 'Clause No.');
+          ->setCellValue('B1', 'Department/Services')
+          ->setCellValue('C1', 'Date Issued')
+          ->setCellValue('D1', 'Description of Non Conformity')
+          ->setCellValue('E1', 'Root Cause Analysis')
+          ->setCellValue('F1', 'Corrective Action')
+          ->setCellValue('G1', 'Implemented Date')
+          ->setCellValue('H1', 'Date Verified Implemented')
+          ->setCellValue('I1', 'Date Verified Effective')
+          ->setCellValue('J1', 'Status')
+          ->setCellValue('K1', 'Remarks');
 
     // Populate the data in the spreadsheet from NCAR posts
     $row = 2;
@@ -529,6 +530,8 @@ function download_ncar_report() {
         $date = get_post_meta($id, 'add_date', true);
         $clause_no = get_post_meta($id, 'clause_no', true);
 
+        $description_of_the_noncomformity = get_post_meta($id, 'description_of_the_noncomformity', true);
+
         $reviewed_by = get_post_meta($id, 'reviewed_by', true);
         $reviewed_by_person = get_user_by('ID', $reviewed_by)->data->display_name;
 
@@ -538,17 +541,39 @@ function download_ncar_report() {
         $approved_by = get_post_meta($id, 'approved_by', true);
         $approved_by_person = get_user_by('ID', $approved_by)->data->display_name;
 
+        $corrective_action_data = get_post_meta($id, 'corrective_action_data', true);
+
+        $root_causes_array = [];
+        $corrective_action_array = [];
+        
+        // Loop through the corrective_action_data array and collect the root_causes and corrective_action
+        if (!empty($corrective_action_data) && is_array($corrective_action_data)) {
+            foreach ($corrective_action_data as $data) {
+                if (!empty($data['root_causes'])) {
+                    $root_causes_array[] = $data['root_causes'];
+                }
+                if (!empty($data['corrective_action'])) {
+                    $corrective_action_array[] = $data['corrective_action'];
+                }
+            }
+        }
+        
+        // Convert the arrays into comma-separated strings
+        $root_causes = implode(', ', $root_causes_array);
+        $corrective_action = implode(', ', $corrective_action_array);
+
         // Populate the sheet with NCAR data
         $sheet->setCellValue('A' . $row, $ncar_no_new ? $ncar_no_new : $ncar->ID)
-              ->setCellValue('B' . $row, $author)
-              ->setCellValue('C' . $row, $reviewed_by_person)
-              ->setCellValue('D' . $row, $followup_by_person)
-              ->setCellValue('E' . $row, $approved_by_person)
-              ->setCellValue('F' . $row, $source)
-              ->setCellValue('G' . $row, $department)
-              ->setCellValue('H' . $row, $date)
-              ->setCellValue('I' . $row, $status)
-              ->setCellValue('J' . $row, $clause_no);
+              ->setCellValue('B' . $row, $department)
+              ->setCellValue('C' . $row, $date)
+              ->setCellValue('D' . $row, $description_of_the_noncomformity)
+              ->setCellValue('E' . $row, $root_causes)
+              ->setCellValue('F' . $row, $corrective_action)
+              ->setCellValue('G' . $row, '')
+              ->setCellValue('H' . $row, '')
+              ->setCellValue('I' . $row, '')
+              ->setCellValue('J' . $row, $status)
+              ->setCellValue('K' . $row, '');
 
         $row++;
     }
