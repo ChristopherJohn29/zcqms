@@ -230,7 +230,7 @@ function filter_post_fields() {
 
 			if ( in_array($r, $roles) ) {
 
-				$hide = false;
+				$hide = true;
 
 			}
 
