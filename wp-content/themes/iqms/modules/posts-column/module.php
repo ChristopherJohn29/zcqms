@@ -29,8 +29,7 @@ function filter_posts_list($query)
 
 			$args = array(
 				'post_type' => 'dcm',
-				'posts_per_page' => -1,
-				'post_status' => array('publish', 'pending', 'private')
+				'posts_per_page' => -1
 			);
 
 			$the_query = new WP_Query( $args );
@@ -74,15 +73,18 @@ function filter_posts_list($query)
 				$author_id = get_post_field('post_author', get_the_ID());
 
 				if (
-					in_array($cur_id, $assigned_dco) ||
-					in_array($cur_id, $approved_by) ||
-					in_array($cur_id, $review_by) ||
-					in_array($cur_id, $users) ||
-					$cur_id == $author_id // Include posts where the current user is the author
+					(
+						in_array($cur_id, $assigned_dco) ||
+						in_array($cur_id, $approved_by) ||
+						in_array($cur_id, $review_by) ||
+						in_array($cur_id, $users) ||
+						$cur_id == $author_id // Include posts where the current user is the author
+					) &&
+					(!in_array('dco', $roles) || get_post_status(get_the_ID()) != 'draft') // Exclude drafts for 'dco' role
 				) {
 					$post_ids[] = get_the_ID();
 				}
-
+				
 			endwhile; 
 			wp_reset_postdata();
 			endif;
