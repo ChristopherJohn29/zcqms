@@ -32,6 +32,11 @@ function filter_posts_list($query)
 				'posts_per_page' => -1
 			);
 
+			if (in_array('dco', $roles)) {
+				$args['post_status'] = array('publish', 'pending', 'private'); // Exclude 'draft'
+			}
+		
+
 			$the_query = new WP_Query( $args );
 
 			if ( $the_query->have_posts() ) :
