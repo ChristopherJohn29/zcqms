@@ -21,7 +21,7 @@ function filter_posts_list($query)
 		
         //global $query's set() method for setting the author as the current user's id
 			
-			if($roles[0] == 'dco' || $roles[0] == 'administrator'){
+			if($roles[0] == 'administrator'){
 				return;
 			}
 			
@@ -78,6 +78,7 @@ function filter_posts_list($query)
 						in_array($cur_id, $approved_by) ||
 						in_array($cur_id, $review_by) ||
 						in_array($cur_id, $users) ||
+						in_array('dco', $roles) ||
 						$cur_id == $author_id // Include posts where the current user is the author
 					) &&
 					(!in_array('dco', $roles) || get_post_status(get_the_ID()) != 'draft') // Exclude drafts for 'dco' role
@@ -85,8 +86,6 @@ function filter_posts_list($query)
 					$post_ids[] = get_the_ID();
 				}
 
-				var_dump($roles);
-				
 				
 			endwhile; 
 			wp_reset_postdata();
