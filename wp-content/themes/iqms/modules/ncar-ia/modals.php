@@ -50,7 +50,7 @@
 											
 											<div class="form-group">
 												<label for="ncar_no">IA No.</label>
-												<input type="text" class="form-control" placeholder="" name="ncar_ia">
+												<input type="text" class="form-control" placeholder="System Generated" disabled name="ncar_ia">
 												<input type="hidden" class="form-control" placeholder="System Generated" disabled name="ncar_no">
 											</div>
 
@@ -240,7 +240,7 @@
 											
 											<div class="form-group">
 												<label for="ncar_no">IA No.</label>
-												<input type="text" class="form-control" placeholder="" name="ncar_ia">
+												<input type="text" class="form-control" placeholder="" disabled name="ncar_ia">
 												<input type="hidden" class="form-control" placeholder="System Generated" disabled name="ncar_no">
 											</div>
 
