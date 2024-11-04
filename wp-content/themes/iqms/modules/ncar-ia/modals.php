@@ -5,10 +5,24 @@
     <div class="modal-content">
 	<?php
 
-	$terms = get_terms( array(
-		'taxonomy'   => 'services',
-		'hide_empty' => false,
-	) );
+		$terms = get_terms( array(
+			'taxonomy'   => 'services',
+			'hide_empty' => false,
+		) );
+
+		$child_terms = array();
+
+		// Loop through the terms and store only the child terms (with non-zero parent)
+		foreach( $terms as $term ) {
+			if ( $term->parent != 0 ) {
+				$child_terms[] = $term;
+			}
+		}
+
+		usort($child_terms, function($a, $b) {
+			return strcmp($a->name, $b->name);
+		});
+
 
 	?>
 				<div class="modal-header">
@@ -65,11 +79,8 @@
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
 													<?php 
-														foreach( $terms  as $term ) {
-															if($term->parent != 0){
-																echo '<option value="'.$term->name.'">'.$term->name.'</option>';
-															}
-															
+														foreach( $child_terms as $term ) {
+															echo '<option value="' . esc_attr($term->name) . '">' . esc_html($term->name) . '</option>';
 														}
 													
 													?>
@@ -260,11 +271,8 @@
 												<label for="department">Department</label>
 												<select id="department" name="department" class="form-control">
 													<?php 
-														foreach( $terms  as $term ) {
-															if($term->parent != 0){
-																echo '<option value="'.$term->name.'">'.$term->name.'</option>';
-															}
-															
+														foreach( $child_terms as $term ) {
+															echo '<option value="' . esc_attr($term->name) . '">' . esc_html($term->name) . '</option>';
 														}
 													
 													?>
