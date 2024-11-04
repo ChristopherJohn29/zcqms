@@ -132,7 +132,7 @@
 
 
 									<div class="row">
-										<div class="col-sm-6">
+										<div class="col-sm-3">
 
 											<div class="form-group">
 												<label for="reviewed_by">Person responsible</label>
@@ -149,7 +149,7 @@
 
 										</div>
 
-										<div class="col-sm-6">
+										<div class="col-sm-3">
 
 											<div class="form-group">
 												<label for="followup_by">Follow-up By</label>
@@ -371,7 +371,7 @@
 
 
 									<div class="row">
-										<div class="col-sm-6">
+										<div class="col-sm-3">
 
 											<div class="form-group">
 												<label for="reviewed_by">Reviewed By</label>
@@ -388,7 +388,7 @@
 
 										</div>
 
-										<div class="col-sm-6">
+										<div class="col-sm-3">
 
 											<div class="form-group">
 												<label for="followup_by">Follow-up by</label>
@@ -428,7 +428,7 @@
 
 										</div>
 
-										<div class="col-sm-6">
+										<div class="col-sm-3">
 
 											<div class="form-group">
 												<label for="approved_by">Verified By</label>
