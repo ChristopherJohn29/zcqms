@@ -468,8 +468,8 @@
 				$html = '' +
 					'<tr>' +
 						'<td colspan="3">' +
-							'<input type="hidden" name="verification_' + _correction_ind + '" class="verification_implemented" value="Yes" style="display: none;"> Yes' +
-							'<input type="hidden" name="verification_' + _correction_ind + '" class="verification_implemented" value="No" style="display: none;"> No' +
+							'<input type="hidden" name="verification_' + _correction_ind + '" class="verification_implemented" value="Yes" style="display: none;">' +
+							'<input type="hidden" name="verification_' + _correction_ind + '" class="verification_implemented" value="No" style="display: none;">' +
 						'' +
 						'<input type="text" class="form-control input-sm verification_remarks" placeholder="remarks"></td>' +
 						'<td><input type="date" class="form-control input-sm verification_date" value="' + date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '"></td>' +
@@ -1061,8 +1061,8 @@
 							$html += '' +
 								'<tr>' +
 									'<td colspan="3">' +
-										'<input type="hidden" name="verification_' + _correction_ind + '" class="verification_implemented" value="Yes" ' + (v.verification_implemented == 'Yes' ? 'checked' : '') + ' style="display: none;"> Yes' +
-										'<input type="hidden" name="verification_' + _correction_ind + '" class="verification_implemented" value="No" ' + (v.verification_implemented == 'No' ? 'checked' : '') + ' style="display: none;"> No' +
+										'<input type="hidden" name="verification_' + _correction_ind + '" class="verification_implemented" value="Yes" ' + (v.verification_implemented == 'Yes' ? 'checked' : '') + ' style="display: none;"> ' +
+										'<input type="hidden" name="verification_' + _correction_ind + '" class="verification_implemented" value="No" ' + (v.verification_implemented == 'No' ? 'checked' : '') + ' style="display: none;"> ' +
 									'' +
 									'<input type="text" class="form-control input-sm verification_remarks" placeholder="remarks" value="' + v.verification_remarks + '"></td>' +
 									'<td><input type="date" class="form-control input-sm verification_date" value="' + v.verification_date + '"></td>' +
