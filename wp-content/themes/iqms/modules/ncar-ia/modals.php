@@ -480,7 +480,7 @@
 									<table class="table">
 										<tbody>
 											<tr>
-												<td colspan="1">3. verifications: Implemented as Planned?</td>
+												<td colspan="1">3. Follow-up on Implementation of action</td>
 												<td>Target Date</td>
 												<td>Completion Date</td>
 												<td colspan="2">Implemented As Planned?</td>
@@ -512,7 +512,7 @@
 									<table class="table">
 										<tbody>
 											<tr>
-												<td colspan="2">3. verifications: Implemented as Planned?</td>
+												<td colspan="2">3. Verification on the effectiveness of action</td>
 												<td>Remarks</td>
 												<td>Date Stamp</td>
 												<td></td>
