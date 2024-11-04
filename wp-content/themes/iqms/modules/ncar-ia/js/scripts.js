@@ -157,7 +157,7 @@
 
 				$html = ''+
 				'<tr>'+
-					'<td colspan="2"><input type="text" class="form-control correction_text"></td>'+
+					'<td colspan="2"><textarea class="form-control correction_text" rows="5"></textarea></td>'+
 					'<td><input type="date" class="form-control target_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
 					'<td><input type="date" class="form-control correction_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
 					'<td class="hidden">'+
@@ -981,7 +981,7 @@
 							console.log(e_input_attachment);
 							$html += ''+
 							'<tr>'+
-								'<td colspan="2"><input type="text" class="form-control correction_text" value="'+v.correction_text+'"></td>'+
+								'<td colspan="2"><textarea class="form-control correction_text">' + v.correction_text + '</textarea></td>'+
 								'<td><input type="date" class="form-control target_date" value="'+v.target_date+'"></td>'+
 								'<td><input type="date" class="form-control correction_date" value="'+v.correction_date+'"></td>'+
 								'<td class="hidden">'+
