@@ -180,9 +180,6 @@ if ( !class_exists('NCAR_Module') ) {
 
 				if($satisfactory !== ''){
 
-					var_dump('satisfactory', $data);
-					exit;
-					
 					$owner = get_post_field('post_author',$post_id);
 					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
 					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
@@ -250,9 +247,7 @@ if ( !class_exists('NCAR_Module') ) {
 					}
 				} else {
 
-					var_dump('no satisfactory', $data);
-					exit;
-					
+
 					update_post_meta( $post_id, 'status', 'For Follow up' );
 
 					$owner = get_post_field('post_author',$post_id);
@@ -301,6 +296,10 @@ if ( !class_exists('NCAR_Module') ) {
 						$this->sendEmail($followup_by->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its implementation.');
 
 					}
+
+					
+					var_dump('no satisfactory', $data);
+					exit;
 					
 
 
