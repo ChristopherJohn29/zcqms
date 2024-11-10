@@ -1,25 +1,25 @@
-// jQuery(document).ready(function($) {
-//     // Function to remove sortable
-//     function disableSortable() {
-//         $('.meta-box-sortables').sortable('destroy');
-//         $('.handle-actions').addClass('hidden');
-//         $('.misc-pub-section').addClass('hidden');
-//         $('#preview-action').addClass('hidden');
-//         $('#save-action').css('width',"100%");
-//     }
+jQuery(document).ready(function($) {
+    // Function to remove sortable
+    function disableSortable() {
+        $('.meta-box-sortables').sortable('destroy');
+        $('.handle-actions').addClass('hidden');
+        $('.misc-pub-section').addClass('hidden');
+        $('#preview-action').addClass('hidden');
+        $('#save-action').css('width',"100%");
+    }
 
-//     // Disable sortable on page load
-//     disableSortable();
+    // Disable sortable on page load
+    disableSortable();
 
-//     // Use MutationObserver to detect changes in the DOM
-//     const observer = new MutationObserver(function(mutations) {
-//         mutations.forEach(function(mutation) {
-//             if ($(mutation.target).hasClass('meta-box-sortables')) {
-//                 disableSortable();  // Disable sortable again if detected
-//             }
-//         });
-//     });
+    // Use MutationObserver to detect changes in the DOM
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if ($(mutation.target).hasClass('meta-box-sortables')) {
+                disableSortable();  // Disable sortable again if detected
+            }
+        });
+    });
 
-//     // Observe changes in the DOM
-//     observer.observe(document.body, { childList: true, subtree: true });
-// });
+    // Observe changes in the DOM
+    observer.observe(document.body, { childList: true, subtree: true });
+});
