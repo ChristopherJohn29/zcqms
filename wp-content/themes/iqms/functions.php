@@ -344,7 +344,7 @@ function custom_services_dropdown_callback($post) {
     wp_get_current_user();
     
     // Get the user's saved service term from user meta
-    $user_service_term = get_user_meta($current_user->ID, 'user_service_term', true);
+    $services = get_user_meta($current_user->ID, 'services', true);
     
     // Get all terms in the 'services' taxonomy
     $terms = get_terms(array(
@@ -358,7 +358,7 @@ function custom_services_dropdown_callback($post) {
     if (!empty($terms) && !is_wp_error($terms)) {
         foreach ($terms as $term) {
             // Preselect the user's saved service
-            $selected = ($user_service_term == $term->term_id) ? 'selected="selected"' : '';
+            $selected = ($services == $term->term_id) ? 'selected="selected"' : '';
             echo '<option value="' . esc_attr($term->term_id) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
         }
     }
