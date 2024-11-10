@@ -162,9 +162,7 @@ if ( !class_exists('NCAR_Module') ) {
 		function ncar_form2_save() {
 			$data = $_POST['data'];
 
-			var_dump($data);
-			exit;
-
+	
 			$correction = $data['correction'];
 			$correction_rca = $data['correction_rca'];
 			$files = ( $data['files'] ? $data['files'] : [] );
@@ -172,6 +170,10 @@ if ( !class_exists('NCAR_Module') ) {
 			$satisfactory = ( isset($data['satisfactory']) ? $data['satisfactory']  : '' );
 
 			$post_id = $data['ncar_no'];
+
+			var_dump($data);
+			exit;
+
 			
 
 			$to_return = [];
