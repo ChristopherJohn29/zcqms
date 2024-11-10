@@ -160,9 +160,9 @@
 					'<td colspan="2"><textarea class="form-control correction_text" rows="5"></textarea></td>'+
 					'<td><input type="date" class="form-control target_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
 					'<td><input type="date" class="form-control correction_date" value="'+date.getFullYear()+'-'+date.getMonth()+'-'+date.getDate()+'"></td>'+
-					'<td class="hidden">'+
+					'<td class="hidden" style="display:inline-flex;">'+
 						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes"> Yes'+
-						'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No"> No'+
+						'<input type="radio" style="margin-left: 10px;" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No"> No'+
 					'</td>'+
 					'<td><div class="form-group file-upload" data-id="'+_correction_ind+'">' +
 					'<label for="evidences"><button type="" class="btn btn-info btn-sm upload-btn-new" data-id="'+_correction_ind+'">Select files</button></label>' +
@@ -984,9 +984,9 @@
 								'<td colspan="2"><textarea class="form-control correction_text">' + v.correction_text + '</textarea></td>'+
 								'<td><input type="date" class="form-control target_date" value="'+v.target_date+'"></td>'+
 								'<td><input type="date" class="form-control correction_date" value="'+v.correction_date+'"></td>'+
-								'<td class="hidden">'+
+								'<td class="hidden" style="display:inline-flex;">'+
 									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="Yes" '+( v.correction_implemented == 'Yes' ? 'checked' : '' )+'> Yes'+
-									'<input type="radio" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No" '+( v.correction_implemented == 'No' ? 'checked' : '' )+'> No'+
+									'<input type="radio" style="margin-left: 10px;" name="correction_implemented_'+_correction_ind+'" class="correction_implemented" value="No" '+( v.correction_implemented == 'No' ? 'checked' : '' )+'> No'+
 								'</td>'+
 								'<td><button class="btn btn-info btn-sm view-btn-new">View saved File</button>'+e_input_attachment+'</td>'+
 								'<td><div class="form-group file-upload" data-id="'+_correction_ind+'">' +
@@ -1047,7 +1047,7 @@
 							 '<input type="text" disabled class="form-control  correction_text" value="' + v.correction_text + '"><button class="btn btn-primary view-button" data-content="' + v.correction_text + '">view</button></td>' + 
 							 '<td><input type="date" disabled class="form-control target_date" value="' + v.target_date + '"></td>' + '<td><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' +
 							 '<td><button class="btn btn-info btn-sm view-btn-new">View File</button>'+e_input_attachment+'</td></td>'+
-							 '<td>' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"><button class="btn btn-primary view-button" data-content="' + v.correction_remarks + '">view</button></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+							 '<td style="display:inline-flex;">' + '<input type="radio" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="Yes" ' + (v.correction_implemented == 'Yes' ? 'checked' : '') + '> Yes' + '<input type="radio" style="margin-left: 10px;" name="correction_implemented_' + _correction_ind + '" class="correction_implemented" value="No" ' + (v.correction_implemented == 'No' ? 'checked' : '') + '> No' + '</td>' + '<td colspan="2"><input type="text" class="form-control input-sm correction_remarks" placeholder="remarks" value="' + v.correction_remarks + '"><button class="btn btn-primary view-button" data-content="' + v.correction_remarks + '">view</button></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
 							_correction_ind++;
 							
 							$('#form_3_1').html($html2);
