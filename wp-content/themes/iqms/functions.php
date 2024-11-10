@@ -423,7 +423,7 @@ function custom_document_type_dropdown_callback($post) {
     $selected_term = wp_get_post_terms($post->ID, 'document_type', array('fields' => 'ids'));
 
     // Output a dropdown (select box)
-    echo '<select name="post_document_type_term" id="post_document_type_term">';
+    echo '<select name="post_document_type_term" id="post_document_type_term" required>';
     echo '<option value="">Select Document Type</option>'; // Default option
     if (!empty($terms) && !is_wp_error($terms)) {
         foreach ($terms as $term) {
