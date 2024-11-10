@@ -470,10 +470,9 @@ if ( !class_exists('NCAR_IA_Module') ) {
 			
 				foreach( $data as $field ) {
 					update_post_meta( $post_id, $field['name'], $field['value'] );
-					if($field['name'] == 'ncar_ia'){
-						update_post_meta( $post_id, 'ncar_ia', $ncar_no_new );
-					}
 				}
+
+				update_post_meta( $post_id, 'ncar_ia', $ncar_no_new );
 
 				update_post_meta( $post_id, 'status', 'For Improvement Action' );
 
