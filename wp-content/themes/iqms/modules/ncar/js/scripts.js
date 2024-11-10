@@ -633,7 +633,12 @@
                     $this = $('.noncoformity-evidence-file-upload');
                     html = '';
                     $this.find('#noncoformity-evidence input').each(function() {
-                        html += '<a href="' + $(this).data('url') + '" target="_blank">' + $(this).data('title') + '</a>';
+                        let url = $(this).data('url');
+            
+                        // Force the URL to start with 'https://'
+                        url = url.replace(/^http:\/\//i, 'https://');  // Replace http:// with https://
+            
+                        html += '<a href="' + url + '" target="_blank">' + $(this).data('title') + '</a>';
                         Swal.fire({
                             icon: 'info',
                             title: 'Selected File(s)',
