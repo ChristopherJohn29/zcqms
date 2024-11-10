@@ -614,7 +614,7 @@ function enable_update_button_for_correction() {
         $current_user_id = get_current_user_id();
         
         // Retrieve the prepared_by field (this is the user ID who prepared the post)
-        $prepared_by = get_field('prepared_by', get_the_ID());
+        $prepared_by = get_field('users', get_the_ID());
         
         // Retrieve the values for your conditions
         $dco_reviewed_status = get_field('dco_review_status', $post->ID);
