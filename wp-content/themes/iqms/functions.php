@@ -607,7 +607,7 @@ function download_ncar_report() {
 }
 
 function enable_update_button_for_correction() {
-    if (get_current_screen()->base == 'post') {
+    if (get_current_screen()->base == 'post' && isset($_GET['post'])) {
         global $post;
         
         // Retrieve the current user ID
@@ -689,6 +689,3 @@ function enable_update_button_for_correction() {
     }
 }
 add_action('admin_footer', 'enable_update_button_for_correction');
-
-
-
