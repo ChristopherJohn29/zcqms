@@ -610,86 +610,85 @@ function enable_update_button_for_correction() {
     if (get_current_screen()->base == 'post') {
         global $post;
         
-        // Check if the current user is an author
-        if (current_user_can('author')) {
-            
-            // Retrieve the prepared_by field
-            $prepared_by = get_field('prepared_by', get_the_ID());
-            
-            // Retrieve the values for your conditions
-            $dco_reviewed_status = get_field('dco_review_status', $post->ID);
-            $reviewed_status = get_field('review_status', $post->ID);
-            $approval_status = get_field('approval_status', $post->ID);
-            $for_revision = get_field('for_revision', $post->ID);
-            $assigned_dco_raw = get_field('assigned_dco', $post->ID);
-            
-            // Set display variable based on the retrieved field values
-            $display = '';
-            if (get_post_status($post->ID) == 'draft') {
-                $display = 'Unpublished';
-            } else {
-                if ($dco_reviewed_status == 'review') {
-                    $display = 'For Review (DCO Complied)';
-                } else if ($dco_reviewed_status == 'yes') {
-                    if ($reviewed_status == 'yes') {
-                        if ($approval_status == 'no') {
-                            $display = 'For Correction';
-                        } else if ($approval_status == 'review') {
-                            $display = 'For Review (Complied)';
-                        } else {
-                            $display = 'For Approval';
-                        }
-                    } else if ($reviewed_status == 'no') {
+        // Retrieve the current user ID
+        $current_user_id = get_current_user_id();
+        
+        // Retrieve the prepared_by field (this is the user ID who prepared the post)
+        $prepared_by = get_field('prepared_by', get_the_ID());
+        
+        // Retrieve the values for your conditions
+        $dco_reviewed_status = get_field('dco_review_status', $post->ID);
+        $reviewed_status = get_field('review_status', $post->ID);
+        $approval_status = get_field('approval_status', $post->ID);
+        $for_revision = get_field('for_revision', $post->ID);
+        $assigned_dco_raw = get_field('assigned_dco', $post->ID);
+        
+        // Set display variable based on the retrieved field values
+        $display = '';
+        if (get_post_status($post->ID) == 'draft') {
+            $display = 'Unpublished';
+        } else {
+            if ($dco_reviewed_status == 'review') {
+                $display = 'For Review (DCO Complied)';
+            } else if ($dco_reviewed_status == 'yes') {
+                if ($reviewed_status == 'yes') {
+                    if ($approval_status == 'no') {
                         $display = 'For Correction';
-                    } else if ($reviewed_status == 'review') {
+                    } else if ($approval_status == 'review') {
                         $display = 'For Review (Complied)';
                     } else {
-                        $display = 'For Recommendation';
+                        $display = 'For Approval';
                     }
-                } else if ($dco_reviewed_status == 'no') {
+                } else if ($reviewed_status == 'no') {
                     $display = 'For Correction';
+                } else if ($reviewed_status == 'review') {
+                    $display = 'For Review (Complied)';
                 } else {
-                    if ($for_revision[0] == 'yes') {
-                        if (!empty($assigned_dco_raw)) {
-                            $display = 'Initial Review';
-                        } else {
-                            $display = 'For Revision';
-                        }
-                    } else {
+                    $display = 'For Recommendation';
+                }
+            } else if ($dco_reviewed_status == 'no') {
+                $display = 'For Correction';
+            } else {
+                if ($for_revision[0] == 'yes') {
+                    if (!empty($assigned_dco_raw)) {
                         $display = 'Initial Review';
+                    } else {
+                        $display = 'For Revision';
                     }
+                } else {
+                    $display = 'Initial Review';
                 }
             }
-            
-            // Apply the logic only if the 'prepared_by' matches the current author
-            if ($prepared_by === get_current_user_id()) {
-                // Pass the display status to JavaScript
-                ?>
-                <script type="text/javascript">
-                    document.addEventListener("DOMContentLoaded", function() {
-                        const updateButton = document.getElementById('publish');
-                        const displayStatus = "<?php echo esc_js($display); ?>";
+        }
 
-                        if (updateButton) {
-                            // Initially disable the button
-                            updateButton.disabled = true;
-                            updateButton.style.pointerEvents = 'none';
-                            updateButton.style.opacity = '0.5';
+        // Enable the "Update" button only if the current user is the author OR prepared_by
+        if ($current_user_id == $post->post_author || $current_user_id == $prepared_by) {
+            ?>
+            <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded", function() {
+                    const updateButton = document.getElementById('publish');
+                    const displayStatus = "<?php echo esc_js($display); ?>";
 
-                            // Enable only if status is "For Correction"
-                            if (displayStatus.includes('For Correction')) {
-                                updateButton.disabled = false;
-                                updateButton.style.pointerEvents = 'auto';
-                                updateButton.style.opacity = '1';
-                            }
+                    if (updateButton) {
+                        // Initially disable the button
+                        updateButton.disabled = true;
+                        updateButton.style.pointerEvents = 'none';
+                        updateButton.style.opacity = '0.5';
+
+                        // Enable only if status is "For Correction"
+                        if (displayStatus.includes('For Correction')) {
+                            updateButton.disabled = false;
+                            updateButton.style.pointerEvents = 'auto';
+                            updateButton.style.opacity = '1';
                         }
-                    });
-                </script>
-                <?php
-            }
+                    }
+                });
+            </script>
+            <?php
         }
     }
 }
 add_action('admin_footer', 'enable_update_button_for_correction');
+
 
 
