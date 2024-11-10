@@ -307,17 +307,24 @@ if ( !class_exists('NCAR_Module') ) {
 
 
 				foreach ($correction as $key => $value) {
-					$correction[$key]['correction_text'] = $correction[$key]['correction_text'] ? $correction[$key]['correction_text'] : $current_correction[$key]['correction_text'];
-					$correction[$key]['correction_date'] = $correction[$key]['correction_date'] ? $correction[$key]['correction_date'] : $current_correction[$key]['correction_date'];
-					$correction[$key]['correction_implemented'] = $correction[$key]['correction_implemented'] ? $correction[$key]['correction_implemented'] : $current_correction[$key]['correction_implemented'];
-					$correction[$key]['correction_remarks'] = $correction[$key]['correction_remarks'] ? $correction[$key]['correction_remarks'] : $current_correction[$key]['correction_remarks'];
+					$correction[$key]['correction_text'] = isset($correction[$key]['correction_text']) && !empty($correction[$key]['correction_text']) 
+						? $correction[$key]['correction_text'] 
+						: (isset($current_correction[$key]['correction_text']) ? $current_correction[$key]['correction_text'] : '');
+				
+					$correction[$key]['correction_date'] = isset($correction[$key]['correction_date']) && !empty($correction[$key]['correction_date']) 
+						? $correction[$key]['correction_date'] 
+						: (isset($current_correction[$key]['correction_date']) ? $current_correction[$key]['correction_date'] : '');
+				
+					$correction[$key]['correction_implemented'] = isset($correction[$key]['correction_implemented']) && !empty($correction[$key]['correction_implemented']) 
+						? $correction[$key]['correction_implemented'] 
+						: (isset($current_correction[$key]['correction_implemented']) ? $current_correction[$key]['correction_implemented'] : '');
+				
+					$correction[$key]['correction_remarks'] = isset($correction[$key]['correction_remarks']) && !empty($correction[$key]['correction_remarks']) 
+						? $correction[$key]['correction_remarks'] 
+						: (isset($current_correction[$key]['correction_remarks']) ? $current_correction[$key]['correction_remarks'] : '');
 				}
 
 				$current_correction_rca = get_post_meta( $post_id, 'correction_rca', true);
-
-				var_dump('no satisfactory', $data);
-				exit;
-
 
 				foreach ($correction_rca as $key => $value) {
 					$correction_rca[$key]['correction_text'] = $correction_rca[$key]['correction_text'] ? $correction_rca[$key]['correction_text'] : $current_correction_rca[$key]['correction_text'];
@@ -326,12 +333,27 @@ if ( !class_exists('NCAR_Module') ) {
 				$current_corrective_action_data = get_post_meta( $post_id, 'corrective_action_data', true );
 
 				foreach ($corrective_action_data as $key => $value) {
-					$corrective_action_data[$key]['root_causes'] = $corrective_action_data[$key]['root_causes'] ? $corrective_action_data[$key]['root_causes'] : $current_corrective_action_data[$key]['root_causes'];
-					$corrective_action_data[$key]['corrective_action'] = $corrective_action_data[$key]['corrective_action'] ? $corrective_action_data[$key]['corrective_action'] : $current_corrective_action_data[$key]['corrective_action'];
-					$corrective_action_data[$key]['corrective_date'] = $corrective_action_data[$key]['corrective_date'] ? $corrective_action_data[$key]['corrective_date'] : $current_corrective_action_data[$key]['corrective_date'];
-					$corrective_action_data[$key]['corrective_implemented'] = $corrective_action_data[$key]['corrective_implemented'] ? $corrective_action_data[$key]['corrective_implemented'] : $current_corrective_action_data[$key]['corrective_implemented'];
-					$corrective_action_data[$key]['corrective_remarks'] = $corrective_action_data[$key]['corrective_remarks'] ? $corrective_action_data[$key]['corrective_remarks'] : $current_corrective_action_data[$key]['corrective_remarks'];
+					$corrective_action_data[$key]['root_causes'] = isset($corrective_action_data[$key]['root_causes']) && !empty($corrective_action_data[$key]['root_causes']) 
+						? $corrective_action_data[$key]['root_causes'] 
+						: (isset($current_corrective_action_data[$key]['root_causes']) ? $current_corrective_action_data[$key]['root_causes'] : '');
+				
+					$corrective_action_data[$key]['corrective_action'] = isset($corrective_action_data[$key]['corrective_action']) && !empty($corrective_action_data[$key]['corrective_action']) 
+						? $corrective_action_data[$key]['corrective_action'] 
+						: (isset($current_corrective_action_data[$key]['corrective_action']) ? $current_corrective_action_data[$key]['corrective_action'] : '');
+				
+					$corrective_action_data[$key]['corrective_date'] = isset($corrective_action_data[$key]['corrective_date']) && !empty($corrective_action_data[$key]['corrective_date']) 
+						? $corrective_action_data[$key]['corrective_date'] 
+						: (isset($current_corrective_action_data[$key]['corrective_date']) ? $current_corrective_action_data[$key]['corrective_date'] : '');
+				
+					$corrective_action_data[$key]['corrective_implemented'] = isset($corrective_action_data[$key]['corrective_implemented']) && !empty($corrective_action_data[$key]['corrective_implemented']) 
+						? $corrective_action_data[$key]['corrective_implemented'] 
+						: (isset($current_corrective_action_data[$key]['corrective_implemented']) ? $current_corrective_action_data[$key]['corrective_implemented'] : '');
+				
+					$corrective_action_data[$key]['corrective_remarks'] = isset($corrective_action_data[$key]['corrective_remarks']) && !empty($corrective_action_data[$key]['corrective_remarks']) 
+						? $corrective_action_data[$key]['corrective_remarks'] 
+						: (isset($current_corrective_action_data[$key]['corrective_remarks']) ? $current_corrective_action_data[$key]['corrective_remarks'] : '');
 				}
+				
 
 				update_post_meta( $post_id, 'correction', $correction );
 				update_post_meta( $post_id, 'correction_rca', $correction_rca );
