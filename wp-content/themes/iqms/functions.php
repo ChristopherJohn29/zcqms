@@ -354,10 +354,10 @@ function custom_services_dropdown_callback($post) {
         'taxonomy' => 'services',
         'hide_empty' => false,
     ));
-    $readonly = '';
+    $readonly = 'readonly';
     // Output a dropdown (select box)
     if(!empty($services_term)){
-        $readonly = 'readonly';
+        $readonly = '';
     }
     echo '<select name="post_services_term" id="post_services_term" '.$readonly.'>';
     echo '<option value="">Select a Service</option>'; // Default option
