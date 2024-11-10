@@ -297,13 +297,11 @@ if ( !class_exists('NCAR_Module') ) {
 
 					}
 
-					
-					var_dump('no satisfactory', $data);
-					exit;
-					
-
 
 				}
+
+
+				///////////////////////////////////////
 
 				$current_correction = get_post_meta( $post_id, 'correction', true);
 
@@ -339,6 +337,11 @@ if ( !class_exists('NCAR_Module') ) {
 				
 
 				$to_return = ['post_id' => $post_id];
+
+				var_dump('no satisfactory', $data);
+				exit;
+				
+
 			} else {
 				$to_return = ['error' => true];
 			}
