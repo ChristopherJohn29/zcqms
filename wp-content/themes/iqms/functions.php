@@ -374,6 +374,10 @@ function custom_services_dropdown_callback($post) {
 
 // Save the selected 'services' taxonomy term from the dropdown
 function save_selected_service_term($post_id) {
+
+    var_dump($_POST['post_services_term']);
+    exit;
+    
     // Verify if this is not an autosave
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
         return;
@@ -384,7 +388,7 @@ function save_selected_service_term($post_id) {
 
         var_dump($_POST['post_services_term']);
         exit;
-        
+
         $service_term_id = intval($_POST['post_services_term']);
 
         // Set the taxonomy term for the 'dcm' post type
