@@ -21,25 +21,6 @@ function iqms_assets(){
     
 }
 
-function save_selected_service_term($post_id) {
-    // Ensure the function is not triggered for autosave
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
-
-    // Test the hook by logging or dumping data
-    var_dump("save_post hook triggered for post ID: " . $post_id);
-    exit;
-
-    // Original code for saving the term
-    if (isset($_POST['post_services_term']) && $_POST['post_services_term'] !== '') {
-        $service_term_id = intval($_POST['post_services_term']);
-        wp_set_post_terms($post_id, array($service_term_id), 'services');
-    } else {
-        wp_set_post_terms($post_id, array(), 'services');
-    }
-}
-add_action('save_post_dcm', 'save_selected_service_term');
 
 function custom_wp_mail_from($from_email) {
     return 'zcmc-iqms@zcmc-iqms.infoadvance.com.ph'; // Change to the email address you want to use as the sender
@@ -393,33 +374,28 @@ function custom_services_dropdown_callback($post) {
     echo '</select>';
 }
 
-// // Save the selected 'services' taxonomy term from the dropdown
-// function save_selected_service_term($post_id) {
+// Save the selected 'services' taxonomy term from the dropdown
+function save_selected_service_term($post_id) {
 
-//     var_dump($_POST['post_services_term']);
-//     exit;
-    
-//     // Verify if this is not an autosave
-//     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-//         return;
-//     }
 
-//     // Check if the service term is set in the POST request
-//     if (isset($_POST['post_services_term']) && $_POST['post_services_term'] !== '') {
+    // Verify if this is not an autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
 
-//         var_dump($_POST['post_services_term']);
-//         exit;
+    // Check if the service term is set in the POST request
+    if (isset($_POST['post_services_term']) && $_POST['post_services_term'] !== '') {
 
-//         $service_term_id = intval($_POST['post_services_term']);
+        $service_term_id = intval($_POST['post_services_term']);
 
-//         // Set the taxonomy term for the 'dcm' post type
-//         wp_set_post_terms($post_id, array($service_term_id), 'services');
-//     } else {
-//         // If no term is selected, remove the term
-//         wp_set_post_terms($post_id, array(), 'services');
-//     }
-// }
-// add_action('save_post', 'save_selected_service_term', 10, 1);
+        // Set the taxonomy term for the 'dcm' post type
+        wp_set_post_terms($post_id, array($service_term_id), 'services');
+    } else {
+        // If no term is selected, remove the term
+        wp_set_post_terms($post_id, array(), 'services');
+    }
+}
+add_action('save_post_dcm', 'save_selected_service_term');
 
 // Remove default taxonomy metaboxes for 'document_type' and 'documents_label'
 function remove_document_type_and_label_metaboxes() {
@@ -503,7 +479,7 @@ function save_selected_document_terms($post_id) {
         wp_set_post_terms($post_id, array(), 'documents_label'); // Remove if no term selected
     }
 }
-add_action('save_post', 'save_selected_document_terms');
+add_action('save_post_dcm', 'save_selected_document_terms');
 
 function disable_drag_and_drop_script() {
     global $pagenow;
