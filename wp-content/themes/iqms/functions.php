@@ -23,7 +23,7 @@ function iqms_assets(){
 
 function test_save_post_hook($post_id) {
     // This should output directly to the log or screen and stop the process.
-    var_dump("Save post triggered for post ID: " . $post_id);
+    var_dump("Save post triggered for post IDs: " . $post_id);
     exit;
 }
 add_action('save_post', 'test_save_post_hook', 10, 1);
