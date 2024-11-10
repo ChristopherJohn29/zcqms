@@ -26,7 +26,7 @@ function test_save_post_hook($post_id) {
     var_dump("Save post triggered for post ID: " . $post_id);
     exit;
 }
-add_action('save_post', 'test_save_post_hook');
+add_action('save_post', 'test_save_post_hook', 10, 1);
 
 function custom_wp_mail_from($from_email) {
     return 'zcmc-iqms@zcmc-iqms.infoadvance.com.ph'; // Change to the email address you want to use as the sender
