@@ -315,6 +315,9 @@ if ( !class_exists('NCAR_Module') ) {
 
 				$current_correction_rca = get_post_meta( $post_id, 'correction_rca', true);
 
+				var_dump('no satisfactory', $data);
+				exit;
+
 
 				foreach ($correction_rca as $key => $value) {
 					$correction_rca[$key]['correction_text'] = $correction_rca[$key]['correction_text'] ? $correction_rca[$key]['correction_text'] : $current_correction_rca[$key]['correction_text'];
@@ -338,8 +341,7 @@ if ( !class_exists('NCAR_Module') ) {
 
 				$to_return = ['post_id' => $post_id];
 
-				var_dump('no satisfactory', $data);
-				exit;
+	
 				
 
 			} else {
