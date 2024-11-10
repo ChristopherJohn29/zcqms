@@ -92,14 +92,6 @@ define('WP_DEBUG', true); // Enable WordPress debugging
 define('WP_DEBUG_LOG', true); // Log errors to wp-content/debug.log
 define('WP_DEBUG_DISPLAY', false); // Don't display errors on the front-end
 
-// Log only critical errors (like 500 errors)
-ini_set('log_errors', 'On');
-ini_set('error_log', WP_CONTENT_DIR . '/debug.log');
-ini_set('display_errors', 'Off');
-
-// Set error reporting to only log fatal errors (500 errors are typically fatal)
-error_reporting(E_ERROR); 
-
 /* Add any custom values between this line and the "stop editing" line. */
 
 
