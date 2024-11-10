@@ -398,7 +398,7 @@ function save_selected_service_term($post_id) {
         wp_set_post_terms($post_id, array(), 'services');
     }
 }
-add_action('save_post', 'save_selected_service_term');
+add_action('save_post', 'save_selected_service_term', 10, 1);
 
 // Remove default taxonomy metaboxes for 'document_type' and 'documents_label'
 function remove_document_type_and_label_metaboxes() {
