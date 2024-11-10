@@ -381,6 +381,10 @@ function save_selected_service_term($post_id) {
 
     // Check if the service term is set in the POST request
     if (isset($_POST['post_services_term']) && $_POST['post_services_term'] !== '') {
+
+        var_dump($_POST['post_services_term']);
+        exit;
+        
         $service_term_id = intval($_POST['post_services_term']);
 
         // Set the taxonomy term for the 'dcm' post type
