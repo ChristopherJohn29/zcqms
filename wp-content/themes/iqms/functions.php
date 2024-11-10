@@ -21,12 +21,30 @@ function iqms_assets(){
     
 }
 
-function test_save_post_hook($post_id) {
-    // This should output directly to the log or screen and stop the process.
-    var_dump("Save post triggered for post IDs: " . $post_id);
+function save_selected_service_term($post_id) {
+    // Ensure the function is not triggered for autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    // Confirm the post type is 'dcm' if this function is only for that post type
+    if (get_post_type($post_id) !== 'dcm') {
+        return;
+    }
+
+    // Test the hook by logging or dumping data
+    var_dump("save_post hook triggered for post ID: " . $post_id);
     exit;
+
+    // Original code for saving the term
+    if (isset($_POST['post_services_term']) && $_POST['post_services_term'] !== '') {
+        $service_term_id = intval($_POST['post_services_term']);
+        wp_set_post_terms($post_id, array($service_term_id), 'services');
+    } else {
+        wp_set_post_terms($post_id, array(), 'services');
+    }
 }
-add_action('save_post', 'test_save_post_hook', 10, 1);
+add_action('save_post', 'save_selected_service_term');
 
 function custom_wp_mail_from($from_email) {
     return 'zcmc-iqms@zcmc-iqms.infoadvance.com.ph'; // Change to the email address you want to use as the sender
@@ -380,33 +398,33 @@ function custom_services_dropdown_callback($post) {
     echo '</select>';
 }
 
-// Save the selected 'services' taxonomy term from the dropdown
-function save_selected_service_term($post_id) {
+// // Save the selected 'services' taxonomy term from the dropdown
+// function save_selected_service_term($post_id) {
 
-    var_dump($_POST['post_services_term']);
-    exit;
+//     var_dump($_POST['post_services_term']);
+//     exit;
     
-    // Verify if this is not an autosave
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
+//     // Verify if this is not an autosave
+//     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+//         return;
+//     }
 
-    // Check if the service term is set in the POST request
-    if (isset($_POST['post_services_term']) && $_POST['post_services_term'] !== '') {
+//     // Check if the service term is set in the POST request
+//     if (isset($_POST['post_services_term']) && $_POST['post_services_term'] !== '') {
 
-        var_dump($_POST['post_services_term']);
-        exit;
+//         var_dump($_POST['post_services_term']);
+//         exit;
 
-        $service_term_id = intval($_POST['post_services_term']);
+//         $service_term_id = intval($_POST['post_services_term']);
 
-        // Set the taxonomy term for the 'dcm' post type
-        wp_set_post_terms($post_id, array($service_term_id), 'services');
-    } else {
-        // If no term is selected, remove the term
-        wp_set_post_terms($post_id, array(), 'services');
-    }
-}
-add_action('save_post', 'save_selected_service_term', 10, 1);
+//         // Set the taxonomy term for the 'dcm' post type
+//         wp_set_post_terms($post_id, array($service_term_id), 'services');
+//     } else {
+//         // If no term is selected, remove the term
+//         wp_set_post_terms($post_id, array(), 'services');
+//     }
+// }
+// add_action('save_post', 'save_selected_service_term', 10, 1);
 
 // Remove default taxonomy metaboxes for 'document_type' and 'documents_label'
 function remove_document_type_and_label_metaboxes() {
