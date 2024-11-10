@@ -171,8 +171,7 @@ if ( !class_exists('NCAR_Module') ) {
 
 			$post_id = $data['ncar_no'];
 
-			var_dump($data);
-			exit;
+
 
 			
 
@@ -180,6 +179,9 @@ if ( !class_exists('NCAR_Module') ) {
 			if ( $post_id ) {
 
 				if($satisfactory !== ''){
+
+					var_dump('satisfactory', $data);
+					exit;
 					
 					$owner = get_post_field('post_author',$post_id);
 					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
@@ -247,6 +249,10 @@ if ( !class_exists('NCAR_Module') ) {
 					
 					}
 				} else {
+
+					var_dump('no satisfactory', $data);
+					exit;
+					
 					update_post_meta( $post_id, 'status', 'For Follow up' );
 
 					$owner = get_post_field('post_author',$post_id);
