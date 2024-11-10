@@ -413,6 +413,7 @@ if ( !class_exists('NCAR_IA_Module') ) {
 					'clause_no' => get_post_meta( $id, 'clause_no', true ),
 					'evidences' => $evidences,
 					'reviewed_by' => get_post_meta( $id, 'reviewed_by', true ),
+					'followup_by' => get_post_meta( $id, 'followup_by', true ),
 					'approved_by' => get_post_meta( $id, 'approved_by', true ),
 					'description_of_improvement_action' => get_post_meta( $id, 'description_of_improvement_action', true ),
 				];
