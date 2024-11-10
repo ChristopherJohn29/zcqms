@@ -506,8 +506,10 @@
 										<tbody id="form_foot_2_1">
 											<tr>
 												<td colspan="2"></td>
-												<td><button class="pull-right btn btn-primary" id="add_correction">Add improvement action</button></td>
 												<td></td>
+												<td></td>
+												<td></td>
+												<td><button class="pull-right btn btn-primary" id="add_correction">Add improvement action</button></td>
 											</tr>
 										</tbody>
 
