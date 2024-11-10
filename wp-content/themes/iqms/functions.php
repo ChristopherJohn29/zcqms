@@ -1,6 +1,7 @@
 <?php
 
 
+
 require get_template_directory() . '/vendor/autoload.php';
 
 add_action( 'wp_enqueue_scripts', 'iqms_assets', 11 );
@@ -19,6 +20,13 @@ function iqms_assets(){
     wp_enqueue_style('iqms-magnific-popup-style', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css');
     
 }
+
+function test_save_post_hook($post_id) {
+    // This should output directly to the log or screen and stop the process.
+    var_dump("Save post triggered for post ID: " . $post_id);
+    exit;
+}
+add_action('save_post', 'test_save_post_hook');
 
 function custom_wp_mail_from($from_email) {
     return 'zcmc-iqms@zcmc-iqms.infoadvance.com.ph'; // Change to the email address you want to use as the sender
