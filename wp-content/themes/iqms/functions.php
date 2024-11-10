@@ -27,11 +27,6 @@ function save_selected_service_term($post_id) {
         return;
     }
 
-    // Confirm the post type is 'dcm' if this function is only for that post type
-    if (get_post_type($post_id) !== 'dcm') {
-        return;
-    }
-
     // Test the hook by logging or dumping data
     var_dump("save_post hook triggered for post ID: " . $post_id);
     exit;
@@ -44,7 +39,7 @@ function save_selected_service_term($post_id) {
         wp_set_post_terms($post_id, array(), 'services');
     }
 }
-add_action('save_post', 'save_selected_service_term');
+add_action('save_post_dcm', 'save_selected_service_term');
 
 function custom_wp_mail_from($from_email) {
     return 'zcmc-iqms@zcmc-iqms.infoadvance.com.ph'; // Change to the email address you want to use as the sender
