@@ -607,9 +607,15 @@ function download_ncar_report() {
 }
 
 function enable_update_button_for_correction() {
+    // Check if we are on the post edit screen and the post is of type 'dcm'
     if (get_current_screen()->base == 'post' && isset($_GET['post'])) {
         global $post;
         
+        // Only apply this if the post type is 'dcm'
+        if ($post->post_type !== 'dcm') {
+            return; // Do not apply to non-'dcm' post types
+        }
+
         // Retrieve the current user ID
         $current_user_id = get_current_user_id();
         
@@ -689,3 +695,4 @@ function enable_update_button_for_correction() {
     }
 }
 add_action('admin_footer', 'enable_update_button_for_correction');
+
