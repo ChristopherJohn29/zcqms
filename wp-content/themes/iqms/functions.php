@@ -354,18 +354,20 @@ function custom_services_dropdown_callback($post) {
         'taxonomy' => 'services',
         'hide_empty' => false,
     ));
-    $disabled = 'disabled';
-    // Output a dropdown (select box)
+    
+    $disabled = '';
     if (!empty($services_term)) {
-        $disabled = '';
+        $disabled = 'disabled';
     }
-    echo '<select name="post_services_term" id="post_services_term" '.$disabled.'>';
+    
+    // Output a dropdown (select box)
+    echo '<select name="post_services_term" id="post_services_term" ' . $disabled . '>';
     echo '<option value="">Select a Service</option>'; // Default option
+    
     if (!empty($terms) && !is_wp_error($terms)) {
         foreach ($terms as $term) {
             // Preselect the user's saved service
-            
-            if(!empty($services_term)){
+            if (!empty($services_term)) {
                 $selected = (!empty($services_term) && $services_term[0] == $term->term_id) ? 'selected="selected"' : '';
             } else {
                 $selected = ($services == $term->term_id) ? 'selected="selected"' : '';
@@ -374,8 +376,15 @@ function custom_services_dropdown_callback($post) {
             echo '<option value="' . esc_attr($term->term_id) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
         }
     }
+    
     echo '</select>';
+    
+    // If the dropdown is disabled, create a hidden input for submission
+    if (!empty($services_term)) {
+        echo '<input type="hidden" name="post_services_term" value="' . esc_attr($services_term[0]) . '">';
+    }
 }
+
 
 // Save the selected 'services' taxonomy term from the dropdown
 function save_selected_service_term($post_id) {
