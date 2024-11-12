@@ -621,7 +621,7 @@
                         // Force the URL to start with 'https://'
                         url = url.replace(/^http:\/\//i, 'https://'); 
 
-                        html += '<a href="' + url + '" target="_blank">' + $(this).data('title') + '</a>';
+						html += '<a href="'+url+'" target="_blank">'+$(this).data('title')+'</a>';
                         Swal.fire({
                             icon: 'info',
                             title: 'Selected File(s)',
@@ -659,13 +659,13 @@
                 if ($('.root-cause-analysis-file-upload input').length) {
                     $this = $('.root-cause-analysis-file-upload');
                     html = '';
-                    $this.find('.root-cause-analysis-file-upload input').each(function() {
+                    $('.root-cause-analysis-file-upload input').each(function() {
                         let url = $(this).data('url');
             
                         // Force the URL to start with 'https://'
-                        url = url.replace(/^http:\/\//i, 'https://');  // Replace http:// with https://
-            
-                        html += '<a href="' + url + '" target="_blank">' + $(this).data('title') + '</a>';
+                        url = url.replace(/^http:\/\//i, 'https://'); 
+
+						html += '<a href="'+url+'" target="_blank">'+$(this).data('title')+'</a>';
                         Swal.fire({
                             icon: 'info',
                             title: 'Selected File(s)',
