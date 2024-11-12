@@ -397,6 +397,22 @@ function save_selected_service_term($post_id) {
         // If no term is selected, remove the term
         wp_set_post_terms($post_id, array(), 'services');
     }
+
+    // Save selected 'document_type' term
+    if (isset($_POST['post_document_type_term']) && $_POST['post_document_type_term'] !== '') {
+        $document_type_term_id = intval($_POST['post_document_type_term']);
+        wp_set_post_terms($post_id, array($document_type_term_id), 'document_type');
+    } else {
+        wp_set_post_terms($post_id, array(), 'document_type'); // Remove if no term selected
+    }
+
+    // Save selected 'documents_label' term
+    if (isset($_POST['post_documents_label_term']) && $_POST['post_documents_label_term'] !== '') {
+        $documents_label_term_id = intval($_POST['post_documents_label_term']);
+        wp_set_post_terms($post_id, array($documents_label_term_id), 'documents_label');
+    } else {
+        wp_set_post_terms($post_id, array(), 'documents_label'); // Remove if no term selected
+    }
 }
 add_action('save_post_dcm', 'save_selected_service_term');
 
@@ -459,30 +475,7 @@ function custom_documents_label_dropdown_callback($post) {
     }
     echo '</select>';
 }
-// Save the selected 'document_type' and 'documents_label' taxonomy terms
-function save_selected_document_terms($post_id) {
-    // Verify if this is not an autosave
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
-        return;
-    }
 
-    // Save selected 'document_type' term
-    if (isset($_POST['post_document_type_term']) && $_POST['post_document_type_term'] !== '') {
-        $document_type_term_id = intval($_POST['post_document_type_term']);
-        wp_set_post_terms($post_id, array($document_type_term_id), 'document_type');
-    } else {
-        wp_set_post_terms($post_id, array(), 'document_type'); // Remove if no term selected
-    }
-
-    // Save selected 'documents_label' term
-    if (isset($_POST['post_documents_label_term']) && $_POST['post_documents_label_term'] !== '') {
-        $documents_label_term_id = intval($_POST['post_documents_label_term']);
-        wp_set_post_terms($post_id, array($documents_label_term_id), 'documents_label');
-    } else {
-        wp_set_post_terms($post_id, array(), 'documents_label'); // Remove if no term selected
-    }
-}
-add_action('save_post_dcm', 'save_selected_document_terms');
 
 function disable_drag_and_drop_script() {
     global $pagenow;
