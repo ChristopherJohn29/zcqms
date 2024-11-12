@@ -367,8 +367,10 @@ function custom_services_dropdown_callback($post) {
             
             if(!empty($services_term)){
                 $selected = (!empty($services_term) && $services_term[0] == $term->term_id) ? 'selected="selected"' : '';
+                $selected_for_hidden = esc_attr($term->term_id);
             } else {
                 $selected = ($services == $term->term_id) ? 'selected="selected"' : '';
+                $selected_for_hidden = esc_attr($term->term_id);
             }
             
             echo '<option value="' . esc_attr($term->term_id) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
@@ -377,7 +379,7 @@ function custom_services_dropdown_callback($post) {
     echo '</select>';
 
     if (!empty($disabled)) {
-        echo '<input type="hidden" name="post_services_term" value="' . esc_attr($services_term[0]) . '">';
+        echo '<input type="hidden" name="post_services_term" value="' . $selected_for_hidden . '">';
     }
 }
 
