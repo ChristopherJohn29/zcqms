@@ -628,10 +628,17 @@ function enable_update_button_for_correction() {
 }
 add_action('admin_footer', 'enable_update_button_for_correction');
 
-function redirect_homepage_to_admin() {
+function custom_redirect_based_on_login() {
+    // Check if the current page is the homepage
     if (is_front_page()) {
-        wp_redirect(admin_url()); // Redirect to wp-admin
-        exit;
+        if (is_user_logged_in()) {
+            // Redirect logged-in users to home.zcmc.ph
+            wp_redirect('https://home.zcmc.ph');
+        } else {
+            // Redirect non-logged-in users to wp-admin
+            wp_redirect(admin_url());
+        }
+        exit; // Ensure the redirection is executed
     }
 }
-add_action('template_redirect', 'redirect_homepage_to_admin');
+add_action('template_redirect', 'custom_redirect_based_on_login');
