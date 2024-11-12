@@ -761,8 +761,12 @@
 					$this = $(this).parent().find('.evidences');
 					html = '';
 					$this.each(function(){
+						let url = $(this).data('url');
+            
+                        // Force the URL to start with 'https://'
+                        url = url.replace(/^http:\/\//i, 'https://'); 
 
-						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
+						html += '<a href="'+url+'" target="_blank">'+$(this).data('title')+'</a>';
 						Swal.fire({
 							icon: 'info',
 							title: 'Selected File(s)',
@@ -781,7 +785,12 @@
 					html = '';
 					$this.each(function(){
 
-						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
+						let url = $(this).data('url');
+            
+                        // Force the URL to start with 'https://'
+                        url = url.replace(/^http:\/\//i, 'https://'); 
+
+						html += '<a href="'+url+'" target="_blank">'+$(this).data('title')+'</a>';
 						Swal.fire({
 							icon: 'info',
 							title: 'Selected File(s)',
@@ -801,7 +810,12 @@
 					html = '';
 					$this.find('.evidences input').each(function(){
 
-						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
+						let url = $(this).data('url');
+            
+                        // Force the URL to start with 'https://'
+                        url = url.replace(/^http:\/\//i, 'https://'); 
+
+						html += '<a href="'+url+'" target="_blank">'+$(this).data('title')+'</a>';
 						Swal.fire({
 							icon: 'info',
 							title: 'Selected File(s)',
@@ -821,7 +835,12 @@
 					html = '';
 					$this.find('.evidences input').each(function(){
 
-						html += '<a href="'+$(this).data('url')+'" target="_blank">'+$(this).data('title')+'</a>';
+						let url = $(this).data('url');
+            
+                        // Force the URL to start with 'https://'
+                        url = url.replace(/^http:\/\//i, 'https://'); 
+
+						html += '<a href="'+url+'" target="_blank">'+$(this).data('title')+'</a>';
 						Swal.fire({
 							icon: 'info',
 							title: 'Selected File(s)',
