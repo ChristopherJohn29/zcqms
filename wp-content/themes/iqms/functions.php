@@ -632,7 +632,7 @@ function enable_update_button_for_correction() {
         // Set display variable based on the retrieved field values
         $display = '';
         if (get_post_status($post->ID) == 'draft') {
-            $display = 'Unpublished';
+            $display = 'For Correction';
         } else {
             if ($dco_reviewed_status == 'review') {
                 $display = 'For Review (DCO Complied)';
