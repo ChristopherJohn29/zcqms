@@ -162,59 +162,6 @@ function custom_after_login_action($user_login, $user) {
 // Hook the custom action to the wp_login hook
 add_action('wp_login', 'custom_after_login_action', 10, 2);
 
-function custom_login_redirect($user_login, $user) {
-    // Check if the user has logged in successfully
-    if (isset($user->roles) && is_array($user->roles)) {
-        // Redirect non-administrators to another website
-        if (!in_array('administrator', $user->roles)) {
-            wp_redirect( home_url( '/logged' ) );
-            exit;
-        }
-    }
-}
-
-
-add_action('wp_login', 'custom_login_redirect', 10, 2);
-
-function redirect_based_on_login_status() {
-    // Check if the current URL contains 'logged' or 'out' and redirect to home.zcmc.ph
-    $current_url = home_url( $_SERVER['REQUEST_URI'] );
-    if ( strpos( $current_url, 'logged' ) !== false || strpos( $current_url, 'out' ) !== false ) {
-        wp_redirect( 'https://home.zcmc.ph/' );
-        exit();
-    }
-
-    // For the homepage, handle login status
-    if ( is_home() || is_front_page() ) {
-        if ( is_user_logged_in() ) {
-            // Set cookie for logged-in users
-            setcookie( 'my_custom_cookie', 'logged_in', time() + 3600, '/', '.infoadvance.com.ph', false, true );
-            // Redirect logged-in users to '/logged' page
-            wp_redirect( home_url( '/logged' ) );
-            exit();
-        } else {
-            // Clear cookie for logged-out users (if needed)
-            setcookie( 'my_custom_cookie', '', time() - 3600, '/', '.infoadvance.com.ph', false, true );
-            // Redirect logged-out users to '/out' page
-            wp_redirect( home_url( '/out' ) );
-            exit();
-        }
-    }
-}
-add_action( 'template_redirect', 'redirect_based_on_login_status' );
-
-
-add_action('rest_api_init', function () {
-    header("Access-Control-Allow-Origin: https://home.zcmc.ph/"); // Replace with Site B's URL
-    header("Access-Control-Allow-Credentials: true");
-});
-
-add_action('rest_api_init', function () {
-    header("Access-Control-Allow-Origin: https://home.zcmc.ph/"); // Replace with Site B's URL
-    header("Access-Control-Allow-Credentials: true");
-    header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type, Authorization");
-});
 
 
 add_action('rest_api_init', function () {
@@ -237,27 +184,8 @@ function generate_user_token() {
     return new WP_REST_Response(['error' => 'User not logged in'], 401);
 }
 
-add_action('rest_api_init', function () {
-    register_rest_route('custom/v1', '/is-logged-in/', array(
-        'methods' => 'POST',
-        'callback' => 'check_user_logged_in',
-        'permission_callback' => '__return_true', // Adjust for security
-    ));
-});
 
-function check_user_logged_in(WP_REST_Request $request) {
-    $token = sanitize_text_field($request->get_param('token'));
-    $user_query = new WP_User_Query(array(
-        'meta_key' => 'auth_token',
-        'meta_value' => $token,
-        'number' => 1,
-    ));
 
-    if (!empty($user_query->get_results())) {
-        return new WP_REST_Response(['status' => 'logged_in'], 200);
-    }
-    return new WP_REST_Response(['status' => 'not_logged_in'], 200);
-}
 
 function hide_field_based_on_role() {
     // Check if the current user has the "dco" role
@@ -700,3 +628,10 @@ function enable_update_button_for_correction() {
 }
 add_action('admin_footer', 'enable_update_button_for_correction');
 
+function redirect_homepage_to_admin() {
+    if (is_front_page()) {
+        wp_redirect(admin_url()); // Redirect to wp-admin
+        exit;
+    }
+}
+add_action('template_redirect', 'redirect_homepage_to_admin');
