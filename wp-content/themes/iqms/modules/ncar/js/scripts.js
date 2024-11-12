@@ -652,7 +652,7 @@
             });
             $('.root-cause-analysis-file-view').click(function() {
                 if ($('.root-cause-analysis-file-upload input').length) {
-                    $this = $('.root-cause-analysis-file-upload input');
+                    $this = $('.root-cause-analysis-file-upload');
                     html = '';
                     $this.find('.root-cause-analysis-file-upload input').each(function() {
                         let url = $(this).data('url');
