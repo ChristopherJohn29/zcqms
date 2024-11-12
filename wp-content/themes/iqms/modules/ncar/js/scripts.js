@@ -652,10 +652,15 @@
             });
             $('.root-cause-analysis-file-view').click(function() {
                 if ($('.root-cause-analysis-file-upload input').length) {
-                    $this = $('.root-cause-analysis-file-upload');
+                    $this = $('.root-cause-analysis-file-upload input');
                     html = '';
-                    $('.root-cause-analysis-file-upload input').each(function() {
-                        html += '<a href="' + $(this).data('url') + '" target="_blank">' + $(this).data('title') + '</a>';
+                    $this.find('.root-cause-analysis-file-upload input').each(function() {
+                        let url = $(this).data('url');
+            
+                        // Force the URL to start with 'https://'
+                        url = url.replace(/^http:\/\//i, 'https://');  // Replace http:// with https://
+            
+                        html += '<a href="' + url + '" target="_blank">' + $(this).data('title') + '</a>';
                         Swal.fire({
                             icon: 'info',
                             title: 'Selected File(s)',
