@@ -616,7 +616,12 @@
                     $this = $(this).parents('.file-upload');
                     html = '';
                     $this.find('.evidences input').each(function() {
-                        html += '<a href="' + $(this).data('url') + '" target="_blank">' + $(this).data('title') + '</a>';
+                        let url = $(this).data('url');
+            
+                        // Force the URL to start with 'https://'
+                        url = url.replace(/^http:\/\//i, 'https://'); 
+
+                        html += '<a href="' + url + '" target="_blank">' + $(this).data('title') + '</a>';
                         Swal.fire({
                             icon: 'info',
                             title: 'Selected File(s)',
