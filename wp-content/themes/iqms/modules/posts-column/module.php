@@ -351,7 +351,7 @@ add_action( 'manage_qms-documents_posts_custom_column' , 'set_custom_edit_qms_do
 function set_custom_edit_qms_documents_columns( $columns ) {
 
 	unset( $columns['taxonomy-services'] );
-	$columns['services'] = 'Services';
+	$columns['services'] = 'Department/section/unit';
 	$columns['document-label'] = 'Document Label';
 	$columns['reviewed_by'] = 'Reviewed By';
 	$columns['approved_by'] = 'Approve By';
