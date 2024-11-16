@@ -812,10 +812,16 @@
                                 var defaultDate = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
                                 v.correction_date = defaultDate;
                             }
-                        
+
+                            if(v.source_of_nc == 'Improvement Potential'){
+                                var readonly = 'readonly';
+                            } else {
+                                var readonly = '';
+                            }
+                            
                             $html += '<tr>' + 
                                         '<td colspan="5">' + 
-                                            '<textarea class="form-control correction_text">' + v.correction_text + '</textarea>' + 
+                                            '<textarea class="form-control correction_text" '+readonly+'>' + v.correction_text + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<input type="date" readonly class="form-control correction_date" value="' + v.correction_date + '">' + 
