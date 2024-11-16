@@ -213,13 +213,13 @@ function add_services_field_to_user($user) {
     // Get saved value for this user (if you're editing)
     $user_service_term = get_user_meta($user->ID, 'user_service_term', true);
     ?>
-    <h3>Select Services</h3>
+    <h3>Select Department/section/unit</h3>
     <table class="form-table">
         <tr>
-            <th><label for="user_service_term">Select Services</label></th>
+            <th><label for="user_service_term">Select Department/section/unit</label></th>
             <td>
                 <select name="user_service_term" id="user_service_term">
-                    <option value="">Select a Services</option>
+                    <option value="">Select Department/section/unit</option>
                     <?php
                     if (!empty($terms) && !is_wp_error($terms)) {
                         foreach ($terms as $term) {
