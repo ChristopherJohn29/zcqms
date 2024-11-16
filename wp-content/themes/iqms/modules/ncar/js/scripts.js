@@ -801,6 +801,13 @@
 
 
                         $html = '';
+                        console.log(r);
+                        if(r.source_of_nc == 'Improvement Potential'){
+                            var readonly = 'readonly';
+                        } else {
+                            var readonly = '';
+                        }
+
                         $.each(r.form2.correction, function(i, v) {
                             if(v.correction_text == undefined){
                                 v.correction_text = 'remarks';
@@ -813,12 +820,7 @@
                                 v.correction_date = defaultDate;
                             }
 
-                            console.log(v);
-                            if(v.source_of_nc == 'Improvement Potential'){
-                                var readonly = 'readonly';
-                            } else {
-                                var readonly = '';
-                            }
+                 
                             
                             $html += '<tr>' + 
                                         '<td colspan="5">' + 
