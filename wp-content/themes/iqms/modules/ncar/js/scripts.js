@@ -813,6 +813,7 @@
                                 v.correction_date = defaultDate;
                             }
 
+                            console.log(v);
                             if(v.source_of_nc == 'Improvement Potential'){
                                 var readonly = 'readonly';
                             } else {
