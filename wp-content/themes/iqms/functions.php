@@ -265,7 +265,7 @@ add_action('admin_menu', 'remove_services_metabox');
 
 // Add a custom metabox with a dropdown for the 'services' taxonomy
 function add_custom_services_dropdown_metabox() {
-    add_meta_box('custom_services_dropdown', 'Select Service', 'custom_services_dropdown_callback', 'dcm', 'side', 'default');
+    add_meta_box('custom_services_dropdown', 'Select Department/section/unit', 'custom_services_dropdown_callback', 'dcm', 'side', 'default');
 }
 add_action('add_meta_boxes', 'add_custom_services_dropdown_metabox');
 
