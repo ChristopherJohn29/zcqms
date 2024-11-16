@@ -802,7 +802,7 @@
 
                         $html = '';
                         console.log(r);
-                        if(r.source_of_nc == 'Improvement Potential'){
+                        if(r.data.source_of_nc == 'Improvement Potential'){
                             var readonly = 'readonly';
                         } else {
                             var readonly = '';
