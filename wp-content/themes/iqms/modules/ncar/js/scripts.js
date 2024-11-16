@@ -858,7 +858,7 @@
                         $.each(r.form2.correction_rca, function(i, v) {
                             $html += '<tr class="rca">' + 
                                         '<td colspan="5">' + 
-                                            '<textarea class="form-control correction_text">' + v.correction_text + '</textarea>' + 
+                                            '<textarea class="form-control correction_text" '+readonly+'>' + v.correction_text + '</textarea>' + 
                                         '</td>' + 
                                     '</tr>';
                             _correction_ind++;
