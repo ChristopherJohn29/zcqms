@@ -113,8 +113,9 @@ if ( !class_exists('NCAR_Module') ) {
 				$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
 
 				if($final_decision == 'satisfactory'){
+					date_default_timezone_set('Asia/Shanghai');
 					update_post_meta( $post_id, 'status', 'Closed' );
-					update_post_meta( $post_id, 'close_date', $this->get_date() );
+					update_post_meta( $post_id, 'close_date', date("Y-m-d") );
 					
 
 					if(get_option('notification_'.$owner)){
