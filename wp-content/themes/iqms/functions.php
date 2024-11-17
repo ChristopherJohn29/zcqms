@@ -503,11 +503,14 @@ function download_ncar_report() {
                 if (!empty($data['corrective_action'])) {
                     $corrective_action_array[] = $data['corrective_action'];
                 }
-
-                if (!empty($data['corrective_date'])) {
-                    $corrective_date_array[] = $data['corrective_date'];
-                }
                 
+                if (!empty($data['corrective_date']) && is_string($data['corrective_date'])) {
+                    // Attempt to create a DateTime object to validate the date format
+                    $date = DateTime::createFromFormat('Y-m-d', $data['corrective_date']);
+                    if ($date && $date->format('Y-m-d') === $data['corrective_date']) {
+                        $corrective_date_array[] = $data['corrective_date'];
+                    }
+                }
          
             }
         }
