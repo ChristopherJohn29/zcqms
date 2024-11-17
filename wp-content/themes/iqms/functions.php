@@ -493,6 +493,7 @@ function download_ncar_report() {
 
         $root_causes_array = [];
         $corrective_action_array = [];
+        $corrective_date_array = [];
         
         // Loop through the corrective_action_data array and collect the root_causes and corrective_action
         if (!empty($corrective_action_data) && is_array($corrective_action_data)) {
@@ -503,7 +504,7 @@ function download_ncar_report() {
                 if (!empty($data['corrective_action'])) {
                     $corrective_action_array[] = $data['corrective_action'];
                 }
-                
+
                 if (!empty($data['corrective_date']) && is_string($data['corrective_date'])) {
                     // Attempt to create a DateTime object to validate the date format
                     $date = DateTime::createFromFormat('Y-m-d', $data['corrective_date']);
