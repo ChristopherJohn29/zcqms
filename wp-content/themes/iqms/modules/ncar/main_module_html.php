@@ -111,6 +111,7 @@
 						$department = get_post_meta( $id, 'department', true );
 						$nc_desc = get_post_meta( $id, 'description_of_the_noncomformity', true );
 						$date = get_post_meta( $id, 'add_date', true );
+						$close_date = get_post_meta( $id, 'close_date', true );
 						$clause_no = get_post_meta( $id, 'clause_no', true );
 						$verification = get_post_meta( $id, 'verification', true );
 
@@ -166,7 +167,7 @@
 							<td><?= $source ?></td>
 							<td><?= $department ?></td>
 							<td><?= $date ?></td>
-							<td></td>
+							<td><?= $close_date ?></td>
 							<td><?= $clause_no ?></td>
 							<td><?=$status ?></td>
 							<td class="action-group">

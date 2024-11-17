@@ -114,6 +114,8 @@ if ( !class_exists('NCAR_Module') ) {
 
 				if($final_decision == 'satisfactory'){
 					update_post_meta( $post_id, 'status', 'Closed' );
+					update_post_meta( $post_id, 'close_date', $this->get_date() );
+					
 
 					if(get_option('notification_'.$owner)){
 						$options = get_option('notification_'.$owner);
