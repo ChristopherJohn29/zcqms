@@ -476,6 +476,7 @@ function download_ncar_report() {
         $department = get_post_meta($id, 'department', true);
         $date = get_post_meta($id, 'add_date', true);
         $clause_no = get_post_meta($id, 'clause_no', true);
+        $close_date = get_post_meta($id, 'close_date', true);
 
         $description_of_the_noncomformity = get_post_meta($id, 'description_of_the_noncomformity', true);
 
@@ -502,9 +503,21 @@ function download_ncar_report() {
                 if (!empty($data['corrective_action'])) {
                     $corrective_action_array[] = $data['corrective_action'];
                 }
+
+                if (!empty($data['corrective_date'])) {
+                    $corrective_date_array[] = $data['corrective_date'];
+                }
+                
+         
             }
         }
-        
+               // Get the latest date if there are dates in the array
+        if (!empty($corrective_date_array)) {
+            $latest_date_corrective = max($corrective_date_array);
+            $date = new DateTime($latest_date_corrective);
+            $date->modify('+7 days');
+            $latest_date_plus_7 = $date->format('Y-m-d');
+        }
         // Convert the arrays into comma-separated strings
         $root_causes = implode(', ', $root_causes_array);
         $corrective_action = implode(', ', $corrective_action_array);
@@ -516,9 +529,9 @@ function download_ncar_report() {
               ->setCellValue('D' . $row, $description_of_the_noncomformity)
               ->setCellValue('E' . $row, $root_causes)
               ->setCellValue('F' . $row, $corrective_action)
-              ->setCellValue('G' . $row, '')
-              ->setCellValue('H' . $row, '')
-              ->setCellValue('I' . $row, '')
+              ->setCellValue('G' . $row, $latest_date_corrective)
+              ->setCellValue('H' . $row, $latest_date_plus_7)
+              ->setCellValue('I' . $row, $close_date)
               ->setCellValue('J' . $row, $status)
               ->setCellValue('K' . $row, '');
 
