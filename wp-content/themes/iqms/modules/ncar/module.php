@@ -190,7 +190,10 @@ if ( !class_exists('NCAR_Module') ) {
 					$review_by = get_user_by('id', $review_by_id);
 
 					if($satisfactory == 1){
+
+						
 						update_post_meta( $post_id, 'status', 'For Verification' );
+						update_post_meta( $post_id, 'date_verified', date('Y-m-d'));
 
 						if(get_option('notification_'.$owner)){
 							$options = get_option('notification_'.$owner);

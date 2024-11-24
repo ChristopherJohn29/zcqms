@@ -489,6 +489,8 @@ function download_ncar_report() {
         $approved_by = get_post_meta($id, 'approved_by', true);
         $approved_by_person = get_user_by('ID', $approved_by)->data->display_name;
 
+        $date_verified = get_post_meta($id, 'date_verified', true);
+
         $corrective_action_data = get_post_meta($id, 'corrective_action_data', true);
 
         $root_causes_array = [];
@@ -522,6 +524,7 @@ function download_ncar_report() {
             $date->modify('+7 days');
             $latest_date_plus_7 = $date->format('Y-m-d');
         }
+        
         // Convert the arrays into comma-separated strings
         $root_causes = implode(', ', $root_causes_array);
         $corrective_action = implode(', ', $corrective_action_array);
@@ -534,7 +537,7 @@ function download_ncar_report() {
               ->setCellValue('E' . $row, $root_causes)
               ->setCellValue('F' . $row, $corrective_action)
               ->setCellValue('G' . $row, $latest_date_corrective)
-              ->setCellValue('H' . $row, $latest_date_plus_7)
+              ->setCellValue('H' . $row, $date_verified)
               ->setCellValue('I' . $row, $close_date)
               ->setCellValue('J' . $row, $status)
               ->setCellValue('K' . $row, '');

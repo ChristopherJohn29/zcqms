@@ -832,6 +832,8 @@
                                     '</tr>';
                         } else {
                             // Iterate and create rows for each correction
+
+                            let latestCorrectiveDate = null;
                             $.each(r.form2.correction, function(i, v) {
                                 if (v.correction_text == undefined) {
                                     v.correction_text = 'remarks';
@@ -839,12 +841,36 @@
                                 if (readonly == 'readonly') {
                                     v.correction_text = 'Not Applicable';
                                 }
+
+                                if (v.corrective_date && !isNaN(Date.parse(v.corrective_date))) {
+                                    let correctiveDate = new Date(v.corrective_date);
+                            
+                                    // Update the latestCorrectiveDate if current date is later
+                                    if (!latestCorrectiveDate || correctiveDate > latestCorrectiveDate) {
+                                        latestCorrectiveDate = correctiveDate;
+                                    }
+                                }
+
+                                if (latestCorrectiveDate) {
+                                    let currentDate = new Date();
+                                    let daysDifference = Math.floor((currentDate - latestCorrectiveDate) / (1000 * 60 * 60 * 24));
+                                
+                                    // Disable the button if 7 or more days have passed
+                                    if (daysDifference >= 7) {
+                                        $('#edit_form2_save_satisfactory').prop('disabled', true);
+                                    } else {
+                                        $('#edit_form2_save_satisfactory').prop('disabled', false);
+                                    }
+                                } 
+
                                 // Set default date to today if correction_date is undefined or empty
                                 if (v.correction_date == undefined || v.correction_date == '') {
                                     var today = new Date();
                                     var defaultDate = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
                                     v.correction_date = defaultDate;
                                 }
+
+            
                                 
                                 $html += '<tr>' + 
                                             '<td colspan="5">' + 
