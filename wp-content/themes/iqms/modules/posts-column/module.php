@@ -267,6 +267,23 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 
 			break;
 
+		case 'document_type' :
+
+			$display = '—';
+			$terms = wp_get_post_terms( $post_id, 'document_type' );
+			foreach( $terms as $i => $term ) {
+				if ( $i == 0 ) {
+					$display = '<a href="edit.php?post_type=dcm&document_type='.$term->slug.'">'.$term->name.'</a>';
+				}
+
+				if ( $term->parent ) {
+					$display = '<a href="edit.php?post_type=dcm&document_type='.$term->slug.'">'.$term->name.'</a>';
+				}
+			}
+			echo $display;
+			
+			break;
+
 		case 'application-status' :
 
 			$display = '—';
