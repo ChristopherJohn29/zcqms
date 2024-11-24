@@ -812,11 +812,11 @@
                             if(v.correction_text == undefined){
                                 v.correction_text = 'remarks';
 
-                                if(readonly== 'readonly'){
-                                    v.correction_text = 'Not Applicable';
-                                }
+                                
                             }
-                        
+                            if(readonly== 'readonly'){
+                                v.correction_text = 'Not Applicable';
+                            }
                             // Set default date to today if correction_date is undefined or empty
                             if(v.correction_date == undefined || v.correction_date == '') {
                                 var today = new Date();
@@ -828,7 +828,7 @@
                             
                             $html += '<tr>' + 
                                         '<td colspan="5">' + 
-                                            '<textarea class="form-control correction_text" '+readonly+'>' + v.correction_text + ' test</textarea>' + 
+                                            '<textarea class="form-control correction_text" '+readonly+'>' + v.correction_text + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<input type="date" readonly class="form-control correction_date" value="' + v.correction_date + '">' + 
