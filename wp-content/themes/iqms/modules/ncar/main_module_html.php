@@ -12,49 +12,58 @@
 		<h1> NCAR Dashboard </h1>
 	</div>
 
-	<div class="filters">
-        <div class="row">
-            <div class="col-md-3">
-                <label for="filter-source">Source</label>
-				<select id="filter-source" class="form-control">
-					<option value="">All</option>
-					<option value="Internal/ 3rd Party Audit">Internal/ 3rd Party Audit</option>
-					<option value="Occupational/ Patient Safety Event">Occupational/ Patient Safety Event</option>
-					<option value="Improvement Potential">Improvement Potential</option>
-					<option value="Sentinel Event">Sentinel Event</option>
-					<option value="Unmet Goals/ Objectives">Unmet Goals/ Objectives</option>
-					<option value="Material or Product">Material or Product</option>
-					<option value="Customer Complaints">Customer Complaints</option>
-					<option value="Service Nonconformity">Service Nonconformity</option>
-					<option value="Customer Satisfaction Survey">Customer Satisfaction Survey</option>
-					<option value="Internal Control Unit">Internal Control Unit</option>
-				</select>
-            </div>
-            <div class="col-md-3">
-                <label for="filter-department">Department</label>
-                <input type="text" id="filter-department" class="form-control" placeholder="Department">
-            </div>
-            <div class="col-md-3">
-                <label for="filter-date-issued">Date Issued</label>
-                <input type="date" id="filter-date-issued" class="form-control">
-            </div>
-            <div class="col-md-3">
-                <label for="filter-clause-no">Clause No.</label>
-                <input type="text" id="filter-clause-no" class="form-control" placeholder="Clause No.">
-            </div>
-            <div class="col-md-3">
-                <label for="filter-status">Status</label>
-                <select id="filter-status" class="form-control">
-                    <option value="">All</option>
-                    <option value="For Action">For Action</option>
-                    <option value="For Follow up">For Follow up</option>
-					<option value="For Verification">For Verification</option>
-					<option value="Closed">Closed</option>
-                    <!-- Add more status options as needed -->
-                </select>
-            </div>
+	<div class="filters mb-4 p-3 bg-light border rounded">
+    <div class="row g-3">
+        <!-- Source Filter -->
+        <div class="col-md-3">
+            <label for="filter-source" class="form-label">Source</label>
+            <select id="filter-source" class="form-select">
+                <option value="">All</option>
+                <option value="Internal/ 3rd Party Audit">Internal/ 3rd Party Audit</option>
+                <option value="Occupational/ Patient Safety Event">Occupational/ Patient Safety Event</option>
+                <option value="Improvement Potential">Improvement Potential</option>
+                <option value="Sentinel Event">Sentinel Event</option>
+                <option value="Unmet Goals/ Objectives">Unmet Goals/ Objectives</option>
+                <option value="Material or Product">Material or Product</option>
+                <option value="Customer Complaints">Customer Complaints</option>
+                <option value="Service Nonconformity">Service Nonconformity</option>
+                <option value="Customer Satisfaction Survey">Customer Satisfaction Survey</option>
+                <option value="Internal Control Unit">Internal Control Unit</option>
+            </select>
+        </div>
+
+        <!-- Department Filter -->
+        <div class="col-md-3">
+            <label for="filter-department" class="form-label">Department</label>
+            <input type="text" id="filter-department" class="form-control" placeholder="Department">
+        </div>
+
+        <!-- Date Issued Filter -->
+        <div class="col-md-3">
+            <label for="filter-date-issued" class="form-label">Date Issued</label>
+            <input type="date" id="filter-date-issued" class="form-control">
+        </div>
+
+        <!-- Clause No. Filter -->
+        <div class="col-md-3">
+            <label for="filter-clause-no" class="form-label">Clause No.</label>
+            <input type="text" id="filter-clause-no" class="form-control" placeholder="Clause No.">
+        </div>
+
+        <!-- Status Filter -->
+        <div class="col-md-3">
+            <label for="filter-status" class="form-label">Status</label>
+            <select id="filter-status" class="form-select">
+                <option value="">All</option>
+                <option value="For Action">For Action</option>
+                <option value="For Follow up">For Follow up</option>
+                <option value="For Verification">For Verification</option>
+                <option value="Closed">Closed</option>
+            </select>
         </div>
     </div>
+</div>
+
 	<div class="section-body" style="margin-top:10px">
 		<table class="table table-striped table-hover" id="ncar-main">
 			<thead>
