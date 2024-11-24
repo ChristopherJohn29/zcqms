@@ -74,3 +74,16 @@ function filter_posts_by_custom_taxonomy($query) {
 }
 add_action('pre_get_posts', 'filter_posts_by_custom_taxonomy');
 
+function remove_bulk_actions_for_dcm($actions) {
+    $screen = get_current_screen();
+
+    // Check if it's the admin table for your custom post type
+    if ($screen && $screen->post_type === 'dcm') { // Replace 'dcm' with your custom post type
+        return array(); // Remove all bulk actions
+    }
+
+    return $actions;
+}
+add_filter('bulk_actions-edit-dcm', 'remove_bulk_actions_for_dcm'); // Replace 'dcm' with your custom post type
+
+
