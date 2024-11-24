@@ -14,7 +14,7 @@
 
 	<div class="filters">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <label for="filter-source">Source</label>
 				<select id="filter-source" class="form-control">
 					<option value="">All</option>
