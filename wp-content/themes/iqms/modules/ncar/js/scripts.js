@@ -812,6 +812,8 @@
                   
 
                         $.each(r.form2.corrective_action_data, function(i, v) {
+
+                            let latestCorrectiveDate = null;
                             // Ensure corrective_date exists and is valid
                             if (v.corrective_date && !isNaN(Date.parse(v.corrective_date))) {
                                 let correctiveDate = new Date(v.corrective_date);
@@ -861,7 +863,7 @@
                         } else {
                             // Iterate and create rows for each correction
 
-                            let latestCorrectiveDate = null;
+                          
                             $.each(r.form2.correction, function(i, v) {
                                 if (v.correction_text == undefined) {
                                     v.correction_text = 'remarks';
