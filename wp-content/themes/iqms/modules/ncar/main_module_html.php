@@ -40,8 +40,9 @@
                 <label for="filter-status">Status</label>
                 <select id="filter-status" class="form-control">
                     <option value="">All</option>
-                    <option value="Open">Open</option>
-                    <option value="Closed">Closed</option>
+                    <option value="For Action">For Action</option>
+                    <option value="For Follow up">For Follow up</option>
+					<option value="Closed">Closed</option>
                     <!-- Add more status options as needed -->
                 </select>
             </div>
