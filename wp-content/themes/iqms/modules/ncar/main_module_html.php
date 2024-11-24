@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-md-3">
                 <label for="filter-source">Source</label>
-				<select id="filter-source" class="form-control" style="width: 300px; display: inline-block; margin-left: 10px;">
+				<select id="filter-source" class="form-control">
 					<option value="">All</option>
 					<option value="Internal/ 3rd Party Audit">Internal/ 3rd Party Audit</option>
 					<option value="Occupational/ Patient Safety Event">Occupational/ Patient Safety Event</option>
