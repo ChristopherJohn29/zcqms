@@ -842,6 +842,7 @@
                                     v.correction_text = 'Not Applicable';
                                 }
 
+                                console.log(v.corrective_date);
                                 if (v.corrective_date && !isNaN(Date.parse(v.corrective_date))) {
                                     let correctiveDate = new Date(v.corrective_date);
                                     
