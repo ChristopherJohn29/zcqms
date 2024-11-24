@@ -811,6 +811,10 @@
                         $.each(r.form2.correction, function(i, v) {
                             if(v.correction_text == undefined){
                                 v.correction_text = 'remarks';
+
+                                if(r.data.source_of_nc == 'Improvement Potential'){
+                                    v.correction_text = 'Not Applicable';
+                                }
                             }
                         
                             // Set default date to today if correction_date is undefined or empty
