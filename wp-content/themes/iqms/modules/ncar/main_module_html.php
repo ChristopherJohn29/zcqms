@@ -48,7 +48,8 @@
             </div>
         </div>
     </div>
-
+	<hr />
+	<br>
 	<div class="section-body">
 		<table class="table table-striped table-hover" id="ncar-main">
 			<thead>
