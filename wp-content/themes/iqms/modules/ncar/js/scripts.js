@@ -815,7 +815,7 @@
                             } else {
                                 var ph  = 'remarks';
                             }
-
+                            var today = new Date();
                             var defaultDate = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
 
                             // Add a placeholder row when correction is empty
