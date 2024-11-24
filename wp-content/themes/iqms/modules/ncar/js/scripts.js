@@ -828,7 +828,7 @@
                             
                             $html += '<tr>' + 
                                         '<td colspan="5">' + 
-                                            '<textarea class="form-control correction_text" '+readonly+'>' + v.correction_text + '</textarea>' + 
+                                            '<textarea class="form-control correction_text" '+readonly+'>' + v.correction_text + ' test</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<input type="date" readonly class="form-control correction_date" value="' + v.correction_date + '">' + 
