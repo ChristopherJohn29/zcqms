@@ -11,6 +11,43 @@
 		<button class="btn btn-primary pull-right" id="btn-download"><i class="glyphicon glyphicon-download"></i> Download NCAR Report</button>
 		<h1> NCAR Dashboard </h1>
 	</div>
+
+	<div class="filters">
+        <div class="row">
+            <div class="col-md-3">
+                <label for="filter-source">Source</label>
+                <select id="filter-source" class="form-control">
+                    <option value="">All</option>
+                    <option value="Internal/ 3rd Party Audit">Internal/ 3rd Party Audit</option>
+                    <option value="Improvement Potential">Improvement Potential</option>
+                    <option value="Unmet Goals/ Objectives">Unmet Goals/ Objectives</option>
+                    <!-- Add more source options as needed -->
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="filter-department">Department</label>
+                <input type="text" id="filter-department" class="form-control" placeholder="Department">
+            </div>
+            <div class="col-md-3">
+                <label for="filter-date-issued">Date Issued</label>
+                <input type="date" id="filter-date-issued" class="form-control">
+            </div>
+            <div class="col-md-3">
+                <label for="filter-clause-no">Clause No.</label>
+                <input type="text" id="filter-clause-no" class="form-control" placeholder="Clause No.">
+            </div>
+            <div class="col-md-3">
+                <label for="filter-status">Status</label>
+                <select id="filter-status" class="form-control">
+                    <option value="">All</option>
+                    <option value="Open">Open</option>
+                    <option value="Closed">Closed</option>
+                    <!-- Add more status options as needed -->
+                </select>
+            </div>
+        </div>
+    </div>
+
 	<div class="section-body">
 		<table class="table table-striped table-hover" id="ncar-main">
 			<thead>
@@ -189,6 +226,40 @@
 </div>
 <script type="text/javascript">
     jQuery(document).ready(function($) {
+        $('#btn-download').on('click', function(e) {
+            e.preventDefault();
+            window.location.href = '<?php echo admin_url('admin-post.php?action=download_ncar_report'); ?>';
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    jQuery(document).ready(function($) {
+        // Initialize DataTable
+        var table = $('#ncar-main').DataTable();
+
+        // Custom filtering
+        $('#filter-source').on('change', function() {
+            table.column(5).search(this.value).draw(); // Column index 5 is "Source"
+        });
+
+        $('#filter-department').on('keyup', function() {
+            table.column(6).search(this.value).draw(); // Column index 6 is "Department"
+        });
+
+        $('#filter-date-issued').on('change', function() {
+            table.column(7).search(this.value).draw(); // Column index 7 is "Date Issued"
+        });
+
+        $('#filter-clause-no').on('keyup', function() {
+            table.column(9).search(this.value).draw(); // Column index 9 is "Clause No."
+        });
+
+        $('#filter-status').on('change', function() {
+            table.column(10).search(this.value).draw(); // Column index 10 is "Status"
+        });
+
+        // Download button functionality
         $('#btn-download').on('click', function(e) {
             e.preventDefault();
             window.location.href = '<?php echo admin_url('admin-post.php?action=download_ncar_report'); ?>';
