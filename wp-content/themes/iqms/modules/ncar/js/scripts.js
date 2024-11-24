@@ -812,7 +812,7 @@
                             if(v.correction_text == undefined){
                                 v.correction_text = 'remarks';
 
-                                if(r.data.source_of_nc == 'Improvement Potential'){
+                                if(readonly== 'readonly'){
                                     v.correction_text = 'Not Applicable';
                                 }
                             }
