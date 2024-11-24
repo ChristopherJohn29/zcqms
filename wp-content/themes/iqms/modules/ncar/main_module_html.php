@@ -5,6 +5,33 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-loading-overlay/2.1.7/loadingoverlay.min.js"></script>
 <!-- resources -->
+ <style>
+.filters {
+    background-color: #f8f9fa; /* Light gray background */
+    border: 1px solid #ddd;    /* Subtle border */
+    border-radius: 5px;        /* Rounded corners */
+    padding: 15px;
+    margin-bottom: 20px;       /* Spacing below the filter section */
+}
+
+.filters .form-label {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.filters .form-control,
+.filters .form-select {
+    border-radius: 5px;
+    height: 40px;
+}
+
+.filters .row.g-3 > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+}
+
+
+ </style>
 <div class="wrap">
 	<div class="section-head">
 		<button class="btn btn-primary pull-right" id="btn-add"><i class="glyphicon glyphicon-plus"></i> Create new NCAR</button>
