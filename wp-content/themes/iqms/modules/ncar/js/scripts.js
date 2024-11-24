@@ -808,6 +808,34 @@
                             var readonly = '';
                         }
 
+
+                  
+
+                        $.each(r.form2.corrective_action_data, function(i, v) {
+                            // Ensure corrective_date exists and is valid
+                            if (v.corrective_date && !isNaN(Date.parse(v.corrective_date))) {
+                                let correctiveDate = new Date(v.corrective_date);
+                                
+                                console.log(correctiveDate);
+                                // Update the latestCorrectiveDate if current date is later
+                                if (!latestCorrectiveDate || correctiveDate > latestCorrectiveDate) {
+                                    latestCorrectiveDate = correctiveDate;
+                                }
+                            }
+    
+                            if (latestCorrectiveDate) {
+                                let currentDate = new Date();
+                                let daysDifference = Math.floor((currentDate - latestCorrectiveDate) / (1000 * 60 * 60 * 24));
+                            
+                                // Disable the button if 7 or more days have passed
+                                if (daysDifference <= 7) {
+                                    $('#edit_form2_save_satisfactory').prop('disabled', true);
+                                } else {
+                                    $('#edit_form2_save_satisfactory').prop('disabled', false);
+                                }
+                            } 
+                        });
+
                         if (!r.form2.correction || r.form2.correction.length === 0) {
 
                             if (readonly == 'readonly') {
@@ -842,28 +870,7 @@
                                     v.correction_text = 'Not Applicable';
                                 }
 
-                                console.log(v.corrective_date);
-                                if (v.corrective_date && !isNaN(Date.parse(v.corrective_date))) {
-                                    let correctiveDate = new Date(v.corrective_date);
-                                    
-                                    console.log(correctiveDate);
-                                    // Update the latestCorrectiveDate if current date is later
-                                    if (!latestCorrectiveDate || correctiveDate > latestCorrectiveDate) {
-                                        latestCorrectiveDate = correctiveDate;
-                                    }
-                                }
-
-                                if (latestCorrectiveDate) {
-                                    let currentDate = new Date();
-                                    let daysDifference = Math.floor((currentDate - latestCorrectiveDate) / (1000 * 60 * 60 * 24));
-                                
-                                    // Disable the button if 7 or more days have passed
-                                    if (daysDifference <= 7) {
-                                        $('#edit_form2_save_satisfactory').prop('disabled', true);
-                                    } else {
-                                        $('#edit_form2_save_satisfactory').prop('disabled', false);
-                                    }
-                                } 
+                            
 
                                 // Set default date to today if correction_date is undefined or empty
                                 if (v.correction_date == undefined || v.correction_date == '') {
