@@ -206,7 +206,7 @@ add_action( 'manage_dcm_posts_custom_column' , 'set_custom_edit_dcm_column_colum
 function set_custom_edit_dcm_columns( $columns ) {
 
 	$columns['taxonomy-services'] = 'Department / Section / Unit';
-	$columns['document-type'] = 'Document Type';
+	$columns['document_type'] = 'Document Type';
 	$columns['author'] = 'Uploaded by';
 	$columns['application-status'] = 'Application Status';
 	$columns['dco-review-status'] = 'DCO Review Status';
@@ -265,16 +265,6 @@ function set_custom_edit_dcm_column_column( $column, $post_id ) {
 			}
 			echo $display;
 
-			break;
-		case 'document-type' :
-
-			$display = '—';
-
-			$terms = wp_get_post_terms( $post_id, 'documents_type' );
-			if ( $terms[0] ) {
-				$display = '<a href="edit.php?post_type=dcm&documents_type='.$terms[0]->slug.'">'.$terms[0]->name.'</a>';
-			}
-			echo $display;
 			break;
 
 		case 'application-status' :
