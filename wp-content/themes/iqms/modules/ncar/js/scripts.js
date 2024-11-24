@@ -808,37 +808,59 @@
                             var readonly = '';
                         }
 
-                        $.each(r.form2.correction, function(i, v) {
-                            if(v.correction_text == undefined){
-                                v.correction_text = 'remarks';
+                        if (!r.form2.correction || r.form2.correction.length === 0) {
 
-                                
-                            }
-                            if(readonly== 'readonly'){
-                                v.correction_text = 'Not Applicable';
-                            }
-                            // Set default date to today if correction_date is undefined or empty
-                            if(v.correction_date == undefined || v.correction_date == '') {
-                                var today = new Date();
-                                var defaultDate = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
-                                v.correction_date = defaultDate;
+                            if (readonly == 'readonly') {
+                                var ph  = 'Not Applicable';
+                            } else {
+                                var ph  = 'remarks';
                             }
 
-                 
-                            
+                            var defaultDate = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+
+                            // Add a placeholder row when correction is empty
                             $html += '<tr>' + 
                                         '<td colspan="5">' + 
-                                            '<textarea class="form-control correction_text" '+readonly+'>' + v.correction_text + '</textarea>' + 
+                                            '<textarea class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
-                                            '<input type="date" readonly class="form-control correction_date" value="' + v.correction_date + '">' + 
+                                            '<input type="date" readonly class="form-control correction_date" value="'+defaultDate+'">' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
                                         '</td>' + 
                                     '</tr>';
-                            _correction_ind++;
-                        });
+                        } else {
+                            // Iterate and create rows for each correction
+                            $.each(r.form2.correction, function(i, v) {
+                                if (v.correction_text == undefined) {
+                                    v.correction_text = 'remarks';
+                                }
+                                if (readonly == 'readonly') {
+                                    v.correction_text = 'Not Applicable';
+                                }
+                                // Set default date to today if correction_date is undefined or empty
+                                if (v.correction_date == undefined || v.correction_date == '') {
+                                    var today = new Date();
+                                    var defaultDate = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+                                    v.correction_date = defaultDate;
+                                }
+                                
+                                $html += '<tr>' + 
+                                            '<td colspan="5">' + 
+                                                '<textarea class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' + 
+                                            '</td>' + 
+                                            '<td>' + 
+                                                '<input type="date" readonly class="form-control correction_date" value="' + v.correction_date + '">' + 
+                                            '</td>' + 
+                                            '<td>' + 
+                                                '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
+                                            '</td>' + 
+                                        '</tr>';
+                                _correction_ind++;
+                            });
+                        }
+                        
                         
 
                         $('#form_2_1').html($html);
