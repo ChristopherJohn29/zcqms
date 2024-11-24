@@ -856,7 +856,7 @@
                                     let daysDifference = Math.floor((currentDate - latestCorrectiveDate) / (1000 * 60 * 60 * 24));
                                 
                                     // Disable the button if 7 or more days have passed
-                                    if (daysDifference >= 7) {
+                                    if (daysDifference <= 7) {
                                         $('#edit_form2_save_satisfactory').prop('disabled', true);
                                     } else {
                                         $('#edit_form2_save_satisfactory').prop('disabled', false);
