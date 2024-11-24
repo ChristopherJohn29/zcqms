@@ -881,14 +881,39 @@
                         app.bindDeleteBtns();
 
                         $html = '';
-                        $.each(r.form2.correction_rca, function(i, v) {
+                        if (!r.form2.correction_rca || r.form2.correction_rca.length === 0) {
+                            // Add a placeholder row when correction_rca is empty
+
+                            if (readonly == 'readonly') {
+                                var ph  = 'Not Applicable';
+                            } else {
+                                var ph  = 'remarks';
+                            }
+
                             $html += '<tr class="rca">' + 
                                         '<td colspan="5">' + 
-                                            '<textarea class="form-control correction_text" '+readonly+'>' + v.correction_text + '</textarea>' + 
+                                            '<textarea class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' + 
                                         '</td>' + 
                                     '</tr>';
-                            _correction_ind++;
-                        });
+                        } else {
+                            // Iterate and create rows for each correction_rca
+                            $.each(r.form2.correction_rca, function(i, v) {
+                                if (v.correction_text == undefined) {
+                                    v.correction_text = 'remarks';
+                                }
+                                if (readonly == 'readonly') {
+                                    v.correction_text = 'Not Applicable';
+                                }
+                                
+                                $html += '<tr class="rca">' + 
+                                            '<td colspan="5">' + 
+                                                '<textarea class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' + 
+                                            '</td>' + 
+                                        '</tr>';
+                                _correction_ind++;
+                            });
+                        }
+                        
 
                         $('#form_2_2 tr.rca').remove();
                         $('#form_2_2').append($html);
