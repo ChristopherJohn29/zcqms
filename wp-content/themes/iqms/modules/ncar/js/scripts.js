@@ -844,7 +844,8 @@
 
                                 if (v.corrective_date && !isNaN(Date.parse(v.corrective_date))) {
                                     let correctiveDate = new Date(v.corrective_date);
-                            
+                                    
+                                    console.log(correctiveDate);
                                     // Update the latestCorrectiveDate if current date is later
                                     if (!latestCorrectiveDate || correctiveDate > latestCorrectiveDate) {
                                         latestCorrectiveDate = correctiveDate;
