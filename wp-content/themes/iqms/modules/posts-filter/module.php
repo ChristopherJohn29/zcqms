@@ -42,7 +42,7 @@ add_action('init', function(){
 
 
 
-add_action( 'edit_form_top', 'filter_post_fields' );
+// add_action( 'edit_form_top', 'filter_post_fields' );
 
 function filter_post_fields() {
 
