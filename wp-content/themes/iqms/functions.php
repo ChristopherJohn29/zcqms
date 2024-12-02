@@ -251,11 +251,14 @@ function save_services_field_to_user($user_id) {
 add_action('user_register', 'save_services_field_to_user');
 add_action('edit_user_profile_update', 'save_services_field_to_user');
 
-$user_service_term = get_user_meta($user_id, 'user_service_term', true);
-$term = get_term($user_service_term, 'services');
-
-if ($term && !is_wp_error($term)) {
-    echo 'Services: ' . esc_html($term->name);
+if(isset($user_id)){
+    $user_service_term = get_user_meta($user_id, 'user_service_term', true);
+    $term = get_term($user_service_term, 'services');
+    
+    if ($term && !is_wp_error($term)) {
+        echo 'Services: ' . esc_html($term->name);
+    }
+    
 }
 
 function remove_services_metabox() {
