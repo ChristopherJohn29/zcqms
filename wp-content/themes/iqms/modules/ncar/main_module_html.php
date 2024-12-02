@@ -34,10 +34,14 @@
                 <label for="filter-department">Department</label>
                 <input type="text" id="filter-department" class="form-control" placeholder="Department">
             </div>
-            <div class="col-md-3">
-                <label for="filter-date-issued">Date Issued</label>
-                <input type="date" id="filter-date-issued" class="form-control">
-            </div>
+			<div class="col-md-3">
+				<label for="filter-date-issued-from">Date Issued From</label>
+				<input type="date" id="filter-date-issued-from" class="form-control">
+			</div>
+			<div class="col-md-3">
+				<label for="filter-date-issued-to">Date Issued To</label>
+				<input type="date" id="filter-date-issued-to" class="form-control">
+			</div>
             <div class="col-md-3">
                 <label for="filter-clause-no">Clause No.</label>
                 <input type="text" id="filter-clause-no" class="form-control" placeholder="Clause No.">
@@ -245,25 +249,52 @@
         // Initialize DataTable
         var table = $('#ncar-main').DataTable();
 
-        // Custom filtering
+        // Custom filtering for "Source"
         $('#filter-source').on('change', function() {
             table.column(5).search(this.value).draw(); // Column index 5 is "Source"
         });
 
+        // Custom filtering for "Department"
         $('#filter-department').on('keyup', function() {
             table.column(6).search(this.value).draw(); // Column index 6 is "Department"
         });
 
-        $('#filter-date-issued').on('change', function() {
-            table.column(7).search(this.value).draw(); // Column index 7 is "Date Issued"
-        });
-
+        // Custom filtering for "Clause No."
         $('#filter-clause-no').on('keyup', function() {
             table.column(9).search(this.value).draw(); // Column index 9 is "Clause No."
         });
 
+        // Custom filtering for "Status"
         $('#filter-status').on('change', function() {
             table.column(10).search(this.value).draw(); // Column index 10 is "Status"
+        });
+
+        // Custom filtering for "Date Issued From" and "Date Issued To"
+        $('#filter-date-issued-from, #filter-date-issued-to').on('change', function() {
+            var fromDate = $('#filter-date-issued-from').val();
+            var toDate = $('#filter-date-issued-to').val();
+
+            // Filter logic
+            $.fn.dataTable.ext.search.push(function(settings, data, dataIndex) {
+                var dateIssued = data[7] || ''; // Assuming column index 7 is "Date Issued"
+                if (!dateIssued) return true;
+
+                // Convert to Date objects
+                var dateIssuedObj = new Date(dateIssued);
+                var fromDateObj = fromDate ? new Date(fromDate) : null;
+                var toDateObj = toDate ? new Date(toDate) : null;
+
+                // Check if the date falls within the range
+                if (
+                    (!fromDateObj || dateIssuedObj >= fromDateObj) &&
+                    (!toDateObj || dateIssuedObj <= toDateObj)
+                ) {
+                    return true;
+                }
+                return false;
+            });
+
+            table.draw();
         });
 
         // Download button functionality
