@@ -25,7 +25,7 @@ function notice__success() {
 
 }
 
-add_action( 'admin_notices', 'notice__success' );
+// add_action( 'admin_notices', 'notice__success' );
 
 
 
