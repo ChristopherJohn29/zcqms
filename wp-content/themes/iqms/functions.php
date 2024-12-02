@@ -48,17 +48,17 @@ add_action( 'admin_notices', 'sample_admin_notice__success' );
 /**
  * Register all the modules included on the module directory
  */
-// add_action( 'after_setup_theme', 'modules_require' );
-// function modules_require() {
-//     $modules = glob( plugin_dir_path( __FILE__ ) . 'modules/' . '*' , GLOB_ONLYDIR );
-//     if( $modules ) {
-//         foreach( $modules as $module ) {
-//             if( file_exists( $module . '/module.php' ) ) {
-//                 require_once( $module . '/module.php' );
-//             }
-//         }
-//     }
-// }
+add_action( 'after_setup_theme', 'modules_require' );
+function modules_require() {
+    $modules = glob( plugin_dir_path( __FILE__ ) . 'modules/' . '*' , GLOB_ONLYDIR );
+    if( $modules ) {
+        foreach( $modules as $module ) {
+            if( file_exists( $module . '/module.php' ) ) {
+                require_once( $module . '/module.php' );
+            }
+        }
+    }
+}
 
 add_theme_support( 'menus' );
 
