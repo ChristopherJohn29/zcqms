@@ -90,7 +90,7 @@ $table_prefix = 'dlt_';
  */
 define('WP_DEBUG', true); // Enable WordPress debugging
 define('WP_DEBUG_LOG', true); // Log errors to wp-content/debug.log
-define('WP_DEBUG_DISPLAY', false); // Don't display errors on the front-end
+define('WP_DEBUG_DISPLAY', true); // Don't display errors on the front-end
 
 /* Add any custom values between this line and the "stop editing" line. */
 
