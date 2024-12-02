@@ -27,22 +27,10 @@ function notice__success() {
 
 add_action( 'admin_notices', 'notice__success' );
 
-add_action('init', function(){
-
-	if(isset($_GET['test'])){
-		$options = get_option('notification_'.get_current_user_id());
-		$options = array_reverse($options);
-
-		var_dump($options);
-		exit;
-	}
-
-
-});
 
 
 
-// add_action( 'edit_form_top', 'filter_post_fields' );
+add_action( 'edit_form_top', 'filter_post_fields' );
 
 function filter_post_fields() {
 
