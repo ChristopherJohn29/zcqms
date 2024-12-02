@@ -623,7 +623,7 @@ if ( !class_exists('NCAR_Module') ) {
 		}
 
 		function ncar_resources(){
-			if ( $_GET['page'] == 'ncar' ) {
+			if ( isset($_GET['page']) && $_GET['page'] == 'ncar' ) {
 			    wp_enqueue_style( 'custom-ncar-css', get_stylesheet_directory_uri() . '/modules/ncar/css/styles.css' );
 			    wp_enqueue_style( 'swal-css', get_stylesheet_directory_uri() . '/modules/ncar/css/sweetalert2.min.css' );
 			    wp_enqueue_script( 'custom-ncar-js', get_stylesheet_directory_uri() . '/modules/ncar/js/scripts.js' );
