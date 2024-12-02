@@ -29,7 +29,7 @@ add_action( 'admin_notices', 'notice__success' );
 
 add_action('init', function(){
 
-	if($_GET['test']){
+	if(isset($_GET['test'])){
 		$options = get_option('notification_'.get_current_user_id());
 		$options = array_reverse($options);
 
