@@ -113,6 +113,10 @@ div#acf-group_632c62d0dc846 {
     width: 15% !important;
 }
 
+.post-type-qms-documents .wp-list-table th#document-type {
+    width: 15% !important;
+}
+
 .post-type-qms-documents .wp-list-table th#document-label {
     width: 15% !important;
 }
