@@ -363,7 +363,9 @@ if ( !class_exists('NCAR_Module') ) {
 
 				update_post_meta( $post_id, 'correction', $correction );
 				update_post_meta( $post_id, 'correction_rca', $correction_rca );
-				update_post_meta( $post_id, 'files', $files );
+				if(!empty($files)){
+					update_post_meta( $post_id, 'files', $files );
+				}
 				update_post_meta( $post_id, 'corrective_action_data', $corrective_action_data );
 				
 
