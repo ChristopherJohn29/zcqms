@@ -23,6 +23,8 @@ jQuery(document).ready(function($) {
     // Observe changes in the DOM
     observer.observe(document.body, { childList: true, subtree: true });
 
+    $('#pageparenddiv').remove();
+    
     var publishBox = $('#submitdiv');
     if (publishBox.length) {
         // Move the Publish metabox to the lower right
