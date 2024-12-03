@@ -665,3 +665,12 @@ function custom_redirect_based_on_login() {
     }
 }
 add_action('template_redirect', 'custom_redirect_based_on_login');
+
+function reposition_publish_metabox() {
+    // Remove the default Publish metabox
+    remove_meta_box('submitdiv', 'post', 'side');
+
+    // Add the Publish metabox to a different location
+    add_meta_box('submitdiv', __('Publish'), 'post_submit_meta_box', 'post', 'normal', 'low');
+}
+add_action('do_meta_boxes', 'reposition_publish_metabox');
