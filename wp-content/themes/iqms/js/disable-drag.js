@@ -26,6 +26,6 @@ jQuery(document).ready(function($) {
     var publishBox = $('#submitdiv');
     if (publishBox.length) {
         // Move the Publish metabox to the lower right
-        publishBox.detach().appendTo('#postbox-container-2');
+        publishBox.detach().appendTo('#side-sortables');
     }
 });
