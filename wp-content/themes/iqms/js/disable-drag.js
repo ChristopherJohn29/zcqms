@@ -22,4 +22,10 @@ jQuery(document).ready(function($) {
 
     // Observe changes in the DOM
     observer.observe(document.body, { childList: true, subtree: true });
+
+    var publishBox = $('#submitdiv');
+    if (publishBox.length) {
+        // Move the Publish metabox to the lower right
+        publishBox.detach().appendTo('#postbox-container-2');
+    }
 });
