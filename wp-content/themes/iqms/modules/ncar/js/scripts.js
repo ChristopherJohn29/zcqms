@@ -854,7 +854,7 @@
                                             '<textarea class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
-                                            '<input type="date" readonly class="form-control correction_date" value="'+defaultDate+'">' + 
+                                            '<input type="date" readonly class="form-control correction_date test" value="'+defaultDate+'">' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
