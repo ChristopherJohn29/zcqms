@@ -847,7 +847,7 @@
                             if (readonly == 'readonly') {
                                 var ph  = 'Not Applicable';
                             } else {
-                                var ph  = 'remarks';
+                                var ph  = '';
                             }
                             var today = new Date();
                             var defaultDate = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
@@ -855,7 +855,7 @@
                             // Add a placeholder row when correction is empty
                             $html += '<tr>' + 
                                         '<td colspan="5">' + 
-                                            '<textarea class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' + 
+                                            '<textarea required class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<input type="date" readonly class="form-control correction_date test" value="'+defaultDate+'">' + 
@@ -870,7 +870,7 @@
                           
                             $.each(r.form2.correction, function(i, v) {
                                 if (v.correction_text == undefined) {
-                                    v.correction_text = 'remarks';
+                                    v.correction_text = '';
                                 }
                                 if (readonly == 'readonly') {
                                     v.correction_text = 'Not Applicable';
@@ -889,7 +889,7 @@
                                 
                                 $html += '<tr>' + 
                                             '<td colspan="5">' + 
-                                                '<textarea class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' + 
+                                                '<textarea required class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' + 
                                             '</td>' + 
                                             '<td>' + 
                                                 '<input type="date" readonly class="form-control correction_date test" value="' + v.correction_date + '">' + 
@@ -928,19 +928,19 @@
                             if (readonly == 'readonly') {
                                 var ph  = 'Not Applicable';
                             } else {
-                                var ph  = 'remarks';
+                                var ph  = '';
                             }
 
                             $html += '<tr class="rca">' + 
                                         '<td colspan="5">' + 
-                                            '<textarea class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' + 
+                                            '<textarea required class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' + 
                                         '</td>' + 
                                     '</tr>';
                         } else {
                             // Iterate and create rows for each correction_rca
                             $.each(r.form2.correction_rca, function(i, v) {
                                 if (v.correction_text == undefined) {
-                                    v.correction_text = 'remarks';
+                                    v.correction_text = '';
                                 }
                                 if (readonly == 'readonly') {
                                     v.correction_text = 'Not Applicable';
@@ -948,7 +948,7 @@
                                 
                                 $html += '<tr class="rca">' + 
                                             '<td colspan="5">' + 
-                                                '<textarea class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' + 
+                                                '<textarea required class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' + 
                                             '</td>' + 
                                         '</tr>';
                                 _correction_ind++;
@@ -977,7 +977,7 @@
                         $html2 = '';
                         $.each(r.form2.correction_rca, function(i, v) {
                             if(v.correction_text  == undefined){
-                                v.correction_text = 'remarks';
+                                v.correction_text = '';
                             }
                         
                             $html2 += '<tr class="rca">' + 
@@ -1019,11 +1019,11 @@
                         $html2 = '';
                         $.each(r.form2.corrective_action_data, function(i, v) {
                             if(v.root_causes == undefined){
-                                v.root_causes = 'remarks';
+                                v.root_causes = '';
                             }
 
                             if(v.corrective_action == undefined){
-                                v.corrective_action = 'remarks';
+                                v.corrective_action = '';
                             }
 
                             if (readonly == 'readonly') {
@@ -1054,10 +1054,10 @@
 
                             $html += '<tr>' + 
                                         '<td colspan="4">' + 
-                                            '<textarea class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' + 
+                                            '<textarea required class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
-                                            '<textarea class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
+                                            '<textarea required class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<input type="date" class="form-control corrective_date" value="' + v.corrective_date + '">' + 
