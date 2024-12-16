@@ -164,7 +164,7 @@
                     correction_implemented = ($(this).find('.correction_implemented:checked') ? $(this).find('.correction_implemented:checked').val() : '');
                     correction_remarks = $(this).find('.correction_remarks').val();
                 
-                    if (!correction_text || !correction_date || !correction_implemented || !correction_remarks) {
+                    if (!correction_text || !correction_date ) {
                         alert('All fields in Correction must be filled out!');
                         isValid = false; // Mark as invalid
                         return false; // Break the loop
@@ -205,7 +205,7 @@
                     corrective_implemented = ($(this).find('.corrective_implemented:checked') ? $(this).find('.corrective_implemented:checked').val() : '');
                     corrective_remarks = $(this).find('.corrective_remarks').val();
                 
-                    if (!root_causes || !corrective_action || !corrective_date || !corrective_implemented || !corrective_remarks) {
+                    if (!root_causes || !corrective_action || !corrective_date ) {
                         alert('All fields in Corrective Action Plan must be filled out!');
                         isValid = false; // Mark as invalid
                         return false; // Break the loop
@@ -219,7 +219,7 @@
                         corrective_remarks: corrective_remarks
                     });
                 });
-                
+
                 if (!isValid) return false;
 
                 files = [];
