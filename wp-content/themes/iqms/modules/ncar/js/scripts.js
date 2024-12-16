@@ -129,7 +129,7 @@
                 date = new Date;
                 today = new Date;
                 var defaultDate = today.toISOString().split('T')[0];
-                $html = '' + '<tr>' + '<td colspan="5"><textarea class="form-control correction_text" rows="5"></textarea></td>' + '<td><input type="date" class="form-control correction_date" value="' + defaultDate + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                $html = '' + '<tr>' + '<td colspan="5"><textarea class="form-control correction_text" rows="5"></textarea></td>' + '<td><input type="date" class="form-control correction_date test" value="' + defaultDate + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                 _correction_ind++;
                 $('#form_2_1').append($html);
                 app.bindDeleteBtns();
