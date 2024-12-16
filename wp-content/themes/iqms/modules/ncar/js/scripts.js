@@ -1026,9 +1026,13 @@
                                 v.corrective_action = 'remarks';
                             }
 
+                            if (readonly == 'readonly') {
+                                v.root_causes = 'Not Applicable';
+                            }
+
                             $html2 += '<tr>' + 
                                         '<td>' + 
-                                            '<textarea disabled class="form-control root_causes">' + v.root_causes + '</textarea>' + 
+                                            '<textarea disabled class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<textarea disabled class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
@@ -1050,7 +1054,7 @@
 
                             $html += '<tr>' + 
                                         '<td colspan="4">' + 
-                                            '<textarea class="form-control root_causes">' + v.root_causes + '</textarea>' + 
+                                            '<textarea class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' + 
                                         '</td>' + 
                                         '<td>' + 
                                             '<textarea class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
