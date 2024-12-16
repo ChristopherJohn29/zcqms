@@ -155,7 +155,8 @@
                 correction = [];
                
                 ncar_no = $('#edit-modal [name="ncar_no"]').val();
-                
+
+                let isValid = true; 
 
                 $('#form_2_1 tr').each(function() {
                     correction_text = $(this).find('.correction_text').val();
@@ -165,7 +166,8 @@
                 
                     if (!correction_text || !correction_date || !correction_implemented || !correction_remarks) {
                         alert('All fields in Correction must be filled out!');
-                        return false;
+                        isValid = false; // Mark as invalid
+                        return false; // Break the loop
                     }
                 
                     correction.push({
@@ -175,6 +177,8 @@
                         correction_remarks: correction_remarks
                     });
                 });
+
+                if (!isValid) return false;
                 
                 correction_rca = [];
                 $('#form_2_2 tr.rca').each(function() {
@@ -182,13 +186,16 @@
                 
                     if (!correction_text) {
                         alert('All fields in Root Cause Analysis must be filled out!');
-                        return false;
+                        isValid = false; // Mark as invalid
+                        return false; // Break the loop
                     }
                 
                     correction_rca.push({
                         correction_text: correction_text,
                     });
                 });
+
+                if (!isValid) return false;
                 
                 corrective_action_data = [];
                 $('#form_2_3 tr').each(function() {
@@ -200,7 +207,8 @@
                 
                     if (!root_causes || !corrective_action || !corrective_date || !corrective_implemented || !corrective_remarks) {
                         alert('All fields in Corrective Action Plan must be filled out!');
-                        return false;
+                        isValid = false; // Mark as invalid
+                        return false; // Break the loop
                     }
                 
                     corrective_action_data.push({
@@ -212,6 +220,7 @@
                     });
                 });
                 
+                if (!isValid) return false;
 
                 files = [];
                 $('#part2 #form_2_2 .file-group input').each(function() {
