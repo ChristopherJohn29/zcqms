@@ -127,7 +127,9 @@
             });
             $('#add_correction').click(function() {
                 date = new Date;
-                $html = '' + '<tr>' + '<td colspan="5"><textarea class="form-control correction_text" rows="5"></textarea></td>' + '<td><input type="date" class="form-control correction_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                today = new Date;
+                var defaultDate = today.toISOString().split('T')[0];
+                $html = '' + '<tr>' + '<td colspan="5"><textarea class="form-control correction_text" rows="5"></textarea></td>' + '<td><input type="date" class="form-control correction_date" value="' + defaultDate + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                 _correction_ind++;
                 $('#form_2_1').append($html);
                 app.bindDeleteBtns();
@@ -141,7 +143,9 @@
             /*corrective action*/
             $('#add_corrective_action').click(function() {
                 date = new Date;
-                $html = '' + '<tr>' + '<td colspan="4"><textarea class="form-control root_causes" rows="5"></textarea></td>' + '<td><textarea class="form-control corrective_action" rows="5"></textarea></td>' + '<td><input type="date" class="form-control corrective_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                today = new Date;
+                var defaultDate = today.toISOString().split('T')[0];
+                $html = '' + '<tr>' + '<td colspan="4"><textarea class="form-control root_causes" rows="5"></textarea></td>' + '<td><textarea class="form-control corrective_action" rows="5"></textarea></td>' + '<td><input type="date" class="form-control corrective_date" value="' + defaultDate + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                _correction_ind++;
                 $('#form_2_3').append($html);
                 app.bindDeleteBtns();
