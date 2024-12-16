@@ -888,7 +888,7 @@
                                                 '<textarea class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' + 
                                             '</td>' + 
                                             '<td>' + 
-                                                '<input type="date" readonly class="form-control correction_date" value="' + v.correction_date + '">' + 
+                                                '<input type="date" readonly class="form-control correction_date test" value="' + v.correction_date + '">' + 
                                             '</td>' + 
                                             '<td>' + 
                                                 '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
