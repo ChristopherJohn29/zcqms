@@ -155,25 +155,41 @@
                 correction = [];
                
                 ncar_no = $('#edit-modal [name="ncar_no"]').val();
+                
+
                 $('#form_2_1 tr').each(function() {
                     correction_text = $(this).find('.correction_text').val();
                     correction_date = $(this).find('.correction_date').val();
                     correction_implemented = ($(this).find('.correction_implemented:checked') ? $(this).find('.correction_implemented:checked').val() : '');
                     correction_remarks = $(this).find('.correction_remarks').val();
+                
+                    if (!correction_text || !correction_date || !correction_implemented || !correction_remarks) {
+                        alert('All fields in Correction must be filled out!');
+                        return false;
+                    }
+                
                     correction.push({
                         correction_text: correction_text,
                         correction_date: correction_date,
+                        correction_implemented: correction_implemented,
+                        correction_remarks: correction_remarks
                     });
                 });
-
+                
                 correction_rca = [];
                 $('#form_2_2 tr.rca').each(function() {
                     correction_text = $(this).find('.correction_text').val();
+                
+                    if (!correction_text) {
+                        alert('All fields in Root Cause Analysis must be filled out!');
+                        return false;
+                    }
+                
                     correction_rca.push({
                         correction_text: correction_text,
                     });
                 });
-
+                
                 corrective_action_data = [];
                 $('#form_2_3 tr').each(function() {
                     root_causes = $(this).find('.root_causes').val();
@@ -181,16 +197,27 @@
                     corrective_date = $(this).find('.corrective_date').val();
                     corrective_implemented = ($(this).find('.corrective_implemented:checked') ? $(this).find('.corrective_implemented:checked').val() : '');
                     corrective_remarks = $(this).find('.corrective_remarks').val();
+                
+                    if (!root_causes || !corrective_action || !corrective_date || !corrective_implemented || !corrective_remarks) {
+                        alert('All fields in Corrective Action Plan must be filled out!');
+                        return false;
+                    }
+                
                     corrective_action_data.push({
                         root_causes: root_causes,
                         corrective_action: corrective_action,
                         corrective_date: corrective_date,
+                        corrective_implemented: corrective_implemented,
+                        corrective_remarks: corrective_remarks
                     });
                 });
+                
+
                 files = [];
                 $('#part2 #form_2_2 .file-group input').each(function() {
                     files.push($(this).val());
                 });
+                
                 $.ajax({
                     url: location.origin + '/wp-admin/admin-ajax.php',
                     data: {
