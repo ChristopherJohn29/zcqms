@@ -153,23 +153,23 @@
             $('#edit_form2_save').click(function(e) {
                 e.preventDefault();
                 correction = [];
-               
+
                 ncar_no = $('#edit-modal [name="ncar_no"]').val();
 
-                let isValid = true; 
+                let isValid = true;
 
                 $('#form_2_1 tr').each(function() {
                     correction_text = $(this).find('.correction_text').val();
                     correction_date = $(this).find('.correction_date').val();
                     correction_implemented = ($(this).find('.correction_implemented:checked') ? $(this).find('.correction_implemented:checked').val() : '');
                     correction_remarks = $(this).find('.correction_remarks').val();
-                
+
                     if (!correction_text || !correction_date ) {
                         alert('All fields in Correction must be filled out!');
                         isValid = false; // Mark as invalid
                         return false; // Break the loop
                     }
-                
+
                     correction.push({
                         correction_text: correction_text,
                         correction_date: correction_date,
@@ -179,24 +179,24 @@
                 });
 
                 if (!isValid) return false;
-                
+
                 correction_rca = [];
                 $('#form_2_2 tr.rca').each(function() {
                     correction_text = $(this).find('.correction_text').val();
-                
+
                     if (!correction_text) {
                         alert('All fields in Root Cause Analysis must be filled out!');
                         isValid = false; // Mark as invalid
                         return false; // Break the loop
                     }
-                
+
                     correction_rca.push({
                         correction_text: correction_text,
                     });
                 });
 
                 if (!isValid) return false;
-                
+
                 corrective_action_data = [];
                 $('#form_2_3 tr').each(function() {
                     root_causes = $(this).find('.root_causes').val();
@@ -204,13 +204,13 @@
                     corrective_date = $(this).find('.corrective_date').val();
                     corrective_implemented = ($(this).find('.corrective_implemented:checked') ? $(this).find('.corrective_implemented:checked').val() : '');
                     corrective_remarks = $(this).find('.corrective_remarks').val();
-                
+
                     if (!root_causes || !corrective_action || !corrective_date ) {
                         alert('All fields in Corrective Action Plan must be filled out!');
                         isValid = false; // Mark as invalid
                         return false; // Break the loop
                     }
-                
+
                     corrective_action_data.push({
                         root_causes: root_causes,
                         corrective_action: corrective_action,
@@ -226,7 +226,7 @@
                 $('#part2 #form_2_2 .file-group input').each(function() {
                     files.push($(this).val());
                 });
-                
+
                 $.ajax({
                     url: location.origin + '/wp-admin/admin-ajax.php',
                     data: {
@@ -435,7 +435,7 @@
             /*form 3*/
             $('#add_verification').click(function() {
                 date = new Date;
-                $html = '' + '<tr>' + '<td colspan="3"><input type="text" class="form-control input-sm verification_remarks" placeholder="remarks">' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented hidden" value="Yes"> ' + '<input type="radio" name="verification_' + _correction_ind + '" class="hidden verification_implemented" value="No">' + '</td>'  + '<td><input type="date" class="form-control input-sm verification_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                $html = '' + '<tr>' + '<td colspan="3"><textarea class="form-control input-sm verification_remarks" placeholder="remarks" rows="3"></textarea>' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented hidden" value="Yes"> ' + '<input type="radio" name="verification_' + _correction_ind + '" class="hidden verification_implemented" value="No">' + '</td>'  + '<td><input type="date" class="form-control input-sm verification_date" value="' + date.getFullYear() + '-' + date.getMonth() + '-' + date.getDate() + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                 _correction_ind++;
                 $('#form_3_1').append($html);
                 app.bindDeleteBtns();
@@ -657,9 +657,9 @@
                     html = '';
                     $this.find('.evidences input').each(function() {
                         let url = $(this).data('url');
-            
+
                         // Force the URL to start with 'https://'
-                        url = url.replace(/^http:\/\//i, 'https://'); 
+                        url = url.replace(/^http:\/\//i, 'https://');
 
 						html += '<a href="'+url+'" target="_blank">'+$(this).data('title')+'</a>';
                         Swal.fire({
@@ -679,10 +679,10 @@
                     html = '';
                     $this.find('#noncoformity-evidence input').each(function() {
                         let url = $(this).data('url');
-            
+
                         // Force the URL to start with 'https://'
                         url = url.replace(/^http:\/\//i, 'https://');  // Replace http:// with https://
-            
+
                         html += '<a href="' + url + '" target="_blank">' + $(this).data('title') + '</a>';
                         Swal.fire({
                             icon: 'info',
@@ -701,9 +701,9 @@
                     html = '';
                     $('.root-cause-analysis-file-upload input').each(function() {
                         let url = $(this).data('url');
-            
+
                         // Force the URL to start with 'https://'
-                        url = url.replace(/^http:\/\//i, 'https://'); 
+                        url = url.replace(/^http:\/\//i, 'https://');
 
 						html += '<a href="'+url+'" target="_blank">'+$(this).data('title')+'</a>';
                         Swal.fire({
@@ -834,7 +834,7 @@
 
                             $html2 += '' + '<tr>' + '<td colspan="4"><textarea disabled class="form-control correction_text" rows="5">' + v.correction_text + '</textarea></td>' + '<td colspan="2"><input type="date" disabled class="form-control correction_date" value="' + v.correction_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                             _correction_ind++;
-                            
+
                             $('#form_2_1_b').html($html2);
                             app.bindDeleteBtns();
                         });
@@ -849,7 +849,7 @@
                         }
 
 
-                  
+
 
                         $.each(r.form2.corrective_action_data, function(i, v) {
 
@@ -857,25 +857,25 @@
                             // Ensure corrective_date exists and is valid
                             if (v.corrective_date && !isNaN(Date.parse(v.corrective_date))) {
                                 let correctiveDate = new Date(v.corrective_date);
-                                
+
                                 console.log(correctiveDate);
                                 // Update the latestCorrectiveDate if current date is later
                                 if (!latestCorrectiveDate || correctiveDate > latestCorrectiveDate) {
                                     latestCorrectiveDate = correctiveDate;
                                 }
                             }
-    
+
                             if (latestCorrectiveDate) {
                                 let currentDate = new Date();
                                 let daysDifference = Math.floor((currentDate - latestCorrectiveDate) / (1000 * 60 * 60 * 24));
-                            
+
                                 // Disable the button if 7 or more days have passed
                                 if (daysDifference <= 7) {
                                     $('#edit_form2_save_satisfactory').prop('disabled', true);
                                 } else {
                                     $('#edit_form2_save_satisfactory').prop('disabled', false);
                                 }
-                            } 
+                            }
                         });
 
                         if (!r.form2.correction || r.form2.correction.length === 0) {
@@ -889,21 +889,21 @@
                             var defaultDate = today.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
 
                             // Add a placeholder row when correction is empty
-                            $html += '<tr>' + 
-                                        '<td colspan="5">' + 
-                                            '<textarea required class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' + 
-                                        '</td>' + 
-                                        '<td>' + 
-                                            '<input type="date" readonly class="form-control correction_date test" value="'+defaultDate+'">' + 
-                                        '</td>' + 
-                                        '<td>' + 
-                                            '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
-                                        '</td>' + 
+                            $html += '<tr>' +
+                                        '<td colspan="5">' +
+                                            '<textarea required class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<input type="date" readonly class="form-control correction_date test" value="'+defaultDate+'">' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' +
+                                        '</td>' +
                                     '</tr>';
                         } else {
                             // Iterate and create rows for each correction
 
-                          
+
                             $.each(r.form2.correction, function(i, v) {
                                 if (v.correction_text == undefined) {
                                     v.correction_text = '';
@@ -912,7 +912,7 @@
                                     v.correction_text = 'Not Applicable';
                                 }
 
-                            
+
 
                                 // Set default date to today if correction_date is undefined or empty
                                 if (v.correction_date == undefined || v.correction_date == '') {
@@ -921,24 +921,24 @@
                                     v.correction_date = defaultDate;
                                 }
 
-            
-                                
-                                $html += '<tr>' + 
-                                            '<td colspan="5">' + 
-                                                '<textarea required class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' + 
-                                            '</td>' + 
-                                            '<td>' + 
-                                                '<input type="date" readonly class="form-control correction_date test" value="' + v.correction_date + '">' + 
-                                            '</td>' + 
-                                            '<td>' + 
-                                                '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
-                                            '</td>' + 
+
+
+                                $html += '<tr>' +
+                                            '<td colspan="5">' +
+                                                '<textarea required class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' +
+                                            '</td>' +
+                                            '<td>' +
+                                                '<input type="date" readonly class="form-control correction_date test" value="' + v.correction_date + '">' +
+                                            '</td>' +
+                                            '<td>' +
+                                                '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' +
+                                            '</td>' +
                                         '</tr>';
                                 _correction_ind++;
                             });
                         }
-                        
-                        
+
+
 
                         $('#form_2_1').html($html);
 
@@ -950,7 +950,7 @@
                             let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
                             let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
                             let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
-                        
+
                             // Adjust height by considering padding and border
                             this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                         });
@@ -967,10 +967,10 @@
                                 var ph  = '';
                             }
 
-                            $html += '<tr class="rca">' + 
-                                        '<td colspan="5">' + 
-                                            '<textarea required class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' + 
-                                        '</td>' + 
+                            $html += '<tr class="rca">' +
+                                        '<td colspan="5">' +
+                                            '<textarea required class="form-control correction_text" ' + readonly + '>'+ph+'</textarea>' +
+                                        '</td>' +
                                     '</tr>';
                         } else {
                             // Iterate and create rows for each correction_rca
@@ -981,16 +981,16 @@
                                 if (readonly == 'readonly') {
                                     v.correction_text = 'Not Applicable';
                                 }
-                                
-                                $html += '<tr class="rca">' + 
-                                            '<td colspan="5">' + 
-                                                '<textarea required class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' + 
-                                            '</td>' + 
+
+                                $html += '<tr class="rca">' +
+                                            '<td colspan="5">' +
+                                                '<textarea required class="form-control correction_text" ' + readonly + '>' + v.correction_text + '</textarea>' +
+                                            '</td>' +
                                         '</tr>';
                                 _correction_ind++;
                             });
                         }
-                        
+
 
                         $('#form_2_2 tr.rca').remove();
                         $('#form_2_2').append($html);
@@ -1003,7 +1003,7 @@
                             let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
                             let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
                             let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
-                        
+
                             // Adjust height by considering padding and border
                             this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                         });
@@ -1015,18 +1015,18 @@
                             if(v.correction_text  == undefined){
                                 v.correction_text = '';
                             }
-                        
-                            $html2 += '<tr class="rca">' + 
-                                        '<td colspan="5">' + 
-                                            '<textarea disabled class="form-control correction_text">' + v.correction_text + '</textarea>' + 
-                                        '</td>' + 
+
+                            $html2 += '<tr class="rca">' +
+                                        '<td colspan="5">' +
+                                            '<textarea disabled class="form-control correction_text">' + v.correction_text + '</textarea>' +
+                                        '</td>' +
                                     '</tr>';
                             _correction_ind++;
                         });
-                        
+
                         $('#form_2_2_b tr.rca').remove();
                         $('#form_2_2_b').append($html2);
-                        
+
                         // Adjust textarea heights based on content
                         jQuery('.correction_text').each(function() {
                             this.style.height = 'auto'; // Reset height to auto
@@ -1035,11 +1035,11 @@
                             let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
                             let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
                             let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
-                        
+
                             // Adjust height by considering padding and border
                             this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                         });
-                        
+
                         app.bindDeleteBtns();
 
 
@@ -1066,41 +1066,41 @@
                                 v.root_causes = 'Not Applicable';
                             }
 
-                            $html2 += '<tr>' + 
-                                        '<td>' + 
-                                            '<textarea disabled class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' + 
-                                        '</td>' + 
-                                        '<td>' + 
-                                            '<textarea disabled class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
-                                        '</td>' + 
-                                        '<td>' + 
-                                            '<input type="date" disabled class="form-control corrective_date" value="' + v.corrective_date + '">' + 
-                                        '</td>' + 
-                                        '<td style="display:flex;">' + 
-                                            '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="Yes" ' + (v.corrective_implemented == 'Yes' ? 'checked' : '') + '> Yes' + 
-                                            '<input  style="margin-left:5px;" type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="No" ' + (v.corrective_implemented == 'No' ? 'checked' : '') + '> No' + 
-                                        '</td>' + 
-                                        '<td>' + 
-                                            '<input type="text" class="form-control input-sm corrective_remarks" placeholder="remarks" value="' + v.corrective_remarks + '">' + 
-                                        '</td>' + 
-                                        '<td>' + 
-                                            '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
-                                        '</td>' + 
+                            $html2 += '<tr>' +
+                                        '<td>' +
+                                            '<textarea disabled class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<textarea disabled class="form-control corrective_action">' + v.corrective_action + '</textarea>' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<input type="date" disabled class="form-control corrective_date" value="' + v.corrective_date + '">' +
+                                        '</td>' +
+                                        '<td style="display:flex;">' +
+                                            '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="Yes" ' + (v.corrective_implemented == 'Yes' ? 'checked' : '') + '> Yes' +
+                                            '<input  style="margin-left:5px;" type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="No" ' + (v.corrective_implemented == 'No' ? 'checked' : '') + '> No' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<textarea class="form-control input-sm corrective_remarks" placeholder="remarks" rows="3">' + v.corrective_remarks + '</textarea>' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' +
+                                        '</td>' +
                                     '</tr>';
 
-                            $html += '<tr>' + 
-                                        '<td colspan="4">' + 
-                                            '<textarea required class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' + 
-                                        '</td>' + 
-                                        '<td>' + 
-                                            '<textarea required class="form-control corrective_action">' + v.corrective_action + '</textarea>' + 
-                                        '</td>' + 
-                                        '<td>' + 
-                                            '<input type="date" class="form-control corrective_date" value="' + v.corrective_date + '">' + 
-                                        '</td>' + 
-                                        '<td>' + 
-                                            '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' + 
-                                        '</td>' + 
+                            $html += '<tr>' +
+                                        '<td colspan="4">' +
+                                            '<textarea required class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<textarea required class="form-control corrective_action">' + v.corrective_action + '</textarea>' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<input type="date" class="form-control corrective_date" value="' + v.corrective_date + '">' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' +
+                                        '</td>' +
                                     '</tr>';
 
                             _correction_ind++;
@@ -1117,14 +1117,14 @@
                             let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
                             let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
                             let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
-                        
+
                             // Adjust height by considering padding and border
                             this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                         });
 
                         app.bindDeleteBtns();
 
-                        
+
                         jQuery('.view-button').click(function(){
                             content = jQuery(this).data('content');
                             alert(content);
@@ -1133,7 +1133,7 @@
                         /*form 3*/
                         $html = '';
                         $.each(r.form3.verification, function(i, v) {
-                            $html += '' + '<tr>' + '<td colspan="3">' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented hidden" value="Yes" ' + (v.verification_implemented == 'Yes' ? 'checked' : '') + '> ' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented hidden" value="No" ' + (v.verification_implemented == 'No' ? 'checked' : '') + '>' + '<input type="text" class="form-control input-sm verification_remarks" placeholder="remarks" value="' + v.verification_remarks + '"></td>' + '' + '<td><input type="date" class="form-control input-sm verification_date" value="' + v.verification_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                            $html += '' + '<tr>' + '<td colspan="3">' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented hidden" value="Yes" ' + (v.verification_implemented == 'Yes' ? 'checked' : '') + '> ' + '<input type="radio" name="verification_' + _correction_ind + '" class="verification_implemented hidden" value="No" ' + (v.verification_implemented == 'No' ? 'checked' : '') + '>' + '<textarea class="form-control input-sm verification_remarks" placeholder="remarks" rows="3">' + v.verification_remarks + '</textarea></td>' + '' + '<td><input type="date" class="form-control input-sm verification_date" value="' + v.verification_date + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
                             _correction_ind++;
                             $('#form_3_1').html($html);
                             app.bindDeleteBtns();
@@ -1157,7 +1157,7 @@
                             $('#edit-modal #part2b').removeClass('readonly');
                             $('#edit-modal #part2b').find('.submit-group').css('display', 'none');
                         }
-                        
+
                         if (r.cant_followup) {
                             if (r.cant_approve) {
                                 $('#edit-modal #part2b').addClass('readonly');
@@ -1176,11 +1176,11 @@
                             let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
                             let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
                             let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
-                        
+
                             // Adjust height by considering padding and border
                             this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                         });
-                        
+
                     },
                     beforeSend: function() {
                         $('#edit-modal').modal({
@@ -1231,7 +1231,7 @@
                     let paddingTop = parseFloat(computedStyle.paddingTop); // Get the padding from the computed style
                     let paddingBottom = parseFloat(computedStyle.paddingBottom); // Get the padding from the computed style
                     let borderHeight = parseFloat(computedStyle.borderTopWidth) + parseFloat(computedStyle.borderBottomWidth); // Get the border height from the computed style
-                
+
                     // Adjust height by considering padding and border
                     this.style.height = (scrollHeight + paddingTop + paddingBottom + borderHeight) + 'px';
                 });
