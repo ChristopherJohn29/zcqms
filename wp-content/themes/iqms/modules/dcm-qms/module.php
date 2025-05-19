@@ -348,7 +348,8 @@ class TransferDCM{
         $post_data = array(
             'post_title' => $data['title'],
             'post_type' => 'dcm',
-            'post_status' => 'publish'
+            'post_status' => 'publish',
+            'post_author' => get_post_field('post_author', $qms_id) // Set the author of DCM document to be the same as QMS document
         );
 
         $post_id = wp_insert_post( $post_data );
@@ -402,7 +403,8 @@ class TransferDCM{
         $post_data = array(
             'post_title' => $data['title'],
             'post_type' => 'qms-documents',
-            'post_status' => 'publish'
+            'post_status' => 'publish',
+            'post_author' => get_post_field('post_author', $dcm_id) // Set the author of QMS document to be the same as DCM document
         );
 
         if(in_array($dcm_id, $ids)){
