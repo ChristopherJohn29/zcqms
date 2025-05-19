@@ -18,7 +18,7 @@ function iqms_assets(){
 
     wp_enqueue_script('iqms-magnific-popup-scripts', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js');
     wp_enqueue_style('iqms-magnific-popup-style', 'https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css');
-    
+
 }
 
 
@@ -71,7 +71,7 @@ add_theme_support( 'admin-bar', array( 'callback' => 'my_admin_bar_css') );
 function my_admin_bar_css()
 {
 ?>
-<style type="text/css" media="screen">	
+<style type="text/css" media="screen">
 	html body { margin-top: 0 !important; }
 </style>
 <?php
@@ -89,7 +89,7 @@ function gp_get_cmb_options_array_tax( $taxonomy, $args = array() ) {
     $args = wp_parse_args( $args, $defaults );
     $terms = get_terms( $taxonomy, $args );
 
-    
+
     $hierarchy = _get_term_hierarchy( $taxonomy );
 
     $term_list = array();
@@ -247,18 +247,19 @@ function save_services_field_to_user($user_id) {
     }
 }
 
-// Hook into the 'user_register' and 'edit_user_profile_update' actions to save the custom field value
+// Hook into the 'user_register', 'personal_options_update', and 'edit_user_profile_update' actions to save the custom field value
 add_action('user_register', 'save_services_field_to_user');
+add_action('personal_options_update', 'save_services_field_to_user'); // Allow users to update their own profile
 add_action('edit_user_profile_update', 'save_services_field_to_user');
 
 if(isset($user_id)){
     $user_service_term = get_user_meta($user_id, 'user_service_term', true);
     $term = get_term($user_service_term, 'services');
-    
+
     if ($term && !is_wp_error($term)) {
         echo 'Services: ' . esc_html($term->name);
     }
-    
+
 }
 
 function remove_services_metabox() {
@@ -275,7 +276,7 @@ add_action('add_meta_boxes', 'add_custom_services_dropdown_metabox');
 function custom_services_dropdown_callback($post) {
     global $current_user;
     wp_get_current_user();
-    
+
     // Get the user's saved service term from user meta
     $services_term = wp_get_post_terms($post->ID, 'services', array('fields' => 'ids'));
     $services = get_user_meta($current_user->ID, 'user_service_term', true);
@@ -295,7 +296,7 @@ function custom_services_dropdown_callback($post) {
     if (!empty($terms) && !is_wp_error($terms)) {
         foreach ($terms as $term) {
             // Preselect the user's saved service
-            
+
             if(!empty($services_term)){
                 $selected = (!empty($services_term) && $services_term[0] == $term->term_id) ? 'selected="selected"' : '';
                 if((!empty($services_term) && $services_term[0] == $term->term_id)){
@@ -306,9 +307,9 @@ function custom_services_dropdown_callback($post) {
                 if($services == $term->term_id){
                     $selected_for_hidden = esc_attr($term->term_id);
                 }
-               
+
             }
-            
+
             echo '<option value="' . esc_attr($term->term_id) . '" ' . $selected . '>' . esc_html($term->name) . '</option>';
         }
     }
@@ -499,7 +500,7 @@ function download_ncar_report() {
         $root_causes_array = [];
         $corrective_action_array = [];
         $corrective_date_array = [];
-        
+
         // Loop through the corrective_action_data array and collect the root_causes and corrective_action
         if (!empty($corrective_action_data) && is_array($corrective_action_data)) {
             foreach ($corrective_action_data as $data) {
@@ -517,7 +518,7 @@ function download_ncar_report() {
                         $corrective_date_array[] = $data['corrective_date'];
                     }
                 }
-         
+
             }
         }
                // Get the latest date if there are dates in the array
@@ -527,7 +528,7 @@ function download_ncar_report() {
             $date->modify('+7 days');
             $latest_date_plus_7 = $date->format('Y-m-d');
         }
-        
+
         // Convert the arrays into comma-separated strings
         $root_causes = implode(', ', $root_causes_array);
         $corrective_action = implode(', ', $corrective_action_array);
@@ -565,7 +566,7 @@ function enable_update_button_for_correction() {
     // Check if we are on the post edit screen and the post is of type 'dcm'
     if (get_current_screen()->base == 'post' && isset($_GET['post'])) {
         global $post;
-        
+
         // Only apply this if the post type is 'dcm'
         if ($post->post_type !== 'dcm') {
             return; // Do not apply to non-'dcm' post types
@@ -573,17 +574,17 @@ function enable_update_button_for_correction() {
 
         // Retrieve the current user ID
         $current_user_id = get_current_user_id();
-        
+
         // Retrieve the prepared_by field (this is the user ID who prepared the post)
         $prepared_by = get_field('users', get_the_ID());
-        
+
         // Retrieve the values for your conditions
         $dco_reviewed_status = get_field('dco_review_status', $post->ID);
         $reviewed_status = get_field('review_status', $post->ID);
         $approval_status = get_field('approval_status', $post->ID);
         $for_revision = get_field('for_revision', $post->ID);
         $assigned_dco_raw = get_field('assigned_dco', $post->ID);
-        
+
         // Set display variable based on the retrieved field values
         $display = '';
         if (get_post_status($post->ID) == 'draft') {
