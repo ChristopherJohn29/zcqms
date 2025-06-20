@@ -674,4 +674,217 @@ function reposition_publish_metabox() {
     // Add the Publish metabox to a different location
     add_meta_box('submitdiv', __('Publish'), 'post_submit_meta_box', 'post', 'normal', 'low');
 }
+
+/**
+ * Force all postboxes to be open by default (disable toggle functionality)
+ * This prevents any metabox/field group from being collapsed
+ */
+function force_all_postboxes_open() {
+    // Add CSS to hide toggle buttons and prevent collapsing
+    add_action('admin_head', 'hide_postbox_toggles_css');
+
+    // Add JavaScript to prevent postbox toggling
+    add_action('admin_footer', 'disable_postbox_toggle_js');
+
+    // Override postbox classes for all post types and screens
+    add_action('add_meta_boxes', 'add_postbox_class_filters', 999);
+
+    // Override the core postbox_classes function
+    add_filter('postbox_classes', 'force_postbox_open_classes', 10, 2);
+
+    // Clear any stored closed postboxes for all users
+    add_action('admin_init', 'clear_closed_postboxes_user_meta');
+
+    // Prevent saving closed postboxes
+    add_filter('pre_update_user_meta', 'prevent_closed_postboxes_save', 10, 4);
+
+    // Override get_user_option for closed postboxes
+    add_filter('pre_option_closedpostboxes', 'force_empty_closed_postboxes');
+    add_filter('get_user_option_closedpostboxes', 'force_empty_closed_postboxes');
+
+    // Add filter for all closedpostboxes_ user options
+    add_action('init', 'add_closed_postboxes_filters');
+}
+
+/**
+ * Add postbox class filters for all screens and boxes
+ */
+function add_postbox_class_filters() {
+    global $wp_meta_boxes;
+
+    // Get current screen
+    $screen = get_current_screen();
+    if (!$screen) return;
+
+    $screen_id = $screen->id;
+
+    // Add filters for all existing metaboxes on this screen
+    if (isset($wp_meta_boxes[$screen_id])) {
+        foreach ($wp_meta_boxes[$screen_id] as $context => $priorities) {
+            foreach ($priorities as $priority => $boxes) {
+                foreach ($boxes as $box_id => $box) {
+                    add_filter("postbox_classes_{$screen_id}_{$box_id}", 'remove_closed_class_from_postboxes', 10, 1);
+                }
+            }
+        }
+    }
+
+    // Also add a general filter that catches any postbox classes
+    add_filter('postbox_classes_' . $screen_id, 'remove_closed_class_from_postboxes', 10, 1);
+}
+
+/**
+ * Add filters for all possible closedpostboxes_ user options
+ */
+function add_closed_postboxes_filters() {
+    // Common post type screens
+    $screens = array(
+        'post', 'page', 'dashboard', 'edit-post', 'edit-page',
+        'acf-field-group', 'attachment', 'nav-menus'
+    );
+
+    // Add custom post types
+    $post_types = get_post_types(array('public' => true), 'names');
+    $screens = array_merge($screens, $post_types);
+
+    // Add edit screens for custom post types
+    foreach ($post_types as $post_type) {
+        $screens[] = 'edit-' . $post_type;
+    }
+
+    // Add filters for each screen
+    foreach ($screens as $screen) {
+        add_filter("get_user_option_closedpostboxes_{$screen}", 'force_empty_closed_postboxes');
+        add_filter("pre_get_user_option_closedpostboxes_{$screen}", 'force_empty_closed_postboxes');
+    }
+}
+
+/**
+ * Force empty closed postboxes for any screen
+ */
+function force_empty_closed_postboxes($value) {
+    return array(); // Always return empty array
+}
+
+/**
+ * Clear closed postboxes user meta to force all postboxes open
+ */
+function clear_closed_postboxes_user_meta() {
+    $user_id = get_current_user_id();
+    if ($user_id) {
+        // Get all user meta keys that store closed postboxes
+        $meta_keys = get_user_meta($user_id);
+        foreach ($meta_keys as $key => $value) {
+            if (strpos($key, 'closedpostboxes_') === 0) {
+                delete_user_meta($user_id, $key);
+            }
+        }
+    }
+}
+
+/**
+ * Prevent saving closed postboxes user meta
+ */
+function prevent_closed_postboxes_save($check, $object_id, $meta_key, $meta_value) {
+    // Prevent saving any closedpostboxes_ meta
+    if (strpos($meta_key, 'closedpostboxes_') === 0) {
+        return array(); // Return empty array instead of the closed postboxes
+    }
+    return $check; // Allow other meta to be saved normally
+}
+
+/**
+ * Force postbox classes to never include 'closed'
+ */
+function force_postbox_open_classes($classes, $box_id) {
+    // Always return empty string to ensure no 'closed' class
+    return '';
+}
+
+/**
+ * Remove 'closed' class from all postboxes
+ */
+function remove_closed_class_from_postboxes($classes) {
+    // Remove 'closed' from the classes array if it exists
+    if (is_array($classes)) {
+        $classes = array_diff($classes, array('closed'));
+    } else {
+        // Handle string input
+        $classes = str_replace('closed', '', $classes);
+        $classes = trim(preg_replace('/\s+/', ' ', $classes));
+    }
+    return $classes;
+}
+
+/**
+ * Add CSS to hide toggle handles and prevent visual collapse indicators
+ */
+function hide_postbox_toggles_css() {
+    ?>
+    <style type="text/css">
+        /* Hide the toggle handle/button on all postboxes */
+        .postbox .handlediv,
+        .postbox .handle-actions .handlediv,
+        .postbox .postbox-header .handle-actions .handlediv {
+            display: none !important;
+        }
+
+        /* Ensure postbox content is always visible */
+        .postbox.closed .inside {
+            display: block !important;
+        }
+
+        /* Remove closed state styling */
+        .postbox.closed {
+            /* Reset any closed-specific styling */
+        }
+
+        /* Make sure ACF postboxes are also always open */
+        .acf-postbox.closed .inside,
+        .acf-postbox.closed .acf-fields {
+            display: block !important;
+        }
+
+        /* Hide toggle for ACF field groups specifically */
+        .acf-postbox .handlediv {
+            display: none !important;
+        }
+    </style>
+    <?php
+}
+
+/**
+ * Add JavaScript to disable postbox toggle functionality
+ */
+function disable_postbox_toggle_js() {
+    ?>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            // Remove all click handlers from postbox handles
+            $('.postbox .hndle, .postbox .handlediv').off('click.postboxes');
+
+            // Prevent any postbox from being closed
+            $('.postbox').removeClass('closed');
+
+            // Override the postboxes.handle_click function to do nothing
+            if (typeof window.postboxes !== 'undefined') {
+                window.postboxes.handle_click = function() {
+                    // Do nothing - disable toggle functionality
+                    return false;
+                };
+            }
+
+            // For ACF postboxes, ensure they stay open
+            $('.acf-postbox').removeClass('closed');
+            $('.acf-postbox .inside').show();
+
+            // Remove any existing closed classes and show content
+            $('.postbox.closed').removeClass('closed').find('.inside').show();
+        });
+    </script>
+    <?php
+}
 add_action('do_meta_boxes', 'reposition_publish_metabox');
+
+// Force all postboxes to be open by default
+add_action('admin_init', 'force_all_postboxes_open');
