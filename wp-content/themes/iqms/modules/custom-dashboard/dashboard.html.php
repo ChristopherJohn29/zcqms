@@ -85,14 +85,13 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
 					if ( $dcm->have_posts() ) {
 						foreach( $dcm->posts as $post ) {
-							echo '<tr><td>'.$post->post_title.'</td><td><a class="btn btn-primary btn-sm" href="'.get_site_url().'/wp-admin/post.php?post='.$post->ID.'&action=edit" target="_blank">View</a></td></tr>';
+							echo '<tr><td>'.$post->post_title.'</td></tr>';
 						}
 					}
 				?>
@@ -106,14 +105,13 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php
 					if ( $qms->have_posts() ) {
 						foreach( $qms->posts as $post ) {
-							echo '<tr><td>'.$post->post_title.'</td><td><a class="btn btn-primary btn-sm" href="'.get_site_url().'/wp-admin/post.php?post='.$post->ID.'&action=edit" target="_blank">View</a></td></tr>';
+							echo '<tr><td>'.$post->post_title.'</td></tr>';
 						}
 					}
 				?>
@@ -127,7 +125,6 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -135,7 +132,7 @@
 					if ( $ncar->have_posts() ) {
 						foreach( $ncar->posts as $post ) {
 							$title = get_post_meta( $post->ID, 'source_of_nc', true );
-							echo '<tr><td>'.$title.'</td><td><a class="btn btn-primary btn-sm" href="'.get_site_url().'/wp-admin/admin.php?page=ncar" target="_blank">View</a></td></tr>';
+							echo '<tr><td>'.$title.'</td></tr>';
 						}
 					}
 				?>
@@ -149,7 +146,6 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -157,7 +153,7 @@
 					if ( $ia->have_posts() ) {
 						foreach( $ia->posts as $post ) {
 							$title = get_post_meta( $post->ID, 'source_of_nc', true );
-							echo '<tr><td>'.$title.'</td><td><a class="btn btn-primary btn-sm" href="'.get_site_url().'/wp-admin/admin.php?page=ncar-ia" target="_blank">View</a></td></tr>';
+							echo '<tr><td>'.$title.'</td></tr>';
 						}
 					}
 				?>
