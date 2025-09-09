@@ -562,6 +562,87 @@ function download_ncar_report() {
     exit();
 }
 
+// Add QMS report download handler and admin button
+add_action('admin_post_nopriv_download_qms_report', 'download_qms_report_qms');
+add_action('admin_post_download_qms_report', 'download_qms_report_qms');
+
+/**
+ * Output a "Download QMS Report" button on the qms-documents listing filters area.
+ */
+function iqms_qms_download_button() {
+    global $typenow;
+    if ( isset($typenow) && $typenow === 'qms-documents' ) {
+        echo '<a href="' . esc_url( admin_url('admin-post.php?action=download_qms_report') ) . '" class="button">Download QMS Report</a>';
+    }
+}
+add_action('restrict_manage_posts', 'iqms_qms_download_button');
+
+function download_qms_report_qms() {
+    // Ensure PhpSpreadsheet is available
+    if (!class_exists('PhpOffice\PhpSpreadsheet\Spreadsheet')) {
+        require get_template_directory() . '/vendor/autoload.php';
+    }
+
+    $args = [
+        'post_type' => 'qms-documents',
+        'posts_per_page' => -1,
+    ];
+    $query = new WP_Query($args);
+
+    $spreadsheet = new PhpOffice\PhpSpreadsheet\Spreadsheet();
+    $sheet = $spreadsheet->getActiveSheet();
+
+    // Headers as requested
+    $sheet->setCellValue('A1', 'DEPARTMENT/ SECTION/ UNIT')
+          ->setCellValue('B1', 'Document Type (s.a. Procedure, Operations Manual, Work Instructions)')
+          ->setCellValue('C1', 'Document No.')
+          ->setCellValue('D1', 'Rev no.')
+          ->setCellValue('E1', 'DOCUMENT TITLE')
+          ->setCellValue('F1', 'Effectivity Date');
+
+    $row = 2;
+    foreach ($query->posts as $post) {
+        $id = $post->ID;
+
+        // Department / services
+        $services = wp_get_post_terms($id, 'services', array('fields' => 'names'));
+        $department = !empty($services) ? implode(', ', $services) : '';
+
+        // Document type (taxonomy)
+        $doc_types = wp_get_post_terms($id, 'document_type', array('fields' => 'names'));
+        $document_type = !empty($doc_types) ? implode(', ', $doc_types) : '';
+
+        // Document no and revision - try ACF then postmeta
+        $document_no = function_exists('get_field') ? get_field('document_id', $id) : false;
+        if (empty($document_no)) $document_no = get_post_meta($id, 'document_id', true);
+
+        $revision = function_exists('get_field') ? get_field('revision', $id) : false;
+        if (empty($revision)) $revision = get_post_meta($id, 'revision', true);
+
+        $title = get_the_title($id);
+
+        $effectivity = function_exists('get_field') ? get_field('date_of_effectivity', $id) : false;
+        if (empty($effectivity)) $effectivity = get_post_meta($id, 'date_of_effectivity', true);
+
+        $sheet->setCellValue('A' . $row, $department)
+              ->setCellValue('B' . $row, $document_type)
+              ->setCellValue('C' . $row, $document_no)
+              ->setCellValue('D' . $row, $revision)
+              ->setCellValue('E' . $row, $title)
+              ->setCellValue('F' . $row, $effectivity);
+
+        $row++;
+    }
+
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="qms_report.xlsx"');
+    header('Cache-Control: max-age=0');
+
+    $writer = new PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
+    $writer->save('php://output');
+    exit();
+}
+
 function enable_update_button_for_correction() {
     // Check if we are on the post edit screen and the post is of type 'dcm'
     if (get_current_screen()->base == 'post' && isset($_GET['post'])) {
