@@ -219,8 +219,9 @@
 							<td><?= $clause_no ?></td>
 							<td><?=$status ?></td>
 							<td class="action-group">
-								<button class="btn btn-sm btn-success btn-edit"><i class="glyphicon glyphicon glyphicon-eye-open"></i> <i class="glyphicon glyphicon glyphicon-pencil"></i></button> 
+								<button class="btn btn-sm btn-success btn-edit"><i class="glyphicon glyphicon glyphicon-eye-open"></i> <i class="glyphicon glyphicon glyphicon-pencil"></i></button>
 								<button class="btn btn-sm btn-primary btn-remarks"><i class="glyphicon glyphicon glyphicon-file"></i></button>
+								<button class="btn btn-sm btn-info btn-status-log" data-id="<?= $id ?>"><i class="glyphicon glyphicon-time"></i></button>
 								<?= ( get_post_meta( $id, '_user_id', true ) == $this_user ? '<button class="btn btn-sm btn-danger btn-delete"><i class="glyphicon glyphicon glyphicon-trash"></i></button>' : '' ) ?>
 							</td>
 							<td>-</td>

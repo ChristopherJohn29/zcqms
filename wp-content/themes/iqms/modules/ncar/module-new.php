@@ -89,10 +89,13 @@ if ( !class_exists('NCAR_Module') ) {
 			$post_id = $data['ncar_no'];
 			$to_return = [];
 			if ( $post_id ) {
+				$old_status = get_post_meta($post_id, 'status', true);
 				if($final_decision == 'satisfactory'){
 					update_post_meta( $post_id, 'status', 'Closed' );
+					$this->log_status_change($post_id, $old_status, 'Closed');
 				} else {
 					update_post_meta( $post_id, 'status', 'Reverted to For Action' );
+					$this->log_status_change($post_id, $old_status, 'Reverted to For Action');
 				}
 
 				update_post_meta( $post_id, 'verification', $verification );
@@ -119,15 +122,19 @@ if ( !class_exists('NCAR_Module') ) {
 
 			$to_return = [];
 			if ( $post_id ) {
+				$old_status = get_post_meta($post_id, 'status', true);
 
 				if($satisfactory !== ''){
 					if($satisfactory == 1){
 						update_post_meta( $post_id, 'status', 'For Verification' );
+						$this->log_status_change($post_id, $old_status, 'For Verification');
 					} else {
 						update_post_meta( $post_id, 'status', 'Reverted to For Action' );
+						$this->log_status_change($post_id, $old_status, 'Reverted to For Action');
 					}
 				} else {
 					update_post_meta( $post_id, 'status', 'For Follow up' );
+					$this->log_status_change($post_id, $old_status, 'For Follow up');
 
 					$owner = get_post_field('post_author',$post_id);
 					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
@@ -314,6 +321,7 @@ if ( !class_exists('NCAR_Module') ) {
 				}
 
 				update_post_meta( $post_id, 'status', 'For Action' );
+				$this->log_status_change($post_id, null, 'For Action');
 
 				if(get_option('notification_'.$this->this_user)){
 					$options = get_option('notification_'.$this->this_user);
@@ -427,6 +435,52 @@ if ( !class_exists('NCAR_Module') ) {
 		function ncar_main_module_cb() {
 			require_once( 'main_module_html.php' );
 			require_once( 'modals.php' );
+		}
+
+		function get_action_label($old_status, $new_status) {
+			// Handle initial creation
+			if ($old_status === null && $new_status === 'For Action') {
+				return 'Created';
+			}
+
+			// Handle status transitions - "Actioned" covers both initial action and re-action after revert
+			if (($old_status === 'For Action' || $old_status === 'Reverted to For Action') && $new_status === 'For Follow up') {
+				return 'Actioned';
+			}
+
+			if ($old_status === 'For Follow up' && $new_status === 'For Verification') {
+				return 'Followed up';
+			}
+
+			if ($old_status === 'For Verification' && $new_status === 'Closed') {
+				return 'Verified and Closed';
+			}
+
+			if ($new_status === 'Reverted to For Action') {
+				return 'Reverted';
+			}
+
+			// Default fallback for any other transitions
+			return $new_status;
+		}
+
+		function log_status_change($post_id, $old_status, $new_status) {
+			global $wpdb;
+
+			$table_name = $wpdb->prefix . 'ncar_status_log';
+			$action_label = $this->get_action_label($old_status, $new_status);
+
+			$wpdb->insert(
+				$table_name,
+				array(
+					'post_id' => $post_id,
+					'old_status' => $old_status,
+					'new_status' => $action_label,
+					'changed_by' => get_current_user_id(),
+					'timestamp' => current_time('mysql')
+				),
+				array('%d', '%s', '%s', '%d', '%s')
+			);
 		}
 	}
 	$NCAR_Module = new NCAR_Module();

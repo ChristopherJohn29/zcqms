@@ -39,3 +39,23 @@ input[type="radio"] {
     z-index: 1;
     opacity: 10%;
 }
+
+/* Corrective Action Evidence Upload Styles */
+.corrective-evidence-upload {
+    margin-bottom: 10px;
+}
+
+.corrective-evidence-upload .selected_files {
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.corrective-evidence-upload .upload-btn {
+    font-size: 12px;
+    padding: 4px 8px;
+}
+
+.corrective-evidence-upload .selected_files:hover {
+    cursor: pointer;
+    background-color: #f5f5f5;
+}

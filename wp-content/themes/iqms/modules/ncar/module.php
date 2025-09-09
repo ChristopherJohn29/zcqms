@@ -23,6 +23,15 @@ if ( !class_exists('NCAR_Module') ) {
 			add_action('wp_ajax_ncar_edit', array($this, 'ncar_edit'));
         	add_action('wp_ajax_nopriv_ncar_edit', array($this, 'ncar_edit'));
 
+			add_action('wp_ajax_ncar_status_log', array($this, 'ncar_status_log'));
+        	add_action('wp_ajax_nopriv_ncar_status_log', array($this, 'ncar_status_log'));
+
+			// Ensure status log table exists
+			add_action('admin_init', array($this, 'ensure_status_log_table'));
+
+		// Add admin notice if table doesn't exist
+		add_action('admin_notices', array($this, 'status_log_table_notice'));
+
 			add_action('wp_ajax_ncar_edit_save', array($this, 'ncar_edit_save'));
         	add_action('wp_ajax_nopriv_ncar_edit_save', array($this, 'ncar_edit_save'));
 
@@ -114,7 +123,9 @@ if ( !class_exists('NCAR_Module') ) {
 
 				if($final_decision == 'satisfactory'){
 					date_default_timezone_set('Asia/Shanghai');
+					$old_status = get_post_meta($post_id, 'status', true);
 					update_post_meta( $post_id, 'status', 'Closed' );
+					$this->log_status_change($post_id, $old_status, 'Closed');
 					update_post_meta( $post_id, 'close_date', date("Y-m-d") );
 					
 
@@ -131,7 +142,9 @@ if ( !class_exists('NCAR_Module') ) {
 				
 
 				} else {
+					$old_status = get_post_meta($post_id, 'status', true);
 					update_post_meta( $post_id, 'status', 'Reverted to For Action' );
+					$this->log_status_change($post_id, $old_status, 'Reverted to For Action');
 
 					$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 
@@ -191,8 +204,9 @@ if ( !class_exists('NCAR_Module') ) {
 
 					if($satisfactory == 1){
 
-						
+						$old_status = get_post_meta($post_id, 'status', true);
 						update_post_meta( $post_id, 'status', 'For Verification' );
+						$this->log_status_change($post_id, $old_status, 'For Verification');
 						update_post_meta( $post_id, 'date_verified', date('Y-m-d'));
 
 						if(get_option('notification_'.$owner)){
@@ -229,7 +243,9 @@ if ( !class_exists('NCAR_Module') ) {
 						$this->sendEmail($approve_by->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' corrective action implemented by '.$owner_name.' requires you to verify its effectiveness. ');
 
 					} else {
+						$old_status = get_post_meta($post_id, 'status', true);
 						update_post_meta( $post_id, 'status', 'Reverted to For Action' );
+						$this->log_status_change($post_id, $old_status, 'Reverted to For Action');
 
 						$review_by_id = get_post_meta($post_id, 'reviewed_by', true);
 
@@ -253,8 +269,9 @@ if ( !class_exists('NCAR_Module') ) {
 					}
 				} else {
 
-
+					$old_status = get_post_meta($post_id, 'status', true);
 					update_post_meta( $post_id, 'status', 'For Follow up' );
+					$this->log_status_change($post_id, $old_status, 'For Follow up');
 
 					$owner = get_post_field('post_author',$post_id);
 					$ncar_no_new = get_post_meta($post_id, 'ncar_no_new', true);
@@ -339,25 +356,48 @@ if ( !class_exists('NCAR_Module') ) {
 				$current_corrective_action_data = get_post_meta( $post_id, 'corrective_action_data', true );
 
 				foreach ($corrective_action_data as $key => $value) {
-					$corrective_action_data[$key]['root_causes'] = isset($corrective_action_data[$key]['root_causes']) && !empty($corrective_action_data[$key]['root_causes']) 
-						? $corrective_action_data[$key]['root_causes'] 
+					$corrective_action_data[$key]['root_causes'] = isset($corrective_action_data[$key]['root_causes']) && !empty($corrective_action_data[$key]['root_causes'])
+						? $corrective_action_data[$key]['root_causes']
 						: (isset($current_corrective_action_data[$key]['root_causes']) ? $current_corrective_action_data[$key]['root_causes'] : '');
-				
-					$corrective_action_data[$key]['corrective_action'] = isset($corrective_action_data[$key]['corrective_action']) && !empty($corrective_action_data[$key]['corrective_action']) 
-						? $corrective_action_data[$key]['corrective_action'] 
+
+					$corrective_action_data[$key]['corrective_action'] = isset($corrective_action_data[$key]['corrective_action']) && !empty($corrective_action_data[$key]['corrective_action'])
+						? $corrective_action_data[$key]['corrective_action']
 						: (isset($current_corrective_action_data[$key]['corrective_action']) ? $current_corrective_action_data[$key]['corrective_action'] : '');
-				
-					$corrective_action_data[$key]['corrective_date'] = isset($corrective_action_data[$key]['corrective_date']) && !empty($corrective_action_data[$key]['corrective_date']) 
-						? $corrective_action_data[$key]['corrective_date'] 
+
+					$corrective_action_data[$key]['corrective_date'] = isset($corrective_action_data[$key]['corrective_date']) && !empty($corrective_action_data[$key]['corrective_date'])
+						? $corrective_action_data[$key]['corrective_date']
 						: (isset($current_corrective_action_data[$key]['corrective_date']) ? $current_corrective_action_data[$key]['corrective_date'] : '');
-				
-					$corrective_action_data[$key]['corrective_implemented'] = isset($corrective_action_data[$key]['corrective_implemented']) && !empty($corrective_action_data[$key]['corrective_implemented']) 
-						? $corrective_action_data[$key]['corrective_implemented'] 
+
+					$corrective_action_data[$key]['corrective_implemented'] = isset($corrective_action_data[$key]['corrective_implemented']) && !empty($corrective_action_data[$key]['corrective_implemented'])
+						? $corrective_action_data[$key]['corrective_implemented']
 						: (isset($current_corrective_action_data[$key]['corrective_implemented']) ? $current_corrective_action_data[$key]['corrective_implemented'] : '');
-				
-					$corrective_action_data[$key]['corrective_remarks'] = isset($corrective_action_data[$key]['corrective_remarks']) && !empty($corrective_action_data[$key]['corrective_remarks']) 
-						? $corrective_action_data[$key]['corrective_remarks'] 
+
+					$corrective_action_data[$key]['corrective_remarks'] = isset($corrective_action_data[$key]['corrective_remarks']) && !empty($corrective_action_data[$key]['corrective_remarks'])
+						? $corrective_action_data[$key]['corrective_remarks']
 						: (isset($current_corrective_action_data[$key]['corrective_remarks']) ? $current_corrective_action_data[$key]['corrective_remarks'] : '');
+
+					// Handle evidence files for corrective actions
+					if (isset($corrective_action_data[$key]['evidences']) && !empty($corrective_action_data[$key]['evidences'])) {
+						$evidence_files = [];
+						foreach ($corrective_action_data[$key]['evidences'] as $evidence_id) {
+							if (!empty($evidence_id)) {
+								$attachment = get_post($evidence_id);
+								if ($attachment) {
+									$evidence_files[] = [
+										'id' => $evidence_id,
+										'title' => $attachment->post_title,
+										'url' => wp_get_attachment_url($evidence_id)
+									];
+								}
+							}
+						}
+						$corrective_action_data[$key]['evidences'] = $evidence_files;
+					} else {
+						// Preserve existing evidence files if no new ones are provided
+						$corrective_action_data[$key]['evidences'] = isset($current_corrective_action_data[$key]['evidences'])
+							? $current_corrective_action_data[$key]['evidences']
+							: [];
+					}
 				}
 				
 
@@ -514,6 +554,7 @@ if ( !class_exists('NCAR_Module') ) {
 				}
 
 				update_post_meta( $post_id, 'status', 'For Action' );
+				$this->log_status_change($post_id, null, 'For Action');
 
 				if(get_option('notification_'.$this->this_user)){
 					$options = get_option('notification_'.$this->this_user);
@@ -650,8 +691,140 @@ if ( !class_exists('NCAR_Module') ) {
 		}
 
 		function ncar_main_module_cb() {
+			// Handle table creation request
+			if (isset($_GET['create_status_table']) && $_GET['create_status_table'] == '1') {
+				$this->create_status_log_table();
+				echo '<div class="notice notice-success is-dismissible">';
+				echo '<p><strong>Success!</strong> NCAR Action Log table has been created.</p>';
+				echo '</div>';
+			}
+
 			require_once( 'main_module_html.php' );
 			require_once( 'modals.php' );
+		}
+
+		function ensure_status_log_table() {
+			global $wpdb;
+			$table_name = $wpdb->prefix . 'ncar_status_log';
+
+			if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+				$this->create_status_log_table();
+			}
+		}
+
+		function status_log_table_notice() {
+			global $wpdb;
+			$table_name = $wpdb->prefix . 'ncar_status_log';
+
+			if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") != $table_name) {
+				echo '<div class="notice notice-warning is-dismissible">';
+				echo '<p><strong>NCAR Action Log:</strong> The action log table needs to be created. ';
+				echo '<a href="' . admin_url('admin.php?page=ncar&create_status_table=1') . '" class="button">Create Table Now</a></p>';
+				echo '</div>';
+			}
+		}
+
+		function create_status_log_table() {
+			global $wpdb;
+
+			$table_name = $wpdb->prefix . 'ncar_status_log';
+
+			$charset_collate = $wpdb->get_charset_collate();
+
+			$sql = "CREATE TABLE $table_name (
+				id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+				post_id bigint(20) unsigned NOT NULL,
+				old_status varchar(255) DEFAULT NULL,
+				new_status varchar(255) NOT NULL,
+				changed_by bigint(20) unsigned NOT NULL,
+				timestamp datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+				PRIMARY KEY (id),
+				KEY post_id (post_id),
+				KEY timestamp (timestamp)
+			) $charset_collate;";
+
+			require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+			dbDelta($sql);
+		}
+
+		function get_action_label($old_status, $new_status) {
+			// Handle initial creation
+			if ($old_status === null && $new_status === 'For Action') {
+				return 'Created';
+			}
+
+			// Handle status transitions - "Actioned" covers both initial action and re-action after revert
+			if (($old_status === 'For Action' || $old_status === 'Reverted to For Action') && $new_status === 'For Follow up') {
+				return 'Actioned';
+			}
+
+			if ($old_status === 'For Follow up' && $new_status === 'For Verification') {
+				return 'Followed up';
+			}
+
+			if ($old_status === 'For Verification' && $new_status === 'Closed') {
+				return 'Verified and Closed';
+			}
+
+			if ($new_status === 'Reverted to For Action') {
+				return 'Reverted';
+			}
+
+			// Default fallback for any other transitions
+			return $new_status;
+		}
+
+		function log_status_change($post_id, $old_status, $new_status) {
+			global $wpdb;
+
+			$table_name = $wpdb->prefix . 'ncar_status_log';
+			$action_label = $this->get_action_label($old_status, $new_status);
+
+			$wpdb->insert(
+				$table_name,
+				array(
+					'post_id' => $post_id,
+					'old_status' => $old_status,
+					'new_status' => $action_label,
+					'changed_by' => get_current_user_id(),
+					'timestamp' => current_time('mysql')
+				),
+				array('%d', '%s', '%s', '%d', '%s')
+			);
+		}
+
+		function ncar_status_log() {
+			if (!$_POST['id']) {
+				echo json_encode(['error' => 'No ID provided']);
+				exit;
+			}
+
+			global $wpdb;
+			$table_name = $wpdb->prefix . 'ncar_status_log';
+			$post_id = intval($_POST['id']);
+
+			$results = $wpdb->get_results($wpdb->prepare(
+				"SELECT old_status, new_status, changed_by, timestamp
+				FROM $table_name
+				WHERE post_id = %d
+				ORDER BY timestamp ASC",
+				$post_id
+			));
+
+			$log_entries = array();
+			foreach ($results as $row) {
+				$user = get_user_by('id', $row->changed_by);
+				$user_name = $user ? $user->display_name : 'Unknown User';
+
+				$log_entries[] = array(
+					'status_label' => $row->new_status, // This now contains the action label
+					'timestamp' => date('Y-m-d H:i:s', strtotime($row->timestamp)),
+					'changed_by' => $user_name
+				);
+			}
+
+			echo json_encode($log_entries);
+			exit;
 		}
 	}
 	$NCAR_Module = new NCAR_Module();

@@ -145,7 +145,19 @@
                 date = new Date;
                 today = new Date;
                 var defaultDate = today.toISOString().split('T')[0];
-                $html = '' + '<tr>' + '<td colspan="4"><textarea class="form-control root_causes" rows="5"></textarea></td>' + '<td><textarea class="form-control corrective_action" rows="5"></textarea></td>' + '<td><input type="date" class="form-control corrective_date" value="' + defaultDate + '"></td>' + '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' + '</tr>';
+                $html = '' + '<tr>' +
+                    '<td colspan="4"><textarea class="form-control root_causes" rows="5"></textarea></td>' +
+                    '<td><textarea class="form-control corrective_action" rows="5"></textarea></td>' +
+                    '<td><input type="date" class="form-control corrective_date" value="' + defaultDate + '"></td>' +
+                    '<td>' +
+                        '<div class="file-upload corrective-evidence-upload" data-multiple-upload="true">' +
+                            '<input type="text" class="form-control selected_files" placeholder="No files selected" readonly>' +
+                            '<button type="button" class="btn btn-sm btn-primary upload-btn">Upload Evidence</button>' +
+                            '<div class="file-group evidences"></div>' +
+                        '</div>' +
+                    '</td>' +
+                    '<td><button class="close delete-correction"><span aria-hidden="true">×</span></button></td>' +
+                '</tr>';
                _correction_ind++;
                 $('#form_2_3').append($html);
                 app.bindDeleteBtns();
@@ -205,6 +217,12 @@
                     corrective_implemented = ($(this).find('.corrective_implemented:checked') ? $(this).find('.corrective_implemented:checked').val() : '');
                     corrective_remarks = $(this).find('.corrective_remarks').val();
 
+                    // Collect evidence files for this corrective action
+                    corrective_evidences = [];
+                    $(this).find('.corrective-evidence-upload .evidences input').each(function() {
+                        corrective_evidences.push($(this).val());
+                    });
+
                     if (!root_causes || !corrective_action || !corrective_date ) {
                         alert('All fields in Corrective Action Plan must be filled out!');
                         isValid = false; // Mark as invalid
@@ -216,7 +234,8 @@
                         corrective_action: corrective_action,
                         corrective_date: corrective_date,
                         corrective_implemented: corrective_implemented,
-                        corrective_remarks: corrective_remarks
+                        corrective_remarks: corrective_remarks,
+                        evidences: corrective_evidences
                     });
                 });
 
@@ -306,12 +325,20 @@
                     corrective_date = $(this).find('.corrective_date').val();
                     corrective_implemented = ($(this).find('.corrective_implemented:checked') ? $(this).find('.corrective_implemented:checked').val() : '');
                     corrective_remarks = $(this).find('.corrective_remarks').val();
+
+                    // Collect evidence files for this corrective action
+                    corrective_evidences = [];
+                    $(this).find('.corrective-evidence-upload .evidences input').each(function() {
+                        corrective_evidences.push($(this).val());
+                    });
+
                     corrective_action_data.push({
                         root_causes: root_causes,
                         corrective_action: corrective_action,
                         corrective_date: corrective_date,
                         corrective_implemented: corrective_implemented,
                         corrective_remarks: corrective_remarks,
+                        evidences: corrective_evidences
                     });
                 });
                 files = [];
@@ -394,12 +421,20 @@
                     corrective_date = $(this).find('.corrective_date').val();
                     corrective_implemented = ($(this).find('.corrective_implemented:checked') ? $(this).find('.corrective_implemented:checked').val() : '');
                     corrective_remarks = $(this).find('.corrective_remarks').val();
+
+                    // Collect evidence files for this corrective action
+                    corrective_evidences = [];
+                    $(this).find('.corrective-evidence-upload .evidences input').each(function() {
+                        corrective_evidences.push($(this).val());
+                    });
+
                     corrective_action_data.push({
                         root_causes: root_causes,
                         corrective_action: corrective_action,
                         corrective_date: corrective_date,
                         corrective_implemented: corrective_implemented,
                         corrective_remarks: corrective_remarks,
+                        evidences: corrective_evidences
                     });
                 });
                 files = [];
@@ -628,20 +663,21 @@
                 });
             });
             /*uploader*/
-            $('.file-upload .upload-btn').on('click', function() {
+            $(document).on('click', '.file-upload .upload-btn', function() {
                 $this = $(this).parents('.file-upload');
                 multiple = ($this.data('multiple-upload') ? true : false);
-                if (typeof _uploader != 'undefined') {
-                    _uploader.open();
-                    return;
-                }
-                _uploader = wp.media({
+
+                // Create a new uploader instance for each click to avoid conflicts
+                var current_uploader = wp.media({
                     title: 'Upload Files',
-                    multiple: multiple
+                    multiple: multiple,
+                    library: {
+                        type: ['image', 'application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+                    }
                 }).on('select', function(e) {
                     $('body').addClass('modal-open');
                     /** This will return the selected image from the featured-image Uploader, the result is an object */
-                    uploaded_files = _uploader.state().get('selection');
+                    uploaded_files = current_uploader.state().get('selection');
                     uploaded_files = uploaded_files.toJSON();
                     list = '';
                     uploaded_files.forEach(function(v, i) {
@@ -652,10 +688,10 @@
                         $this.find('.selected_files').val(uploaded_files.length + ' file(s) selected');
                     }
                 });
-                _uploader.on('open', function() {
+                current_uploader.on('open', function() {
                     /*reassign selected files*/
                     // if ( typeof uploaded_files != 'undefined' ) {
-                    // 	var lib = _uploader.state().get('library');
+                    // 	var lib = current_uploader.state().get('library');
                     // 	uploaded_files.forEach(function(v, i){
                     // 		attachment = wp.media.attachment(v.id);
                     //         attachment.fetch();
@@ -664,10 +700,10 @@
                     // 	});
                     // }
                 });
-                _uploader.on('close', function() {
+                current_uploader.on('close', function() {
                     $('body').addClass('modal-open');
                 });
-                _uploader.open();
+                current_uploader.open();
             });
             /*view evidences*/
             $('.selected_files').click(function() {
@@ -734,6 +770,32 @@
                             html: html,
                         });
                     });
+                }
+            });
+
+            // Handle corrective action evidence file viewing
+            $(document).on('click', '.corrective-evidence-upload .selected_files', function() {
+                if ($(this).siblings('.evidences').find('input').length) {
+                    $this = $(this).parent('.corrective-evidence-upload');
+                    html = '';
+                    $this.find('.evidences input').each(function() {
+                        let url = $(this).data('url');
+
+                        // Force the URL to start with 'https://'
+                        url = url.replace(/^http:\/\//i, 'https://');
+
+                        html += '<a href="' + url + '" target="_blank">' + $(this).data('title') + '</a><br>';
+                    });
+                    if (html) {
+                        Swal.fire({
+                            icon: 'info',
+                            title: 'Corrective Action Evidence Files',
+                            allowOutsideClick: false,
+                            showConfirmButton: true,
+                            allowEscapeKey: false,
+                            html: html,
+                        });
+                    }
                 }
             });
             /*end init*/
@@ -1085,6 +1147,16 @@
                                 v.root_causes = 'Not Applicable';
                             }
 
+                            // Prepare evidence files for this corrective action (read-only)
+                            var evidenceHtmlReadonly = '';
+                            var evidenceInputReadonly = '';
+                            if (v.evidences && v.evidences.length > 0) {
+                                evidenceHtmlReadonly = v.evidences.length + ' file(s) selected';
+                                $.each(v.evidences, function(a, b) {
+                                    evidenceInputReadonly += '<input type="hidden" data-url="' + b.url + '" value="' + b.id + '" data-title="' + b.title + '" class="evidences">';
+                                });
+                            }
+
                             $html2 += '<tr>' +
                                         '<td>' +
                                             '<textarea disabled class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' +
@@ -1094,6 +1166,12 @@
                                         '</td>' +
                                         '<td>' +
                                             '<input type="date" disabled class="form-control corrective_date" value="' + v.corrective_date + '">' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<div class="file-upload corrective-evidence-upload" data-multiple-upload="true">' +
+                                                '<input type="text" class="form-control selected_files" placeholder="No files selected" value="' + evidenceHtmlReadonly + '" readonly>' +
+                                                '<div class="file-group evidences">' + evidenceInputReadonly + '</div>' +
+                                            '</div>' +
                                         '</td>' +
                                         '<td style="display:flex;">' +
                                             '<input type="radio" name="corrective_' + _correction_ind + '" class="corrective_implemented" value="Yes" ' + (v.corrective_implemented == 'Yes' ? 'checked' : '') + '> Yes' +
@@ -1107,6 +1185,16 @@
                                         '</td>' +
                                     '</tr>';
 
+                            // Prepare evidence files for this corrective action
+                            var evidenceHtml = '';
+                            var evidenceInput = '';
+                            if (v.evidences && v.evidences.length > 0) {
+                                evidenceHtml = v.evidences.length + ' file(s) selected';
+                                $.each(v.evidences, function(a, b) {
+                                    evidenceInput += '<input type="hidden" data-url="' + b.url + '" value="' + b.id + '" data-title="' + b.title + '" class="evidences">';
+                                });
+                            }
+
                             $html += '<tr>' +
                                         '<td colspan="4">' +
                                             '<textarea required class="form-control root_causes" '+readonly+'>' + v.root_causes + '</textarea>' +
@@ -1116,6 +1204,13 @@
                                         '</td>' +
                                         '<td>' +
                                             '<input type="date" class="form-control corrective_date" value="' + v.corrective_date + '">' +
+                                        '</td>' +
+                                        '<td>' +
+                                            '<div class="file-upload corrective-evidence-upload" data-multiple-upload="true">' +
+                                                '<input type="text" class="form-control selected_files" placeholder="No files selected" value="' + evidenceHtml + '" readonly>' +
+                                                '<button type="button" class="btn btn-sm btn-primary upload-btn">Upload Evidence</button>' +
+                                                '<div class="file-group evidences">' + evidenceInput + '</div>' +
+                                            '</div>' +
                                         '</td>' +
                                         '<td>' +
                                             '<button class="close delete-correction"><span aria-hidden="true">×</span></button>' +
@@ -1232,6 +1327,54 @@
                             backdrop: 'static',
                             keyboard: false
                         }).LoadingOverlay('show');
+                    },
+                });
+            }).addClass('loaded');
+            /*status log*/
+            $('.btn-status-log:not(.loaded)').on('click', function() {
+                id = $(this).data('id');
+                $.ajax({
+                    url: location.origin + '/wp-admin/admin-ajax.php',
+                    data: {
+                        action: 'ncar_status_log',
+                        id: id
+                    },
+                    type: 'POST',
+                    dataType: 'JSON',
+                    success: function(r) {
+                        $('#status-log-loading').hide();
+                        $('#status-log-error').hide();
+                        $('#status-log-content').show();
+
+                        var tbody = $('#status-log-tbody');
+                        tbody.empty();
+
+                        if (r && r.length > 0) {
+                            $.each(r, function(_, entry) {
+                                var row = '<tr>' +
+                                    '<td>' + entry.status_label + '</td>' +
+                                    '<td>' + entry.timestamp + '</td>' +
+                                    '<td>' + entry.changed_by + '</td>' +
+                                    '</tr>';
+                                tbody.append(row);
+                            });
+                        } else {
+                            tbody.append('<tr><td colspan="3" style="text-align: center;">No actions found.</td></tr>');
+                        }
+                    },
+                    error: function() {
+                        $('#status-log-loading').hide();
+                        $('#status-log-content').hide();
+                        $('#status-log-error').show();
+                    },
+                    beforeSend: function() {
+                        $('#status-log-content').hide();
+                        $('#status-log-error').hide();
+                        $('#status-log-loading').show();
+                        $('#status-log-modal').modal({
+                            backdrop: 'static',
+                            keyboard: false
+                        });
                     },
                 });
             }).addClass('loaded');

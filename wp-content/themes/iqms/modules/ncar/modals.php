@@ -630,6 +630,7 @@
 												<td colspan="4">Root Cause/s</td>
 												<td>Corrective Action</td>
 												<td>Target Date</td>
+												<td>Evidence</td>
 												<td></td>
 											</tr>
 
@@ -703,6 +704,7 @@
 												<td colspan="">Root Cause/s</td>
 												<td>Corrective Action</td>
 												<td>Target Date</td>
+												<td>Evidence</td>
 												<td colspan="2">Implemented As Planned?</td>
 												<td></td>
 											</tr>
@@ -803,4 +805,39 @@
 </div>
 
 
-<!-- remarks modal -->
+<!-- status log modal -->
+<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="statusLogModalLabel" id="status-log-modal">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="statusLogModalLabel"><i class="glyphicon glyphicon-time"></i> Action History</h4>
+      </div>
+      <div class="modal-body">
+        <div id="status-log-content">
+          <table class="table table-striped table-hover" id="status-log-table">
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Timestamp</th>
+                <th>Performed By</th>
+              </tr>
+            </thead>
+            <tbody id="status-log-tbody">
+              <!-- Status log entries will be populated here -->
+            </tbody>
+          </table>
+        </div>
+        <div id="status-log-loading" style="display: none; text-align: center; padding: 20px;">
+          <i class="glyphicon glyphicon-refresh glyphicon-spin"></i> Loading action history...
+        </div>
+        <div id="status-log-error" style="display: none; text-align: center; padding: 20px; color: #d9534f;">
+          <i class="glyphicon glyphicon-exclamation-sign"></i> Error loading action history.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
