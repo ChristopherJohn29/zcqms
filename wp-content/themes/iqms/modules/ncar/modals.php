@@ -764,6 +764,7 @@
 									</table>
 
 									<div class="submit-group" style="display: inline-block; text-align: right; width: 100%;">
+										<button type="submit" class="btn btn-success" id="edit_form3_save_reissuance">For Re-issuance</button>
 										<button type="submit" class="btn btn-success" id="edit_form3_save_satisfactory">Satisfactory</button>
 										<button type="submit" class="btn btn-success" id="edit_form3_save_not_satisfactory">Not Satisfactory</button>
 									</div>

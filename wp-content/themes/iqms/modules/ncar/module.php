@@ -141,6 +141,26 @@ if ( !class_exists('NCAR_Module') ) {
 					$this->sendEmail($po->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' you raised has already been verified and is now closed.');
 				
 
+				} else if($final_decision == 'reissuance'){
+					date_default_timezone_set('Asia/Shanghai');
+					$old_status = get_post_meta($post_id, 'status', true);
+					update_post_meta( $post_id, 'status', 'For reissuance' );
+					$this->log_status_change($post_id, $old_status, 'For reissuance');
+					update_post_meta( $post_id, 'close_date', date("Y-m-d") );
+					
+
+					if(get_option('notification_'.$owner)){
+						$options = get_option('notification_'.$owner);
+						$options[] = 'The '.$ncar_no_new.' you raised has already been verified and is now For reissuance. <br><br>'.$this->get_date();
+						update_option( 'notification_'.$owner,  $options);
+					} else {
+						add_option( 'notification_'.$owner,  ['The '.$ncar_no_new.' you raised has already been verified and is now For reissuance. <br><br>'.$this->get_date()]);
+					}
+
+					$po = get_user_by('id', $owner);
+					$this->sendEmail($po->user_email, 'NCAR Notification', 'The '.$ncar_no_new.' you raised has already been verified and is now For reissuance.');
+				
+
 				} else {
 					$old_status = get_post_meta($post_id, 'status', true);
 					update_post_meta( $post_id, 'status', 'Reverted to For Action' );

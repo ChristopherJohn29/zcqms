@@ -553,6 +553,65 @@
                     }
                 });
             });
+            $('#edit_form3_save_reissuance').click(function(e) {
+                e.preventDefault();
+                verification = [];
+                ncar_no = $('#edit-modal [name="ncar_no"]').val();
+                $('#form_3_1 tr').each(function() {
+                    verification_date = $(this).find('.verification_date').val();
+                    verification_implemented = ($(this).find('.verification_implemented:checked') ? $(this).find('.verification_implemented:checked').val() : '');
+                    verification_remarks = $(this).find('.verification_remarks').val();
+                    verification.push({
+                        verification_date: verification_date,
+                        verification_implemented: verification_implemented,
+                        verification_remarks: verification_remarks,
+                    });
+                });
+                $.ajax({
+                    url: location.origin + '/wp-admin/admin-ajax.php',
+                    data: {
+                        action: 'ncar_form3_save',
+                        data: {
+                            verification: verification,
+                            ncar_no: ncar_no,
+                            final_decision: 'reissuance'
+                        },
+                    },
+                    type: 'POST',
+                    dataType: 'JSON',
+                    success: function(r) {
+                        Swal.close();
+                        if (r.post_id) {
+                            $icon = 'success';
+                            $title = 'NCAR Saved';
+                            $text = '';
+                        } else {
+                            $icon = 'error';
+                            $title = 'NCAR Not Saved';
+                            $text = 'Error occurred';
+                        }
+                        Swal.fire({
+                            icon: $icon,
+                            title: $title,
+                            allowOutsideClick: false,
+                            showConfirmButton: true,
+                            allowEscapeKey: false,
+                            html: $text,
+                        }).then(function(result) {
+                            location.reload();
+                        });
+                    },
+                    beforeSend: function() {
+                        Swal.fire({
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            allowEscapeKey: false,
+                            html: '<p style="font-size: 12px;"> Saving. Please wait...</p><i class="fa fa-refresh fa-spin"></i>',
+                        });
+                    }
+                });
+            });
             $('#edit_form3_save_not_satisfactory').click(function(e) {
                 e.preventDefault();
                 verification = [];
